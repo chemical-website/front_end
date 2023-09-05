@@ -1,0 +1,214 @@
+.Header {
+    width: 100%;
+    height: 72px;
+    display: flex;
+    direction: rtl;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #27023B;
+}
+
+.topologo {
+    display: flex;
+    font-size: 24px;
+    color: #27023B;
+    font-weight: 700;
+
+}
+
+.topologo i {
+
+    width: 32px;
+    height: 32px;
+}
+
+.Menubox {
+    display: flex;
+    justify-content: space-between;
+    width: 190px;
+    height: 72px;
+    color: #27023B;
+    gap: 20px;
+
+}
+
+.ItemsMenubox {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.ItemsMenubox:hover {
+    border-bottom: 2px solid #3B0359;
+}
+
+.input {
+    background-color: #F7EBFE;
+    width: 350px;
+    position: relative;
+    height: 42px;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+
+}
+
+.input::placeholder {
+    color: #27023B;
+    font-size: 18px;
+    opacity: 1;
+    font-weight: bold;
+
+}
+
+.searchBox {
+    display: flex;
+    align-items: center;
+}
+
+.IconSearch1 {
+    position: absolute;
+    top: 2%;
+    right: 51.2%;
+    height: 6%;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    font-size: 120%;
+}
+
+.IconSearch2 {
+    position: absolute;
+    left: 28%;
+    top: 2%;
+    height: 6%;
+    display: flex;
+    align-items: center;
+    font-size: 120%;
+}
+
+.Sabtnam {
+    display: flex;
+    justify-content: space-around;
+    width: 125px;
+    height: 42px;
+    align-items: center;
+}
+
+.te {
+    border-left: 1px solid;
+    padding: 8px;
+}
+
+.vorodicon {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.openmahsolat {
+    position: absolute;
+    width: 600px;
+    height: 300px;
+    background-color: #f6d7ffb2;
+    top: 72px;
+    display: flex;
+    right: 29.2%;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-bottom: 7px;
+    padding-right: 8px;
+    z-index: 20;
+}
+
+.DisplayNone {
+    position: absolute;
+    display: none;
+}
+
+.RightBox {
+    width: 24%;
+
+}
+
+.RightBox button {
+    height: 100%;
+    background-color: #ffffff00;
+    border: none;
+    color: #3B0359;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.RightBox h2 {
+    position: relative;
+    padding: 10px 0px;
+}
+
+.LeftIcon {
+    position: absolute;
+    margin-top: 0%;
+    align-items: center;
+    top: 0px;
+    left: 0px;
+    font-size: 86%;
+    padding-top: 10%;
+}
+
+
+.LeftBox {
+    width: 75%;
+    height: 100%;
+}
+
+.leftOpen h5 i {
+    padding: 0 6% 0 0;
+    display: inline-block;
+}
+
+.leftOpen h5 {
+    padding-top: 3%;
+}
+
+.leftOpen {
+    margin-right: 6%;
+}
+
+.BBox {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 17px;
+
+}
+
+.BBox h5 {
+    font-size: 14px;
+    padding-right: 5%;
+    padding-top: 2%;
+}
+
+
+
+
+.SBox {
+    width: 86px;
+    margin-top: 4%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.SBox a {
+
+    direction: rtl;
+    padding-right: 10px;
+}
+
+.SBox h4 {
+    margin-bottom: 2%;
+    font-size: 18px;
+}
