@@ -1,7 +1,6 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import LandingPage from './pages/landing/landing';
-import MainPage from './pages/main page/MainPage';
 
 
 
@@ -21,7 +20,6 @@ function App() {
     <Routes>
       <Route path='*' element={<Error404 />} />
       <Route path='/' element={<LandingPage />} />
-      <Route path='/m' element={<MainPage />} />
     </Routes>
   );
 }
