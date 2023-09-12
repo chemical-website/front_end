@@ -1,6 +1,7 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import LandingPage from './pages/landing/landing';
+import SignIn from './components/main page/SignIn';
 
 
 
@@ -20,6 +21,7 @@ function App() {
     <Routes>
       <Route path='*' element={<Error404 />} />
       <Route path='/' element={<LandingPage />} />
+      <Route path='/s' element={<SignIn />} />
     </Routes>
   );
 }
