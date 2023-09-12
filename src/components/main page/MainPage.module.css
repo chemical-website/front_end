@@ -19,9 +19,7 @@
 
 
 .TopBox h1 {
-
     width: 19%;
-
     direction: rtl;
     color: #3B0359;
     font-size: 264%;
@@ -147,18 +145,21 @@
 .inputf::placeholder {}
 
 
+                                                     /* down part start */
+.DownBox {
+    margin-bottom: 100px;
+}
 
-.DownBox {}
 
 
-                                          /* down part start */
 
-.DownBBox{
+.DownBBox {
     width: 1140px;
     margin: auto;
     margin-top: 133px;
 }
-.uptitle{
+
+.uptitle {
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
@@ -166,7 +167,7 @@
 
 
 
-.ShowPart{
+.ShowPart {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -174,37 +175,40 @@
     font-size: 16px;
     font-weight: 600px;
     color: #27023B;
-   
-    
+
+
 }
 
-.pishnahadT{
+.pishnahadT {
     font-size: 24px;
     font-weight: 700;
     line-height: 28.8px;
     height: 27px;
-  
+
 }
-.textP{
+
+.textP {
     display: flex;
     gap: 7px;
-     background-color: #F7EBFE;
+    background-color: #F7EBFE;
     border-radius: 8px;
     padding: 3px;
 }
 
-.pishnahadat{
-cursor: pointer;
-padding: 4px 8px 4px 8px;
+.pishnahadat {
+    cursor: pointer;
+    padding: 4px 8px 4px 8px;
 
 }
-.pishnahadat2{
+
+.pishnahadat2 {
     cursor: pointer;
     padding: 4px 8px 4px 8px;
     border-left: 2px solid #8806CE;
-    
-    }
-.pishnahadat3{
+
+}
+
+.pishnahadat3 {
     background-color: #8806CE;
     color: #FFFFFF;
     cursor: pointer;
@@ -214,66 +218,89 @@ padding: 4px 8px 4px 8px;
 
 
 
-.mahsolatS{
+.mahsolatS {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
-    
-}
-.TopPartOfDownB{
-    position: relative;
+
 }
 
-.TopPartOfDownB h3{
+.TopPartOfDownB {
+    display: flex;
+    position: relative;
+    gap: 2px;
+    padding: 12px;
+    width: 249px;
+    box-sizing: border-box;
+    height: 346px;
+    flex-direction: column;
+}
+.downPartt{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+.TopPartOfDownB:hover{
+  padding: 10px;
+    border: 2px solid #E1ADFC;
+    border-radius: 16px;
+}
+
+.TopPartOfDownB:hover .LikeBox {
+    display: flex;
+    transition: 5s;
+
+
+}
+
+.TopPartOfDownB h3 {
     font-size: 24px;
     font-weight: 500;
     line-height: 28.8px;
 }
-.TopPartOfDownB p{
+
+.TopPartOfDownB p {
     font-size: 18px;
     font-weight: 400;
     line-height: 21.6px;
 }
 
-.LikeBox{    
+.LikeBox {
+
+    box-sizing: border-box;
     position: absolute;
-    top: 17px;
-    left: 12px;
+    top: 23px;
+    display: none;
+    gap: 8px;
+    left: 23px;
     font-size: 26px;
     background-color: #ffff;
     border-radius: 8px;
+    color: #8806CE;
+    flex-direction: column;
+    padding: 2px 3px 5px;
+    box-sizing: border-box;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 
-.LinkSBox{
+.LikeBox i {
+    font-size: 23px;
+    cursor: pointer;
+    
+}
+
+.LinkSBox {
     display: flex;
     justify-content: space-between;
+    color: #8806CE;
 }
 
-.LinkSBox a{
+.LinkSBox a {
     display: flex;
     align-items: center;
     gap: 2px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -2,12 +2,19 @@ import { Link } from "react-router-dom";
 import mainpage from "./MainPage.module.css";
 import { useState } from "react";
 import ax from "../../assets/img/Photo.png";
-import { SlFrame } from "react-icons/sl";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsDisplay, BsFillShareFill } from "react-icons/bs";
 import { MdFilterListAlt, MdHeight } from "react-icons/md";
 import { IoMdCall } from "react-icons/io";
 import { MdOutlineOpenInNew } from "react-icons/md";
+import { RiFullscreenLine } from "react-icons/ri";
+// core version + navigation, pagination modules:
+import Swiper from 'swiper';
+import { Navigation, Pagination } from 'swiper/modules';
+// import Swiper and modules styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 
 function DownerPart() {
@@ -45,6 +52,8 @@ function HameHandler() {
     }
   }
 
+  
+
 
 
   let  MahsolatList =[
@@ -77,6 +86,9 @@ function HameHandler() {
   ]
 
 
+  
+
+
 
 
 
@@ -87,12 +99,19 @@ function HameHandler() {
         <div className={mainpage.ShowPart}><i><MdFilterListAlt/> </i><div className={mainpage.textP}><span onClick={HameHandler} className={y==0 ? mainpage.pishnahadat2 : mainpage.pishnahadat3 }>نمایش همه</span> <span className={x==0 ? mainpage.pishnahadat2 : mainpage.pishnahadat3 }  onClick={BarkhiHandler}>نمایش برخی </span><span className={z==0 ? mainpage.pishnahadat : mainpage.pishnahadat3 }  onClick={YekhdeHandler}>نمایش یخده</span></div></div>
         </div> 
         <div className={mainpage.mahsolatS}>
+
+
+
+
           {MahsolatList.map((x) => {
+            let id = -1
+            id++
             return( 
             <>
-            <div className={mainpage.TopPartOfDownB}>
-              <div><img src={x.image}/> <div className={mainpage.LikeBox}><i><SlFrame/></i><i><AiOutlineHeart/></i><i><BsFillShareFill/></i></div></div>
-              <div ><h3>{x.titr}</h3><p>{x.tozihat}</p> <div className={mainpage.LinkSBox}><Link><IoMdCall/>{x.tamas}</Link><Link><MdOutlineOpenInNew/>{x.moshahede}</Link></div></div>
+
+            <div  className={mainpage.TopPartOfDownB} >
+              <div><img src={x.image}/> <div className={mainpage.LikeBox}><i><RiFullscreenLine/></i><i><AiOutlineHeart/></i><i><BsFillShareFill/></i></div></div>
+              <div className={mainpage.downPartt}><h3>{x.titr}</h3><p>{x.tozihat}</p> <div className={mainpage.LinkSBox}><Link><IoMdCall/>{x.tamas}</Link><Link><MdOutlineOpenInNew/>{x.moshahede}</Link></div></div>
               </div>
          
               </>); 
