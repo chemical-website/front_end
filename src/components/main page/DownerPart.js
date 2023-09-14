@@ -8,10 +8,8 @@ import { MdFilterListAlt, MdHeight } from "react-icons/md";
 import { IoMdCall } from "react-icons/io";
 import { MdOutlineOpenInNew } from "react-icons/md";
 import { RiFullscreenLine } from "react-icons/ri";
-// core version + navigation, pagination modules:
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
-// import Swiper and modules styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
