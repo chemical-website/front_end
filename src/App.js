@@ -4,6 +4,7 @@ import LandingPage from './pages/landing/landing';
 import Products from './pages/products/products';
 import Product from './pages/product/product';
 import SignIn from './components/main page/SignIn';
+import NewsPage from './pages/news/news';
 
 
 
@@ -25,6 +26,7 @@ function App() {
       <Route path='/' element={<LandingPage />} />
       <Route path='products' element={<Products />} />
       <Route path='product/:id' element={<Product />} />
+      <Route path='news' element={<NewsPage />} />
       <Route path='/s' element={<SignIn />} />refs/remotes/origin/main
     </Routes>
   );

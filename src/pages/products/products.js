@@ -1,5 +1,7 @@
 import Cart from "../../components/cart/cart";
 import ax from "../../assets/img/Photo.png";
+import { Fragment } from "react";
+import NavigationBar from "../../layout/header/NavigationBar";
 
 let  MahsolatList =[
     {image: ax ,
@@ -57,7 +59,9 @@ let  MahsolatList =[
 
 const Products = () => {
     return ( 
-        <div>
+      <Fragment>
+      <NavigationBar />
+              <div>
             
             <div className=" grid grid-cols-4 w-2/3">
             {
@@ -69,6 +73,7 @@ const Products = () => {
             }
             </div>
         </div>
+      </Fragment>
      );
 }
  

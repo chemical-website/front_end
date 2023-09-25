@@ -8,9 +8,15 @@ import { BsDisplay, BsFillShareFill } from "react-icons/bs";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import Additional from "./additional";
 import Property from "./property";
+import { Navigation } from 'swiper/modules';
+import 'swiper/css/navigation';
+import Comment from "./comment";
+import PicSlider from "./picSlider";
+import NavigationBar from "../../layout/header/NavigationBar";
+
 
 const Product = () => {
     const {id} = useParams()
@@ -24,8 +30,10 @@ const Product = () => {
     //     }
     // },[sectionState])
     return ( 
-        <div className="flex flex-col justify-start items-center">
-        <div className="w-full">
+        <Fragment>
+             <NavigationBar/>
+            <div className="flex flex-col justify-start items-center">
+        <div className="w-4/5">
         <div className="flex flex-row items-center justify-between w-1/6 mb-9 mt-14" >
         <div>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -78,17 +86,8 @@ const Product = () => {
         </div>
 
         <div className=" flex flex-row items-center justify-between w-4/5">
-            <div className=" w-1/3">
-            <Swiper className="w-1/2"
-      spaceBetween={50}
-      slidesPerView={1}
-      navigation
-    >
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
-    </Swiper>
+            <div className=" w-1/3 flex justify-center flex-col items-first">
+            <PicSlider />
             </div>
             <div className=" w-1/3">
                 <h3>
@@ -102,7 +101,7 @@ const Product = () => {
                 </p>
                 <div></div>
             </div>
-            <div className=" w-1/3">
+            <div className=" w-1/3 flex justify-center flex-col items-end">
             <div style={{background:"#F7EBFE" , width:"60%"  , borderRadius:"0.5rem" , paddingInline:"1.4rem" , paddingBlock:"1.2rem" , marginBottom:"2rem"}}>
                 <div className="flex flex-row items-center justify-between">
                     <div  className="flex flex-row items-center justify-between  w-1/2">
@@ -129,7 +128,7 @@ const Product = () => {
             </div>
             </div>
         </div>
-        <div style={{width:"90%" , height:"0" , border:" 2px solid #F5F5F5"}}></div>
+        <div style={{width:"80%" , height:"0" , border:" 2px solid #F5F5F5"}}></div>
         <div className="flex flex-col justify-start items-start w-4/5">
             <div className="flex flex-row items-center justify-between  w-1/6">
                 <div 
@@ -161,8 +160,12 @@ const Product = () => {
             <div  style={{display: sectionState ===2?"flex" : "none"}}>
                 <Property />
             </div>
+            <div  style={{display: sectionState ===3?"flex" : "none"}}>
+                <Comment />
+            </div>
         </div>
         </div>
+        </Fragment>
      );
 }
  

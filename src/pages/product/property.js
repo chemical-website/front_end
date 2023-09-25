@@ -15,7 +15,7 @@ const PropertyField = ()=> {
 
 const Property = () => {
     return ( 
-        <div className=" grid grid-cols-2  gap-x-64">
+        <div className=" grid grid-cols-2  gap-x-80">
         <PropertyField />
         <PropertyField />
 
