@@ -15,6 +15,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import Cart from "../cart/cart";
 
 
 function DownerPart() {
@@ -104,18 +105,9 @@ function HameHandler() {
 
 
           {MahsolatList.map((x) => {
-            let id = -1
-            id++
-            return( 
-            <>
-
-            <div  className={mainpage.TopPartOfDownB} >
-              <div><img src={x.image}/> <div className={mainpage.LikeBox}><i><RiFullscreenLine/></i><i><AiOutlineHeart/></i><i><BsFillShareFill/></i></div></div>
-              <div className={mainpage.downPartt}><h3>{x.titr}</h3><p>{x.tozihat}</p> <div className={mainpage.LinkSBox}><Link><IoMdCall/>{x.tamas}</Link><Link><MdOutlineOpenInNew/>{x.moshahede}</Link></div></div>
-              </div>
-         
-              </>); 
-          })}
+            return(  
+              <Cart x={x} />
+          )})}
         </div>
       </div>
     </>
@@ -123,3 +115,17 @@ function HameHandler() {
 }
 
 export default DownerPart;
+
+
+// export function Cart({x}){
+//   return(
+//     <>
+
+//             <div  className={mainpage.TopPartOfDownB} >
+//               <div><img src={x.image}/> <div className={mainpage.LikeBox}><i><RiFullscreenLine/></i><i><AiOutlineHeart/></i><i><BsFillShareFill/></i></div></div>
+//               <div className={mainpage.downPartt}><h3>{x.titr}</h3><p>{x.tozihat}</p> <div className={mainpage.LinkSBox}><Link><IoMdCall/>{x.tamas}</Link><Link><MdOutlineOpenInNew/>{x.moshahede}</Link></div></div>
+//               </div>
+         
+//               </>
+//   )
+// }

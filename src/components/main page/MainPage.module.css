@@ -63,11 +63,13 @@
 }
 
 .SearchDastebandi {
-    width: 58%;
+    width: 60%;
     display: flex;
     direction: ltr;
     flex-direction: row;
+    font-size: 0.8rem;
     justify-content: flex-end;
+    align-items: center;
 }
 
 .SearchOpenBox1 {
