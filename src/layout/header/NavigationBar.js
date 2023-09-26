@@ -94,9 +94,9 @@ let [s,sets] = useState(0)
           <Link className={navigationBar.vorodicon}>
             <BiSolidUserCircle />
           </Link>
-          <Link to="/" className={navigationBar.te}> <b> ثبت نام </b></Link>
+          <Link to="/s" className={navigationBar.te}> <b> ثبت نام </b></Link>
           
-          <Link to="/"><b>ورود</b> </Link>
+          <Link to="/s"><b>ورود</b> </Link>
         </div>
 
                                                                         {/* SABTNAM END */}
