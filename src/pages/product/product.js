@@ -85,37 +85,37 @@ const Product = () => {
         </div>
         </div>
 
-        <div className=" flex flex-row items-center justify-between w-4/5">
+        <div className=" flex flex-row items-center justify-between w-4/5 mb-12">
             <div className=" w-1/3 flex justify-center flex-col items-first">
             <PicSlider />
             </div>
             <div className=" w-1/3">
-                <h3>
+                <h3 className="  font-bold text-3xl">
                 اسم کامل محصول
                 </h3>
-                <p>
+                <p className="  font-medium text-lg mb-10">
                 زیرتوضیحات تک‌خطی
                 </p>
-                <p>
+                <p className=" font-normal text-base w-full">
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
                 </p>
                 <div></div>
             </div>
-            <div className=" w-1/3 flex justify-center flex-col items-end">
-            <div style={{background:"#F7EBFE" , width:"60%"  , borderRadius:"0.5rem" , paddingInline:"1.4rem" , paddingBlock:"1.2rem" , marginBottom:"2rem"}}>
+            <div className=" w-1/4 flex justify-center flex-col items-end">
+            <div style={{background:"#F7EBFE" , width:"80%"  , borderRadius:"0.5rem" , paddingInline:"1.4rem" , paddingBlock:"1.2rem" , marginBottom:"2rem",color:"#7606B2"}}>
                 <div className="flex flex-row items-center justify-between">
                     <div  className="flex flex-row items-center justify-between  w-1/2">
                     <div><RiFullscreenLine/></div>
                     <div><AiOutlineHeart/></div>
                     <div><BsFillShareFill/></div>
                     </div>
-                    <div>
+                    <div className=" text-sm">
                         موجود
                     </div>
                 </div>
-                <div className="flex flex-row items-center justify-between">
+                <div className="flex flex-row items-center justify-between mt-7">
                     <div >
-                        <p>تماس بگیرید</p>
+                        <p className="  font-bold text-xl">تماس بگیرید</p>
                         <p>+۹۸۹۱۰۱۲۳۴۵۶</p>
                     </div>
                     <div>
@@ -123,15 +123,15 @@ const Product = () => {
                     </div>
                 </div>
             </div>
-            <div style={{width:"60%"}}>
+            <div style={{width:"80%"}}>
                 <button style={{background:"#8806CE" , color:"#FFFFFF" , textAlign:"center" , width:"100%" , borderRadius:"0.5rem" , paddingBlock:"0.6rem"}}>ثبت درخواست</button>
             </div>
             </div>
         </div>
         <div style={{width:"80%" , height:"0" , border:" 2px solid #F5F5F5"}}></div>
-        <div className="flex flex-col justify-start items-start w-4/5">
-            <div className="flex flex-row items-center justify-between  w-1/6">
-                <div 
+        <div  className="flex flex-col justify-start items-start w-4/5">
+            <div  className="flex flex-row items-center justify-between  w-1/6">
+                <div style={{color: sectionState === 1 ? "#3B0359" : "#D184FB"}} className=" font-semibold text-3xl mx-4"
                 onClick={()=>{
                     changeState(1)
                 }}>
@@ -140,7 +140,7 @@ const Product = () => {
                 <div>
                     /
                 </div>
-                <div onClick={()=>{
+                <div style={{color: sectionState === 2 ? "#3B0359" : "#D184FB"}} className=" font-semibold text-3xl mx-4" onClick={()=>{
                     changeState(2)
                 }}>
                 مشخصات
@@ -148,7 +148,7 @@ const Product = () => {
                 <div>
                 /
                 </div>
-                <div onClick={()=>{
+                <div style={{color: sectionState === 3 ? "#3B0359" : "#D184FB"}} className=" font-semibold text-3xl mx-4" onClick={()=>{
                     changeState(3)
                 }}>
                 نظرات
