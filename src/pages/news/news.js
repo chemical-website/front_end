@@ -1,7 +1,7 @@
 import React, { Fragment, useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
+import { MdOutlineOpenInNew } from "react-icons/md";
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -9,6 +9,7 @@ import 'swiper/css/navigation';
 // import required modules
 import { Navigation } from 'swiper/modules';
 import NavigationBar from '../../layout/header/NavigationBar';
+import { Link } from 'react-router-dom';
 
 const NewsCart = ()=> {
     return(
@@ -28,16 +29,18 @@ const NewsCart = ()=> {
             </div>
             </div>
             <div>
-                <p>عمده رشد منابع درآمدی بودجه در دولت سیزدهم از افزایش صادرات نفت است</p>
+                <p style={{color:"#27023B"}} className=' font-semibold text-xl mt-4'>عمده رشد منابع درآمدی بودجه در دولت سیزدهم از افزایش صادرات نفت است</p>
             </div>
-            <div className='flex flex-row justify-between items-center'>
-                <p>۱۴۰۱/۸/۱۲</p>
-                <p>۵:۳۰</p>
-                <p>۱۵بازدید</p>
+            <div className='flex flex-row justify-between items-center  w-1/3'>
+                <p  style={{color:"#D184FB"}} className=" font-normal text-base">۱۴۰۱/۸/۱۲</p>
+                <p  style={{color:"#D184FB"}} className=" font-normal text-base">۵:۳۰</p>
+                <p  style={{color:"#D184FB"}} className=" font-normal text-base">۱۵بازدید</p>
             </div>
-            <div>پلتس در روز ۱۸ آگوست ، قیمت ایزومر زایلین ترکیبی را با ۳ دلار افزایش بر اساس ترم تحویل کره جنوبی و با همین میزان افزایش بر اساس ترم تحویل تایوان و با ۶ دلار افزایش بر اساس ترم تحویل چین ارزیابی نمود .</div>
+            <div style={{color:"#3B0359"}} className=' font-normal text-lg'>پلتس در روز ۱۸ آگوست ، قیمت ایزومر زایلین ترکیبی را با ۳ دلار افزایش بر اساس ترم تحویل کره جنوبی و با همین میزان افزایش بر اساس ترم تحویل تایوان و با ۶ دلار افزایش بر اساس ترم تحویل چین ارزیابی نمود .</div>
 
-            <div className=' self-end'></div>
+            <div className=' self-end flex flex-row items-center mt-4'>
+            <Link className=' flex flex-row items-center' style={{color:"#8806CE"}}><MdOutlineOpenInNew/>مشاهده بیشتر</Link>
+            </div>
         </div>
     )
 }
@@ -48,7 +51,7 @@ const NewsPage = () => {
         <NavigationBar />
             <div className='flex flex-row justify-between items-end'>
               <div className='mt-8 w-2/3'>
-             <Swiper  direction='vertical' slidesPerView={2}  style={{height:"50rem" , width:"100%"}}>
+             <Swiper  direction='vertical' slidesPerView={2}  style={{height:"60rem" , width:"100%"}}>
         <SwiperSlide className='mb-12 h-fit'>
             <div className=' grid grid-cols-2'>
                 <NewsCart />
