@@ -1,63 +1,87 @@
 import Cart from "../../components/cart/cart";
 import ax from "../../assets/img/Photo.png";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import NavigationBar from "../../layout/header/NavigationBar";
+import axios from "axios";
 
-let  MahsolatList =[
-    {image: ax ,
-    titr: "سرتیتر اسم",
-    tozihat: "یه سری متن ",
-    tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید"
-  },
-  {image: ax ,
-    titr: "سرتیتر اسم",
-    tozihat: "یه سری متن ",
-    tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید"
-  },
-  {image: ax ,
-    titr: "سرتیتر اسم",
-    tozihat: "یه سری متن ",
-    tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید"
-  },
-  {image: ax ,
-    titr: "سرتیتر اسم",
-    tozihat: "یه سری متن ",
-    tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید"
-  },
-  {image: ax ,
-    titr: "سرتیتر اسم",
-    tozihat: "یه سری متن ",
-    tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید"
-  },
-  {image: ax ,
-    titr: "سرتیتر اسم",
-    tozihat: "یه سری متن ",
-    tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید"
-  },
-  {image: ax ,
-    titr: "سرتیتر اسم",
-    tozihat: "یه سری متن ",
-    tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید"
-  },
-  {image: ax ,
-    titr: "سرتیتر اسم",
-    tozihat: "یه سری متن ",
-    tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید"
-  },
+// let  MahsolatList =[
+//     {image: ax ,
+//     titr: "سرتیتر اسم",
+//     tozihat: "یه سری متن ",
+//     tamas :"تماس بگیرید",
+//     moshahede:"مشاهده کنید"
+//   },
+//   {image: ax ,
+//     titr: "سرتیتر اسم",
+//     tozihat: "یه سری متن ",
+//     tamas :"تماس بگیرید",
+//     moshahede:"مشاهده کنید"
+//   },
+//   {image: ax ,
+//     titr: "سرتیتر اسم",
+//     tozihat: "یه سری متن ",
+//     tamas :"تماس بگیرید",
+//     moshahede:"مشاهده کنید"
+//   },
+//   {image: ax ,
+//     titr: "سرتیتر اسم",
+//     tozihat: "یه سری متن ",
+//     tamas :"تماس بگیرید",
+//     moshahede:"مشاهده کنید"
+//   },
+//   {image: ax ,
+//     titr: "سرتیتر اسم",
+//     tozihat: "یه سری متن ",
+//     tamas :"تماس بگیرید",
+//     moshahede:"مشاهده کنید"
+//   },
+//   {image: ax ,
+//     titr: "سرتیتر اسم",
+//     tozihat: "یه سری متن ",
+//     tamas :"تماس بگیرید",
+//     moshahede:"مشاهده کنید"
+//   },
+//   {image: ax ,
+//     titr: "سرتیتر اسم",
+//     tozihat: "یه سری متن ",
+//     tamas :"تماس بگیرید",
+//     moshahede:"مشاهده کنید"
+//   },
+//   {image: ax ,
+//     titr: "سرتیتر اسم",
+//     tozihat: "یه سری متن ",
+//     tamas :"تماس بگیرید",
+//     moshahede:"مشاهده کنید"
+//   },
  
  
-  ]
+//   ]
 
 
 const Products = () => {
+  const [prdouctData , setProductData] = useState([])
+  const [collections , setCollections] = useState([])
+  const config = {
+    headers:{
+      Authorization: localStorage.getItem("token")
+    }
+  };
+  useEffect(()=>{
+
+    axios.get("http://127.0.0.1:8000/store/products/" , config).then(
+      function(response){
+        setProductData(response.data)
+      }
+    )
+  },[])
+  useEffect(()=>{
+
+    axios.get("http://127.0.0.1:8000/store/collections/" , config).then(
+      function(response){
+        setCollections(response.data)
+      }
+    )
+  },[])
     return ( 
       <Fragment>
       <NavigationBar />
@@ -182,16 +206,18 @@ const Products = () => {
               </div>
             <div className="w-5/6 flex flex-row justify-between items-start mt-12">
             <div className="grid grid-cols-2 gap-4">
-              <div style={{padding:" 0.1875rem 0.375rem" , background:"#F7EBFE" , borderRadius:"0.25rem"}}>یه چیزی</div>
-              <div style={{padding:" 0.1875rem 0.375rem" , background:"#F7EBFE" , borderRadius:"0.25rem"}}>یه چیزی</div>
-              <div style={{padding:" 0.1875rem 0.375rem" , background:"#F7EBFE" , borderRadius:"0.25rem"}}>یه چیزی</div>
-              <div style={{padding:" 0.1875rem 0.375rem" , background:"#F7EBFE" , borderRadius:"0.25rem"}}>یه چیزی</div>
-              <div style={{padding:" 0.1875rem 0.375rem" , background:"#F7EBFE" , borderRadius:"0.25rem"}}>یه چیزی</div>
-              <div style={{padding:" 0.1875rem 0.375rem" , background:"#F7EBFE" , borderRadius:"0.25rem"}}>یه چیزی</div>
+            {
+              collections.map(e=>{
+                return(
+                  <div style={{padding:" 0.1875rem 0.375rem" , background:"#F7EBFE" , borderRadius:"0.25rem"}}>{e.title}</div>
+                )
+              })
+            }
             </div>
             <div className=" grid grid-cols-4 w-4/5">
             {
-                MahsolatList.map(e=>{
+                prdouctData.map(e=>{
+                  console.log(e)
                     return(
                         <Cart x={e} />
                     )

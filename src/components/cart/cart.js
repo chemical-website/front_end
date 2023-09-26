@@ -52,7 +52,7 @@
 // export default Cart;
 
 import styles from "./cart.style.module.css"
-
+import ax from "../../assets/img/Photo.png";
 import { IoMdCall } from "react-icons/io";
 import { MdOutlineOpenInNew } from "react-icons/md";
 import { RiFullscreenLine } from "react-icons/ri";
@@ -64,8 +64,8 @@ export default function Cart({x}){
       <>
   
               <div  className={styles.TopPartOfDownB} >
-                <div><img src={x.image}/> <div className={styles.LikeBox}><i><RiFullscreenLine/></i><i><AiOutlineHeart/></i><i><BsFillShareFill/></i></div></div>
-                <div className={styles.downPartt}><h3>{x.titr}</h3><p>{x.tozihat}</p> <div className={styles.LinkSBox}><Link><IoMdCall/>{x.tamas}</Link><Link><MdOutlineOpenInNew/>{x.moshahede}</Link></div></div>
+                <div><img src={ax}/> <div className={styles.LikeBox}><i><RiFullscreenLine/></i><i><AiOutlineHeart/></i><i><BsFillShareFill/></i></div></div>
+                <div className={styles.downPartt}><h3>{x.title}</h3><p>{x.short_description}</p> <div className={styles.LinkSBox}><Link><IoMdCall/>"تماس بگیرید"</Link><Link><MdOutlineOpenInNew/>"مشاهده کنید"</Link></div></div>
                 </div>
            
                 </>
