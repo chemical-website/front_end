@@ -7,10 +7,11 @@ import TasfiyeBox from "./TasfiyeBox";
 import PolimeriBox from "./PolimeriBox";
 import ShimiyaiBox from "./ShimiyaiBox";
 import { BiSolidUserCircle } from "react-icons/bi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineLeft } from "react-icons/ai";
 
 function NavigationBar() {
+  const [login , setLogin] = useState(false)
 let [opennav,setopennav] = useState(0)
 let [s,sets] = useState(0)
 
@@ -43,6 +44,11 @@ let [s,sets] = useState(0)
       sets(0) 
     }
 
+    useEffect(()=>{
+      if (localStorage.getItem("token") != ""){
+        setLogin(true)
+      }
+    })
     
   return (
     <>
@@ -90,14 +96,19 @@ let [s,sets] = useState(0)
                                                                         {/* SABTNAM START */}
 
 
-        <div className={navigationBar.Sabtnam}>
+        <div style={{display: !login ? "block"  :"none"}} className={navigationBar.Sabtnam}>
           <Link className={navigationBar.vorodicon}>
             <BiSolidUserCircle />
           </Link>
           <Link to="/s" className={navigationBar.te}> <b> ثبت نام </b></Link>
           
           <Link to="/s"><b>ورود</b> </Link>
+          <Link><b>خروج</b></Link>
         </div>
+        <div style={{display: login ? "block"  :"none"}} className={navigationBar.Sabtnam}>
+          <Link><b>خروج</b></Link>
+        </div>
+
 
                                                                         {/* SABTNAM END */}
                                                                         {/* HOVER MUEU START */}

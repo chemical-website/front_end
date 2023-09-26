@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import signin from "./signin.module.css";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import axios from "axios";
+import { useNavigate} from "react-router-dom";
 
 function SignIn() {
+  const navigate = useNavigate();
   let [tabs, settabs] = useState(0);
 
   function vorod() {
@@ -11,7 +14,41 @@ function SignIn() {
   function sabtenam() {
     settabs(1);
   }
+  const  phone = useRef()
+  const  email = useRef()
+  const  pass = useRef()
+  const sabtBtn = async function(){ 
+    console.log(email.current.value, phone.current.value , pass.current.value)
+    axios.post('http://127.0.0.1:8000/auth/users/', {
+      "username": phone.current.value,
+      "password": pass.current.value , 
+      "Email address": email.current.value
 
+    })
+    .then(function (response) {
+      settabs(0)
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+  const vorodBtnn = async function(){ 
+    
+    console.log(phone.current.value , pass.current.value)
+    axios.post('http://127.0.0.1:8000/auth/jwt/create/', {
+      "username": phone.current.value,
+      "password": pass.current.value , 
+
+    })
+    .then(function (response) {
+      console.log(response)
+      localStorage.setItem("token", `Token ${response.data.access}`)
+      navigate("/")
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
   return (
     <>
       <div className={signin.BackBox}>
@@ -38,12 +75,14 @@ function SignIn() {
                 <input
                   className={signin.EmailVorod}
                   type="text"
-                  placeholder="ایمیل"
+                  placeholder="شماره تلفن"
+                  ref={phone}
                 />
                 <input
                   className={signin.PassVorod}
                   type="password"
                   placeholder="رمز عبور"
+                  ref={pass}
                 />
                 <Link className={signin.Faramoshi}>
                   رمز عبور را فراموش کرده اید ؟
@@ -53,7 +92,7 @@ function SignIn() {
                 <input name="bekhatersepordan" type="checkbox" />
                 <label for="bekhatersepordan">مرا به خاطر بسپار</label>
               </form>
-              <button className={signin.VorodButt}>ورود</button>
+              <button className={signin.VorodButt} onClick={vorodBtnn}>ورود</button>
             </div>
           ) : (
             <div className={signin.intabs2}>
@@ -62,17 +101,20 @@ function SignIn() {
                   className={signin.EmailVorod}
                   type="tel"
                   placeholder="تلفن همراه"
+                  ref={phone}
                 />
                 <input
                   className={signin.PassVorod}
                   type="email"
                   placeholder="ایمیل "
+                  ref={email}
                 />
                 <div  className={signin.passboxsabtnam}>
                 <input
                   className={signin.passsabtnam}
                   type="password"
                   placeholder="رمز عبور "
+                  ref={pass}
                 />
                 <input
                   className={signin.passsabtnam}
@@ -83,7 +125,8 @@ function SignIn() {
 
               </div>
               
-              <button className={signin.VorodButt}>ورود</button>
+              <button style={{display: settabs !=0  ? "block" : "none"}} onClick={sabtBtn} className={signin.VorodButt}>ثبت‌نام</button>
+              {/* <button style={{display: settabs == 0 ? "block" : "none"}} onClick={vorodBtnn} className={signin.VorodButt}>ورود</button> */}
             </div>
           )}
         </div>
