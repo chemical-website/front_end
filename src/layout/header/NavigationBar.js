@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { VscSettings } from "react-icons/vsc";
 import { BiSearch } from "react-icons/bi";
 import { BiImage } from "react-icons/bi";
@@ -12,6 +12,7 @@ import { AiOutlineLeft } from "react-icons/ai";
 
 function NavigationBar() {
   const [login , setLogin] = useState(false)
+  const navigate = useNavigate();
 let [opennav,setopennav] = useState(0)
 let [s,sets] = useState(0)
 
@@ -47,6 +48,9 @@ let [s,sets] = useState(0)
     useEffect(()=>{
       if (localStorage.getItem("token") != ""){
         setLogin(true)
+      }
+      else{
+        console.log("g")
       }
     })
     
@@ -103,10 +107,14 @@ let [s,sets] = useState(0)
           <Link to="/s" className={navigationBar.te}> <b> ثبت نام </b></Link>
           
           <Link to="/s"><b>ورود</b> </Link>
-          <Link><b>خروج</b></Link>
+  
         </div>
-        <div style={{display: login ? "block"  :"none"}} className={navigationBar.Sabtnam}>
-          <Link><b>خروج</b></Link>
+        <div style={{display: !login ? "none"  :"block"}} className={navigationBar.Sabtnam}>
+          <Link onClick={()=>{
+            localStorage.setItem("token" , "")
+            navigate("/")
+            setLogin(false)
+          }}><b>خروج</b></Link>
         </div>
 
 
