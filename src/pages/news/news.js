@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { MdOutlineOpenInNew } from "react-icons/md";
@@ -10,10 +10,11 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import NavigationBar from '../../layout/header/NavigationBar';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-const NewsCart = ()=> {
+const NewsCart = ({info})=> {
     return(
-        <div className='flex flex-col  justify-between items-start h-fit mx-9'>
+        <div className='flex flex-col  justify-between items-start h-fit mx-9' style={{width:"20rem"}}>
             <div style={{background:"#F7EBFE" , width:"100%" , height:"18rem" , position:"relative"}}>
             <div style={{position:"absolute" , left:"5px" , top:"5px" , background:"#fff" , borderRadius:"0.5rem" , boxShadow:"0px 0px 10px 0px #DCF5FA"}}>
                 <div><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
@@ -29,14 +30,14 @@ const NewsCart = ()=> {
             </div>
             </div>
             <div>
-                <p style={{color:"#27023B"}} className=' font-semibold text-xl mt-4'>عمده رشد منابع درآمدی بودجه در دولت سیزدهم از افزایش صادرات نفت است</p>
+                <p style={{color:"#27023B"}} className=' font-semibold text-xl mt-4'>{info.title}</p>
             </div>
             <div className='flex flex-row justify-between items-center  w-1/3'>
-                <p  style={{color:"#D184FB"}} className=" font-normal text-base">۱۴۰۱/۸/۱۲</p>
+                <p  style={{color:"#D184FB"}} className=" font-normal text-base">{info.creation_date}</p>
                 <p  style={{color:"#D184FB"}} className=" font-normal text-base">۵:۳۰</p>
-                <p  style={{color:"#D184FB"}} className=" font-normal text-base">۱۵بازدید</p>
+                {/* <p  style={{color:"#D184FB"}} className=" font-normal text-base">۱۵بازدید</p> */}
             </div>
-            <div style={{color:"#3B0359"}} className=' font-normal text-lg'>پلتس در روز ۱۸ آگوست ، قیمت ایزومر زایلین ترکیبی را با ۳ دلار افزایش بر اساس ترم تحویل کره جنوبی و با همین میزان افزایش بر اساس ترم تحویل تایوان و با ۶ دلار افزایش بر اساس ترم تحویل چین ارزیابی نمود .</div>
+            <div style={{color:"#3B0359"}} className=' font-normal text-lg'>{info.content}</div>
 
             <div className=' self-end flex flex-row items-center mt-4'>
             <Link className=' flex flex-row items-center' style={{color:"#8806CE"}}><MdOutlineOpenInNew/>مشاهده بیشتر</Link>
@@ -46,6 +47,21 @@ const NewsCart = ()=> {
 }
 
 const NewsPage = () => {
+  const [news , setNews] = useState([])
+  const config = {
+    headers:{
+      Authorization: localStorage.getItem("token")
+    }
+  };
+  useEffect(()=>{
+
+    axios.get("http://127.0.0.1:8000/store/posts/" , config).then(
+      function(response){
+        setNews(response.data)
+        console.log(response)
+      }
+    )
+  },[])
     return ( 
         <Fragment>
         <NavigationBar />
@@ -168,7 +184,7 @@ const NewsPage = () => {
                   </div>
                 </div>
               </div>
-            <div className='flex flex-row justify-center items-start mt-12'>
+            <div className='flex flex-row justify-between items-start mt-12'>
             <div className="grid grid-cols-2 gap-4 w-1/5">
               <div style={{padding:" 0.1875rem 0.375rem" , background:"#F7EBFE" , borderRadius:"0.25rem"}}>یه چیزی</div>
               <div style={{padding:" 0.1875rem 0.375rem" , background:"#F7EBFE" , borderRadius:"0.25rem"}}>یه چیزی</div>
@@ -177,8 +193,8 @@ const NewsPage = () => {
               <div style={{padding:" 0.1875rem 0.375rem" , background:"#F7EBFE" , borderRadius:"0.25rem"}}>یه چیزی</div>
               <div style={{padding:" 0.1875rem 0.375rem" , background:"#F7EBFE" , borderRadius:"0.25rem"}}>یه چیزی</div>
             </div>
-              <div className='mt-8 w-2/3'>
-             <Swiper  direction='vertical' slidesPerView={2}  style={{height:"60rem" , width:"100%"}}>
+              <div className='mt-8 w-4/5'>
+             {/* <Swiper  direction='vertical' slidesPerView={2}  style={{height:"60rem" , width:"100%"}}>
         <SwiperSlide className='mb-12 h-fit'>
             <div className=' grid grid-cols-2'>
                 <NewsCart />
@@ -203,7 +219,14 @@ const NewsPage = () => {
                 <NewsCart />
             </div>
         </SwiperSlide>
-      </Swiper>
+      </Swiper> */}
+      <div className='grid grid-cols-2 w-full'>
+      {news.map(e=> {
+        return(
+          <NewsCart info={e} />
+        )
+      })}
+      </div>
         </div>
         </div>
         </div>

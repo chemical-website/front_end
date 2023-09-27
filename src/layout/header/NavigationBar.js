@@ -100,7 +100,7 @@ let [s,sets] = useState(0)
                                                                         {/* SABTNAM START */}
 
 
-        <div style={{display: !login ? "block"  :"none"}} className={navigationBar.Sabtnam}>
+        <div style={{display: !login ? "flex"  :"none"}} className={navigationBar.Sabtnam}>
           <Link className={navigationBar.vorodicon}>
             <BiSolidUserCircle />
           </Link>
