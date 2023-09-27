@@ -8,7 +8,7 @@ import { BsDisplay, BsFillShareFill } from "react-icons/bs";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Additional from "./additional";
 import Property from "./property";
 import { Navigation } from 'swiper/modules';
@@ -16,19 +16,31 @@ import 'swiper/css/navigation';
 import Comment from "./comment";
 import PicSlider from "./picSlider";
 import NavigationBar from "../../layout/header/NavigationBar";
+import axios from "axios";
 
 
 const Product = () => {
     const {id} = useParams()
-    // console.log(id)
+    console.log(id)
+    const [info , setInfo] = useState()
     const [sectionState , setSectionState] = useState(1)
     const changeState = (num) =>{ 
         setSectionState(num)
     }
-    // useState(()=>{
-    //     if(sectionState === 1){
-    //     }
-    // },[sectionState])
+    const config = {
+      headers:{
+        Authorization: localStorage.getItem("token")
+      }
+    };
+    useEffect(()=>{
+  
+      axios.get(`http://127.0.0.1:8000/store/products/${id}/` , config).then(
+        function(response){
+          setInfo(response.data)
+          console.log(response)
+        }
+      )
+    },[])
     return ( 
         <Fragment>
              <NavigationBar/>
@@ -91,13 +103,13 @@ const Product = () => {
             </div>
             <div className=" w-1/3">
                 <h3 className="  font-bold text-3xl">
-                اسم کامل محصول
+                {info.title}
                 </h3>
                 <p className="  font-medium text-lg mb-10">
-                زیرتوضیحات تک‌خطی
+                {info.short_description}
                 </p>
                 <p className=" font-normal text-base w-full">
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
+               {info.description}
                 </p>
                 <div></div>
             </div>
@@ -109,8 +121,11 @@ const Product = () => {
                     <div><AiOutlineHeart/></div>
                     <div><BsFillShareFill/></div>
                     </div>
-                    <div className=" text-sm">
+                    <div style={{display: info.inventory >0 ? "block" : "none"}}  className=" text-sm">
                         موجود
+                    </div>
+                    <div style={{display: info.inventory <=0 ? "block" : "none"}} className=" text-sm">
+                        ناموجود 
                     </div>
                 </div>
                 <div className="flex flex-row items-center justify-between mt-7">
@@ -155,7 +170,7 @@ const Product = () => {
                 </div>
             </div>
             <div style={{display:sectionState===1?"flex":"none"}}>
-                <Additional  />
+                <Additional text={info.description} />
             </div>
             <div  style={{display: sectionState ===2?"flex" : "none"}}>
                 <Property />

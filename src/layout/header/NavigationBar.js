@@ -50,7 +50,7 @@ let [s,sets] = useState(0)
         setLogin(true)
       }
       else{
-        console.log("g")
+       setLogin(false)
       }
     })
     

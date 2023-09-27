@@ -60,12 +60,13 @@ import { Link } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsDisplay, BsFillShareFill } from "react-icons/bs";
 export default function Cart({x}){
+  let link = `/product/${x.id}`
     return(
       <>
   
               <div  className={styles.TopPartOfDownB} >
                 <div><img src={ax}/> <div className={styles.LikeBox}><i><RiFullscreenLine/></i><i><AiOutlineHeart/></i><i><BsFillShareFill/></i></div></div>
-                <div className={styles.downPartt}><h3>{x.title}</h3><p>{x.short_description}</p> <div className={styles.LinkSBox}><Link><IoMdCall/>"تماس بگیرید"</Link><Link><MdOutlineOpenInNew/>"مشاهده کنید"</Link></div></div>
+                <div className={styles.downPartt}><h3>{x.title}</h3><p>{x.short_description}</p> <div className={styles.LinkSBox}><Link ><IoMdCall/>"تماس بگیرید"</Link><Link to={link}><MdOutlineOpenInNew/>"مشاهده کنید"</Link></div></div>
                 </div>
            
                 </>

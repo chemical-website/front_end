@@ -71,6 +71,7 @@ const Products = () => {
     axios.get("http://127.0.0.1:8000/store/products/" , config).then(
       function(response){
         setProductData(response.data)
+        console.log(response)
       }
     )
   },[])
@@ -179,7 +180,7 @@ const Products = () => {
                 
                 </div>
                 <div className="flex flex-row justify-between items-center w-1/6">
-                  <div>25محصول</div>
+                  <div>{prdouctData.length}محصول</div>
                   <div style={{border:"1.5px solid #7606B2" , borderRadius:"0.5rem" , padding:"0rem 0.625rem 0rem 0.5rem"}}  className="flex flex-row justify-between items-center">
                     <div>
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

@@ -60,25 +60,29 @@ function HameHandler() {
     titr: "سرتیتر اسم",
     tozihat: "یه سری متن ",
     tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید"
+    moshahede:"مشاهده کنید",
+    id:"1"
   },
   {image: ax ,
     titr: "سرتیتر اسم",
     tozihat: "یه سری متن ",
     tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید"
+    moshahede:"مشاهده کنید",
+    id:"1"
   },
   {image: ax ,
     titr: "سرتیتر اسم",
     tozihat: "یه سری متن ",
     tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید"
+    moshahede:"مشاهده کنید",
+    id:"1"
   },
   {image: ax ,
     titr: "سرتیتر اسم",
     tozihat: "یه سری متن ",
     tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید"
+    moshahede:"مشاهده کنید",
+    id:"1"
   },
  
  
