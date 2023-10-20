@@ -144,7 +144,6 @@ export default function Cart({x}){
     setOpen(false);
   };
   let link = `/app/product/${x.id}`
-  console.log(x.title)
     return(
       <div div className="w-full flex flex-col items-center">
   

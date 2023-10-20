@@ -72,7 +72,6 @@ function HameHandler() {
     axios.get(`${BaseRoot}store/products/` , config).then(
       function(response){
         setProductData(response.data)
-        console.log(response)
       }
     )
   },[y])
@@ -90,7 +89,6 @@ function HameHandler() {
       axios.get(`${BaseRoot}store/products/?recommend=True` , config).then(
         function(response){
           setProductData(response.data)
-          console.log(response)
         }
       )
     }

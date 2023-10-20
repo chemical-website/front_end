@@ -4,8 +4,6 @@ import { BiSearch } from "react-icons/bi";
 import { BiImage } from "react-icons/bi";
 import navigationBar from "./navigationBar.module.css";
 import TasfiyeBox from "./TasfiyeBox";
-import PolimeriBox from "./PolimeriBox";
-import ShimiyaiBox from "./ShimiyaiBox";
 import { BiSolidUserCircle } from "react-icons/bi";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { AiOutlineLeft } from "react-icons/ai";
@@ -48,7 +46,6 @@ const [inputRef , setInputRef] = useState()
       axios.get(`${BaseRoot}store/collections/` ).then(
         function(response){
           setProductNav(response.data)
-          console.log(response.data)
         }
       )
     } , [openmahsol])
@@ -93,7 +90,6 @@ const [inputRef , setInputRef] = useState()
             <VscSettings />
           </i>
           <i className={navigationBar.IconSearch2}>
-          {console.log(inputRef)}
          <Link to={`/app/products/search/${inputRef}`} >
          <BiSearch />
          </Link>
@@ -131,7 +127,6 @@ const [inputRef , setInputRef] = useState()
             <div className={navigationBar.RightBox}>
             {
                 productNav.map(e=> {
-                  console.log(e.id)
                   return(
                     <div>
                     <h2 onMouseEnter={()=>{TasfiyeAbshow(e.id)}}  onMouseLeave={TasfiyeAboff}><Link to={`/app/collections/search/${e.title}`}><button >{e.title}</button> </Link> </h2>

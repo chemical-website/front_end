@@ -13,7 +13,6 @@ const PropertyField = ({ke , value})=> {
 }
 
 const Property = ({prop}) => {
-    console.log(prop)
     const dictionaryArray = Object.entries(prop);
     return ( 
         <div className="grid grid-cols-1 place-items-center md:grid-cols-2  gap-x-80 mt-9">

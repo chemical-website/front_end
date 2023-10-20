@@ -25,7 +25,6 @@ import Order from "./order";
 
 const Product = () => {
     const {id} = useParams()
-    console.log(id)
     const [images , setImages] = useState([])
     const [info , setInfo] = useState({})
     const [prop , setProp] = useState({})

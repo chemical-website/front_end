@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { BaseRoot } from "../../baseRoot";
+import { toast } from "react-toastify";
 
 
 const CommentCard = ({e}) => {
@@ -11,7 +12,7 @@ const CommentCard = ({e}) => {
             <div className=" flex flex-row justify-between items-center  w-3/4">
                 <p style={{color:"#8806CE"}} className=" font-normal text-base">{e.email}</p>
                 <p style={{color:"#D184FB"}} className=" font-normal text-base">{
-                    `${new Date(e.creation_date).getHours()} :  ${new Date(e.creation_date).getMinutes()} `
+                    `${new Date(e.creation_date).getMinutes()} : ${new Date(e.creation_date).getHours()} `
                 }</p>
                 <p style={{color:"#D184FB"}} className=" font-normal text-base">{
                    
@@ -40,20 +41,30 @@ const Comment = ({ id}) => {
     const [info , setInfo] = useState()
     const [email , setEmail] = useState()
     const senComment = () => {
-        axios.post(`${BaseRoot}/store/products/${id}/reviews/` , {
+        axios.post(`${BaseRoot}store/products/${id}/reviews/` , {
             "name" : info,
             "content" : newComment,
             "email" : email
-        })
+        }).then(
+            function(response){
+                    setNewComment("")
+                    setEmail("")
+                    setInfo("")
+                }
+        )
+        .catch(
+            function(error){
+               toast.warning("email is incorrect or comment is null")
+            }
+        )
         axios.get(`${BaseRoot}store/products/${id}/reviews/` , config).then(
             function(response){
+              
               setComment(response.data)
               // console.log(response.data.properties)
             }
           )
-        setNewComment("")
-        setEmail("")
-        setInfo("")
+
     }
     useEffect(()=>{
   

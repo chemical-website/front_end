@@ -72,7 +72,6 @@ const Products = () => {
     axios.get(`${BaseRoot}store/products/` , config).then(
       function(response){
         setProductData(response.data)
-        console.log(response)
       }
     )
   },[])
@@ -168,7 +167,6 @@ const Products = () => {
             <div className=" grid grid-cols-4 w-4/5">
             {
                 prdouctData.map(e=>{
-                  console.log(e)
                     return(
                         <Cart x={e} />
                     )

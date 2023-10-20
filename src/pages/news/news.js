@@ -118,7 +118,6 @@ const NewsPage = () => {
     axios.get(`${BaseRoot}store/posts/` , config).then(
       function(response){
         setNews(response.data)
-        console.log(response)
       }
     )
   },[])
