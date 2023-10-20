@@ -59,16 +59,141 @@ import { RiFullscreenLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsDisplay, BsFillShareFill } from "react-icons/bs";
+import React, { useRef, useState } from 'react';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+
+// import required modules
+import { Navigation } from 'swiper/modules';
+
+
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Slide from '@mui/material/Slide';
+import copy from "copy-to-clipboard";
+import { toast } from "react-toastify";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
+function AlertDialogSlide() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      <Button variant="outlined" onClick={handleClickOpen}>
+        Slide in alert dialog
+      </Button>
+      <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            Let Google help apps determine location. This means sending anonymous
+            location data to Google, even when no apps are running.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Disagree</Button>
+          <Button onClick={handleClose}>Agree</Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
+}
+
+
 export default function Cart({x}){
-  let link = `/product/${x.id}`
+  const [open, setOpen] = React.useState(false);
+  const [img , setImage] = useState()
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const copyToClipboard = () => {
+    let copyText = `http://154.91.170.238/app/product/${x.id}`;
+    let isCopy = copy(copyText);
+    if (isCopy) {
+      toast.success("Copied to Clipboard");
+    }
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  let link = `/app/product/${x.id}`
+  console.log(x.title)
     return(
-      <>
+      <div div className="w-full flex flex-col items-center">
   
               <div  className={styles.TopPartOfDownB} >
-                <div><img src={ax}/> <div className={styles.LikeBox}><i><RiFullscreenLine/></i><i><AiOutlineHeart/></i><i><BsFillShareFill/></i></div></div>
-                <div className={styles.downPartt}><h3>{x.title}</h3><p>{x.short_description}</p> <div className={styles.LinkSBox}><Link ><IoMdCall/>"تماس بگیرید"</Link><Link to={link}><MdOutlineOpenInNew/>"مشاهده کنید"</Link></div></div>
+                <div><img className=" h-48 w-60" src={x.images[0]["image"]}/> <div className={styles.LikeBox}><i onClick={copyToClipboard}><BsFillShareFill/></i></div></div>
+                <div className={styles.downPartt}><h3>{x.title}</h3><p>{x.short_description}</p> <div className={styles.LinkSBox}><Link ><IoMdCall/>"تماس بگیرید"</Link><Link onClick={handleClickOpen}><MdOutlineOpenInNew/>"مشاهده کنید"</Link></div></div>
                 </div>
-           
-                </>
+                <div>
+      <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-describedby="alert-dialog-slide-description"
+        maxWidth="md"
+      >
+        {/* <DialogTitle>{"Use Google's location service?"}</DialogTitle> */}
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            <div className="flex flex-col md:flex-row items-center" style={{height:"25rem"}}>
+                <div className="w-full  md:w-1/2">
+                <Swiper navigation={true} modules={[Navigation]} className='w-full flex items-center'>
+        {x.images.map(i=>{
+          return(
+            <SwiperSlide>
+            <div className='flex flex-row items-center justify-center w-full'>
+               <img className=" w-4/5 h-96" alt="" src={i["image"]} />
+            </div>
+        </SwiperSlide>
+          )
+        })}
+ 
+                 </Swiper>
+                </div>
+                <div className="w-full md:w-1/2 flex flex-col items-center" >
+                  <div style={{color:"#27023B"}} className="   text-center md:text-start text-4xl">{x.title}</div>
+                  <div style={{color:"#27023B"}}   className="  text-center md:text-start text-xl">{x.short_description}</div>
+                  <div style={{color:"#27023B"}}  className=" text-center md:text-start  text-lg">
+                    {x.description}
+                  </div>
+                </div>
+            </div>
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+        <div className={styles.LinkSBox}><Link to={link}><MdOutlineOpenInNew/>"مشاهده کنید"</Link></div>
+        </DialogActions>
+      </Dialog>
+    </div>
+                </div>
     )
   }

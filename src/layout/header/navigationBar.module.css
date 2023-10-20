@@ -114,15 +114,16 @@
     position: absolute;
     width: 600px;
     height: 300px;
-    background-color: #f6d7ffb2;
+    background-color: #f6d7fffd;
     top: 72px;
     display: flex;
     right: 29.2%;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     padding-bottom: 7px;
+    border-radius: 0px, 0px, 16px, 16px;
     padding-right: 8px;
-    z-index: 20;
+    z-index: 100;
 }
 
 .DisplayNone {
@@ -132,7 +133,7 @@
 
 .RightBox {
     width: 24%;
-
+    z-index: 100;
 }
 
 .RightBox button {
@@ -164,6 +165,7 @@
 .LeftBox {
     width: 75%;
     height: 100%;
+    z-index: 100;
 }
 
 .leftOpen h5 i {
@@ -213,4 +215,17 @@
 .SBox h4 {
     margin-bottom: 2%;
     font-size: 18px;
+}
+
+@media screen and (max-width:700px) {
+    .searchBox{
+        display: none;
+    }
+    .Menubox{
+        display: none;
+    }
+    .Header{
+        justify-content: space-between;
+    }
+    
 }

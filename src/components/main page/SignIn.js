@@ -3,6 +3,7 @@ import signin from "./signin.module.css";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate} from "react-router-dom";
+import { BaseRoot } from "../../baseRoot";
 
 function SignIn() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ function SignIn() {
   const  pass = useRef()
   const sabtBtn = async function(){ 
     console.log(email.current.value, phone.current.value , pass.current.value)
-    axios.post('http://127.0.0.1:8000/auth/users/', {
+    axios.post(`${BaseRoot}auth/users/`, {
       "username": phone.current.value,
       "password": pass.current.value , 
       "Email address": email.current.value
@@ -35,7 +36,7 @@ function SignIn() {
   const vorodBtnn = async function(){ 
     
     console.log(phone.current.value , pass.current.value)
-    axios.post('http://127.0.0.1:8000/auth/jwt/create/', {
+    axios.post(`${BaseRoot}auth/jwt/create/`, {
       "username": phone.current.value,
       "password": pass.current.value , 
 
@@ -43,7 +44,7 @@ function SignIn() {
     .then(function (response) {
       console.log(response)
       localStorage.setItem("token", `Token ${response.data.access}`)
-      navigate("/")
+      navigate("/app")
     })
     .catch(function (error) {
       console.log(error);

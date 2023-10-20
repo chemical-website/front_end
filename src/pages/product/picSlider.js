@@ -9,55 +9,20 @@ import 'swiper/css/navigation';
 // import required modules
 import { Navigation } from 'swiper/modules';
 
-export default function PicSlider() {
+export default function PicSlider({images}) {
+    const image = images
   return (
     <>
-      <Swiper navigation={true} modules={[Navigation]} className='w-2/3'>
-        <SwiperSlide>
+      <Swiper navigation={true} modules={[Navigation]} className='w-full'>
+        {image.map(i=> {
+            return(
+                <SwiperSlide className='flex flex-row items-center'>
             <div className='flex flex-row items-center justify-center'>
-                slide 1
+                <img className=' w-64 h-56'  src={i.image} />
             </div>
         </SwiperSlide>
-        <SwiperSlide>
-        <div className='flex flex-row items-center justify-center'>
-                slide 1
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div className='flex flex-row items-center justify-center'>
-                slide 1
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div className='flex flex-row items-center justify-center'>
-                slide 1
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div className='flex flex-row items-center justify-center'>
-                slide 1
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div className='flex flex-row items-center justify-center'>
-                slide 1
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div className='flex flex-row items-center justify-center'>
-                slide 1
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div className='flex flex-row items-center justify-center'>
-                slide 1
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div className='flex flex-row items-center justify-center'>
-                slide 1
-            </div>
-        </SwiperSlide>
+            )
+        })}
       </Swiper>
     </>
   );

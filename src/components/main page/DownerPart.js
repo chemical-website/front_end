@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import mainpage from "./MainPage.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ax from "../../assets/img/Photo.png";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsDisplay, BsFillShareFill } from "react-icons/bs";
@@ -8,12 +8,22 @@ import { MdFilterListAlt, MdHeight } from "react-icons/md";
 import { IoMdCall } from "react-icons/io";
 import { MdOutlineOpenInNew } from "react-icons/md";
 import { RiFullscreenLine } from "react-icons/ri";
-import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
+import { BaseRoot } from "../../baseRoot";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Cart from "../cart/cart";
+import axios from "axios";
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+
+// import required modules
+import { Navigation } from 'swiper/modules';
+import Product from "../../pages/product/product";
+
 
 
 function DownerPart() {
@@ -50,13 +60,73 @@ function HameHandler() {
       sety(0)
     }
   }
+  const [prdouctData , setProductData] = useState([])
+  const [collections , setCollections] = useState([])
+  const config = {
+    headers:{
+      Authorization: localStorage.getItem("token")
+    }
+  };
+  useEffect(()=>{
 
-  
+    axios.get(`${BaseRoot}store/products/` , config).then(
+      function(response){
+        setProductData(response.data)
+        console.log(response)
+      }
+    )
+  },[y])
+  useEffect(()=>{
 
+    axios.get(`${BaseRoot}store/collections/` , config).then(
+      function(response){
+        setCollections(response.data)
+      }
+    )
+  },[])
+  useEffect(() => {
+    if( x ===1) {
+      console.log("gih")
+      axios.get(`${BaseRoot}store/products/?recommend=True` , config).then(
+        function(response){
+          setProductData(response.data)
+          console.log(response)
+        }
+      )
+    }
+  },[x])
 
 
   let  MahsolatList =[
     {image: ax ,
+    titr: "سرتیتر اسم",
+    tozihat: "یه سری متن ",
+    tamas :"تماس بگیرید",
+    moshahede:"مشاهده کنید",
+    id:"1"
+  },
+  {image: ax ,
+    titr: "سرتیتر اسم",
+    tozihat: "یه سری متن ",
+    tamas :"تماس بگیرید",
+    moshahede:"مشاهده کنید",
+    id:"1"
+  },
+  {image: ax ,
+    titr: "سرتیتر اسم",
+    tozihat: "یه سری متن ",
+    tamas :"تماس بگیرید",
+    moshahede:"مشاهده کنید",
+    id:"1"
+  },
+  {image: ax ,
+    titr: "سرتیتر اسم",
+    tozihat: "یه سری متن ",
+    tamas :"تماس بگیرید",
+    moshahede:"مشاهده کنید",
+    id:"1"
+  },
+  {image: ax ,
     titr: "سرتیتر اسم",
     tozihat: "یه سری متن ",
     tamas :"تماس بگیرید",
@@ -99,19 +169,34 @@ function HameHandler() {
     <>
       <div className={mainpage.DownBBox}>
        <div className={mainpage.uptitle}> <span className={mainpage.pishnahadT}>پیشنهاد ویژه </span>
-        <div className={mainpage.ShowPart}><i><MdFilterListAlt/> </i><div className={mainpage.textP}><span onClick={HameHandler} className={y==0 ? mainpage.pishnahadat2 : mainpage.pishnahadat3 }>نمایش همه</span> <span className={x==0 ? mainpage.pishnahadat2 : mainpage.pishnahadat3 }  onClick={BarkhiHandler}>نمایش برخی </span><span className={z==0 ? mainpage.pishnahadat : mainpage.pishnahadat3 }  onClick={YekhdeHandler}>نمایش یخده</span></div></div>
+        <div className={mainpage.ShowPart}><i><MdFilterListAlt/> </i><div className={mainpage.textP}><span onClick={HameHandler} 
+        className={y==0 ? mainpage.pishnahadat2 : mainpage.pishnahadat3 }>نمایش همه</span> 
+        <span className={x==0 ? mainpage.pishnahadat2 : mainpage.pishnahadat3 }  onClick={() => {
+          BarkhiHandler()}}>نمایش برخی </span></div></div>
         </div> 
-        <div className={mainpage.mahsolatS}>
-
-
-
-
-          {MahsolatList.map((x) => {
+        <Swiper 
+         breakpoints={{
+        800: {
+          width: 8200,
+          slidesPerView: 4,
+        },
+        500: {
+          width: 768,
+          slidesPerView: 2,
+        },
+      }}
+          slidesPerView={1} navigation={true} modules={[Navigation]} className='w-full'>
+      
+  
+          {prdouctData.map((x) => {
             return(  
+              <SwiperSlide>
               <Cart x={x} />
+        </SwiperSlide>
+
           )})}
-        </div>
-      </div>
+          </Swiper>
+     </div>
     </>
   );
 }

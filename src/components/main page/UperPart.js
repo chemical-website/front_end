@@ -1,17 +1,47 @@
 import { Link } from "react-router-dom";
 import mainpage from "./MainPage.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { AiFillCaretUp } from "react-icons/ai";
 import { FaShapes } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
 import { IoSearchCircleSharp } from "react-icons/io5";
+import axios from "axios";
+import { BaseRoot } from "../../baseRoot";
 
 function MainPage() {
   let [openimahsolat, setopenopenimahsolat] = useState(0);
   let [opensanat, setopenopensanat] = useState(0);
   let [openiconmahsol, setopenopeniconmahsol] = useState(0);
-
+  const [mahsolatData , setMahsolatData] = useState([]);
+  const [masolat , setMahsolat ] = useState([]);
+  const [industry , setIndustry] = useState([])
+  const config = {
+    headers:{
+      Authorization: localStorage.getItem("token")
+    }
+  };
+  useEffect(()=>{
+    axios.get(`${BaseRoot}store/collections/` , config).then(
+      function(response){
+        setMahsolatData(response.data)
+      }
+    )
+  } , [openimahsolat])
+  useEffect(()=>{
+    axios.get(`${BaseRoot}store/products/` , config).then(
+      function(response){
+        setMahsolat(response.data)
+      }
+    )
+  } , [openiconmahsol])
+  useEffect(()=>{
+    axios.get(`${BaseRoot}store/industries/` , config).then(
+      function(response){
+        setIndustry(response.data)
+      }
+    )
+  } , [opensanat])
   let data = [
     {
       name: "پلی  اتیلن ",
@@ -25,31 +55,37 @@ function MainPage() {
   ];
 
   function DastebandiSearch() {
-    if (openimahsolat == 1) {
+    if (openimahsolat === 1) {
       setopenopenimahsolat(0);
     } else {
       setopenopenimahsolat(1);
+      setopenopensanat(0);
+      setopenopeniconmahsol(0);
     }
   }
   function SanatSearch() {
-    if (opensanat == 1) {
+    if (opensanat === 1) {
       setopenopensanat(0);
     } else {
       setopenopensanat(1);
+      setopenopenimahsolat(0);
+      setopenopeniconmahsol(0);
     }
   }
   function MahsolSearch() {
-    if (openiconmahsol == 1) {
+    if (openiconmahsol === 1) {
       setopenopeniconmahsol(0);
     } else {
       setopenopeniconmahsol(1);
+      setopenopensanat(0);
+      setopenopenimahsolat(0);
     }
   }
 
   return (
     <>
      
-          <h1>شرکت تولید کننده پلیمر صنعتی تهران</h1>
+          <h1 className=" hidden md:block">شرکت تولید کننده پلیمر صنعتی تهران</h1>
 
           <div className={mainpage.SearchBox}>
             <button
@@ -104,14 +140,14 @@ function MainPage() {
                   : mainpage.SearchOpenBox1
               }
             >
-              <input placeholder="تایپ کنید" className={mainpage.inputf} />
-              <i className={mainpage.searchIcon}>
+              {/* <input placeholder="تایپ کنید" className={mainpage.inputf} /> */}
+              {/* <i className={mainpage.searchIcon}>
                 <BiSearch />
-              </i>
-              {data.map((x) => {
+              </i> */}
+              {mahsolatData.map((x) => {
                 return (
                   <>
-                    <Link> {x.name}</Link>
+                    <Link to={`/app/collections/search/${x.title}`}> {x.title}</Link>
                   </>
                 );
               })}
@@ -126,14 +162,14 @@ function MainPage() {
                   : mainpage.SearchOpenBox2
               }
             >
-              <input placeholder="تایپ کنید" className={mainpage.inputf} />
-              <i className={mainpage.searchIcon}>
+              {/* <input placeholder="تایپ کنید" className={mainpage.inputf} /> */}
+              {/* <i className={mainpage.searchIcon}>
                 <BiSearch />
-              </i>
-              {data.map((x) => {
+              </i> */}
+              {industry.map((x) => {
                 return (
                   <>
-                    <Link> {x.name}</Link>
+                    <Link to={`/app/industries/search/${x.title}`}> {x.title}</Link>
                   </>
                 );
               })}
@@ -148,14 +184,14 @@ function MainPage() {
                   : mainpage.SearchOpenBox3
               }
             >
-              <input placeholder="تایپ کنید" className={mainpage.inputf} />
-              <i className={mainpage.searchIcon}>
+              {/* <input placeholder="تایپ کنید" className={mainpage.inputf} /> */}
+              {/* <i className={mainpage.searchIcon}>
                 <BiSearch />
-              </i>
-              {data.map((x) => {
+              </i> */}
+              {masolat.map((x) => {
                 return (
                   <>
-                    <Link> {x.name}</Link>
+                    <Link to={`/app/product/${x.id}`}> {x.title}</Link>
                   </>
                 );
               })}

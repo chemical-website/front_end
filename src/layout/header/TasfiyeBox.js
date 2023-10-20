@@ -1,58 +1,41 @@
 import { Link } from "react-router-dom";
 import { AiOutlineLeft } from "react-icons/ai";
 import navigationBar from "./navigationBar.module.css";
+import { dark } from "@mui/material/styles/createPalette";
 
 function TasfiyeBox(props) {
   let s = props.show;
+  let data = props.data;
+  let id = data.id
+  data =data.products
 
-  if (s == 3) {
+  if (s == id){
     return (
       <>
-        <div className={navigationBar.leftOpen}>
-          <h5>
-            همه ی محصولات تصفیه آب
-            <i>
-              <AiOutlineLeft />
-            </i>
-          </h5>
+         
           <div className={navigationBar.BBox}>
             <div className={navigationBar.SBox}>
               <h4>محصولات</h4>
-              <Link>رندوم‌جات</Link>
-              <Link>مواد دیگر</Link>
-              <Link>مواد پلیمری</Link>
-              <Link>مواد شیمیایی</Link>
+             {
+                data.map(e=>{
+                  return(
+                    <Link to={`/app/product/${e.id}`}>
+                {e.title}
+                    </Link>
+                  )
+                })
+             }
             </div>
-            <div className={navigationBar.SBox}>
-              <h4>محصولات</h4>
-              <Link>رندوم‌جات</Link>
-              <Link>مواد دیگر</Link>
-              <Link>مواد پلیمری</Link>
-              <Link>مواد شیمیایی</Link>
-              <Link>مواد شیمیایی</Link>
-            </div>
-            <div className={navigationBar.SBox}>
-              <h4>محصولات</h4>
-              <Link>رندوم‌جات</Link>
-              <Link>مواد دیگر</Link>
-              <Link>مواد پلیمری</Link>
-              <Link>مواد شیمیایی</Link>
-              <Link>مواد شیمیایی</Link>
-              <Link>مواد شیمیایی</Link>
-              <Link>مواد شیمیایی</Link>
-            </div>
-            <div className={navigationBar.SBox}>
-              <h4>محصولات</h4>
-              <Link>مواد شیمیایی</Link>
-              <Link>مواد شیمیایی</Link>
-            </div>
-          </div>
         </div>
       </>
     );
-  } else {
-    return <></>;
   }
+  else {
+    return(
+      <></>
+    )
+  }
+  
 }
 
 export default TasfiyeBox;

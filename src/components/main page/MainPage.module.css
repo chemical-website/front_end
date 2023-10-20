@@ -82,13 +82,15 @@
     width: 64%;
     height: 68%;
     gap: 5%;
-    background-color: #fde2ff80;
+    background-color: #fde2ff;
+    overflow-y: scroll;
     border-radius: 6px;
 }
 
 .SearchOpenBox2 {
     position: absolute;
     top: 59%;
+    z-index: 100;
     display: flex;
     flex-direction: column;
     direction: rtl;
@@ -96,7 +98,8 @@
     width: 64%;
     height: 68%;
     gap: 5%;
-    background-color: #fde2ff80;
+    background-color: #facefd;
+    overflow-y: scroll;
     border-radius: 6px;
 }
 
@@ -113,7 +116,8 @@
     width: 64%;
     height: 68%;
     gap: 5%;
-    background-color: #fde2ff80;
+    background-color: #fde2ff;
+    overflow-y: scroll;
     border-radius: 6px;
 }
 
@@ -156,7 +160,7 @@
 
 
 .DownBBox {
-    width: 1140px;
+    width: 90%;
     margin: auto;
     margin-top: 133px;
 }
@@ -288,7 +292,34 @@
     justify-content: center;
     align-items: center;
 }
-
+.SearchOpenBox1::-webkit-scrollbar,
+.SearchOpenBox2::-webkit-scrollbar,
+.SearchOpenBox3::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  .SearchOpenBox1::-webkit-scrollbar-track ,
+  .SearchOpenBox2::-webkit-scrollbar-track ,
+  .SearchOpenBox3::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  .SearchOpenBox1::-webkit-scrollbar-thumb,
+  .SearchOpenBox2::-webkit-scrollbar-thumb,
+  .SearchOpenBox3::-webkit-scrollbar-thumb {
+    background: #9108db; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  .SearchOpenBox1::-webkit-scrollbar-thumb:hover,
+  .SearchOpenBox2::-webkit-scrollbar-thumb:hover,
+  .SearchOpenBox3::-webkit-scrollbar-thumb:hover {
+    background: #A409F7; 
+  }
 .LikeBox i {
     font-size: 23px;
     cursor: pointer;
@@ -305,4 +336,22 @@
     display: flex;
     align-items: center;
     gap: 2px;
+}
+
+
+@media screen and (max-width:700px) {
+
+    .SearchBox {
+        width: 70%;
+    }
+    .pishnahadT{
+        font-size: 15px;
+    }
+    .ShowPart {
+        width: 200px;
+    }
+    .textP {
+        font-size: 8px;
+    }
+
 }

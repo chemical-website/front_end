@@ -6,7 +6,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { IoMdCall } from "react-icons/io";
 import { BsDisplay, BsFillShareFill } from "react-icons/bs";
 import { Swiper, SwiperSlide } from 'swiper/react';
-
+import { BaseRoot } from "../../baseRoot";
 import 'swiper/css';
 import { Fragment, useEffect, useState } from "react";
 import Additional from "./additional";
@@ -17,16 +17,29 @@ import Comment from "./comment";
 import PicSlider from "./picSlider";
 import NavigationBar from "../../layout/header/NavigationBar";
 import axios from "axios";
+import copy from "copy-to-clipboard";
+import { toast } from "react-toastify";
+import { Dialog } from "@mui/material";
+import Order from "./order";
 
 
 const Product = () => {
     const {id} = useParams()
     console.log(id)
-    const [info , setInfo] = useState()
+    const [images , setImages] = useState([])
+    const [info , setInfo] = useState({})
+    const [prop , setProp] = useState({})
     const [sectionState , setSectionState] = useState(1)
     const changeState = (num) =>{ 
         setSectionState(num)
     }
+    const [open, setOpen] =useState(false);
+    const handleClickOpen = () => {
+        setOpen(true);
+      };
+    const handleClose = () => {
+        setOpen(false);
+      };
     const config = {
       headers:{
         Authorization: localStorage.getItem("token")
@@ -34,13 +47,26 @@ const Product = () => {
     };
     useEffect(()=>{
   
-      axios.get(`http://127.0.0.1:8000/store/products/${id}/` , config).then(
+      axios.get(`${BaseRoot}store/products/${id}/` , config).then(
         function(response){
           setInfo(response.data)
-          console.log(response)
+          setProp(response.data.properties)
+          setImages(response.data.images)
+          if(response.data.properties == undefined){
+            setProp({"":""})
+          }
+          // console.log(response.data.properties)
         }
       )
     },[])
+    const copyToClipboard = () => {
+      let copyText = `http://154.91.170.238/app/product/${info.id}`;
+      let isCopy = copy(copyText);
+      if (isCopy) {
+        toast.success("Copied to Clipboard");
+      }
+    };
+  
     return ( 
         <Fragment>
              <NavigationBar/>
@@ -48,6 +74,8 @@ const Product = () => {
         <div className="w-4/5">
         <div className="flex flex-row items-center justify-between w-1/6 mb-9 mt-14" >
         <div>
+        <Link to={"/app"}>
+
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_26_272)">
     <path d="M10 20V14H14V20H19V12H22L12 3L2 12H5V20H10Z" fill="#0C4957"/>
@@ -59,6 +87,7 @@ const Product = () => {
     </clipPath>
   </defs>
 </svg>
+</Link>
         </div>
         <div>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -97,11 +126,11 @@ const Product = () => {
         </div>
         </div>
 
-        <div className=" flex flex-row items-center justify-between w-4/5 mb-12">
+        <div className=" flex flex-col w-full md:flex-row items-center justify-between md:w-4/5 mb-12">
             <div className=" w-1/3 flex justify-center flex-col items-first">
-            <PicSlider />
+            <PicSlider images={images} />
             </div>
-            <div className=" w-1/3">
+            <div className="w-4/5  md:w-1/3">
                 <h3 className="  font-bold text-3xl">
                 {info.title}
                 </h3>
@@ -113,13 +142,11 @@ const Product = () => {
                 </p>
                 <div></div>
             </div>
-            <div className=" w-1/4 flex justify-center flex-col items-end">
+            <div className="w-4/5 md:w-1/4 flex justify-center flex-col items-center md:items-end">
             <div style={{background:"#F7EBFE" , width:"80%"  , borderRadius:"0.5rem" , paddingInline:"1.4rem" , paddingBlock:"1.2rem" , marginBottom:"2rem",color:"#7606B2"}}>
                 <div className="flex flex-row items-center justify-between">
                     <div  className="flex flex-row items-center justify-between  w-1/2">
-                    <div><RiFullscreenLine/></div>
-                    <div><AiOutlineHeart/></div>
-                    <div><BsFillShareFill/></div>
+                    <div onClick={copyToClipboard}><BsFillShareFill/></div>
                     </div>
                     <div style={{display: info.inventory >0 ? "block" : "none"}}  className=" text-sm">
                         موجود
@@ -138,7 +165,7 @@ const Product = () => {
                     </div>
                 </div>
             </div>
-            <div style={{width:"80%"}}>
+            <div style={{width:"80%"}} onClick={handleClickOpen}>
                 <button style={{background:"#8806CE" , color:"#FFFFFF" , textAlign:"center" , width:"100%" , borderRadius:"0.5rem" , paddingBlock:"0.6rem"}}>ثبت درخواست</button>
             </div>
             </div>
@@ -173,13 +200,20 @@ const Product = () => {
                 <Additional text={info.description} />
             </div>
             <div  style={{display: sectionState ===2?"flex" : "none"}}>
-                <Property />
+                <Property prop={prop} />
             </div>
-            <div  style={{display: sectionState ===3?"flex" : "none"}}>
-                <Comment />
+            <div className="w-full"  style={{display: sectionState ===3?"flex" : "none"}}>
+                <Comment id={id} />
             </div>
         </div>
         </div>
+        <Dialog    open={open}
+        keepMounted
+        onClose={handleClose}
+        aria-describedby="alert-dialog-slide-description"
+        maxWidth="sm" >
+        <Order id={id} />
+        </Dialog>
         </Fragment>
      );
 }

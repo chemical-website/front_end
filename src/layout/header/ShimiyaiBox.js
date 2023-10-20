@@ -18,10 +18,6 @@ function ShimiyaiBox(props) {
           <div className={navigationBar.BBox}>
             <div className={navigationBar.SBox}>
               <h4>محصولات</h4>
-              <Link>رندوم‌جات</Link>
-              <Link>مواد دیگر</Link>
-              <Link>مواد پلیمری</Link>
-              <Link>مواد شیمیایی</Link>
             </div>
             <div className={navigationBar.SBox}>
               <h4>محصولات</h4>
