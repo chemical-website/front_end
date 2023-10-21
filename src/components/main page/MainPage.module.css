@@ -1,370 +1,345 @@
-.BBox {}
+.BBox {
+}
 
 .displaynone {
-    display: none;
+  display: none;
 }
-
 
 .TopBox {
-    background-image: url(../../assets/img/Backdrop\ Art.png);
-    width: 100%;
-    height: 333px;
-    display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-items: center;
-    direction: ltr;
+  background-image: url(../../assets/img/headerPic.png);
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  direction: ltr;
 }
 
-
 .TopBox h1 {
-    width: 19%;
-    direction: rtl;
-    color: #3B0359;
-    font-size: 264%;
+  width: 19%;
+  direction: rtl;
+  color: #3b0359;
+  font-size: 264%;
 }
 
 .SearchBox {
-    width: 20%;
-    height: 51%;
-    border-radius: 11px;
-    background-color: #EDFAFD40;
-    box-shadow: 0 0 2px 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    position: relative;
+  width: 375px;
+  height: 60%;
+  border-radius: 11px;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.39);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(13.4px);
+  -webkit-backdrop-filter: blur(13.4px);
+  border: 1px solid rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 50px 0px rgba(237, 250, 253, 0.25) inset,
+    1px 4px 15px 0px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
 }
 
-
-
-
 .Chosdastebandi {
-    width: 73%;
-    height: 21%;
-    font-size: 94%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #ffffff00;
-    border: 2px solid #27023B;
-    border-radius: 10px;
+  width: 73%;
+  height: 21%;
+  font-size: 94%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid #27023b;
+  border-radius: 10px;
 }
 
 .leftIcon {
-    padding-top: 1%;
-    padding-right: 18%;
+  padding-top: 1%;
+  margin-left: 10px;
 }
 
 .rightIcon {
-    padding-left: 6%;
+  padding-left: 6%;
 }
 
 .SearchDastebandi {
-    width: 60%;
-    display: flex;
-    direction: ltr;
-    flex-direction: row;
-    font-size: 0.8rem;
-    justify-content: flex-end;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  direction: ltr;
+  flex-direction: row;
+  font-size: 0.8rem;
+  margin-right: 10px;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .SearchOpenBox1 {
-    position: absolute;
-    top: 33%;
-    display: flex;
-    flex-direction: column;
-    direction: rtl;
-    padding: 2.5%;
-    width: 64%;
-    height: 68%;
-    gap: 5%;
-    background-color: #fde2ff;
-    overflow-y: scroll;
-    border-radius: 6px;
+  position: absolute;
+  top: 33%;
+  display: flex;
+  flex-direction: column;
+  direction: rtl;
+  padding: 2.5%;
+  width: 64%;
+  height: 68%;
+  gap: 5%;
+  background-color: #fde2ff;
+  overflow-y: scroll;
+  border-radius: 6px;
 }
 
 .SearchOpenBox2 {
-    position: absolute;
-    top: 59%;
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    direction: rtl;
-    padding: 2.5%;
-    width: 64%;
-    height: 68%;
-    gap: 5%;
-    background-color: #facefd;
-    overflow-y: scroll;
-    border-radius: 6px;
+  position: absolute;
+  top: 59%;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  direction: rtl;
+  padding: 2.5%;
+  width: 64%;
+  height: 68%;
+  gap: 5%;
+  background-color: #facefd;
+  overflow-y: scroll;
+  border-radius: 6px;
 }
-
-
 
 .SearchOpenBox3 {
-    position: absolute;
-    top: 90%;
-    display: flex;
-    flex-direction: column;
-    direction: rtl;
-    padding: 2.5%;
-    width: 64%;
-    height: 68%;
-    gap: 5%;
-    background-color: #fde2ff;
-    overflow-y: scroll;
-    border-radius: 6px;
+  position: absolute;
+  top: 90%;
+  display: flex;
+  flex-direction: column;
+  direction: rtl;
+  padding: 2.5%;
+  width: 64%;
+  height: 68%;
+  gap: 5%;
+  background-color: #fde2ff;
+  overflow-y: scroll;
+  border-radius: 6px;
 }
 
-
-
-
 .inputf {
-    background-color: #FFFFFF;
-    border: none;
-    height: 25%;
-    border-radius: 6px;
-    padding: 4%;
+  background-color: #ffffff;
+  border: none;
+  height: 25%;
+  border-radius: 6px;
+  padding: 4%;
 }
 
 .searchIcon {
-    position: absolute;
-    top: 11%;
-    left: 10%;
+  position: absolute;
+  top: 11%;
+  left: 10%;
 }
 
 .searchdown {
-    position: absolute;
-    top: 80%;
-    left: -10%;
-    font-size: 35px;
-    color: white;
-    background-color: #3B0359;
-    border-radius: 50px;
-    width: 19%;
-    height: 33%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    padding-top: 3%;
+  position: absolute;
+  top: 80%;
+  left: -10%;
+  font-size: 35px;
+  color: white;
+  background-color: #3b0359;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 span b {
-    font-size: 116%;
+  font-size: 116%;
 }
 span i {
-    font-size: 116%;
+  font-size: 116%;
 }
 
+.inputf::placeholder {
+}
 
-
-.inputf::placeholder {}
-
-
-                                                     /* down part start */
+/* down part start */
 .DownBox {
-    margin-bottom: 100px;
+  margin-bottom: 100px;
 }
-
-
-
 
 .DownBBox {
-    width: 90%;
-    margin: auto;
-    margin-top: 133px;
+  width: 90%;
+  margin: auto;
+  margin-top: 133px;
 }
 
 .uptitle {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
 
-
-
 .ShowPart {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 301px;
-    font-size: 16px;
-    font-weight: 600px;
-    color: #27023B;
-
-
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 301px;
+  font-size: 16px;
+  font-weight: 600px;
+  color: #27023b;
 }
 
 .pishnahadT {
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 28.8px;
-    height: 27px;
-
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28.8px;
+  height: 27px;
 }
 
 .textP {
-    display: flex;
-    gap: 7px;
-    background-color: #F7EBFE;
-    border-radius: 8px;
-    padding: 3px;
+  display: flex;
+  gap: 7px;
+  background-color: #f7ebfe;
+  border-radius: 8px;
+  padding: 3px;
 }
 
 .pishnahadat {
-    cursor: pointer;
-    padding: 4px 8px 4px 8px;
-
+  cursor: pointer;
+  padding: 4px 8px 4px 8px;
 }
 
 .pishnahadat2 {
-    cursor: pointer;
-    padding: 4px 8px 4px 8px;
-    border-left: 2px solid #8806CE;
-
+  cursor: pointer;
+  padding: 4px 8px 4px 8px;
+  border-left: 2px solid #8806ce;
 }
 
 .pishnahadat3 {
-    background-color: #8806CE;
-    color: #FFFFFF;
-    cursor: pointer;
-    border-radius: 8px;
-    padding: 4px 8px 4px 8px;
+  background-color: #8806ce;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 4px 8px 4px 8px;
 }
 
-
-
 .mahsolatS {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
 }
 
 .TopPartOfDownB {
-    display: flex;
-    position: relative;
-    gap: 2px;
-    padding: 12px;
-    width: 249px;
-    box-sizing: border-box;
-    height: 346px;
-    flex-direction: column;
+  display: flex;
+  position: relative;
+  gap: 2px;
+  padding: 12px;
+  width: 249px;
+  box-sizing: border-box;
+  height: 346px;
+  flex-direction: column;
 }
-.downPartt{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+.downPartt {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-
-.TopPartOfDownB:hover{
+.TopPartOfDownB:hover {
   padding: 10px;
-    border: 2px solid #E1ADFC;
-    border-radius: 16px;
+  border: 2px solid #e1adfc;
+  border-radius: 16px;
 }
 
 .TopPartOfDownB:hover .LikeBox {
-    display: flex;
-    transition: 5s;
-
-
+  display: flex;
+  transition: 5s;
 }
 
 .TopPartOfDownB h3 {
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 28.8px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28.8px;
 }
 
 .TopPartOfDownB p {
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 21.6px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.6px;
 }
 
 .LikeBox {
-
-    box-sizing: border-box;
-    position: absolute;
-    top: 23px;
-    display: none;
-    gap: 8px;
-    left: 23px;
-    font-size: 26px;
-    background-color: #ffff;
-    border-radius: 8px;
-    color: #8806CE;
-    flex-direction: column;
-    padding: 2px 3px 5px;
-    box-sizing: border-box;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
+  box-sizing: border-box;
+  position: absolute;
+  top: 23px;
+  display: none;
+  gap: 8px;
+  left: 23px;
+  font-size: 26px;
+  background-color: #ffff;
+  border-radius: 8px;
+  color: #8806ce;
+  flex-direction: column;
+  padding: 2px 3px 5px;
+  box-sizing: border-box;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 .SearchOpenBox1::-webkit-scrollbar,
 .SearchOpenBox2::-webkit-scrollbar,
 .SearchOpenBox3::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  /* Track */
-  .SearchOpenBox1::-webkit-scrollbar-track ,
-  .SearchOpenBox2::-webkit-scrollbar-track ,
-  .SearchOpenBox3::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
-    border-radius: 10px;
-  }
-   
-  /* Handle */
-  .SearchOpenBox1::-webkit-scrollbar-thumb,
-  .SearchOpenBox2::-webkit-scrollbar-thumb,
-  .SearchOpenBox3::-webkit-scrollbar-thumb {
-    background: #9108db; 
-    border-radius: 10px;
-  }
-  
-  /* Handle on hover */
-  .SearchOpenBox1::-webkit-scrollbar-thumb:hover,
-  .SearchOpenBox2::-webkit-scrollbar-thumb:hover,
-  .SearchOpenBox3::-webkit-scrollbar-thumb:hover {
-    background: #A409F7; 
-  }
+  width: 10px;
+}
+
+/* Track */
+.SearchOpenBox1::-webkit-scrollbar-track,
+.SearchOpenBox2::-webkit-scrollbar-track,
+.SearchOpenBox3::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+.SearchOpenBox1::-webkit-scrollbar-thumb,
+.SearchOpenBox2::-webkit-scrollbar-thumb,
+.SearchOpenBox3::-webkit-scrollbar-thumb {
+  background: #9108db;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.SearchOpenBox1::-webkit-scrollbar-thumb:hover,
+.SearchOpenBox2::-webkit-scrollbar-thumb:hover,
+.SearchOpenBox3::-webkit-scrollbar-thumb:hover {
+  background: #a409f7;
+}
 .LikeBox i {
-    font-size: 23px;
-    cursor: pointer;
-    
+  font-size: 23px;
+  cursor: pointer;
 }
 
 .LinkSBox {
-    display: flex;
-    justify-content: space-between;
-    color: #8806CE;
+  display: flex;
+  justify-content: space-between;
+  color: #8806ce;
 }
 
 .LinkSBox a {
-    display: flex;
-    align-items: center;
-    gap: 2px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }
 
-
-@media screen and (max-width:700px) {
-
-    .SearchBox {
-        width: 70%;
-    }
-    .pishnahadT{
-        font-size: 15px;
-    }
-    .ShowPart {
-        width: 200px;
-    }
-    .textP {
-        font-size: 8px;
-    }
-
+@media screen and (max-width: 700px) {
+  .SearchBox {
+    width: 70%;
+  }
+  .pishnahadT {
+    font-size: 15px;
+  }
+  .ShowPart {
+    width: 200px;
+  }
+  .textP {
+    font-size: 8px;
+  }
 }

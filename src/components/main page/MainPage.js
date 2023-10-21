@@ -51,35 +51,14 @@ function MainPage() {
     },
   ];
 
-  function DastebandiSearch() {
-    if (open == 1) {
-      setOpen(0)
-    } else {
-      setOpen(1);
-    }
-  }
-  function SanatSearch() {
-    if (open == 2) {
-      setOpen(0);
-    } else {
-      setOpen(2);
-    }
-  }
-  function MahsolSearch() {
-    if (open == 3) {
-     setOpen(0);
-    } else {
-      setOpen(3);
-    }
-  }
   useEffect(()=>{
-    if (localStorage.getItem("token") != ""){
+    if (localStorage.getItem("token") !== ""){
       setOpenModal(false)
     }
     else{
      setOpenModal(true)
     }
-  })
+  }, [])
 
   return (
     <>

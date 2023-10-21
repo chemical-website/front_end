@@ -3,18 +3,16 @@ import mainpage from "./MainPage.module.css";
 import { useEffect, useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { AiFillCaretUp } from "react-icons/ai";
-import { FaShapes } from "react-icons/fa";
-import { BiSearch } from "react-icons/bi";
-import { IoSearchCircleSharp } from "react-icons/io5";
 import axios from "axios";
 import { BaseRoot } from "../../baseRoot";
-import { RiSettings4Fill } from "react-icons/ri";
-import { FaCartShopping } from "react-icons/fa6";
+import ShapesIcon from '../../assets/Icons/Shapes.svg'
+import SettingsIcon from "../../assets/Icons/Settings.svg"
+import BuyCartIcon from "../../assets/Icons/BuyCart.svg"
+import SearchIcon from "../../assets/Icons/SearchIconWhite.svg"
 
 
 
 import { BsSearch } from "react-icons/bs";
-import zIndex from "@mui/material/styles/zIndex";
 
 
 
@@ -102,43 +100,37 @@ function MainPage() {
               className={mainpage.Chosdastebandi}
               onClick={DastebandiSearch}
             >
-              {" "}
               <i className={mainpage.leftIcon}>
-                {openimahsolat == 0 ? <AiFillCaretDown /> : <AiFillCaretUp />}
-              </i>{" "}
+                {openimahsolat == 0 ? <AiFillCaretDown color="#27023b" /> : <AiFillCaretUp color="#27023b" />}
+              </i>
               <span className={mainpage.SearchDastebandi}>
-                {" "}
-               <b> دسته بندی محصولات</b>{" "}
+               <span className="text-xl font-bold" style={{color: "#3B0359"}}> دسته بندی محصولات</span>
                 <i className={mainpage.rightIcon}>
-                  <FaShapes />
+                  <img src={ShapesIcon} alt="ShapeIcon"/>
                 </i>
               </span>
             </button>
             <button className={mainpage.Chosdastebandi} onClick={SanatSearch}>
-              {" "}
               <i className={mainpage.leftIcon}>
-                {opensanat == 0 ? <AiFillCaretDown /> : <AiFillCaretUp />}
-              </i>{" "}
+                {opensanat == 0 ? <AiFillCaretDown color="#27023b" /> : <AiFillCaretUp color="#27023b" />}
+              </i>
               <span className={mainpage.SearchDastebandi}>
-                {" "}
-              <b>انتخاب صنعت</b>
+              <span className="text-xl font-bold" style={{color: "#3B0359"}}>انتخاب صنعت</span>
                 <i className={mainpage.rightIcon}>
-                  <RiSettings4Fill />
+                  <img src={SettingsIcon} alt="SettingIcon"/>
                 </i>
               </span>
             </button>
             <button className={mainpage.Chosdastebandi} onClick={MahsolSearch}>
-              {" "}
               <i className={mainpage.leftIcon}>
-                {openiconmahsol == 0 ? <AiFillCaretDown /> : <AiFillCaretUp />}
-              </i>{" "}
-              <span className={mainpage.SearchDastebandi}>
-                {" "}
-                <b>انتخاب محصول</b>
+                {openiconmahsol == 0 ? <AiFillCaretDown color="#27023b" /> : <AiFillCaretUp color="#27023b" />}
+              </i>
+              <div className={mainpage.SearchDastebandi}>
+                <span className="text-xl font-bold" style={{color: "#3B0359"}}>انتخاب محصول</span>
                 <i className={mainpage.rightIcon}>
-                  <FaCartShopping />
+                  <img src={BuyCartIcon} alt="BuyCartIcon"/>
                 </i>
-              </span>
+              </div>
             </button>
 
 
@@ -212,8 +204,7 @@ function MainPage() {
 
 
               <i className={mainpage.searchdown}>
-                
-                <BsSearch/>
+                <img src={SearchIcon} className="scale-50" alt="SearchIcon"/>
               </i>
           </div>
        
