@@ -8,6 +8,16 @@ import { BiSearch } from "react-icons/bi";
 import { IoSearchCircleSharp } from "react-icons/io5";
 import axios from "axios";
 import { BaseRoot } from "../../baseRoot";
+import { RiSettings4Fill } from "react-icons/ri";
+import { FaCartShopping } from "react-icons/fa6";
+
+
+
+import { BsSearch } from "react-icons/bs";
+import zIndex from "@mui/material/styles/zIndex";
+
+
+
 
 function MainPage() {
   let [openimahsolat, setopenopenimahsolat] = useState(0);
@@ -98,7 +108,7 @@ function MainPage() {
               </i>{" "}
               <span className={mainpage.SearchDastebandi}>
                 {" "}
-                دسته بندی محصولات{" "}
+               <b> دسته بندی محصولات</b>{" "}
                 <i className={mainpage.rightIcon}>
                   <FaShapes />
                 </i>
@@ -111,9 +121,9 @@ function MainPage() {
               </i>{" "}
               <span className={mainpage.SearchDastebandi}>
                 {" "}
-                انتخاب صنعت
+              <b>انتخاب صنعت</b>
                 <i className={mainpage.rightIcon}>
-                  <FaShapes />
+                  <RiSettings4Fill />
                 </i>
               </span>
             </button>
@@ -124,9 +134,9 @@ function MainPage() {
               </i>{" "}
               <span className={mainpage.SearchDastebandi}>
                 {" "}
-                انتخاب محصول
+                <b>انتخاب محصول</b>
                 <i className={mainpage.rightIcon}>
-                  <FaShapes />
+                  <FaCartShopping />
                 </i>
               </span>
             </button>
@@ -202,7 +212,8 @@ function MainPage() {
 
 
               <i className={mainpage.searchdown}>
-                <IoSearchCircleSharp />
+                
+                <BsSearch/>
               </i>
           </div>
        

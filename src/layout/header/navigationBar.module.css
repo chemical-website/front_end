@@ -114,7 +114,7 @@
     position: absolute;
     width: 600px;
     height: 300px;
-    background-color: #f6d7fffd;
+    background-color: #FFFFFFB2;
     top: 72px;
     display: flex;
     right: 29.2%;
@@ -124,6 +124,7 @@
     border-radius: 0px, 0px, 16px, 16px;
     padding-right: 8px;
     z-index: 100;
+    box-shadow: 0 4px 15px 0 #0000001F;
 }
 
 .DisplayNone {
