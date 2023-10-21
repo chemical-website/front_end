@@ -9,6 +9,7 @@ import ShapesIcon from "../../assets/Icons/Shapes.svg";
 import SettingsIcon from "../../assets/Icons/Settings.svg";
 import BuyCartIcon from "../../assets/Icons/BuyCart.svg";
 import SearchIcon from "../../assets/Icons/SearchIconWhite.svg";
+import SearchIconPurple from "../../assets/Icons/SearchIconPurple.svg";
 
 import { BsSearch } from "react-icons/bs";
 
@@ -16,7 +17,14 @@ function MainPage() {
   let [openimahsolat, setopenopenimahsolat] = useState(0);
   let [opensanat, setopenopensanat] = useState(0);
   let [openiconmahsol, setopenopeniconmahsol] = useState(0);
-  const [mahsolatData, setMahsolatData] = useState([]);
+  const [mahsolatData, setMahsolatData] = useState([
+    { title: "سلام" },
+    { title: "سلام" },
+    { title: "سلام" },
+    { title: "سلام" },
+    { title: "سلام" },
+    { title: "سلام" },
+  ]);
   const [masolat, setMahsolat] = useState([]);
   const [industry, setIndustry] = useState([]);
   const config = {
@@ -28,7 +36,7 @@ function MainPage() {
     axios
       .get(`${BaseRoot}store/collections/`, config)
       .then(function (response) {
-        setMahsolatData(response.data);
+        // setMahsolatData(response.data);
       });
   }, [openimahsolat]);
   useEffect(() => {
@@ -144,20 +152,23 @@ function MainPage() {
             openimahsolat == 0 ? mainpage.displaynone : mainpage.SearchOpenBox1
           }
         >
-          {/* <input placeholder="تایپ کنید" className={mainpage.inputf} /> */}
-          {/* <i className={mainpage.searchIcon}>
-                <BiSearch />
-              </i> */}
-          {mahsolatData.map((x) => {
-            return (
-              <>
-                <Link to={`/app/collections/search/${x.title}`}>
-                  {" "}
-                  {x.title}
-                </Link>
-              </>
-            );
-          })}
+          <div className={mainpage.inputf}>
+            <input placeholder="تایپ کنید" />
+            <i className={mainpage.searchIcon}>
+              <img src={SearchIconPurple} alt="SearchIcon" />
+            </i>
+          </div>
+          <div className={mainpage.dataListBox1}>
+            {mahsolatData.map((x) => {
+              return (
+                <div className={mainpage.eachDataItem}>
+                  <Link to={`/app/collections/search/${x.title}`}>
+                    {x.title}
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         <div
@@ -165,15 +176,17 @@ function MainPage() {
             opensanat == 0 ? mainpage.displaynone : mainpage.SearchOpenBox2
           }
         >
-          {/* <input placeholder="تایپ کنید" className={mainpage.inputf} /> */}
-          {/* <i className={mainpage.searchIcon}>
-                <BiSearch />
-              </i> */}
+          <div className={mainpage.inputf}>
+            <input placeholder="تایپ کنید" />
+            <i className={mainpage.searchIcon}>
+              <img src={SearchIconPurple} alt="SearchIcon" />
+            </i>
+          </div>
           {industry.map((x) => {
             return (
-              <>
+              <div className={mainpage.eachDataItem}>
                 <Link to={`/app/industries/search/${x.title}`}> {x.title}</Link>
-              </>
+              </div>
             );
           })}
         </div>
@@ -183,15 +196,17 @@ function MainPage() {
             openiconmahsol == 0 ? mainpage.displaynone : mainpage.SearchOpenBox3
           }
         >
-          {/* <input placeholder="تایپ کنید" className={mainpage.inputf} /> */}
-          {/* <i className={mainpage.searchIcon}>
-                <BiSearch />
-              </i> */}
+          <div className={mainpage.inputf}>
+            <input placeholder="تایپ کنید" />
+            <i className={mainpage.searchIcon}>
+              <img src={SearchIconPurple} alt="SearchIcon" />
+            </i>
+          </div>
           {masolat.map((x) => {
             return (
-              <>
-                <Link to={`/app/product/${x.id}`}> {x.title}</Link>
-              </>
+              <div className={mainpage.eachDataItem}>
+                <Link to={`/app/product/${x.id}`}>{x.title}</Link>
+              </div>
             );
           })}
         </div>

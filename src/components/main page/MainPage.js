@@ -3,20 +3,13 @@ import mainpage from "./MainPage.module.css";
 import { useEffect, useState } from "react";
 import UperPart from "./UperPart";
 import DownerPart from "./DownerPart";
-import { AiFillCaretDown } from "react-icons/ai";
-import { AiFillCaretUp } from "react-icons/ai";
-import { FaShapes } from "react-icons/fa";
-import { BiSearch } from "react-icons/bi";
-import { IoSearchCircleSharp } from "react-icons/io5";
 import {
-  Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
 } from "@mui/material";
 import styles from "../cart/cart.style.module.css";
-import { MdOutlineOpenInNew } from "react-icons/md";
 import Order from "../../pages/product/order";
 
 function MainPage() {
