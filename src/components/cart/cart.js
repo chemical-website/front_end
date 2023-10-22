@@ -1,5 +1,5 @@
-// const Cart = () => {   
-//     return ( 
+// const Cart = () => {
+//     return (
 //         <div style={{width:"15.56rem" , height:"22rem"}} className=" flex flex-col  gap-3   justify-between items-start p-3">
 //             <div className=" relative">
 //                 {/* <img /> */}
@@ -37,7 +37,7 @@
 //                 </svg>
 //                 <p>تماس بگیرید</p>
 //                 </div>
-//                 <div className=" flex flex-row  items-center"> 
+//                 <div className=" flex flex-row  items-center">
 //                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
 //                 <path d="M15.8333 15.8333H4.16667V4.16667H10V2.5H4.16667C3.24167 2.5 2.5 3.25 2.5 4.16667V15.8333C2.5 16.75 3.24167 17.5 4.16667 17.5H15.8333C16.75 17.5 17.5 16.75 17.5 15.8333V10H15.8333V15.8333ZM11.6667 2.5V4.16667H14.6583L6.46667 12.3583L7.64167 13.5333L15.8333 5.34167V8.33333H17.5V2.5H11.6667Z" fill="#1CA9C9"/>
 //                 <path d="M15.8333 15.8333H4.16667V4.16667H10V2.5H4.16667C3.24167 2.5 2.5 3.25 2.5 4.16667V15.8333C2.5 16.75 3.24167 17.5 4.16667 17.5H15.8333C16.75 17.5 17.5 16.75 17.5 15.8333V10H15.8333V15.8333ZM11.6667 2.5V4.16667H14.6583L6.46667 12.3583L7.64167 13.5333L15.8333 5.34167V8.33333H17.5V2.5H11.6667Z" fill="#8806CE"/>
@@ -48,10 +48,10 @@
 //         </div>
 //      );
 // }
- 
+
 // export default Cart;
 
-import styles from "./cart.style.module.css"
+import styles from "./cart.style.module.css";
 import ax from "../../assets/img/Photo.png";
 import { IoMdCall } from "react-icons/io";
 import { MdOutlineOpenInNew } from "react-icons/md";
@@ -59,25 +59,24 @@ import { RiFullscreenLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsDisplay, BsFillShareFill } from "react-icons/bs";
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from "react";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
+import "swiper/css";
+import "swiper/css/navigation";
 
 // import required modules
-import { Navigation } from 'swiper/modules';
+import { Navigation } from "swiper/modules";
 
-
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Slide from '@mui/material/Slide';
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Slide from "@mui/material/Slide";
 import copy from "copy-to-clipboard";
 import { toast } from "react-toastify";
 
@@ -111,8 +110,8 @@ function AlertDialogSlide() {
         <DialogTitle>{"Use Google's location service?"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            Let Google help apps determine location. This means sending anonymous
-            location data to Google, even when no apps are running.
+            Let Google help apps determine location. This means sending
+            anonymous location data to Google, even when no apps are running.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -124,10 +123,9 @@ function AlertDialogSlide() {
   );
 }
 
-
-export default function Cart({x}){
+export default function Cart({ x }) {
   const [open, setOpen] = React.useState(false);
-  const [img , setImage] = useState()
+  const [img, setImage] = useState();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -136,63 +134,117 @@ export default function Cart({x}){
     let copyText = `http://154.91.170.238/app/product/${x.id}`;
     let isCopy = copy(copyText);
     if (isCopy) {
-      toast.success("Copied to Clipboard");
+      toast.success("کپی شد", {position: toast.POSITION.TOP_RIGHT, style: {fontFamily: "VazirD", textAlign: "right"}});
     }
   };
 
   const handleClose = () => {
     setOpen(false);
   };
-  let link = `/app/product/${x.id}`
-    return(
-      <div div className="w-full flex flex-col items-center">
-  
-              <div  className={styles.TopPartOfDownB} >
-                <div><img className=" h-48 w-60" src={x.images[0]["image"]}/> <div className={styles.LikeBox}><i onClick={copyToClipboard}><BsFillShareFill/></i></div></div>
-                <div className={styles.downPartt}><h3>{x.title}</h3><p className="  overflow-hidden h-10">{x.short_description}</p> <div className={styles.LinkSBox}><Link ><IoMdCall/>"تماس بگیرید"</Link><Link onClick={handleClickOpen}><MdOutlineOpenInNew/>"مشاهده کنید"</Link></div></div>
-                </div>
-                <div>
-      <Dialog
-        open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={handleClose}
-        aria-describedby="alert-dialog-slide-description"
-        maxWidth="md"
-      >
-        {/* <DialogTitle>{"Use Google's location service?"}</DialogTitle> */}
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            <div className="flex flex-col md:flex-row items-center" style={{height:"25rem"}}>
+  let link = `/app/product/${x.id}`;
+  return (
+    <div>
+      <div className={styles.TopPartOfDownB}>
+        <div>
+          <img
+            className="h-48 w-60 object-cover rounded-xl"
+            src={x.images[0]["image"]}
+          />{" "}
+          <div className={styles.LikeBox}>
+            <i onClick={copyToClipboard}>
+              <BsFillShareFill />
+            </i>
+          </div>
+        </div>
+        <div className={styles.downPartt}>
+          <h3>{x.title}</h3>
+          <p>
+            {x.short_description.length > 50
+              ? x.short_description.slice(0, 50) + "..."
+              : x.short_description}
+          </p>
+          <div className={styles.LinkSBox}>
+            <Link>
+              <IoMdCall size={25} />
+              <span className="text-lg font-bold">تماس بگیرید</span>
+            </Link>
+            <Link onClick={handleClickOpen}>
+              <MdOutlineOpenInNew size={25} />
+              <span className="text-lg font-bold">مشاهده</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div>
+        <Dialog
+          open={open}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={handleClose}
+          aria-describedby="alert-dialog-slide-description"
+          maxWidth="md"
+        >
+          {/* <DialogTitle>{"Use Google's location service?"}</DialogTitle> */}
+          <DialogContent>
+            <DialogContentText id="alert-dialog-slide-description">
+              <div
+                className="flex flex-col md:flex-row items-center"
+                style={{ height: "25rem" }}
+              >
                 <div className="w-full  md:w-1/2">
-                <Swiper navigation={true} modules={[Navigation]} className='w-full flex items-center'>
-        {x.images.map(i=>{
-          return(
-            <SwiperSlide>
-            <div className='flex flex-row items-center justify-center w-full'>
-               <img className=" w-4/5 h-96" alt="" src={i["image"]} />
-            </div>
-        </SwiperSlide>
-          )
-        })}
- 
-                 </Swiper>
+                  <Swiper
+                    navigation={true}
+                    modules={[Navigation]}
+                    className="w-full flex items-center"
+                  >
+                    {x.images.map((i) => {
+                      return (
+                        <SwiperSlide>
+                          <div className="flex flex-row items-center justify-center w-full">
+                            <img
+                              className=" w-4/5 h-96"
+                              alt=""
+                              src={i["image"]}
+                            />
+                          </div>
+                        </SwiperSlide>
+                      );
+                    })}
+                  </Swiper>
                 </div>
-                <div className="w-full md:w-1/2 flex flex-col items-center" >
-                  <div style={{color:"#27023B"}} className="   text-center md:text-start text-4xl">{x.title}</div>
-                  <div style={{color:"#27023B"}}   className="  text-center md:text-start text-xl">{x.short_description}</div>
-                  <div style={{color:"#27023B"}}  className=" text-center md:text-start  text-lg">
+                <div className="w-full md:w-1/2 flex flex-col items-center">
+                  <div
+                    style={{ color: "#27023B" }}
+                    className="   text-center md:text-start text-4xl"
+                  >
+                    {x.title}
+                  </div>
+                  <div
+                    style={{ color: "#27023B" }}
+                    className="  text-center md:text-start text-xl"
+                  >
+                    {x.short_description}
+                  </div>
+                  <div
+                    style={{ color: "#27023B" }}
+                    className=" text-center md:text-start  text-lg"
+                  >
                     {x.description}
                   </div>
                 </div>
+              </div>
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <div className={styles.LinkSBox}>
+              <Link to={link}>
+                <MdOutlineOpenInNew size={30} />
+                مشاهده
+              </Link>
             </div>
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-        <div className={styles.LinkSBox}><Link to={link}><MdOutlineOpenInNew/>"مشاهده کنید"</Link></div>
-        </DialogActions>
-      </Dialog>
+          </DialogActions>
+        </Dialog>
+      </div>
     </div>
-                </div>
-    )
-  }
+  );
+}

@@ -1,80 +1,77 @@
-
 .TopPartOfDownB {
-    display: flex;
-    position: relative;
-    gap: 2px;
-    padding: 12px;
-    width: 249px;
-    box-sizing: border-box;
-    height: 346px;
-    flex-direction: column;
+  display: flex;
+  position: relative;
+  gap: 7px;
+  padding: 12px;
+  width: 249px;
+  box-sizing: border-box;
+  flex-direction: column;
+  cursor: default;
+  border: 2px solid white;
+  border-radius: 16px;
+  
 }
-.downPartt{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+.downPartt {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-
-.TopPartOfDownB:hover{
-  padding: 10px;
-    border: 2px solid #E1ADFC;
-    border-radius: 16px;
+.TopPartOfDownB:hover {
+  /* padding: 10px; */
+  border: 2px solid #e1adfc;
+  border-radius: 16px;
 }
 
 .TopPartOfDownB:hover .LikeBox {
-    display: flex;
-    transition: 5s;
-
-
+  display: flex;
+  transition: 5s;
 }
 
 .TopPartOfDownB h3 {
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 28.8px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28.8px;
 }
 
 .TopPartOfDownB p {
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 21.6px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.6px;
 }
 
 .LikeBox {
-
-    box-sizing: border-box;
-    position: absolute;
-    top: 23px;
-    display: none;
-    gap: 8px;
-    left: 23px;
-    font-size: 26px;
-    background-color: #ffff;
-    border-radius: 8px;
-    color: #8806CE;
-    flex-direction: column;
-    padding: 2px 3px 5px;
-    box-sizing: border-box;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
+  box-sizing: border-box;
+  position: absolute;
+  top: 23px;
+  display: none;
+  gap: 8px;
+  left: 23px;
+  font-size: 26px;
+  background-color: #ffff;
+  border-radius: 5px;
+  color: #8806ce;
+  flex-direction: column;
+  padding: 5px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .LikeBox i {
-    font-size: 23px;
-    cursor: pointer;
-    
+  font-size: 23px;
+  cursor: pointer;
 }
 
 .LinkSBox {
-    display: flex;
-    justify-content: space-between;
-    color: #8806CE;
+  display: flex;
+  justify-content: space-between;
+  color: #8806ce;
 }
 
 .LinkSBox a {
-    display: flex;
-    align-items: center;
-    gap: 2px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }

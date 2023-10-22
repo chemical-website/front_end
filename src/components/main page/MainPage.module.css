@@ -85,13 +85,12 @@
   width: 64%;
   height: 68%;
   gap: 5%;
-  background: rgba(255, 255, 255, 0.56);
-  border-radius: 16px;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(15.6px);
-  -webkit-backdrop-filter: blur(15.6px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 6px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .dataListBox1 {
@@ -104,7 +103,7 @@
 .eachDataItem {
   width: 90%;
   padding-right: 5px;
-  color: #27023b;
+  color: #3c045b;
 }
 
 .eachDataItem:hover {
@@ -127,14 +126,11 @@
   width: 64%;
   height: 68%;
   gap: 5%;
-  background: rgba(255, 255, 255, 0.89);
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(14.9px);
-  -webkit-backdrop-filter: blur(14.9px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  /* overflow-y: scroll; */
-  border-radius: 6px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .SearchOpenBox3 {
@@ -147,13 +143,12 @@
   width: 64%;
   height: 68%;
   gap: 5%;
-  background: rgba(255, 255, 255, 0.89);
-  border-radius: 16px;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(14.9px);
-  -webkit-backdrop-filter: blur(14.9px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 6px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .inputf {
@@ -166,11 +161,12 @@
   align-items: center;
   flex-direction: row;
   padding: 15px 10px;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.12);
 }
 
 .inputf > input::placeholder {
-  color: #27023b;
-  opacity: 0.5;
+  color: #7303af;
+  opacity: 1;
 }
 
 .searchIcon {
@@ -231,10 +227,9 @@ span i {
 }
 
 .pishnahadT {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 28.8px;
-  height: 27px;
+  font-size: 34px;
+  font-weight: bold;
+  color: #27023b;
 }
 
 .textP {
