@@ -133,7 +133,7 @@ const SearchIndustry = () => {
               className="flex flex-row  justify-between items-center mb-8"
             >
               <div className="text-sm">جستجو: {name}</div>
-              <div>
+              <Link to={"/app/"}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -157,7 +157,7 @@ const SearchIndustry = () => {
                     </clipPath>
                   </defs>
                 </svg>
-              </div>
+              </Link>
             </div>
           </div>
           <div className="flex flex-row justify-between items-center w-1/6">

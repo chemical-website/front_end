@@ -82,7 +82,7 @@ function HameHandler() {
         setCollections(response.data)
       }
     )
-  },[])
+  },[y])
   useEffect(() => {
     if( x ===1) {
       console.log("gih")
@@ -169,7 +169,7 @@ function HameHandler() {
        <div className={mainpage.uptitle}> <span className={mainpage.pishnahadT}>پیشنهاد ویژه </span>
         <div className={mainpage.ShowPart}><i><MdFilterListAlt/> </i><div className={mainpage.textP}><span onClick={HameHandler} 
         className={y==0 ? mainpage.pishnahadat2 : mainpage.pishnahadat3 }>نمایش همه</span> 
-        <span className={x==0 ? mainpage.pishnahadat2 : mainpage.pishnahadat3 }  onClick={() => {
+        <span className={x==0 ? mainpage.pishnahadat4 : mainpage.pishnahadat3 }  onClick={() => {
           BarkhiHandler()}}>نمایش برخی </span></div></div>
         </div> 
         <Swiper 

@@ -62,6 +62,7 @@ import { Link } from "react-router-dom";
 const Products = () => {
   const [prdouctData , setProductData] = useState([])
   const [collections , setCollections] = useState([])
+  const [sort , Setsort] = useState(false)
   const config = {
     headers:{
       Authorization: localStorage.getItem("token")
@@ -83,6 +84,14 @@ const Products = () => {
       }
     )
   },[])
+  useEffect(()=>{
+    if( sort == false){
+      setProductData(prdouctData.sort((a,b) => a.id-b.id))
+    }
+    else {
+      setProductData(prdouctData.sort((a,b) => b.id - a.id))
+    }
+  } , [sort])
     return ( 
       <Fragment>
       <NavigationBar />
@@ -129,7 +138,7 @@ const Products = () => {
               <div className="w-5/6 flex flex-row justify-end items-center">
                 <div className="flex flex-row justify-between items-center w-1/6">
                   <div>{prdouctData.length}محصول</div>
-                  <div style={{border:"1.5px solid #7606B2" , borderRadius:"0.5rem" , padding:"0rem 0.625rem 0rem 0.5rem"}}  className="flex flex-row justify-between items-center">
+                  <div onClick={()=>{Setsort(true ? sort == false : false)}} style={{border:"1.5px solid #7606B2" , borderRadius:"0.5rem" , padding:"0rem 0.625rem 0rem 0.5rem"}}  className="flex flex-row justify-between items-center">
                     <div>
                     
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

@@ -20,8 +20,12 @@ const SearchCollections = () => {
 
     axios.get(`${BaseRoot}store/collections/?search=${name}` , config).then(
       function(response){
-        // setProductData(response.data)
-        setProductData(response.data[0]["products"])
+        if(response.data.length != []){
+          setProductData(response.data[0]["products"])
+        }
+        else{
+          setProductData([])
+        }
       }
     )
   },[name])
@@ -95,7 +99,7 @@ const SearchCollections = () => {
                   <div className="text-sm">
                   جستجو: {name}
                   </div>
-                  <div>
+                  <Link to={"/app/"}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <g clip-path="url(#clip0_123_2573)">
                       <path d="M12.6666 4.27334L11.7266 3.33334L7.99992 7.06001L4.27325 3.33334L3.33325 4.27334L7.05992 8.00001L3.33325 11.7267L4.27325 12.6667L7.99992 8.94001L11.7266 12.6667L12.6666 11.7267L8.93992 8.00001L12.6666 4.27334Z" fill="#0C4957"/>
@@ -107,7 +111,7 @@ const SearchCollections = () => {
                       </clipPath>
                     </defs>
                   </svg>
-                  </div>
+                  </Link>
                   </div>
                 
                 </div>

@@ -149,7 +149,7 @@ export default function Cart({x}){
   
               <div  className={styles.TopPartOfDownB} >
                 <div><img className=" h-48 w-60" src={x.images[0]["image"]}/> <div className={styles.LikeBox}><i onClick={copyToClipboard}><BsFillShareFill/></i></div></div>
-                <div className={styles.downPartt}><h3>{x.title}</h3><p>{x.short_description}</p> <div className={styles.LinkSBox}><Link ><IoMdCall/>"تماس بگیرید"</Link><Link onClick={handleClickOpen}><MdOutlineOpenInNew/>"مشاهده کنید"</Link></div></div>
+                <div className={styles.downPartt}><h3>{x.title}</h3><p className="  overflow-hidden h-10">{x.short_description}</p> <div className={styles.LinkSBox}><Link ><IoMdCall/>"تماس بگیرید"</Link><Link onClick={handleClickOpen}><MdOutlineOpenInNew/>"مشاهده کنید"</Link></div></div>
                 </div>
                 <div>
       <Dialog
