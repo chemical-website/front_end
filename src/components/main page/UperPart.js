@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import mainpage from "./MainPage.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { AiFillCaretUp } from "react-icons/ai";
 import axios from "axios";
@@ -11,22 +11,15 @@ import BuyCartIcon from "../../assets/Icons/BuyCart.svg";
 import SearchIcon from "../../assets/Icons/SearchIconWhite.svg";
 import SearchIconPurple from "../../assets/Icons/SearchIconPurple.svg";
 
-import { BsSearch } from "react-icons/bs";
 
 function MainPage() {
   let [openimahsolat, setopenopenimahsolat] = useState(0);
   let [opensanat, setopenopensanat] = useState(0);
   let [openiconmahsol, setopenopeniconmahsol] = useState(0);
-  const [mahsolatData, setMahsolatData] = useState([
-    { title: "سلام" },
-    { title: "سلام" },
-    { title: "سلام" },
-    { title: "سلام" },
-    { title: "سلام" },
-    { title: "سلام" },
-  ]);
+  const [mahsolatData, setMahsolatData] = useState([]);
   const [masolat, setMahsolat] = useState([]);
   const [industry, setIndustry] = useState([]);
+  const [search , setSearch] = useState(""); 
   const config = {
     headers: {
       Authorization: localStorage.getItem("token"),
@@ -36,7 +29,7 @@ function MainPage() {
     axios
       .get(`${BaseRoot}store/collections/`, config)
       .then(function (response) {
-        // setMahsolatData(response.data);
+        setMahsolatData(response.data);
       });
   }, [openimahsolat]);
   useEffect(() => {
@@ -49,18 +42,6 @@ function MainPage() {
       setIndustry(response.data);
     });
   }, [opensanat]);
-  let data = [
-    {
-      name: "پلی  اتیلن ",
-    },
-    {
-      name: "پلی استر معمولی",
-    },
-    {
-      name: "پلی استر پیچیده",
-    },
-  ];
-
   function DastebandiSearch() {
     if (openimahsolat === 1) {
       setopenopenimahsolat(0);
@@ -153,8 +134,10 @@ function MainPage() {
           }
         >
           <div className={mainpage.inputf}>
-            <input placeholder="تایپ کنید" />
-            <i className={mainpage.searchIcon}>
+            <input onChange={(e)=>{setSearch(e.target.value)}} placeholder="تایپ کنید" />
+            <i onClick={()=>{
+              setMahsolatData(mahsolatData.filter(e => e.title === search))  
+            }} className={mainpage.searchIcon}>
               <img src={SearchIconPurple} alt="SearchIcon" />
             </i>
           </div>
@@ -177,8 +160,10 @@ function MainPage() {
           }
         >
           <div className={mainpage.inputf}>
-            <input placeholder="تایپ کنید" />
-            <i className={mainpage.searchIcon}>
+            <input onChange={e=> setSearch(e.target.value)} placeholder="تایپ کنید" />
+            <i onClick={()=>{
+              setMahsolatData(mahsolatData.filter(e => e.title === search))  
+            }} className={mainpage.searchIcon}>
               <img src={SearchIconPurple} alt="SearchIcon" />
             </i>
           </div>
@@ -197,8 +182,10 @@ function MainPage() {
           }
         >
           <div className={mainpage.inputf}>
-            <input placeholder="تایپ کنید" />
-            <i className={mainpage.searchIcon}>
+            <input onChange={(e)=> setSearch(e.target.value)} placeholder="تایپ کنید" />
+            <i onClick={()=>{
+              setMahsolatData(mahsolatData.filter(e => e.title === search))  
+            }} className={mainpage.searchIcon}>
               <img src={SearchIconPurple} alt="SearchIcon" />
             </i>
           </div>

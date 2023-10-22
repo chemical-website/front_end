@@ -2,12 +2,7 @@ import { Link } from "react-router-dom";
 import mainpage from "./MainPage.module.css";
 import { useEffect, useState } from "react";
 import ax from "../../assets/img/Photo.png";
-import { AiOutlineHeart } from "react-icons/ai";
-import { BsDisplay, BsFillShareFill } from "react-icons/bs";
 import { MdFilterListAlt, MdHeight } from "react-icons/md";
-import { IoMdCall } from "react-icons/io";
-import { MdOutlineOpenInNew } from "react-icons/md";
-import { RiFullscreenLine } from "react-icons/ri";
 import { BaseRoot } from "../../baseRoot";
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -93,76 +88,6 @@ function HameHandler() {
       )
     }
   },[x])
-
-
-  let  MahsolatList =[
-    {image: ax ,
-    titr: "سرتیتر اسم",
-    tozihat: "یه سری متن ",
-    tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید",
-    id:"1"
-  },
-  {image: ax ,
-    titr: "سرتیتر اسم",
-    tozihat: "یه سری متن ",
-    tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید",
-    id:"1"
-  },
-  {image: ax ,
-    titr: "سرتیتر اسم",
-    tozihat: "یه سری متن ",
-    tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید",
-    id:"1"
-  },
-  {image: ax ,
-    titr: "سرتیتر اسم",
-    tozihat: "یه سری متن ",
-    tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید",
-    id:"1"
-  },
-  {image: ax ,
-    titr: "سرتیتر اسم",
-    tozihat: "یه سری متن ",
-    tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید",
-    id:"1"
-  },
-  {image: ax ,
-    titr: "سرتیتر اسم",
-    tozihat: "یه سری متن ",
-    tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید",
-    id:"1"
-  },
-  {image: ax ,
-    titr: "سرتیتر اسم",
-    tozihat: "یه سری متن ",
-    tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید",
-    id:"1"
-  },
-  {image: ax ,
-    titr: "سرتیتر اسم",
-    tozihat: "یه سری متن ",
-    tamas :"تماس بگیرید",
-    moshahede:"مشاهده کنید",
-    id:"1"
-  },
- 
- 
-  ]
-
-
-  
-
-
-
-
-
   return (
     <>
       <div className={mainpage.DownBBox}>
@@ -200,17 +125,3 @@ function HameHandler() {
 }
 
 export default DownerPart;
-
-
-// export function Cart({x}){
-//   return(
-//     <>
-
-//             <div  className={mainpage.TopPartOfDownB} >
-//               <div><img src={x.image}/> <div className={mainpage.LikeBox}><i><RiFullscreenLine/></i><i><AiOutlineHeart/></i><i><BsFillShareFill/></i></div></div>
-//               <div className={mainpage.downPartt}><h3>{x.titr}</h3><p>{x.tozihat}</p> <div className={mainpage.LinkSBox}><Link><IoMdCall/>{x.tamas}</Link><Link><MdOutlineOpenInNew/>{x.moshahede}</Link></div></div>
-//               </div>
-         
-//               </>
-//   )
-// }

@@ -38,17 +38,6 @@ function MainPage() {
   const handleClickOpen3 = () => {
     setOpenModal3(true);
   };
-  let data = [
-    {
-      name: "پلی  اتیلن ",
-    },
-    {
-      name: "پلی استر معمولی",
-    },
-    {
-      name: "پلی استر پیچیده",
-    },
-  ];
 
   useEffect(() => {
     if (localStorage.getItem("token") !== "") {
