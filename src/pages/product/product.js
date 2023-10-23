@@ -12,6 +12,8 @@ import { Fragment, useEffect, useState } from "react";
 import Additional from "./additional";
 import Property from "./property";
 import { Navigation } from 'swiper/modules';
+import notExisteIcon from "../../assets/Icons/Close.svg";
+import ExisteIcon from "../../assets/Icons/Done.svg"
 import 'swiper/css/navigation';
 import Comment from "./comment";
 import PicSlider from "./picSlider";
@@ -27,6 +29,7 @@ const Product = () => {
     const {id} = useParams()
     const [images , setImages] = useState([])
     const [info , setInfo] = useState({})
+    const [tags , setTags] = useState([])
     const [prop , setProp] = useState({})
     const [sectionState , setSectionState] = useState(1)
     const changeState = (num) =>{ 
@@ -49,6 +52,7 @@ const Product = () => {
       axios.get(`${BaseRoot}store/products/${id}/` , config).then(
         function(response){
           setInfo(response.data)
+          setTags(response.data.tags)
           setProp(response.data.properties)
           setImages(response.data.images)
           if(response.data.properties == undefined){
@@ -136,7 +140,7 @@ const Product = () => {
                 <p className="  font-medium text-lg mb-10">
                 {info.short_description}
                 </p>
-                <p className=" font-normal text-base w-full">
+                <p className=" font-normal text-base w-full h-20 overflow-y-hidden">
                {info.description}
                 </p>
                 <div></div>
@@ -147,10 +151,12 @@ const Product = () => {
                     <div  className="flex flex-row items-center justify-between  w-1/2">
                     <div onClick={copyToClipboard}><BsFillShareFill/></div>
                     </div>
-                    <div style={{display: info.inventory >0 ? "block" : "none"}}  className=" text-sm">
+                    <div style={{display: info.inventory >0 ? "flex" : "none"}}  className=" text-sm flex flex-row items-center">
+                      <img src={ExisteIcon} />
                         موجود
                     </div>
-                    <div style={{display: info.inventory <=0 ? "block" : "none"}} className=" text-sm">
+                    <div style={{display: info.inventory <=0 ? "flex" : "none"}} className=" text-sm flex flex-row items-center">
+                    <img src={notExisteIcon} />
                         ناموجود 
                     </div>
                 </div>
@@ -164,6 +170,16 @@ const Product = () => {
                     </div>
                 </div>
             </div>
+            <div  className=" grid grid-cols-3 w-4/5">
+                    {tags.map(e=>{
+                   
+                      return(
+                        <div className=" p-2 rounded-lg border-purple-900 text-center text-base  border-2 border-solid">
+                        {e.tag.title}
+                        </div>
+                      )
+                    })}
+                  </div>
             <div style={{width:"80%"}} onClick={handleClickOpen}>
                 <button style={{background:"#8806CE" , color:"#FFFFFF" , textAlign:"center" , width:"100%" , borderRadius:"0.5rem" , paddingBlock:"0.6rem"}}>ثبت درخواست</button>
             </div>

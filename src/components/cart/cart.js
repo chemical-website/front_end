@@ -61,14 +61,15 @@ export default function Cart({x}){
         open={open}
         TransitionComponent={Transition}
         keepMounted
+        sx={{overflowY:"visible"}}
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
         maxWidth="md"
-        sx={{overflowY:"visible"}}
+       
       >
-      <div className="w-full flex justify-end" onClick={handleClose}>
+      <Link className="w-full flex justify-end p-4" onClick={handleClose}>
             <img alt=""  src={closePic} />
-      </div>
+      </Link>
         <DialogContent>
           <div className=" p-10">
             <div className="flex flex-col md:flex-row items-center">
@@ -106,7 +107,7 @@ export default function Cart({x}){
             </div>
           </div>
         </DialogContent>
-        <div className=" flex justify-end"><Link to={link}>
+        <div className=" absolute flex justify-end " style={{left:"1rem" , bottom:"0"}}><Link to={link}>
             <img className=" w-14 h-16"  alt="" src={iconShow} />
         </Link></div>
       </Dialog>
