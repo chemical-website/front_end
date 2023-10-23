@@ -100,7 +100,6 @@ function HameHandler() {
         <Swiper 
          breakpoints={{
         800: {
-          width: 8200,
           slidesPerView: 4,
         },
         500: {
@@ -113,8 +112,8 @@ function HameHandler() {
   
           {prdouctData.map((x) => {
             return(  
-              <SwiperSlide>
-              <Cart x={x} />
+              <SwiperSlide className="  w-full">
+              <Cart  x={x} />
         </SwiperSlide>
 
           )})}
