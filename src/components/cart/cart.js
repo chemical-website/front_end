@@ -53,7 +53,7 @@ export default function Cart({x}){
   
               <div  className={styles.TopPartOfDownB} >
                 <div><img className=" h-48 w-60" src={x.images[0]["image"]}/> <div className={styles.LikeBox}><i onClick={copyToClipboard}><BsFillShareFill/></i></div></div>
-                <div className={styles.downPartt}><h3>{x.title}</h3><p className="  overflow-hidden h-10">{x.short_description}</p> <div className={styles.LinkSBox}><Link ><IoMdCall/>"تماس بگیرید"</Link><Link onClick={handleClickOpen}><MdOutlineOpenInNew/>"مشاهده کنید"</Link></div></div>
+                <div className={styles.downPartt}><h3>{x.title}</h3><p className="  h-10">{x.short_description.substring(0, 30)}</p> <div className={styles.LinkSBox}><Link ><IoMdCall/>"تماس بگیرید"</Link><Link onClick={handleClickOpen}><MdOutlineOpenInNew/>"مشاهده کنید"</Link></div></div>
                 </div>
                 <div 
                 style={{overflowY:"visible"}}>
@@ -72,14 +72,14 @@ export default function Cart({x}){
       </Link>
         <DialogContent>
           <div className=" p-10">
-            <div className="flex flex-col md:flex-row items-center">
-                <div className="w-full  md:w-1/2">
-                <Swiper navigation={true} pagination={true} modules={[Navigation ,Pagination]} className='w-full flex items-center'>
+            <div className="flex flex-col md:flex-row items-start">
+                <div className="w-full  md:w-1/2 ml-6">
+                <Swiper style={{ "--swiper-pagination-color": "#8806CE" ,"--swiper-navigation-color":"#8806CE"}} navigation={true} pagination={true} modules={[Navigation ,Pagination]} className='w-full flex items-center'>
         {x.images.map(i=>{
           return(
             <SwiperSlide>
-            <div className='flex flex-row items-center justify-center w-full'>
-               <img className=" w-4/5 h-96" alt="" src={i["image"]} />
+            <div className='flex h-full flex-row items-center justify-center w-full'>
+               <img className=" w-full h-72" alt="" src={i["image"]} />
             </div>
         </SwiperSlide>
           )
@@ -88,16 +88,16 @@ export default function Cart({x}){
                  </Swiper>
                 </div>
                 <div className="w-full md:w-1/2 flex flex-col items-start" >
-                  <div style={{color:"#27023B"}} className="   text-center md:text-start text-4xl">{x.title}</div>
-                  <div style={{color:"#27023B"}}   className="  text-center md:text-start text-xl p">{x.short_description}</div>
-                  <div style={{color:"#27023B"}}  className=" text-center md:text-start  text-lg h-28 overflow-hidden">
-                    {x.description}
+                  <div style={{color:"#27023B" , fontWeight:"600"}} className="   text-center md:text-start text-4xl">{x.title}</div>
+                  <div style={{color:"#27023B" , fontWeight:"500"}}   className="  text-center md:text-start text-xl p">{x.short_description}</div>
+                  <div style={{color:"#27023B" , fontWeight:"400"}}  className=" text-center md:text-start  text-lg h-28 mt-14">
+                    {x.description.substring(0,250)}
                   </div>
-                  <div  className=" flex flex-row justify-around items-center w-full">
+                  <div  className=" flex flex-row justify-around items-center w-full mt-8">
                     {x.tags.map(e=>{
                    
                       return(
-                        <div className=" p-2 rounded-lg border-purple-900 text-base  border-2 border-solid">
+                        <div style={{borderColor:"#7606B2"  , color:"#7606B2"}} className=" mt-6 p-2 rounded-lg text-base  border-2 border-solid">
                         {e.tag.title}
                         </div>
                       )

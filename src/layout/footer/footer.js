@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BaseRoot } from "../../baseRoot";
 import mailIcon from "../../assets/Icons/Mail outline.svg"
+import styles from "./footer.module.css"
 
 const Footer = () => {
     const [mahsollist , setMahsolList] = useState([])
@@ -85,9 +86,9 @@ const Footer = () => {
                     <p style={{fontWeight:"700"}} className="  text-xl ">خبرنامه</p>
                     <p style={{fontWeight:"500"}} className="text-base">با عضویت در خبرنامه از اخبار و ویژه‌برنامه‌ها خبردار شوید.</p>
                     <div className="flex flex-row justify-between items-center relative">
-                        <img style={{position:"absolute" , left:"40px"}} src={mailIcon} />
-                        <input style={{width:"14rem" , padding:"0.5rem" , height:"3rem" , color:"#7606B2" , borderRadius:"0.5rem"}} placeholder="ایمیل خود را وارد کنید" />
-                        <div style={{background:"#8806CE" , width:"2.5rem" , height:"2.5rem" , borderRadius:"0.5rem" , padding:"0.5rem"}}>
+                        <img style={{position:"absolute" , left:"60px"}} src={mailIcon} />
+                        <input className={styles.Eminput} placeholder="ایمیل خود را وارد کنید" />
+                        <div style={{background:"#8806CE" , width:"2.5rem" , height:"2.5rem" , borderRadius:"0.5rem" , padding:"0.5rem", marginRight:"1rem"}}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path d="M12 19C12 15.13 15.13 12 19 12C20.08 12 21.09 12.25 22 12.68V6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H12.08C12.03 19.67 12 19.34 12 19ZM4 6L12 11L20 6V8L12 13L4 8V6ZM17.34 22L13.8 18.46L15.21 17.05L17.33 19.17L21.57 14.93L23 16.34L17.34 22Z" fill="white"/>
 </svg>

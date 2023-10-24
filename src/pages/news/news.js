@@ -33,7 +33,7 @@ const NewsCart = ({info})=> {
     return(
         <div className='flex flex-col  justify-between items-start h-fit mx-9' style={{width:"20rem"}}>
             <div style={{width:"100%" , height:"18rem" , position:"relative"}}>
-            <img alt='' className=" h-56  w-64 " src={info.images[0].image} />
+            <img alt='' className=" h-72  w-80 " src={info.images[0].image} />
             <div style={{position:"absolute" , left:"5px" , top:"5px" , background:"#fff" , borderRadius:"0.5rem" , boxShadow:"0px 0px 10px 0px #DCF5FA"}}>
                 <div onClick={copyToClipboard}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
@@ -52,7 +52,7 @@ const NewsCart = ({info})=> {
                   `${new Date(info.creation_date).getHours()} :  ${new Date(info.creation_date).getMinutes()} `
                 }</p>
             </div>
-            <div style={{color:"#3B0359"}} className=' font-normal text-lg overflow-hidden h-12'>{info.content}</div>
+            <div style={{color:"#3B0359"}} className=' font-normal text-lg overflow-hidden h-12'>{info.content.substring(0, 50)}</div>
 
             <div className=' self-end flex flex-row items-center mt-4'>
             <Link onClick={handleClickOpen} className=' flex flex-row items-center' style={{color:"#8806CE"}}><MdOutlineOpenInNew/>مشاهده بیشتر</Link>

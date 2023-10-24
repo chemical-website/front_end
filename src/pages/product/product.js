@@ -29,6 +29,7 @@ const Product = () => {
     const {id} = useParams()
     const [images , setImages] = useState([])
     const [info , setInfo] = useState({})
+    const [desc , setDesc] = useState("")
     const [tags , setTags] = useState([])
     const [prop , setProp] = useState({})
     const [sectionState , setSectionState] = useState(1)
@@ -53,6 +54,7 @@ const Product = () => {
         function(response){
           setInfo(response.data)
           setTags(response.data.tags)
+          setDesc(response.data.description)
           setProp(response.data.properties)
           setImages(response.data.images)
           if(response.data.properties == undefined){
@@ -75,7 +77,7 @@ const Product = () => {
              <NavigationBar/>
             <div className="flex flex-col justify-start items-center">
         <div className="w-4/5">
-        <div className="flex flex-row items-center justify-between w-1/6 mb-9 mt-14" >
+        <div className="flex flex-row items-center justify-between w-1/4 mb-9 mt-14" >
         <div>
         <Link to={"/app"}>
 
@@ -122,7 +124,7 @@ const Product = () => {
 </svg>
         </div>
         <div>
-        پیشنهاد ویژه
+        {info.title}        
         </div>
         <div>
         </div>
@@ -140,8 +142,8 @@ const Product = () => {
                 <p className="  font-medium text-lg mb-10">
                 {info.short_description}
                 </p>
-                <p className=" font-normal text-base w-full h-20 overflow-y-hidden">
-               {info.description}
+                <p className=" font-normal text-base w-full h-20">
+               {desc.substring(0, 250)}
                 </p>
                 <div></div>
             </div>
@@ -170,19 +172,19 @@ const Product = () => {
                     </div>
                 </div>
             </div>
-            <div  className=" grid grid-cols-3 w-4/5">
+            <div style={{width:"80%"}} onClick={handleClickOpen}>
+                <button style={{background:"#8806CE" , color:"#FFFFFF" , textAlign:"center" , width:"100%" , borderRadius:"0.5rem" , paddingBlock:"0.6rem"}}>ثبت درخواست</button>
+            </div>
+            <div  className=" grid grid-cols-3 w-4/5  gap-3 mt-5">
                     {tags.map(e=>{
                    
                       return(
-                        <div className=" p-2 rounded-lg border-purple-900 text-center text-base  border-2 border-solid">
+                        <div style={{background:"#F7EBFE" , color:"#3B0359"}} className=" p-2 rounded-lg text-center text-base ">
                         {e.tag.title}
                         </div>
                       )
                     })}
                   </div>
-            <div style={{width:"80%"}} onClick={handleClickOpen}>
-                <button style={{background:"#8806CE" , color:"#FFFFFF" , textAlign:"center" , width:"100%" , borderRadius:"0.5rem" , paddingBlock:"0.6rem"}}>ثبت درخواست</button>
-            </div>
             </div>
         </div>
         <div style={{width:"80%" , height:"0" , border:" 2px solid #F5F5F5"}}></div>
