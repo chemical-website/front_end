@@ -119,16 +119,19 @@ function DownerPart() {
           slidesPerView: 4,
         },
         500: {
-          width: 768,
+          width:500,
           slidesPerView: 1,
         },
+        400: {
+          width:400
+        }
       }}
           slidesPerView={1} navigation={true} modules={[Navigation]} className='w-full'>
       
   
           {prdouctData.map((x) => {
             return(  
-              <SwiperSlide>
+              <SwiperSlide className="flex  justify-center w-full">
               <Cart x={x} />
         </SwiperSlide>
 

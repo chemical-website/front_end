@@ -1,6 +1,18 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { BaseRoot } from "../../baseRoot";
+import mailIcon from "../../assets/Icons/Mail outline.svg"
 
 const Footer = () => {
+    const [mahsollist , setMahsolList] = useState([])
+    useEffect(() => {
+        axios
+          .get(`${BaseRoot}store/collections/`)
+          .then(function (response) {
+            setMahsolList(response.data);
+          });
+      }, [mahsollist]);
     return (  
        <div className=" h-fit  md:h-60  md:pr-52 " style={{background: "#F5F5F5"  , color:"#7606B2" , width:"100%" , paddingTop:"2.38rem"}}>
         <div className="flex flex-col  justify-between items-center md:items-start">
@@ -55,30 +67,25 @@ const Footer = () => {
                     محصولات
                     </p></div>
                     <ul className=" pr-2 flex flex-col  justify-between items-start">
-                        <li style={{fontWeight:"500"}} className="text-base">
+                        {mahsollist.map(e => {
+                            if(e.id <= 4){
+                                return(
+                                    <li style={{fontWeight:"500"}} className="text-base">
                             <Link>
-                            مواد شیمایی
+                             {e.title}
                             </Link>
                         </li>
-                        <li style={{fontWeight:"500"}} className="text-base">
-                            <Link>
-                            مواد پلیمری
-                            </Link>
-                        </li>
-                        <li style={{fontWeight:"500"}} className="text-base">
-                            <Link>
-                            مواد دیگر
-                            </Link>
-                        </li>
-                        <li style={{fontWeight:"500"}} className="text-base">
-                            <Link>رندوم‌جات</Link>
-                        </li>
+                                )
+                            }
+                        })}                      
+                       
                     </ul>
                 </div>
                 <div className=" md:pl-40 flex flex-col  items-center md:items-start">
                     <p style={{fontWeight:"700"}} className="  text-xl ">خبرنامه</p>
                     <p style={{fontWeight:"500"}} className="text-base">با عضویت در خبرنامه از اخبار و ویژه‌برنامه‌ها خبردار شوید.</p>
-                    <div className="flex flex-row justify-between items-center">
+                    <div className="flex flex-row justify-between items-center relative">
+                        <img style={{position:"absolute" , left:"40px"}} src={mailIcon} />
                         <input style={{width:"14rem" , padding:"0.5rem" , height:"3rem" , color:"#7606B2" , borderRadius:"0.5rem"}} placeholder="ایمیل خود را وارد کنید" />
                         <div style={{background:"#8806CE" , width:"2.5rem" , height:"2.5rem" , borderRadius:"0.5rem" , padding:"0.5rem"}}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
