@@ -125,12 +125,12 @@ const AboutUsPage = () => {
           width:400
         }
       }}
-          slidesPerView={1}  navigation={true} pagination={true} modules={[Navigation , Pagination]} className='w-full h-96'>
+          slidesPerView={1}  navigation={true} pagination={true} modules={[Navigation , Pagination]} className='w-full h-80'>
       
   
           {listofUser.map((x) => {
             return(  
-              <SwiperSlide className="flex  justify-center w-3/4">
+              <SwiperSlide className="flex  justify-center">
               <UserCart x={x} />
         </SwiperSlide>
 
