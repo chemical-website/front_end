@@ -1,29 +1,40 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from "react";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
+import Flickity from "react-flickity-component";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
+import "swiper/css";
+import "swiper/css/navigation";
 
 // import required modules
-import { Navigation } from 'swiper/modules';
+import { Navigation } from "swiper/modules";
 
-export default function PicSlider({images}) {
-    const image = images
+export default function PicSlider({ images }) {
+  const flickityOptions = {
+    wrapAround: true,
+    autoPlay: 1500,
+    selectedAttraction: 0.01,
+    friction: 0.15
+  };
+  const image = images;
   return (
     <>
-      <Swiper navigation={true} modules={[Navigation]} className='w-full'>
-        {image.map(i=> {
-            return(
-                <SwiperSlide className='flex flex-row items-center'>
-            <div className='flex flex-row items-center justify-center'>
-                <img className=' w-64 h-56'  src={i.image} />
+      <Flickity
+        className={"carousel"} // default ''
+        elementType={"div"} // default 'div'
+        options={flickityOptions} // takes flickity options {}
+        disableImagesLoaded={false} // default false
+        cellAlign="center"
+      >
+        {image.map((i) => {
+          return (
+            <div className="flex flex-row items-center justify-center rounded-2xl">
+              <img className="w-full h-full rounded-2xl" src={i.image} />
             </div>
-        </SwiperSlide>
-            )
+          );
         })}
-      </Swiper>
+      </Flickity>
     </>
   );
 }

@@ -154,7 +154,7 @@
 
 .LeftBox {
   width: 75%;
-  height: 100%;
+  /* background-color: #3b0359; */
   z-index: 100;
 }
 
@@ -175,16 +175,17 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  height: 300px;
 }
 
 .SBox {
-  width: 86px;
   margin-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 6px;
   font-size: 20px;
-  margin-right: 10px;
+  /* margin-right: 10px; */
+  /* height: 100%; */
 }
 
 .SBox a {

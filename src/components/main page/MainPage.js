@@ -11,12 +11,16 @@ import {
 } from "@mui/material";
 import styles from "../cart/cart.style.module.css";
 import Order from "../../pages/product/order";
+import { motion } from "framer-motion";
+import { RxCross2 } from "react-icons/rx";
 
 function MainPage() {
   // let [openimahsolat, setopenopenimahsolat] = useState(0);
   // let [opensanat, setopenopensanat] = useState(0);
   // let [openiconmahsol, setopenopeniconmahsol] = useState(0);
   const [open, setOpen] = useState(0);
+  const [showRequestFormModal, setSHowRequestFormModal] = useState(false);
+  const [showRequestModal, setShowRequestModal] = useState(true);
   const [openModal, setOpenModal] = useState(true);
   const [openModal2, setOpenModal2] = useState(false);
   const [openModal3, setOpenModal3] = useState(false);
@@ -56,16 +60,86 @@ function MainPage() {
         <div className={mainpage.DownBox}>
           <DownerPart />
         </div>
-        <div className="flex items-center w-full justify-center mt-12 mb-7">
-          <div className="w-5/6">
-            <button
-              onClick={handleClickOpen2}
-              className="bg-blue-600 text-white p-3 rounded-lg"
+        {!showRequestFormModal ? (
+          <motion.div
+            className="fixed bottom-4 right-4 flex flex-col justify-center items-center gap-4 rounded-lg z-50 p-5 pt-2 customGlass"
+            initial={{ y: 200 }}
+            animate={{ y: 0 }}
+            transition={{
+              duration: 1,
+              delay: 1.5,
+              type: "spring",
+              stiffness: 120,
+            }}
+            style={{ fontSize: "20px" }}
+          >
+            <span
+              className="text-xl font-semibold"
+              style={{ color: "#3B0359" }}
             >
-              کمک میخوای
+              سلام دوست عزیز! نیاز به کمک دارید؟
+            </span>
+            <button
+              onClick={() => {
+                setSHowRequestFormModal(true);
+              }}
+              style={{ backgroundColor: "#8806CE" }}
+              className="w-3/4 rounded-lg py-2 text-gray-200 font-bold"
+            >
+              ایجاد درخواست
             </button>
-          </div>
-        </div>
+          </motion.div>
+        ) : showRequestModal ? (
+          <motion.div
+            className="fixed bottom-4 right-4 rounded-lg z-50 customGlass"
+            initial={{ y: 200 }}
+            animate={{ y: 0 }}
+            transition={{
+              duration: 1,
+              delay: 1.5,
+              type: "spring",
+              stiffness: 120,
+            }}
+          >
+            <div className="relative h-full w-full flex flex-col justify-center items-center gap-4 p-5 pt-2 rounded-lg">
+              <span
+                className="text-2xl font-semibold"
+                style={{ color: "#3B0359" }}
+              >
+                ثبت درخواست
+              </span>
+              <input
+                style={{ border: "2px solid #8806CE" }}
+                className="py-1 px-2 rounded-md shadow-md inputPlaceColorized"
+                placeholder="تلفن همراه"
+              />
+              <input
+                style={{ border: "2px solid #8806CE" }}
+                className="py-1 px-2 rounded-md shadow-md inputPlaceColorized"
+                placeholder="ایمیل"
+              />
+              <textarea
+                style={{ resize: "none", border: "2px solid #8806CE" }}
+                className="py-1 px-2 rounded-md shadow-md h-24 inputPlaceColorized"
+                placeholder="شرح درخواست"
+              />
+              <button
+                style={{ backgroundColor: "#8806CE" }}
+                className="w-full rounded-lg py-2 text-gray-200 font-bold"
+              >
+                ارسال
+              </button>
+              <div
+                onClick={() => {
+                  setShowRequestModal(false);
+                }}
+                className="absolute top-3 left-3 cursor-pointer"
+              >
+                <RxCross2 size={25} />
+              </div>
+            </div>
+          </motion.div>
+        ) : null}
         <Dialog
           open={openModal}
           keepMounted

@@ -9,6 +9,7 @@ import { BaseRoot } from "../../baseRoot";
 import ConfigSettingIcon from "../../assets/Icons/ConfigSearch.svg";
 import SearchIcon from "../../assets/Icons/Searchicon.svg";
 import ArrowLeftIcon from "../../assets/Icons/ArrowLeftIcon.svg";
+import { LuLogOut } from "react-icons/lu";
 
 function NavigationBar() {
   const [login, setLogin] = useState(false);
@@ -51,11 +52,12 @@ function NavigationBar() {
 
         <Link to={"/app"} className={navigationBar.topologo}>
           {/* <img /> */}
-          <i>
-            <BiImage />
-          </i>
           <h1>esme sherkat</h1>
-        </Link>
+            <i>
+              <BiImage size={35} />
+            </i>
+          </Link>
+
 
         {/* EMSE SHERKAT END */}
         {/* MENU START */}
@@ -179,7 +181,10 @@ function NavigationBar() {
               setLogin(false);
             }}
           >
-            <b>خروج</b>
+            <div className="flex flex-row gap-2 text-md font-bold justify-center items-center">
+              <LuLogOut size={25} />
+              خارج می‌شوید؟
+            </div>
           </Link>
         </div>
 

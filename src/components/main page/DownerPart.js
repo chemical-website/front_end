@@ -63,14 +63,14 @@ function DownerPart() {
     axios.get(`${BaseRoot}store/products/`, config).then(function (response) {
       setProductData(response.data);
     });
-  }, [y]);
+  }, []);
   useEffect(() => {
     axios
       .get(`${BaseRoot}store/collections/`, config)
       .then(function (response) {
         setCollections(response.data);
       });
-  }, [y]);
+  }, []);
   useEffect(() => {
     if (x === 1) {
       console.log("gih");
@@ -80,7 +80,7 @@ function DownerPart() {
           setProductData(response.data);
         });
     }
-  }, [x]);
+  }, []);
   return (
     <>
       <div className={mainpage.DownBBox}>
