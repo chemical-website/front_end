@@ -9,9 +9,7 @@ const clarifyPersianDate = (dateString) => {
     return ToPersianNumber(dateString.replaceAll("-", "/"))
 }
 
-const CommentCard = ({ e }) => {
-  console.log(e);
-  
+const CommentCard = ({ e }) => {  
   return (
     <div style={{ width: "28rem" }} className="h-28 mb-3 flex flex-col gap-2">
       <div className="flex flex-col">
