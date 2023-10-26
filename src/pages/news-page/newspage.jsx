@@ -217,7 +217,7 @@ const NewPage = () => {
           width:400
         }
       }}
-          slidesPerView={1}  navigation={true} pagination={true} modules={[Navigation , Pagination]} className='w-full'>
+          slidesPerView={1}  navigation={true} pagination={true} modules={[Navigation , Pagination]} className='w-full h-96'>
       
   
           {news.map((x) => {

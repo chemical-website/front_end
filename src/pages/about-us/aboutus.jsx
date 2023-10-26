@@ -75,12 +75,12 @@ const AboutUsPage = () => {
 
                 </div>
                 <div className="w-4/6">
-                <Swiper navigation={true} pagination={true} modules={[Navigation , Pagination]} className='w-full'>
+                <Swiper style={{ "--swiper-pagination-color": "#8806CE" ,"--swiper-navigation-color":"#8806CE"}}  navigation={true} pagination={true} modules={[Navigation , Pagination]} className='w-full h-96'>
                     {listImg.map(i=> {
                         return(
                             <SwiperSlide className='flex flex-row items-center'>
                         <div className='flex flex-row items-center justify-center'>
-                            <img className=' w-full  h-96'  src={i} alt="" />
+                            <img className=' w-full  h-80'  src={i} alt="" />
                         </div>
                     </SwiperSlide>
             )
@@ -112,7 +112,7 @@ const AboutUsPage = () => {
                   <div className=" flex flex-col justify-center items-center pt-24">
                   <p className="w-1/6  text-4xl pb-8 ">با تیم‌ما آشنا شوید</p>
                   <div className="w-4/6">
-                    <Swiper 
+                    <Swiper style={{ "--swiper-pagination-color": "#8806CE" ,"--swiper-navigation-color":"#8806CE"}} 
          breakpoints={{
         800: {
           slidesPerView: 4,
@@ -125,7 +125,7 @@ const AboutUsPage = () => {
           width:400
         }
       }}
-          slidesPerView={1}  navigation={true} pagination={true} modules={[Navigation , Pagination]} className='w-full'>
+          slidesPerView={1}  navigation={true} pagination={true} modules={[Navigation , Pagination]} className='w-full h-96'>
       
   
           {listofUser.map((x) => {

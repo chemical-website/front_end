@@ -30,7 +30,7 @@ export default function PicSlider({ images }) {
         {image.map((i) => {
           return (
             <div className="flex flex-row items-center justify-center rounded-2xl">
-              <img className="w-full h-full rounded-2xl" src={i.image} />
+              <img className="w-96  h-80 rounded-2xl" src={i.image} />
             </div>
           );
         })}
