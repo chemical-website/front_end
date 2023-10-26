@@ -79,7 +79,7 @@ export default function Cart({x}){
           return(
             <SwiperSlide>
             <div className='flex h-full flex-row items-center justify-center w-full'>
-               <img className=" w-full h-72" alt="" src={i["image"]} />
+               <img className=" w-full h-96" alt="" src={i["image"]} />
             </div>
         </SwiperSlide>
           )

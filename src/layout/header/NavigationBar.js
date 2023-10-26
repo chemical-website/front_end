@@ -49,13 +49,13 @@ function NavigationBar() {
       <header className={navigationBar.Header}>
         {/* EMSE SHERKAT START */}
 
-        <div className={navigationBar.topologo}>
+        <Link to={"/app"} className={navigationBar.topologo}>
           {/* <img /> */}
           <i>
             <BiImage />
           </i>
           <h1>esme sherkat</h1>
-        </div>
+        </Link>
 
         {/* EMSE SHERKAT END */}
         {/* MENU START */}
@@ -118,7 +118,7 @@ function NavigationBar() {
               </div>
             </div>
           </div>
-          <Link className={navigationBar.ItemsMenubox} to="/app/">
+          <Link className={navigationBar.ItemsMenubox} to="/app/aboutus">
             <b> درباره ما </b>
           </Link>
           <Link className={navigationBar.ItemsMenubox} to="/app/news">
