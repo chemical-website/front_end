@@ -187,8 +187,8 @@ const Product = () => {
         </div>
         <div style={{width:"80%" , height:"0" , border:" 2px solid #F5F5F5"}}></div>
         <div  className="flex flex-col justify-start items-start w-4/5">
-            <div  className="flex flex-row items-center justify-between  w-1/6">
-                <div style={{color: sectionState === 1 ? "#3B0359" : "#D184FB"}} className=" font-semibold text-3xl mx-4"
+            <div  className="flex flex-row items-center justify-between w-1/6 mt-5">
+                <div style={{color: sectionState === 1 ? "#3B0359" : "#D184FB"}} className=" font-semibold text-3xl mx-4 cursor-pointer"
                 onClick={()=>{
                     changeState(1)
                 }}>
@@ -197,7 +197,7 @@ const Product = () => {
                 <div>
                     /
                 </div>
-                <div style={{color: sectionState === 2 ? "#3B0359" : "#D184FB"}} className=" font-semibold text-3xl mx-4" onClick={()=>{
+                <div style={{color: sectionState === 2 ? "#3B0359" : "#D184FB"}} className=" font-semibold text-3xl mx-4 cursor-pointer" onClick={()=>{
                     changeState(2)
                 }}>
                 مشخصات
@@ -205,7 +205,7 @@ const Product = () => {
                 <div>
                 /
                 </div>
-                <div style={{color: sectionState === 3 ? "#3B0359" : "#D184FB"}} className=" font-semibold text-3xl mx-4" onClick={()=>{
+                <div style={{color: sectionState === 3 ? "#3B0359" : "#D184FB"}} className=" font-semibold text-3xl mx-4 cursor-pointer" onClick={()=>{
                     changeState(3)
                 }}>
                 نظرات

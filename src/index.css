@@ -21,6 +21,23 @@ code {
     monospace;
 }
 
+
+.inputPlaceColorized::placeholder {
+  color: blueviolet;
+  font-size: 20px;
+  font-weight: bold;
+  vertical-align: top;
+  text-align: start;
+}
+
+.inputPlaceColorized {
+  vertical-align: top;
+  text-align: start;
+  font-size: 20px;
+  direction: rtl;
+  
+}
+
 /* 
 .dialog{
   max-width: 60%;

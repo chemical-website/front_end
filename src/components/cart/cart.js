@@ -52,8 +52,8 @@ export default function Cart({x}){
       <div div className="w-full flex flex-col items-center">
   
               <div  className={styles.TopPartOfDownB} >
-                <div><img className=" h-48 w-60" src={x.images[0]["image"]}/> <div className={styles.LikeBox}><i onClick={copyToClipboard}><BsFillShareFill/></i></div></div>
-                <div className={styles.downPartt}><h3>{x.title}</h3><p className="  overflow-hidden h-10">{x.short_description}</p> <div className={styles.LinkSBox}><Link ><IoMdCall/>"تماس بگیرید"</Link><Link onClick={handleClickOpen}><MdOutlineOpenInNew/>"مشاهده کنید"</Link></div></div>
+                <div><img className="h-48 w-60 object-cover rounded-lg" src={x.images[0]["image"]}/> <div className={styles.LikeBox}><i onClick={copyToClipboard}><BsFillShareFill/></i></div></div>
+                <div className={styles.downPartt}><h3>{x.title}</h3><p className="overflow-hidden h-10">{x.short_description}</p> <div className={styles.LinkSBox}><Link ><IoMdCall size={25}/><span className="text-xl">تماس بگیرید</span></Link><Link onClick={handleClickOpen}><MdOutlineOpenInNew size={25}/><span className="text-lg">مشاهده</span></Link></div></div>
                 </div>
                 <div 
                 style={{overflowY:"visible"}}>
