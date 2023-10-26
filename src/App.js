@@ -8,6 +8,7 @@ import NewsPage from './pages/news/news';
 import SearchProducts from './pages/searchproduct/Searchproduct';
 import SearchCollections from './pages/searchcollections/searchcollections';
 import SearchIndustry from './pages/searchindustry/searchindustry';
+import AboutUsPage from './pages/about-us/aboutus';
 
 
 
@@ -32,6 +33,7 @@ function App() {
       <Route path='app/product/:id' element={<Product />} />
       <Route path='app/collections/search/:name' element={<SearchCollections />} />
       <Route path='app/industries/search/:name' element={<SearchIndustry />} />
+      <Route path='app/aboutus' element={<AboutUsPage />} />
       <Route path='app/news' element={<NewsPage />} />
       <Route path='app/s' element={<SignIn />} />refs/remotes/origin/main
     </Routes>
