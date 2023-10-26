@@ -1,23 +1,26 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Link, useParams } from "react-router-dom";
+import bgimg from "../../assets/img/Backdropkk Art.png"
+import PicSlider from "../product/picSlider";
+import NavigationBar from "../../layout/header/NavigationBar";
+import { Navigation, Pagination } from "swiper/modules";
+import img1 from "../../assets/img/Photo (1).png"
+import { SwiperSlide , Swiper } from "swiper/react";
+import { useEffect, useState } from "react";
+import copy from "copy-to-clipboard";
 import { MdOutlineOpenInNew } from "react-icons/md";
-import 'swiper/css';
-import 'swiper/css/navigation';
-import { BaseRoot } from '../../baseRoot';
-import { Navigation } from 'swiper/modules';
-import NavigationBar from '../../layout/header/NavigationBar';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { toast } from "react-toastify";
 import closePic from "../../assets/Icons/Close.svg"
-import { Dialog, DialogActions, DialogContent, DialogContentText } from '@mui/material';
-import copy from 'copy-to-clipboard';
+import { BaseRoot } from "../../baseRoot";
 import iconShow from "../../assets/Icons/Frame 19.png"
-import { toast } from 'react-toastify';
+import { Dialog, DialogActions, DialogContent, DialogContentText } from "@mui/material";
+import axios from "axios";
 
+const listofUser = [{"pic": img1 , "title" :"سرتیتر اسم محصول" , "text" : "زیرتیتر توضیح"} , {"pic": img1 , "title" :"سرتیتر اسم محصول" , "text" : "زیرتیتر توضیح"} ,{"pic": img1 , "title" :"سرتیتر اسم محصول" , "text" : "زیرتیتر توضیح"} ,{"pic": img1 , "title" :"سرتیتر اسم محصول" , "text" : "زیرتیتر توضیح"} ,{"pic": img1 , "title" :"سرتیتر اسم محصول" , "text" : "زیرتیتر توضیح"}]
+const listImg = [img1 , img1 , img1]
 const NewsCart = ({info})=> {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const copyToClipboard = () => {
-    let copyText = `http://154.91.170.238/app/news/${info.id}`;
+    let copyText = "http://154.91.170.238/app/news";
     let isCopy = copy(copyText);
     if (isCopy) {
       toast.success("Copied to Clipboard");
@@ -108,131 +111,128 @@ const NewsCart = ({info})=> {
     )
 }
 
-const NewsPage = () => {
-  const [news , setNews] = useState([]);
-  const [sort , setSort]  = useState(false);
-  const [collection , setCollections] = useState([])
-  const config = {
-    headers:{
-      Authorization: localStorage.getItem("token")
-    }
-  };
+const NewPage = () => {
+  const id = useParams();
+  const [info , setInfo] = useState({})
+  const [imag , setImag] = useState([])
+  const [news , setNews] = useState([])
   useEffect(()=>{
 
-    axios.get(`${BaseRoot}store/collections/` , config).then(
+    axios.get(`${BaseRoot}store/posts/${id.id}/`).then(
       function(response){
-        setCollections(response.data)
+        setInfo(response.data)
+        setImag(response.data["images"])
       }
     )
   },[])
   useEffect(()=>{
 
-    axios.get(`${BaseRoot}store/posts/` , config).then(
+    axios.get(`${BaseRoot}store/posts/`).then(
       function(response){
         setNews(response.data)
       }
     )
   },[])
-  useEffect(()=>{
-    if( sort == false){
-      setNews(news.sort((a,b) => a.id-b.id))
-    }
-    else {
-      setNews(news.sort((a,b) => b.id - a.id))
-    }
-  } , [sort])
     return ( 
-        <Fragment>
+        <div style={{color:"#3B0359"}}>
         <NavigationBar />
-        <div className="flex flex-col justify-start items-center">
-        <div className="w-5/6">
-        <div className="flex flex-row items-center justify-between  w-2/3 sm:w-1/3 md:w-1/5 mb-9 mb-9 mt-14" >
-        <div className=''>
+            {/* <div>
+                <img src={bgimg} alt="" />
+            </div> */}
+            <div className="flex flex-col items-center">
+            <div className=" w-4/5">
+            <div className="flex flex-row items-center justify-between w-2/3 sm:w-1/3 md:w-1/5 mb-9 mt-14" >
+        <div>
         <Link to={"/app"}>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <g clip-path="url(#clip0_26_272)">
-            <path d="M10 20V14H14V20H19V12H22L12 3L2 12H5V20H10Z" fill="#0C4957"/>
-            <path d="M10 20V14H14V20H19V12H22L12 3L2 12H5V20H10Z" fill="#3B0359"/>
-          </g>
-          <defs>
-            <clipPath id="clip0_26_272">
-              <rect width="24" height="24" fill="white"/>
-            </clipPath>
-          </defs>
-        </svg>
-        </Link>
+  <g clip-path="url(#clip0_26_272)">
+    <path d="M10 20V14H14V20H19V12H22L12 3L2 12H5V20H10Z" fill="#0C4957"/>
+    <path d="M10 20V14H14V20H19V12H22L12 3L2 12H5V20H10Z" fill="#3B0359"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_26_272">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>
+</Link>
         </div>
         <div>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <g clip-path="url(#clip0_26_281)">
-            <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z" fill="#1892AD"/>
-            <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z" fill="#7606B2"/>
-          </g>
-          <defs>
-            <clipPath id="clip0_26_281">
-              <rect width="24" height="24" fill="white"/>
-            </clipPath>
-          </defs>
-        </svg>
+  <g clip-path="url(#clip0_26_281)">
+    <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z" fill="#1892AD"/>
+    <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z" fill="#7606B2"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_26_281">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>
         </div>
         <div>
-        اخبار
+       {info.title}
         </div>
+       
         <div>
         </div>
         </div>
-              </div>
-              <div className="w-5/6 flex flex-row justify-end items-center">
+            </div>
+            </div>
+            <div className=" flex flex-col items-center">
+            <div  className=" text-4xl  pb-16">
+                {info.title}
+            </div>
+                <div className=" w-4/6 text-lg pb-16">
+                {info.content}
+                </div>
+                <div className="w-4/6">
+                <Swiper navigation={true} pagination={true} modules={[Navigation , Pagination]} className='w-full'>
+                    {imag.map(i=> {
+                        return(
+                            <SwiperSlide className='flex flex-row items-center'>
+                        <div className='flex flex-row items-center justify-center'>
+                            <img className=' w-full  h-96'  src={i.image} alt="" />
+                        </div>
+                    </SwiperSlide>
+            )
+        })}
+      </Swiper>
+            </div>
             
-                <div className="flex flex-row justify-between items-center w-1/6">
-                  <div>{news.length}محصول</div>
-                  <div style={{border:"1.5px solid #7606B2" , borderRadius:"0.5rem" , padding:"0rem 0.625rem 0rem 0.5rem"}}  className="flex flex-row justify-between items-center">
-                    <div>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                          <g clip-path="url(#clip0_442_1378)">
-                            <path d="M16 17.01V10H14V17.01H11L15 21L19 17.01H16ZM9 3L5 6.99H8V14H10V6.99H13L9 3Z" fill="#1892AD"/>
-                            <path d="M16 17.01V10H14V17.01H11L15 21L19 17.01H16ZM9 3L5 6.99H8V14H10V6.99H13L9 3Z" fill="#7606B2"/>
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_442_1378">
-                              <rect width="24" height="24" fill="white"/>
-                            </clipPath>
-                          </defs>
-                        </svg>
-                    </div>
-                    <p className=" text-xs md:text-base">تاریخ انتشار</p>
-                    <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M7 10L12 15L17 10H7Z" fill="#1892AD"/>
-                        <path d="M7 10L12 15L17 10H7Z" fill="#7606B2"/>
-                      </svg>
+            </div>
+                  <div className=" flex flex-col justify-center items-center pt-24">
+                  <p className="w-1/6  text-4xl pb-8 ">دیگر اخبار</p>
+                  <div className="w-4/6">
+                    <Swiper 
+         breakpoints={{
+        800: {
+          slidesPerView: 4,
+        },
+        500: {
+          width:500,
+          slidesPerView: 1,
+        },
+        400: {
+          width:400
+        }
+      }}
+          slidesPerView={1}  navigation={true} pagination={true} modules={[Navigation , Pagination]} className='w-full'>
+      
+  
+          {news.map((x) => {
+            return(  
+              <SwiperSlide className="flex  justify-center w-3/4">
+              <NewsCart info={x} />
+        </SwiperSlide>
+
+          )})}
+          </Swiper>
                     </div>
                   </div>
-                </div>
-              </div>
-            <div className='flex w-4/5 flex-row justify-between items-start mt-12'>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-2/5  md:w-1/5">
-            
-              {collection.map(e=>{
-                return(
-                  <Link to={`/app/collections/search/${e.title}`} style={{padding:" 0.1875rem 0.375rem" , background:"#F7EBFE" , borderRadius:"0.25rem"}}>{e.title}</Link>
-                )
-              })}
-            </div>
-              <div className='mt-8 w-4/5'>
-      <div className='grid grid-cols-2 w-full'>
-      {news.map(e=> {
-        return(
-          <NewsCart info={e} />
-        )
-      })}
-      </div>
+                  
         </div>
-        </div>
-        </div>
-        </Fragment>
-    
      );
 }
  
-export default NewsPage;
+export default NewPage;

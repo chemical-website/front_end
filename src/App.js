@@ -9,6 +9,7 @@ import SearchProducts from './pages/searchproduct/Searchproduct';
 import SearchCollections from './pages/searchcollections/searchcollections';
 import SearchIndustry from './pages/searchindustry/searchindustry';
 import AboutUsPage from './pages/about-us/aboutus';
+import NewPage from './pages/news-page/newspage';
 
 
 
@@ -30,6 +31,7 @@ function App() {
       <Route path='app/' element={<LandingPage />} />
       <Route path='app/products' element={<Products />} />
       <Route path='app/products/search/:name' element={<SearchProducts />} />
+      <Route path='app/news/:id' element={<NewPage />}  />
       <Route path='app/product/:id' element={<Product />} />
       <Route path='app/collections/search/:name' element={<SearchCollections />} />
       <Route path='app/industries/search/:name' element={<SearchIndustry />} />
