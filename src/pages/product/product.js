@@ -166,11 +166,11 @@ const Product = () => {
           </div>
         </div>
 
-        <div className=" flex flex-col w-full md:flex-row items-start justify-between md:w-4/5 mb-12">
-          <div className="w-1/3 flex justify-center flex-col items-first">
+        <div className=" flex flex-col w-full lg:flex-row lg:items-start gap-7 lg:gap-0 items-center justify-between lg:w-4/5 mb-12">
+          <div className="w-8/12 lg:w-1/3 flex justify-center flex-col items-first">
             <PicSlider images={images} />
           </div>
-          <div className="w-4/5 md:w-1/3 flex flex-col h-full">
+          <div className="w-4/5 lg:w-1/3 flex flex-col h-full">
             <h3 className="font-bold text-3xl">{info.title}</h3>
             <p className="  font-medium text-lg mb-10">
               {info.short_description}
@@ -185,12 +185,10 @@ const Product = () => {
             <div
               style={{
                 background: "#F7EBFE",
-                width: "60%",
                 borderRadius: "1.3rem",
-                paddingInline: "1.4rem",
-                paddingBlock: "1.2rem",
                 color: "#7606B2",
               }}
+              className="p-5 w-3/5 max-xl:w-4/5 max-lg:w-full"
             >
               <div className="flex flex-row items-center justify-between">
                 <div className="flex flex-row items-center justify-between  w-1/2">
@@ -225,7 +223,7 @@ const Product = () => {
                 </div>
               </div>
             </div>
-            <div style={{ width: "60%" }} onClick={handleClickOpen}>
+            <div className="w-3/5 max-xl:w-4/5 max-lg:w-full" onClick={handleClickOpen}>
               <button
                 style={{
                   background: "#8806CE",
@@ -241,7 +239,7 @@ const Product = () => {
                 ثبت درخواست
               </button>
             </div>
-            <div className=" grid grid-cols-3 w-3/5 gap-3 mt-5">
+            <div className=" grid grid-cols-3 w-3/5 max-xl:w-4/5 max-lg:w-full gap-3 mt-5">
               {tags.map((e) => {
                 return (
                   <div
@@ -259,7 +257,7 @@ const Product = () => {
           style={{ width: "80%", height: "0", border: " 2px solid #F5F5F5" }}
         ></div>
         <div className="flex flex-col justify-start items-start w-4/5">
-          <div className="flex flex-row items-center justify-between w-1/6 mt-5">
+          <div className="flex flex-col md:flex-row justify-center md:w-auto w-full items-center md:justify-between w-1/6 mt-5">
             <div
               style={{ color: sectionState === 1 ? "#3B0359" : "#D184FB" }}
               className=" font-semibold text-3xl mx-4 cursor-pointer"
@@ -290,17 +288,17 @@ const Product = () => {
               نظرات
             </div>
           </div>
-          <div style={{ display: sectionState === 1 ? "flex" : "none" }}>
+          <div className="h-fit mb-5" style={{ display: sectionState === 1 ? "flex" : "none" }}>
             <Additional text={info.description} />
           </div>
           <div
-            className="w-full"
+            className="w-full h-fit mb-5"
             style={{ display: sectionState === 2 ? "flex" : "none" }}
           >
             <Property prop={prop} />
           </div>
           <div
-            className="w-full"
+            className="w-full h-fit mb-5"
             style={{ display: sectionState === 3 ? "flex" : "none" }}
           >
             <Comment id={id} />

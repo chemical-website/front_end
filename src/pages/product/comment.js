@@ -99,10 +99,9 @@ const Comment = ({ id }) => {
   return (
     <div className="mt-9 w-full">
       <div
-        className="flex flex-col md:flex-row justify-center items-center w-full"
-        style={{height: "130px"}}
+        className="flex flex-col md:flex-row justify-center items-center md:items-end w-full h-fit p-5"
       >
-        <div className="flex flex-col-reverse justify-between items-start w-72 h-full">
+        <div className="flex flex-col-reverse justify-center md:justify-between md:items-start items-center w-72">
           <input
             onChange={(e) => {
               setInfo(e.target.value);
@@ -111,12 +110,11 @@ const Comment = ({ id }) => {
               background: "#F7EBFE",
               borderRadius: "0.5rem",
               marginTop: "1rem",
-              padding: " 0rem 0.625rem",
+              padding: "0.625rem",
               width: "100%",
-              height: "42%",
             }}
             placeholder="نام و نام‌خانوادگی"
-            className="inputPlaceColorized"
+            className="inputPlaceColorized py-3"
           />
           <input
             onChange={(e) => {
@@ -125,33 +123,31 @@ const Comment = ({ id }) => {
             style={{
               background: "#F7EBFE",
               borderRadius: "0.5rem",
-              padding: " 0rem 0.625rem",
+              padding: "0.625rem",
               width: "100%",
-              height: "42%",
             }}
             placeholder="ایمیل"
-            className="inputPlaceColorized"
+            className="inputPlaceColorized py-3"
           />
         </div>
-        <div className="items-center md:w-2/3 w-72 h-full">
+        <div className="items-center md:w-2/3 w-72 md:h-28">
           <div className="flex flex-row justify-center w-full h-full">
             <textarea
               onChange={(e) => {
                 setNewComment(e.target.value);
               }}
-              className="w-full mt-4 md:mt-0 md:mx-4 inputPlaceColorized text-xl"
+              className="w-full mt-4 md:mt-0 md:mx-4 inputPlaceColorized h-full text-xl"
               style={{
                 background: "#F7EBFE",
                 borderRadius: "0.5rem",
                 padding: "0.625rem 0.625rem",
-                height: "100%",
                 resize: "none",
               }}
               placeholder="ثبت نظر"
             />
           </div>
         </div>
-        <div className="flex flex-col justify-end items-start w-40 h-full">
+        <div className="flex flex-col mt-4  md:mt-0 justify-end items-start w-40 h-full">
           {/* <div className="flex flex-row justify-between items-center w-full">
                         <input type="checkbox" />
                         <p>اطلاعات‌ من را نمایش بده</p>
