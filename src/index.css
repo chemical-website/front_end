@@ -20,6 +20,14 @@ code {
   text-align: start;
 }
 
+.customGlass {
+  backdrop-filter: blur(13.4px);
+  -webkit-backdrop-filter: blur(13.4px);
+  border: 1px solid rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 50px 0px rgba(237, 250, 253, 0.25) inset,
+    1px 4px 15px 0px rgba(0, 0, 0, 0.12);
+}
+
 .inputPlaceColorized {
   vertical-align: top;
   text-align: start;
