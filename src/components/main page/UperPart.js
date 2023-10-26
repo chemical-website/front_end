@@ -31,17 +31,17 @@ function MainPage() {
       .then(function (response) {
         setMahsolatData(response.data);
       });
-  }, [openimahsolat]);
+  }, []);
   useEffect(() => {
     axios.get(`${BaseRoot}store/products/`, config).then(function (response) {
       setMahsolat(response.data);
     });
-  }, [openiconmahsol]);
+  }, []);
   useEffect(() => {
     axios.get(`${BaseRoot}store/industries/`, config).then(function (response) {
       setIndustry(response.data);
     });
-  }, [opensanat]);
+  }, []);
   function DastebandiSearch() {
     if (openimahsolat === 1) {
       setopenopenimahsolat(0);
@@ -72,7 +72,7 @@ function MainPage() {
 
   return (
     <>
-      <h1 className=" hidden md:block">شرکت تولید کننده پلیمر صنعتی تهران</h1>
+      {/* <h1 className=" hidden md:block">شرکت تولید کننده پلیمر صنعتی تهران</h1> */}
 
       <div className={mainpage.SearchBox}>
         <button className={mainpage.Chosdastebandi} onClick={DastebandiSearch}>

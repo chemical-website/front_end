@@ -40,7 +40,14 @@ export default function Cart({x}){
     let copyText = `http://154.91.170.238/app/product/${x.id}`;
     let isCopy = copy(copyText);
     if (isCopy) {
-      toast.success("کپی شد");
+      toast.success("کپی شد", {
+        style: {
+          textAlign: "start",
+          direction: "rtl",
+          fontFamily: "Markazi Text",
+          fontSize: "20px",
+        },
+      });
     }
   };
 

@@ -13,7 +13,7 @@ const Footer = () => {
           .then(function (response) {
             setMahsolList(response.data);
           });
-      }, [mahsollist]);
+      }, []);
     return (  
        <div className=" h-fit  md:h-60  md:pr-52 " style={{background: "#F5F5F5"  , color:"#7606B2" , width:"100%" , paddingTop:"2.38rem"}}>
         <div className="flex flex-col  justify-between items-center md:items-start">

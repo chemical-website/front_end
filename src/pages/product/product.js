@@ -241,12 +241,12 @@ const Product = () => {
                 ثبت درخواست
               </button>
             </div>
-            <div className=" grid grid-cols-3 w-4/5  gap-3 mt-5">
+            <div className=" grid grid-cols-3 w-3/5 gap-3 mt-5">
               {tags.map((e) => {
                 return (
                   <div
                     style={{ background: "#F7EBFE", color: "#3B0359" }}
-                    className=" p-2 rounded-lg text-center text-base "
+                    className="p-4 py-1 rounded-md text-center font-bold text-base flex flex-row justify-center"
                   >
                     {e.tag.title}
                   </div>

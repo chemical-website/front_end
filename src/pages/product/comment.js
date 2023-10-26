@@ -69,9 +69,17 @@ const Comment = ({ id }) => {
         setNewComment("");
         setEmail("");
         setInfo("");
+        toast.success("کامنت شما ارسال شد.", {
+          style: {
+            textAlign: "start",
+            direction: "rtl",
+            fontFamily: "Markazi Text",
+            fontSize: "20px",
+          },
+        });
       })
       .catch(function (error) {
-        toast.warning("email is incorrect or comment is null");
+        toast.warning("ایمیل غلط و یا داده‌ای را ارسال نکرده‌اید");
       });
     axios
       .get(`${BaseRoot}store/products/${id}/reviews/`, config)
@@ -91,8 +99,8 @@ const Comment = ({ id }) => {
   return (
     <div className="mt-9 w-full">
       <div
-        className="flex flex-col md:flex-row justify-center items-center w-full h-1/2"
-        style={comment.length === 0 ? { height: "100%" } : {}}
+        className="flex flex-col md:flex-row justify-center items-center w-full"
+        style={{height: "130px"}}
       >
         <div className="flex flex-col-reverse justify-between items-start w-72 h-full">
           <input
