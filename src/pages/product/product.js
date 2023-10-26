@@ -132,7 +132,7 @@ const Product = () => {
         </div>
 
         <div className=" flex flex-col w-full md:flex-row items-center justify-between md:w-4/5 mb-12">
-            <div className=" w-1/3 flex justify-center flex-col items-first">
+            <div className="w-1/3 flex justify-center flex-col items-first">
             <PicSlider images={images} />
             </div>
             <div className="w-4/5  md:w-1/3">
@@ -216,7 +216,7 @@ const Product = () => {
             <div style={{display:sectionState===1?"flex":"none"}}>
                 <Additional text={info.description} />
             </div>
-            <div  style={{display: sectionState ===2?"flex" : "none"}}>
+            <div className="w-full"  style={{display: sectionState ===2?"flex" : "none"}}>
                 <Property prop={prop} />
             </div>
             <div className="w-full"  style={{display: sectionState ===3?"flex" : "none"}}>

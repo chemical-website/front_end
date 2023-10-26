@@ -18,9 +18,9 @@ const CommentCard = ({ e }) => {
         <p style={{ color: "#3B0359" }} className=" font-semibold text-lg">
           {e.name}
         </p>
-        <div className=" flex flex-row justify-between items-center w-8/12 ">
+        <div className=" flex flex-row justify-start gap-3 items-center w-8/12 ">
           <div>
-            <p style={{ color: "#8806CE" }} className=" font-normal text-base">
+            <p style={{ color: "#8806CE" }} className=" font-normal text-lg">
               {e.email}
             </p>
           </div>
