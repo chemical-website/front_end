@@ -5,60 +5,6 @@ import NavigationBar from "../../layout/header/NavigationBar";
 import axios from "axios";
 import { BaseRoot } from "../../baseRoot";
 import { Link } from "react-router-dom";
-// let  MahsolatList =[
-//     {image: ax ,
-//     titr: "سرتیتر اسم",
-//     tozihat: "یه سری متن ",
-//     tamas :"تماس بگیرید",
-//     moshahede:"مشاهده کنید"
-//   },
-//   {image: ax ,
-//     titr: "سرتیتر اسم",
-//     tozihat: "یه سری متن ",
-//     tamas :"تماس بگیرید",
-//     moshahede:"مشاهده کنید"
-//   },
-//   {image: ax ,
-//     titr: "سرتیتر اسم",
-//     tozihat: "یه سری متن ",
-//     tamas :"تماس بگیرید",
-//     moshahede:"مشاهده کنید"
-//   },
-//   {image: ax ,
-//     titr: "سرتیتر اسم",
-//     tozihat: "یه سری متن ",
-//     tamas :"تماس بگیرید",
-//     moshahede:"مشاهده کنید"
-//   },
-//   {image: ax ,
-//     titr: "سرتیتر اسم",
-//     tozihat: "یه سری متن ",
-//     tamas :"تماس بگیرید",
-//     moshahede:"مشاهده کنید"
-//   },
-//   {image: ax ,
-//     titr: "سرتیتر اسم",
-//     tozihat: "یه سری متن ",
-//     tamas :"تماس بگیرید",
-//     moshahede:"مشاهده کنید"
-//   },
-//   {image: ax ,
-//     titr: "سرتیتر اسم",
-//     tozihat: "یه سری متن ",
-//     tamas :"تماس بگیرید",
-//     moshahede:"مشاهده کنید"
-//   },
-//   {image: ax ,
-//     titr: "سرتیتر اسم",
-//     tozihat: "یه سری متن ",
-//     tamas :"تماس بگیرید",
-//     moshahede:"مشاهده کنید"
-//   },
- 
- 
-//   ]
-
-
 const Products = () => {
   const [prdouctData , setProductData] = useState([])
   const [collections , setCollections] = useState([])
@@ -173,7 +119,7 @@ const Products = () => {
               })
             }
             </div>
-            <div className=" grid grid-cols-4 w-4/5">
+            <div className=" grid grid-cols-4 w-5/6">
             {
                 prdouctData.map(e=>{
                     return(

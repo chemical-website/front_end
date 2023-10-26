@@ -3,8 +3,8 @@ import signin from "../../components/main page/signin.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { BaseRoot } from "../../baseRoot";
 import axios from "axios";
-import { IoExitSharp } from "react-icons/io5";
-import { IoExit } from "react-icons/io5";
+import closeIcon from "../../assets/Icons/Close.svg"
+
 
 const Order = ({id , func}) => {
     const [open, setOpen] =useState(false);
@@ -35,10 +35,9 @@ const Order = ({id , func}) => {
       }
     return ( 
         <div>
-        <div className={signin.BackBox}>
-          <div className={signin.BigBox}>
+          <div style={{marginTop:"0"}} className={signin.BigBox}>
           <div className=" self-end" onClick={func}>
-          <IoExit />
+          <img alt=""  src={closeIcon} />
           </div>
             <div className={signin.TopButton}>
 
@@ -77,7 +76,6 @@ const Order = ({id , func}) => {
       
           </div>
         </div>
-      </div>
       </div>
      );
 }

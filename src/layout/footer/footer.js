@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BaseRoot } from "../../baseRoot";
 import mailIcon from "../../assets/Icons/Mail outline.svg"
+import styles from "./footer.module.css"
 
 const Footer = () => {
     const [mahsollist , setMahsolList] = useState([])
