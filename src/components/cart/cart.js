@@ -84,7 +84,7 @@ export default function Cart({x}){
                 <Swiper style={{ "--swiper-pagination-color": "#8806CE" ,"--swiper-navigation-color":"#8806CE"}} navigation={true} pagination={true} modules={[Navigation ,Pagination]} className='w-full flex items-center  h-96'>
         {x.images.map(i=>{
           return(
-            <SwiperSlide>
+            <SwiperSlide className=" px-12">
             <div className='flex h-full flex-row items-center justify-center w-full'>
                <img className=" w-full h-80" alt="" src={i["image"]} />
             </div>

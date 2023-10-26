@@ -75,11 +75,11 @@ const AboutUsPage = () => {
 
                 </div>
                 <div className="w-4/6">
-                <Swiper style={{ "--swiper-pagination-color": "#8806CE" ,"--swiper-navigation-color":"#8806CE"}}  navigation={true} pagination={true} modules={[Navigation , Pagination]} className='w-full h-96'>
+                <Swiper style={{ "--swiper-pagination-color": "#8806CE" ,"--swiper-navigation-color":"#8806CE"}}  navigation={true} pagination={true} modules={[Navigation , Pagination]} className='w-full h-80'>
                     {listImg.map(i=> {
                         return(
                             <SwiperSlide className='flex flex-row items-center'>
-                        <div className='flex flex-row items-center justify-center'>
+                        <div className='flex flex-row items-center justify-center px-10 '>
                             <img className=' w-full  h-80'  src={i} alt="" />
                         </div>
                     </SwiperSlide>
@@ -111,7 +111,7 @@ const AboutUsPage = () => {
             </div>
                   <div className=" flex flex-col justify-center items-center pt-24">
                   <p className="w-1/6  text-4xl pb-8 ">با تیم‌ما آشنا شوید</p>
-                  <div className="w-4/6">
+                  <div className="w-5/6">
                     <Swiper style={{ "--swiper-pagination-color": "#8806CE" ,"--swiper-navigation-color":"#8806CE"}} 
          breakpoints={{
         800: {
@@ -125,12 +125,12 @@ const AboutUsPage = () => {
           width:400
         }
       }}
-          slidesPerView={1}  navigation={true} pagination={true} modules={[Navigation , Pagination]} className='w-full h-80'>
+          slidesPerView={1}  navigation={true} pagination={true} modules={[Navigation , Pagination]} className='w-full '>
       
   
           {listofUser.map((x) => {
             return(  
-              <SwiperSlide className="flex  justify-center">
+              <SwiperSlide className="flex  justify-center my-10 px-12">
               <UserCart x={x} />
         </SwiperSlide>
 

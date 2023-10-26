@@ -191,7 +191,7 @@ const NewPage = () => {
                     {imag.map(i=> {
                         return(
                             <SwiperSlide className='flex flex-row items-center'>
-                        <div className='flex flex-row items-center justify-center'>
+                        <div className='flex flex-row items-center justify-center  px-10'>
                             <img className=' w-full  h-96'  src={i.image} alt="" />
                         </div>
                     </SwiperSlide>
@@ -203,7 +203,7 @@ const NewPage = () => {
             </div>
                   <div className=" flex flex-col justify-center items-center pt-24">
                   <p className="w-1/6  text-4xl pb-8 ">دیگر اخبار</p>
-                  <div className="w-4/6">
+                  <div className="w-5/6">
                     <Swiper 
          breakpoints={{
         800: {
@@ -222,7 +222,7 @@ const NewPage = () => {
   
           {news.map((x) => {
             return(  
-              <SwiperSlide className="flex  justify-center w-3/4">
+              <SwiperSlide className="flex  justify-center my-10 px-12">
               <NewsCart info={x} />
         </SwiperSlide>
 
