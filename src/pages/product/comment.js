@@ -130,7 +130,7 @@ const Comment = ({ id }) => {
         </div>
         <div className="items-center md:w-2/3 w-72 md:h-28">
           <div className="flex flex-row justify-center w-full h-full">
-            <textarea
+            <textarea maxLength={500}
               onChange={(e) => {
                 setNewComment(e.target.value);
               }}
