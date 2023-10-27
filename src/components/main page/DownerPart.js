@@ -115,15 +115,29 @@ function DownerPart() {
         </div>
         <Swiper 
          breakpoints={{
+        1000:{
+          width:1000,
+          slidesPerView:4
+        },
         800: {
-          slidesPerView: 4,
+          width:800,
+          slidesPerView: 2,
+        },
+        700:{
+          width:700,
+          slidesPerView:2
+        },
+        600:{
+          width:600,
+          slidesPerView:2
         },
         500: {
           width:500,
           slidesPerView: 1,
         },
         400: {
-          width:400
+          width:400,
+          slidesPerView:1
         }
       }}
           slidesPerView={1} navigation={true} modules={[Navigation]} className='w-full'>

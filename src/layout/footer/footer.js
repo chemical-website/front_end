@@ -15,7 +15,7 @@ const Footer = () => {
           });
       }, []);
     return (  
-       <div className=" h-fit  md:h-60  md:pr-52 " style={{background: "#F5F5F5"  , color:"#7606B2" , width:"100%" , paddingTop:"2.38rem"}}>
+       <div className=" h-fit  lg:h-60  lg:pr-52 " style={{background: "#F5F5F5"  , color:"#7606B2" , width:"100%" , paddingTop:"2.38rem"}}>
         <div className="flex flex-col  justify-between items-center md:items-start">
             <div className=" flex  md:flex-row flex-col  justify-between items-center  md:items-start  w-full">
                 <div className=" flex flex-col  justify-between items-start">
@@ -82,7 +82,7 @@ const Footer = () => {
                        
                     </ul>
                 </div>
-                <div className=" md:pl-40 flex flex-col  items-center md:items-start">
+                <div className=" md:pl-20 lg:pl-40 flex flex-col  items-center md:items-start">
                     <p style={{fontWeight:"700"}} className="  text-xl ">خبرنامه</p>
                     <p style={{fontWeight:"500"}} className="text-base">با عضویت در خبرنامه از اخبار و ویژه‌برنامه‌ها خبردار شوید.</p>
                     <div className="flex flex-row justify-between items-center gap-2">
