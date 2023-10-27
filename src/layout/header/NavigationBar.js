@@ -148,7 +148,7 @@ function NavigationBar() {
                 animate={{opacity: 1, y: 0}}
                 transition={{duration: 0.1}}
                 exit={{opacity: 0, y: -300}}
-                className="absolute top-16 bg-slate-100 flex flex-col p-5 gap-4 w-full shadow-md z-50">
+                className="absolute top-16 bg-slate-100 flex flex-col p-5 gap-4 w-full shadow-md z-50 ms-5">
                 <div className="w-full flex flex-row justify-center text-lg font-semibold">
                   محصولات
                 </div>
