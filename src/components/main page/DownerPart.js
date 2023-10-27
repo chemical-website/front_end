@@ -117,7 +117,7 @@ function DownerPart() {
          breakpoints={{
         1000:{
           width:1000,
-          slidesPerView:4
+          slidesPerView:3
         },
         800: {
           width:800,
