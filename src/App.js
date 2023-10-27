@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 import LandingPage from "./pages/landing/landing";
 import Products from "./pages/products/products";
 import Product from "./pages/product/product";
@@ -14,7 +14,7 @@ import { useModal } from "./context/ModalContext";
 import PicSlider from "./pages/product/picSlider";
 import { useWindowSize } from "@uidotdev/usehooks";
 import { RxCross2 } from "react-icons/rx";
-import SeeMoreIcon from "./assets/Icons/SeeMore.svg"
+import SeeMoreIcon from "./assets/Icons/SeeMore.svg";
 
 function Error404() {
   return (
@@ -53,21 +53,37 @@ function App() {
         <div
           className="w-screen h-screen fixed left-0 top-0 right-0 m-auto overflow-auto z-40 shadow-md"
           style={{ backgroundColor: "rgba(0,0,0,0.4)" }}
-          onClick={() => {closeModal()}}
+          onClick={() => {
+            closeModal();
+          }}
         >
           <div className="w-full h-full flex flex-col justify-center items-center">
             <div
               className="bg-slate-50 rounded-2xl shadow-lg px-5 relative z-50"
-              style={{ height: height / 2, width: width / 2 }}
-              onClick={() => {}}
+              style={
+                width > 1024
+                  ? { height: height / 2, width: width / 2 }
+                  : width > 500
+                  ? {
+                      height: height - 100,
+                      width: width - width / 3,
+                    }
+                  : { height: height - 100 , width: width - 50 }
+              }
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
             >
-              <div className="flex flex-row">
-                <div className="w-1/3 relative" style={{ height: height / 2 }}>
+              <div className="flex flex-col lg:flex-row">
+                <div
+                  className="w-1/2 max-lg:w-full relative"
+                  style={{ height: height / 2 }}
+                >
                   <div className="flex flex-col h-full justify-center">
                     <PicSlider images={modalData.images} />
                   </div>
                 </div>
-                <div className="w-2/3 overflow-auto flex flex-col justify-center items-start text-justify">
+                <div className="w-1/2 max-lg:w-full overflow-auto flex flex-col justify-center items-start text-justify">
                   <div className="flex flex-col gap-1 p-5 h-fit">
                     <span className="text-2xl font-bold">
                       {modalData.title}
@@ -76,8 +92,8 @@ function App() {
                       {modalData.short_description}
                     </span>
                     <span className="mt-4">
-                      {modalData.description.length > 500
-                        ? modalData.description.substring(0, 500) +
+                      {modalData.description.length > 160
+                        ? modalData.description.substring(0, 160) +
                           " [برای ادامه کلیک کنید]"
                         : modalData.description}
                     </span>
@@ -96,14 +112,26 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className="absolute top-5 left-5">
-                <RxCross2 size={25}/>
+              <div
+                className="absolute top-5 left-5 cursor-pointer"
+                onClick={() => {
+                  closeModal();
+                }}
+              >
+                <RxCross2 size={25} />
               </div>
               <div
-              className="w-fit flex flex-row justify-center items-center p-5 absolute -left-7 -bottom-7 cursor-pointer"
-              style={{backgroundColor: "#3B0359", borderRadius: "50%"}}
+                className="w-fit flex flex-row justify-center items-center p-5 absolute -left-7 -bottom-7 cursor-pointer"
+                style={{ backgroundColor: "#3B0359", borderRadius: "50%" }}
               >
-                <img src={SeeMoreIcon} alt="seeMore"/>
+                <Link
+                  to={`/app/product/${modalData.id}`}
+                  onClick={() => {
+                    closeModal();
+                  }}
+                >
+                  <img src={SeeMoreIcon} alt="seeMore" />
+                </Link>
               </div>
             </div>
           </div>
