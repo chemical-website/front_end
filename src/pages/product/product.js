@@ -23,6 +23,7 @@ import copy from "copy-to-clipboard";
 import { toast } from "react-toastify";
 import { Dialog } from "@mui/material";
 import Order from "./order";
+import { FiHeart } from "react-icons/fi"
 
 const Product = () => {
   const { id } = useParams();
@@ -194,6 +195,9 @@ const Product = () => {
                 <div className="flex flex-row items-center justify-between  w-1/2">
                   <div onClick={copyToClipboard} className="cursor-pointer">
                     <BsFillShareFill size={25} />
+                  </div>
+                  <div onClick={() => {toast("Liked.")}} className="cursor-pointer">
+                    <FiHeart size={25} />
                   </div>
                 </div>
                 <div
