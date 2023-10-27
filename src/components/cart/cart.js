@@ -1,17 +1,15 @@
 import styles from "./cart.style.module.css";
-import ax from "../../assets/img/Photo.png";
-import closePic from "../../assets/Icons/Close.svg";
 import { IoMdCall } from "react-icons/io";
 import { MdOutlineOpenInNew } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { BsFillShareFill } from "react-icons/bs";
 import React, { useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import iconShow from "../../assets/Icons/Frame 19.png";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { FiHeart } from "react-icons/fi"
+import { FiHeart } from "react-icons/fi";
+import PicSlider from "../../pages/product/picSlider";
+import { useModal } from "../../context/ModalContext";
 
 // import required modules
 import { Navigation, Pagination } from "swiper/modules";
@@ -32,8 +30,10 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function Cart({ x }) {
   const [open, setOpen] = React.useState(false);
-  const handleClickOpen = () => {
-    setOpen(true);
+  const { isModalOpen, openModal, closeModal } = useModal();
+
+  const handleClickOpen = (data) => {
+    openModal(data);
   };
   const copyToClipboard = () => {
     let copyText = `http://154.91.170.238/app/product/${x.id}`;
@@ -51,7 +51,7 @@ export default function Cart({ x }) {
   };
 
   const handleClose = () => {
-    setOpen(false);
+    closeModal();
   };
   let link = `/app/product/${x.id}`;
   return (
@@ -63,11 +63,11 @@ export default function Cart({ x }) {
             src={x.images[0]["image"]}
           />{" "}
           <div className={styles.LikeBox}>
-            <i onClick={() => {}} className="cursor-pointer"> 
-              <FiHeart size={20} color="#8806ce"/>
+            <i onClick={() => {}} className="cursor-pointer">
+              <FiHeart size={20} color="#8806ce" />
             </i>
             <i onClick={copyToClipboard} className="cursor-pointer">
-              <BsFillShareFill size={20} color="#8806ce"/>
+              <BsFillShareFill size={20} color="#8806ce" />
             </i>
           </div>
         </div>
@@ -79,15 +79,15 @@ export default function Cart({ x }) {
               <IoMdCall size={25} />
               <span className="text-xl">تماس بگیرید</span>
             </Link>
-            <Link onClick={handleClickOpen}>
+            <Link onClick={() => {handleClickOpen(x)}}>
               <MdOutlineOpenInNew size={25} />
               <span className="text-lg">مشاهده</span>
             </Link>
           </div>
         </div>
       </div>
-      <div style={{ overflowY: "visible" }}>
-        <Dialog
+      <div>
+        {/* <Dialog
           open={open}
           TransitionComponent={Transition}
           keepMounted
@@ -171,7 +171,7 @@ export default function Cart({ x }) {
               <img className=" w-14 h-16" alt="" src={iconShow} />
             </Link>
           </div>
-        </Dialog>
+        </Dialog> */}
       </div>
     </div>
   );

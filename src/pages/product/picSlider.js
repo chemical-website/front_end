@@ -1,14 +1,8 @@
 import React, { useRef, useState } from "react";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
 import Flickity from "react-flickity-component";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
 
-// import required modules
-import { Navigation } from "swiper/modules";
 
 export default function PicSlider({ images }) {
   const flickityOptions = {
