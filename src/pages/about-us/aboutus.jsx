@@ -220,17 +220,31 @@ const AboutUsPage = () => {
               "--swiper-navigation-color": "#8806CE",
             }}
             breakpoints={{
-              800: {
-                slidesPerView: 4,
-              },
-              500: {
-                width: 500,
-                slidesPerView: 1,
-              },
-              400: {
-                width: 400,
-              },
-            }}
+        1000:{
+          width:1000,
+          slidesPerView:4
+        },
+        800: {
+          width:800,
+          slidesPerView: 2,
+        },
+        700:{
+          width:700,
+          slidesPerView:2
+        },
+        600:{
+          width:600,
+          slidesPerView:2
+        },
+        500: {
+          width:500,
+          slidesPerView: 1,
+        },
+        400: {
+          width:400,
+          slidesPerView:1
+        }
+      }}
             slidesPerView={1}
             navigation={true}
             pagination={true}

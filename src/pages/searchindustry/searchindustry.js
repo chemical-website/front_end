@@ -212,7 +212,7 @@ const SearchIndustry = () => {
           </div>
         </div>
         <div className="w-5/6 flex flex-row justify-between items-start mt-12">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 gap-4">
             {collections.map((e) => {
               return (
                 <div

@@ -202,19 +202,33 @@ const NewPage = () => {
             
             </div>
                   <div className=" flex flex-col justify-center items-center pt-24">
-                  <p className="w-1/6  text-4xl pb-8 ">دیگر اخبار</p>
+                  <p className="w-1/6  text-4xl pb-8 text-center">دیگر اخبار</p>
                   <div className="w-5/6">
                     <Swiper 
-         breakpoints={{
+           breakpoints={{
+        1000:{
+          width:1000,
+          slidesPerView:4
+        },
         800: {
-          slidesPerView: 4,
+          width:800,
+          slidesPerView: 2,
+        },
+        700:{
+          width:700,
+          slidesPerView:2
+        },
+        600:{
+          width:600,
+          slidesPerView:2
         },
         500: {
           width:500,
           slidesPerView: 1,
         },
         400: {
-          width:400
+          width:400,
+          slidesPerView:1
         }
       }}
           slidesPerView={1}  navigation={true} pagination={true} modules={[Navigation , Pagination]} className='w-full h-96'>

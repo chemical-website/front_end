@@ -152,9 +152,8 @@ function MainPage() {
             <DialogContentText id="alert-dialog-slide-description">
               <div
                 className="flex flex-col md:flex-row items-center"
-                style={{ height: "25rem" }}
               >
-                <div className="w-full md:w-full flex flex-col items-center">
+                <div style={{color:"#7606B2"}} className="w-full md:w-full flex flex-col items-center p-10 text-sm md:text-xl">
                   هر کشوری قانون و مقررات خاصی دارد که افراد باید تابع آن باشند.
                   لازم به ذکر است که در صورت سرپیچی از قوانین، مجازاتی خواهند
                   داشت؛ حال افراد باید بتوانند با آگاهی داشتن از قوانین کشور خود
@@ -168,8 +167,8 @@ function MainPage() {
           </DialogContent>
           <DialogActions>
             <div className={styles.LinkSBox}>
-              <Link className="px-6 " to={"/app/s"}>
-                "میپذیرم"
+              <Link className="mb-10 ml-10 p-4 rounded-xl" style={{background:"rgb(136, 6, 206)" , color:"snow"}} to={"/app/s"}>
+             میپذیرم
               </Link>
             </div>
           </DialogActions>

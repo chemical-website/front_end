@@ -85,22 +85,6 @@ const SearchProducts = () => {
   </defs>
 </svg>
         </div>
-        <div className=" text-xs md:text-lg">
-        پیشنهاد ویژه
-        </div>
-        <div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_26_281)">
-    <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z" fill="#1892AD"/>
-    <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z" fill="#7606B2"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_26_281">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg>
-        </div>
         <div>
         {name}
         </div>
@@ -112,7 +96,7 @@ const SearchProducts = () => {
                   <div className="text-sm px-2 py-1">
                   جستجو: {name}
                   </div>
-                  <div>
+                  <Link to={"/app"}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <g clip-path="url(#clip0_123_2573)">
                       <path d="M12.6666 4.27334L11.7266 3.33334L7.99992 7.06001L4.27325 3.33334L3.33325 4.27334L7.05992 8.00001L3.33325 11.7267L4.27325 12.6667L7.99992 8.94001L11.7266 12.6667L12.6666 11.7267L8.93992 8.00001L12.6666 4.27334Z" fill="#0C4957"/>
@@ -124,7 +108,7 @@ const SearchProducts = () => {
                       </clipPath>
                     </defs>
                   </svg>
-                  </div>
+                  </Link>
                   </div>
                 
                 </div>
@@ -164,7 +148,7 @@ const SearchProducts = () => {
               })
             }
             </div>
-            <div className=" grid grid-cols-4 w-4/5">
+            <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 w-4/5">
             {
                 prdouctData.map(e=>{
                   console.log(e)
