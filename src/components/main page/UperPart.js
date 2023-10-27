@@ -84,7 +84,7 @@ function MainPage() {
             )}
           </i>
           <span className={mainpage.SearchDastebandi}>
-            <span className="text-xl font-bold" style={{ color: "#3B0359" }}>
+            <span className="text-base sm:text-lg font-bold" style={{ color: "#3B0359" }}>
               {" "}
               دسته بندی محصولات
             </span>
@@ -102,7 +102,7 @@ function MainPage() {
             )}
           </i>
           <span className={mainpage.SearchDastebandi}>
-            <span className="text-xl font-bold" style={{ color: "#3B0359" }}>
+            <span className="text-base sm:text-lg font-bold" style={{ color: "#3B0359" }}>
               انتخاب صنعت
             </span>
             <i className={mainpage.rightIcon}>
@@ -119,7 +119,7 @@ function MainPage() {
             )}
           </i>
           <div className={mainpage.SearchDastebandi}>
-            <span className="text-xl font-bold" style={{ color: "#3B0359" }}>
+            <span className="text-base sm:text-lg font-bold" style={{ color: "#3B0359" }}>
               انتخاب محصول
             </span>
             <i className={mainpage.rightIcon}>
