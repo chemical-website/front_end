@@ -138,6 +138,7 @@ function NavigationBar() {
               onClick={() => {
                 setShowMobileNavbar((prv) => !prv);
               }}
+              className="cursor-pointer"
             >
               <TfiViewList size={25} />
             </div>
@@ -148,14 +149,14 @@ function NavigationBar() {
                 animate={{opacity: 1, y: 0}}
                 transition={{duration: 0.1}}
                 exit={{opacity: 0, y: -300}}
-                className="absolute top-16 bg-slate-100 flex flex-col p-5 gap-4 w-full shadow-md z-50 ms-5">
-                <div className="w-full flex flex-row justify-center text-lg font-semibold">
+                className="absolute top-20 bg-white flex flex-col gap-4 w-1/2 shadow-md z-50 rounded-lg py-3">
+                <div className="w-full flex flex-row justify-center text-lg font-semibold cursor-pointer">
                   محصولات
                 </div>
-                <div className="w-full flex flex-row justify-center text-lg font-semibold">
+                <div className="w-full flex flex-row justify-center text-lg font-semibold cursor-pointer">
                   اخبار
                 </div>
-                <div className="w-full flex flex-row justify-center text-lg font-semibold">
+                <div className="w-full flex flex-row justify-center text-lg font-semibold cursor-pointer">
                   درباره ما
                 </div>
               </motion.div>

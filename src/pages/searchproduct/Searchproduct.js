@@ -109,7 +109,7 @@ const SearchProducts = () => {
               <div className="w-5/6 flex flex-row justify-between items-center">
                 <div className="flex flex-col sm:flex-row  justify-between items-center md:w-1/3 sm:w-1/2 lg:w-1/4 ">
                   <div style={{background:"#F0D6FE" , borderRadius:"2.3rem" , padding:"0rem 0.75rem 0rem 0.375rem" , marginLeft:"0.75rem"}} className="flex flex-row  justify-between items-center mb-8">
-                  <div className="text-sm">
+                  <div className="text-sm px-2 py-1">
                   جستجو: {name}
                   </div>
                   <div>
@@ -129,7 +129,7 @@ const SearchProducts = () => {
                 
                 </div>
                 <div className="flex flex-row justify-between items-center w-1/6">
-                  <div>{prdouctData.length}محصول</div>
+                  <div>{prdouctData.length} محصول</div>
                   <div style={{border:"1.5px solid #7606B2" , borderRadius:"0.5rem" , padding:"0rem 0.625rem 0rem 0.5rem"}}  className="flex flex-row justify-between items-center">
                     <div>
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

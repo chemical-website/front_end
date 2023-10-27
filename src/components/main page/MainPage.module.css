@@ -104,6 +104,7 @@
   width: 90%;
   padding-right: 5px;
   color: #3c045b;
+  font-weight: bold;
 }
 
 .eachDataItem:hover {
@@ -167,6 +168,7 @@
 .inputf > input::placeholder {
   color: #7303af;
   opacity: 1;
+  font-weight: bold;
 }
 
 .searchIcon {
