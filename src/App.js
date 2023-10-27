@@ -15,6 +15,7 @@ import PicSlider from "./pages/product/picSlider";
 import { useWindowSize } from "@uidotdev/usehooks";
 import { RxCross2 } from "react-icons/rx";
 import SeeMoreIcon from "./assets/Icons/SeeMore.svg";
+import { useEffect } from 'react';
 
 function Error404() {
   return (
@@ -27,6 +28,16 @@ function Error404() {
 function App() {
   const { isModalOpen, modalData, closeModal } = useModal();
   const { width, height } = useWindowSize();
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    }
+  }, [isModalOpen])
+
   return (
     <>
       <Routes>
@@ -47,12 +58,10 @@ function App() {
         <Route path="app/aboutus" element={<AboutUsPage />} />
         <Route path="app/news" element={<NewsPage />} />
         <Route path="app/s" element={<SignIn />} />
-        refs/remotes/origin/main
       </Routes>
       {isModalOpen && (
         <div
-          className="w-screen h-screen fixed left-0 top-0 right-0 m-auto overflow-auto z-40 shadow-md"
-          style={{ backgroundColor: "rgba(0,0,0,0.4)" }}
+          className="w-screen h-screen fixed left-0 top-0 right-0 m-auto overflow-auto z-40 shadow-md myBackdrop"
           onClick={() => {
             closeModal();
           }}
