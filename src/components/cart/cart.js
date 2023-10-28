@@ -3,7 +3,9 @@ import { IoMdCall } from "react-icons/io";
 import { MdOutlineOpenInNew } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { BsFillShareFill } from "react-icons/bs";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -23,18 +25,31 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import copy from "copy-to-clipboard";
 import { toast } from "react-toastify";
+import axios from "axios";
+import { BaseRoot } from "../../baseRoot";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function Cart({ x }) {
+
+  const [num ,setNum] = useState(0)
+
   const [open, setOpen] = React.useState(false);
   const { isModalOpen, openModal, closeModal } = useModal();
 
   const handleClickOpen = (data) => {
     openModal(data);
   };
+  useEffect(()=>{
+
+    axios.get(`${BaseRoot}sotre/product/${x.id}/likes/`).then(
+      function(response){
+        setNum(response.data)
+      }
+    )
+  },[])
   const copyToClipboard = () => {
     let copyText = `http://154.91.170.238/app/product/${x.id}`;
     let isCopy = copy(copyText);
@@ -66,6 +81,7 @@ export default function Cart({ x }) {
             <i onClick={() => {}} className="cursor-pointer">
               <FiHeart size={20} color="#8806ce" />
             </i>
+            <i> {num}</i>
             <i onClick={copyToClipboard} className="cursor-pointer">
               <BsFillShareFill size={20} color="#8806ce" />
             </i>
