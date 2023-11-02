@@ -44,7 +44,7 @@ export default function Cart({ x }) {
   };
   useEffect(()=>{
 
-    axios.get(`${BaseRoot}sotre/product/${x.id}/likes/`).then(
+    axios.get(`${BaseRoot}store/products/${x.id}/likes/`).then(
       function(response){
         setNum(response.data)
       }
@@ -63,6 +63,18 @@ export default function Cart({ x }) {
         },
       });
     }
+  };
+  const warning = () => {
+    // if () {
+    //   toast.success("کپی شد", {
+    //     style: {
+    //       textAlign: "start",
+    //       direction: "rtl",
+    //       fontFamily: "Markazi Text",
+    //       fontSize: "20px",
+    //     },
+    //   });
+    // }
   };
 
   const handleClose = () => {
