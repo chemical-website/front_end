@@ -36,11 +36,19 @@ function DownerPart() {
   function BarkhiHandler() {
     if (x == 1) {
       setx(0);
+
     } else {
+      axios
+      .get(`${BaseRoot}store/customers/1/likes`, config)
+      .then(function (response) {
+        setProductData(response.data);
+      });
       setx(1);
       sety(0);
       setz(0);
+      setProductList([])
     }
+   
   }
 
   function YekhdeHandler() {
@@ -50,9 +58,11 @@ function DownerPart() {
       setz(1);
       setx(0);
       sety(0);
+      
     }
   }
   const [prdouctData, setProductData] = useState([]);
+  const [productList  , setProductList] = useState([])
   const [collections, setCollections] = useState([]);
   const config = {
     headers: {
@@ -74,11 +84,16 @@ function DownerPart() {
   useEffect(() => {
     if (x === 1) {
       console.log("gih");
-      axios
-        .get(`${BaseRoot}store/products/?recommend=True`, config)
-        .then(function (response) {
-          setProductData(response.data);
-        });
+      // axios
+      //   .get(`${BaseRoot}store/products/?recommend=True`, config)
+      //   .then(function (response) {
+      //     setProductData(response.data);
+      //   });
+      //  axios
+      //   .get(`${BaseRoot}store/1/likes`, config)
+      //   .then(function (response) {
+      //     setProductData(response.data);
+      //   });
     }
   }, []);
   return (
@@ -108,7 +123,7 @@ function DownerPart() {
                   BarkhiHandler();
                 }}
               >
-                نمایش برخی{" "}
+                نمایش پسندیده{" "}
               </span>
             </div>
           </div>
