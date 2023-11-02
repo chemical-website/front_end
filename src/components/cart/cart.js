@@ -38,10 +38,21 @@ export default function Cart({ x }) {
 
   const [open, setOpen] = React.useState(false);
   const { isModalOpen, openModal, closeModal } = useModal();
-
   const handleClickOpen = (data) => {
     openModal(data);
   };
+  const sendLike = () => {
+    const config = {
+      headers:{
+        Authorization: localStorage.getItem("token")
+      }
+    };
+    axios.post(`${BaseRoot}store/products/${x.id}/likes/` , config , {user : ` Authorization: ${localStorage.getItem("token")}`}).then(
+      function(response){
+        setNum(response.data)
+      }
+    )
+  }
   useEffect(()=>{
 
     axios.get(`${BaseRoot}store/products/${x.id}/likes/`).then(
@@ -90,7 +101,7 @@ export default function Cart({ x }) {
             src={x.images[0]["image"]}
           />{" "}
           <div className={styles.LikeBox}>
-            <i onClick={() => {}} className="cursor-pointer">
+            <i onClick={sendLike} className="cursor-pointer">
               <FiHeart size={20} color="#8806ce" />
             </i>
             <i> {num}</i>
