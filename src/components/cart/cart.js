@@ -49,7 +49,7 @@ export default function Cart({ x }) {
     };
     axios.post(`${BaseRoot}store/products/${x.id}/likes/` , config , {user : ` Authorization: ${localStorage.getItem("token")}`}).then(
       function(response){
-        setNum(response.data)
+        console.log(response.data)
       }
     )
   }
