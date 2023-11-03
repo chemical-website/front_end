@@ -39,7 +39,7 @@ const NewsCart = ({ info }) => {
     <div
       onMouseEnter={() => setShowFeatures(true)}
       onMouseLeave={() => setShowFeatures(false)}
-      className="flex flex-col justify-between items-start overflow-x-hidden  h-auto mx-9 gap-2 mb-4"
+      className="flex flex-col justify-between items-start overflow-x-hidden  h-fit mx-9 gap-2 mb-4"
       style={{ width: "20rem" }}
     >
       <div style={{ width: "100%", height: "18rem", position: "relative" }}>
