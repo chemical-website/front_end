@@ -112,7 +112,7 @@ const NewsCart = ({ info }) => {
           onClick={() => {
             handleClickOpen(info);
           }}
-          className=" flex flex-row items-center"
+          className=" flex flex-row items-center gap-2"
           style={{ color: "#8806CE" }}
         >
           <MdOutlineOpenInNew size={25} />
