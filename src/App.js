@@ -104,7 +104,7 @@ function App() {
                         {modalData.title}
                       </span>
                       <span className="text-lg">
-                        {modalData.short_description}
+                        {modalData.short_description && modalData.short_description}
                       </span>
                       <span className="mt-4">
                         {modalData.description.length > 160
@@ -113,7 +113,7 @@ function App() {
                           : modalData.description}
                       </span>
                       <div className="flex flex-row gap-2">
-                        {modalData.tags.map((e) => {
+                        {modalData.tags && modalData.tags.map((e) => {
                           return (
                             <div
                               style={{
@@ -143,7 +143,7 @@ function App() {
                   style={{ backgroundColor: "#3B0359", borderRadius: "50%" }}
                 >
                   <Link
-                    to={`/app/product/${modalData.id}`}
+                    to={`/app/${modalData.type}/${modalData.id}`}
                     onClick={() => {
                       closeModal();
                     }}

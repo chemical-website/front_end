@@ -30,7 +30,7 @@ const Products = () => {
       });
   }, []);
   useEffect(() => {
-    if (sort == false) {
+    if (sort === false) {
       setProductData(prdouctData.sort((a, b) => a.id - b.id));
     } else {
       setProductData(prdouctData.sort((a, b) => b.id - a.id));
@@ -102,7 +102,7 @@ const Products = () => {
           </div>
         </div>
         <div className="w-5/6 flex flex-row justify-end items-center">
-          <div className="flex flex-row justify-between items-center w-1/6">
+          <div className="flex flex-row justify-center md:justify-end gap-10 items-center w-full">
             <div className="font-bold text-base">{ToPersianNumber(prdouctData.length)} محصول</div>
             <div
               onClick={() => {
