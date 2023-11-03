@@ -12,11 +12,14 @@ import ClarifyPersianDate from "./../../utilities/ClatifyPersianDate";
 import jalaliMoment from "jalali-moment";
 import ShowToast from "./../../utilities/ShowToast";
 import { useModal } from "../../context/ModalContext";
-import ToPersianNumber from './../../utilities/ToPersianNumber';
+import ToPersianNumber from "./../../utilities/ToPersianNumber";
+import { HiOutlineArrowSmDown, HiOutlineArrowSmUp } from "react-icons/hi";
+import { motion, AnimatePresence } from "framer-motion";
 
 const NewsCart = ({ info }) => {
   console.log(info);
   const { openModal } = useModal();
+  const [showFeatures, setShowFeatures] = useState(false);
 
   const copyToClipboard = () => {
     let copyText = `${window.location.hostname}${
@@ -34,7 +37,9 @@ const NewsCart = ({ info }) => {
 
   return (
     <div
-      className="flex flex-col justify-between items-start h-auto mx-9 gap-2 mb-4"
+      onMouseEnter={() => setShowFeatures(true)}
+      onMouseLeave={() => setShowFeatures(false)}
+      className="flex flex-col justify-between items-start overflow-x-hidden  h-auto mx-9 gap-2 mb-4"
       style={{ width: "20rem" }}
     >
       <div style={{ width: "100%", height: "18rem", position: "relative" }}>
@@ -43,26 +48,41 @@ const NewsCart = ({ info }) => {
           className=" h-72 w-80 object-cover rounded-2xl"
           src={info.images[0].image}
         />
-        <div className="absolute top-2 left-2 bg-slate-50 py-2 px-1 rounded-lg shadow-md cursor-pointer">
-          <div onClick={copyToClipboard}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="26"
-              height="26"
-              viewBox="0 0 26 26"
-              fill="none"
+        <AnimatePresence>
+          {showFeatures && (
+            <motion.div
+              initial={{ x: -50 }}
+              animate={{ x: 0 }}
+              transition={{
+                duration: 0.5,
+                type: "spring",
+                stiffness: 180,
+                damping: 20,
+              }}
+              exit={{ x: -50 }}
+              className="absolute top-2 left-2 bg-slate-50 py-2 px-1 rounded-lg shadow-md cursor-pointer"
             >
-              <path
-                d="M19.5 17.42C18.6767 17.42 17.94 17.745 17.3767 18.2542L9.6525 13.7584C9.70667 13.5092 9.75 13.26 9.75 13C9.75 12.74 9.70667 12.4909 9.6525 12.2417L17.29 7.78919C17.875 8.33085 18.6442 8.66669 19.5 8.66669C21.2983 8.66669 22.75 7.21502 22.75 5.41669C22.75 3.61835 21.2983 2.16669 19.5 2.16669C17.7017 2.16669 16.25 3.61835 16.25 5.41669C16.25 5.67669 16.2933 5.92585 16.3475 6.17502L8.71 10.6275C8.125 10.0859 7.35583 9.75002 6.5 9.75002C4.70167 9.75002 3.25 11.2017 3.25 13C3.25 14.7984 4.70167 16.25 6.5 16.25C7.35583 16.25 8.125 15.9142 8.71 15.3725L16.4233 19.8792C16.3692 20.1067 16.3367 20.345 16.3367 20.5834C16.3367 22.3275 17.7558 23.7467 19.5 23.7467C21.2442 23.7467 22.6633 22.3275 22.6633 20.5834C22.6633 18.8392 21.2442 17.42 19.5 17.42Z"
-                fill="#1CA9C9"
-              />
-              <path
-                d="M19.5 17.42C18.6767 17.42 17.94 17.745 17.3767 18.2542L9.6525 13.7584C9.70667 13.5092 9.75 13.26 9.75 13C9.75 12.74 9.70667 12.4909 9.6525 12.2417L17.29 7.78919C17.875 8.33085 18.6442 8.66669 19.5 8.66669C21.2983 8.66669 22.75 7.21502 22.75 5.41669C22.75 3.61835 21.2983 2.16669 19.5 2.16669C17.7017 2.16669 16.25 3.61835 16.25 5.41669C16.25 5.67669 16.2933 5.92585 16.3475 6.17502L8.71 10.6275C8.125 10.0859 7.35583 9.75002 6.5 9.75002C4.70167 9.75002 3.25 11.2017 3.25 13C3.25 14.7984 4.70167 16.25 6.5 16.25C7.35583 16.25 8.125 15.9142 8.71 15.3725L16.4233 19.8792C16.3692 20.1067 16.3367 20.345 16.3367 20.5834C16.3367 22.3275 17.7558 23.7467 19.5 23.7467C21.2442 23.7467 22.6633 22.3275 22.6633 20.5834C22.6633 18.8392 21.2442 17.42 19.5 17.42Z"
-                fill="#8806CE"
-              />
-            </svg>
-          </div>
-        </div>
+              <div onClick={copyToClipboard}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="26"
+                  height="26"
+                  viewBox="0 0 26 26"
+                  fill="none"
+                >
+                  <path
+                    d="M19.5 17.42C18.6767 17.42 17.94 17.745 17.3767 18.2542L9.6525 13.7584C9.70667 13.5092 9.75 13.26 9.75 13C9.75 12.74 9.70667 12.4909 9.6525 12.2417L17.29 7.78919C17.875 8.33085 18.6442 8.66669 19.5 8.66669C21.2983 8.66669 22.75 7.21502 22.75 5.41669C22.75 3.61835 21.2983 2.16669 19.5 2.16669C17.7017 2.16669 16.25 3.61835 16.25 5.41669C16.25 5.67669 16.2933 5.92585 16.3475 6.17502L8.71 10.6275C8.125 10.0859 7.35583 9.75002 6.5 9.75002C4.70167 9.75002 3.25 11.2017 3.25 13C3.25 14.7984 4.70167 16.25 6.5 16.25C7.35583 16.25 8.125 15.9142 8.71 15.3725L16.4233 19.8792C16.3692 20.1067 16.3367 20.345 16.3367 20.5834C16.3367 22.3275 17.7558 23.7467 19.5 23.7467C21.2442 23.7467 22.6633 22.3275 22.6633 20.5834C22.6633 18.8392 21.2442 17.42 19.5 17.42Z"
+                    fill="#1CA9C9"
+                  />
+                  <path
+                    d="M19.5 17.42C18.6767 17.42 17.94 17.745 17.3767 18.2542L9.6525 13.7584C9.70667 13.5092 9.75 13.26 9.75 13C9.75 12.74 9.70667 12.4909 9.6525 12.2417L17.29 7.78919C17.875 8.33085 18.6442 8.66669 19.5 8.66669C21.2983 8.66669 22.75 7.21502 22.75 5.41669C22.75 3.61835 21.2983 2.16669 19.5 2.16669C17.7017 2.16669 16.25 3.61835 16.25 5.41669C16.25 5.67669 16.2933 5.92585 16.3475 6.17502L8.71 10.6275C8.125 10.0859 7.35583 9.75002 6.5 9.75002C4.70167 9.75002 3.25 11.2017 3.25 13C3.25 14.7984 4.70167 16.25 6.5 16.25C7.35583 16.25 8.125 15.9142 8.71 15.3725L16.4233 19.8792C16.3692 20.1067 16.3367 20.345 16.3367 20.5834C16.3367 22.3275 17.7558 23.7467 19.5 23.7467C21.2442 23.7467 22.6633 22.3275 22.6633 20.5834C22.6633 18.8392 21.2442 17.42 19.5 17.42Z"
+                    fill="#8806CE"
+                  />
+                </svg>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
       <div>
         <p style={{ color: "#27023B" }} className=" font-semibold text-xl mt-4">
@@ -257,15 +277,17 @@ const NewsPage = () => {
           </div>
         </div>
         <div className="w-5/6 flex flex-row justify-end items-center">
-          <div className="flex flex-row justify-between items-center w-1/6">
+          <div className="flex flex-row justify-center md:justify-end gap-10 items-center w-full">
             <div className="text-lg">{ToPersianNumber(news.length)} محصول</div>
             <div
+              onClick={() => {
+                setSort((prv) => !prv);
+              }}
               style={{
                 border: "1.5px solid #7606B2",
                 borderRadius: "0.5rem",
-                padding: "0rem 0.625rem 0rem 0.5rem",
               }}
-              className="flex flex-row justify-between items-center"
+              className="flex flex-row justify-between items-center px-3 py-1 gap-1 cursor-pointer"
             >
               <div>
                 <svg
@@ -294,16 +316,11 @@ const NewsPage = () => {
               </div>
               <p className=" text-xs md:text-base">تاریخ انتشار</p>
               <div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path d="M7 10L12 15L17 10H7Z" fill="#1892AD" />
-                  <path d="M7 10L12 15L17 10H7Z" fill="#7606B2" />
-                </svg>
+                {sort === true ? (
+                  <HiOutlineArrowSmDown size={25} color="#7606B2" />
+                ) : (
+                  <HiOutlineArrowSmUp size={25} color="#7606B2" />
+                )}
               </div>
             </div>
           </div>
