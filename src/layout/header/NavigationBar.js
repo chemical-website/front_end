@@ -202,7 +202,7 @@ function NavigationBar() {
             {" "}
             <b> ثبت نام </b>
           </Link>
-
+          <hr className="w-5 h-0 rotate-90" style={{borderColor: "#27023b"}}/>
           <Link to="/app/s">
             <b>ورود</b>{" "}
           </Link>

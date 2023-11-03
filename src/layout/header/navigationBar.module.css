@@ -78,21 +78,19 @@
 .Sabtnam {
   display: flex;
   justify-content: space-around;
-  width: 125px;
-  height: 42px;
+  width: auto;
+  height: auto;
+  gap: 5px;
   align-items: center;
+  /* background-color: aquamarine; */
 }
 
-.te {
-  border-left: 1px solid;
-  padding: 8px;
-}
 
 .vorodicon {
   font-size: 20px;
   display: flex;
   align-items: center;
-  margin-left: -12%;
+  margin-left: 3px;
 }
 
 .openmahsolat {
