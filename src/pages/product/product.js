@@ -292,7 +292,7 @@ const Product = () => {
               نظرات
             </div>
           </div>
-          <div className="h-fit mb-5" style={{ display: sectionState === 1 ? "flex" : "none" }}>
+          <div className="h-fit mb-5 w-full" style={{ display: sectionState === 1 ? "flex" : "none" }}>
             <Additional text={info.description} />
           </div>
           <div

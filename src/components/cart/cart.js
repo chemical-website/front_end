@@ -3,64 +3,54 @@ import { IoMdCall } from "react-icons/io";
 import { MdOutlineOpenInNew } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { BsFillShareFill } from "react-icons/bs";
-import React, { useEffect, useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import React, { useEffect, useState } from "react";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { FiHeart } from "react-icons/fi";
-import PicSlider from "../../pages/product/picSlider";
 import { useModal } from "../../context/ModalContext";
 
-// import required modules
-import { Navigation, Pagination } from "swiper/modules";
-
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import copy from "copy-to-clipboard";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { BaseRoot } from "../../baseRoot";
+import ToPersianNumber from "./../../utilities/ToPersianNumber";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function Cart({ x }) {
-
-  const [num ,setNum] = useState(0)
+  const [num, setNum] = useState(0);
 
   const [open, setOpen] = React.useState(false);
   const { isModalOpen, openModal, closeModal } = useModal();
   const handleClickOpen = (data) => {
-    openModal(data);
+    openModal({ ...data, type: "product" });
   };
   const sendLike = () => {
     const config = {
-      headers:{
-        Authorization: localStorage.getItem("token")
-      }
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
     };
-    axios.post(`${BaseRoot}store/products/${x.id}/likes/` , config , {user : ` Authorization: ${localStorage.getItem("token")}`}).then(
-      function(response){
-        console.log(response.data)
-      }
-    )
-  }
-  useEffect(()=>{
-
-    axios.get(`${BaseRoot}store/products/${x.id}/likes/`).then(
-      function(response){
-        setNum(response.data)
-      }
-    )
-  },[])
+    axios
+      .post(`${BaseRoot}store/products/${x.id}/likes/`, config, {
+        user: ` Authorization: ${localStorage.getItem("token")}`,
+      })
+      .then(function (response) {
+        console.log(response.data);
+      });
+  };
+  useEffect(() => {
+    axios
+      .get(`${BaseRoot}store/products/${x.id}/likes/`)
+      .then(function (response) {
+        setNum(response.data);
+      });
+  }, []);
   const copyToClipboard = () => {
     let copyText = `http://154.91.170.238/app/product/${x.id}`;
     let isCopy = copy(copyText);
@@ -104,11 +94,15 @@ export default function Cart({ x }) {
             <i onClick={sendLike} className="cursor-pointer">
               <FiHeart size={20} color="#8806ce" />
             </i>
-            <i> {num}</i>
+            {/* <i> {num}</i> */}
             <i onClick={copyToClipboard} className="cursor-pointer">
               <BsFillShareFill size={20} color="#8806ce" />
             </i>
           </div>
+          {/* <div className="absolute flex flex-row justify-center items-center gap-1 top-6 right-6 px-2 font-bold bg-slate-50 rounded-md">
+            <span>{ToPersianNumber(num)}</span>
+            <FiHeart size={20} color="#8806ce" />
+          </div> */}
         </div>
         <div className={styles.downPartt}>
           <h3>{x.title}</h3>
@@ -118,7 +112,11 @@ export default function Cart({ x }) {
               <IoMdCall size={25} />
               <span className="text-xl">تماس بگیرید</span>
             </Link>
-            <Link onClick={() => {handleClickOpen(x)}}>
+            <Link
+              onClick={() => {
+                handleClickOpen(x);
+              }}
+            >
               <MdOutlineOpenInNew size={25} />
               <span className="text-lg">مشاهده</span>
             </Link>

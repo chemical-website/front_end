@@ -39,6 +39,19 @@ function App() {
     };
   }, [isModalOpen]);
 
+  const handleEscapeKeyPress = (event) => {
+    if (event.key === "Escape") {
+      closeModal();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleEscapeKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleEscapeKeyPress);
+    };
+  }, []);
+
   return (
     <>
       <Routes>
@@ -104,7 +117,8 @@ function App() {
                         {modalData.title}
                       </span>
                       <span className="text-lg">
-                        {modalData.short_description}
+                        {modalData.short_description &&
+                          modalData.short_description}
                       </span>
                       <span className="mt-4">
                         {modalData.description.length > 160
@@ -113,19 +127,20 @@ function App() {
                           : modalData.description}
                       </span>
                       <div className="flex flex-row gap-2">
-                        {modalData.tags.map((e) => {
-                          return (
-                            <div
-                              style={{
-                                borderColor: "#7606B2",
-                                color: "#7606B2",
-                              }}
-                              className="mt-3 py-1 px-3 rounded-lg text-base border-2 border-solid w-fit font-bold cursor-default"
-                            >
-                              {e.tag.title}
-                            </div>
-                          );
-                        })}
+                        {modalData.tags &&
+                          modalData.tags.map((e) => {
+                            return (
+                              <div
+                                style={{
+                                  borderColor: "#7606B2",
+                                  color: "#7606B2",
+                                }}
+                                className="mt-3 py-1 px-3 rounded-lg text-base border-2 border-solid w-fit font-bold cursor-default"
+                              >
+                                {e.tag.title}
+                              </div>
+                            );
+                          })}
                       </div>
                     </div>
                   </div>
@@ -143,7 +158,7 @@ function App() {
                   style={{ backgroundColor: "#3B0359", borderRadius: "50%" }}
                 >
                   <Link
-                    to={`/app/product/${modalData.id}`}
+                    to={`/app/${modalData.type}/${modalData.id}`}
                     onClick={() => {
                       closeModal();
                     }}

@@ -5,12 +5,15 @@ import NavigationBar from "../../layout/header/NavigationBar";
 import axios from "axios";
 import { BaseRoot } from "../../baseRoot";
 import { Link, useParams } from "react-router-dom";
+import ToPersianNumber from "./../../utilities/ToPersianNumber";
+import { HiOutlineArrowSmDown, HiOutlineArrowSmUp } from "react-icons/hi";
 
 const SearchIndustry = () => {
   const { name } = useParams();
   console.log(name);
   const [prdouctData, setProductData] = useState([]);
   const [collections, setCollections] = useState([]);
+  const [sort, setSort] = useState(false);
   const config = {
     headers: {
       Authorization: localStorage.getItem("token"),
@@ -31,6 +34,13 @@ const SearchIndustry = () => {
         setCollections(response.data);
       });
   }, []);
+  useEffect(() => {
+    if (sort === false) {
+      setProductData(prdouctData.sort((a, b) => a.id - b.id));
+    } else {
+      setProductData(prdouctData.sort((a, b) => b.id - a.id));
+    }
+  }, [sort]);
   return (
     <Fragment>
       <NavigationBar />
@@ -39,7 +49,7 @@ const SearchIndustry = () => {
           className="w-5/6
               "
         >
-          <div className="flex flex-row items-center justify-between w-2/3 sm:w-1/3 md:w-1/5 mb-9 mt-14">
+          <div className="flex flex-row items-center justify-start gap-4 w-2/3 sm:w-1/3 md:w-1/5 mb-9 mt-14">
             <div>
               <Link to={"/app"}>
                 <svg
@@ -121,19 +131,18 @@ const SearchIndustry = () => {
             <div>{name}</div>
           </div>
         </div>
-        <div className="w-5/6 flex flex-row justify-between items-center">
-          <div className="flex flex-col sm:flex-row  justify-between items-center md:w-1/3 sm:w-1/2 lg:w-1/4 ">
+        <div className="w-5/6 flex-col flex justify-center md:flex-row md:justify-between gap-5 md:gap-0 items-center">
+          <div className="flex flex-col sm:flex-row  justify-between items-center w-full">
             <div
               style={{
                 background: "#F0D6FE",
                 borderRadius: "2.3rem",
-                padding: "0rem 0.75rem 0rem 0.375rem",
-                marginLeft: "0.75rem",
+                // marginLeft: "0.75rem",
               }}
-              className="flex flex-row  justify-between items-center mb-8"
+              className="flex flex-row  justify-start px-3 items-center"
             >
-              <div className="text-sm">جستجو: {name}</div>
-              <Link to={"/app/"}>
+              <div className="text-lg font-bold px-3 py-1">جستجو: {name}</div>
+              <Link to={"/app"}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -160,15 +169,19 @@ const SearchIndustry = () => {
               </Link>
             </div>
           </div>
-          <div className="flex flex-row justify-between items-center w-1/6">
-            <div>{prdouctData.length}محصول</div>
+          <div className="flex flex-row justify-center md:justify-end gap-10 items-center w-full">
+            <div className="font-bold text-base">
+              {ToPersianNumber(prdouctData.length)} محصول
+            </div>
             <div
+              onClick={() => {
+                setSort(true ? sort === false : false);
+              }}
               style={{
                 border: "1.5px solid #7606B2",
                 borderRadius: "0.5rem",
-                padding: "0rem 0.625rem 0rem 0.5rem",
               }}
-              className="flex flex-row justify-between items-center"
+              className="flex flex-row justify-between items-center px-3 py-1 gap-1 cursor-pointer"
             >
               <div>
                 <svg
@@ -197,16 +210,11 @@ const SearchIndustry = () => {
               </div>
               <p className=" text-xs md:text-base">تاریخ انتشار</p>
               <div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path d="M7 10L12 15L17 10H7Z" fill="#1892AD" />
-                  <path d="M7 10L12 15L17 10H7Z" fill="#7606B2" />
-                </svg>
+                {sort === true ? (
+                  <HiOutlineArrowSmDown size={25} color="#7606B2" />
+                ) : (
+                  <HiOutlineArrowSmUp size={25} color="#7606B2" />
+                )}
               </div>
             </div>
           </div>

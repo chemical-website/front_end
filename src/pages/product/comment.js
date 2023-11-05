@@ -3,11 +3,7 @@ import { useEffect, useState } from "react";
 import { BaseRoot } from "../../baseRoot";
 import { toast } from "react-toastify";
 import jalaliMoment from 'jalali-moment';
-import ToPersianNumber from './../../utilities/ToPersianNumber';
-
-const clarifyPersianDate = (dateString) => {
-    return ToPersianNumber(dateString.replaceAll("-", "/"))
-}
+import ClarifyPersianDate from './../../utilities/ClatifyPersianDate';
 
 const CommentCard = ({ e }) => {  
   return (
@@ -27,13 +23,13 @@ const CommentCard = ({ e }) => {
               style={{ color: "#D184FB" }}
               className=" font-normal text-base"
             >
-                {clarifyPersianDate(jalaliMoment(e.creation_date).format('jYYYY-jMM-jDD '))}
+                {ClarifyPersianDate(jalaliMoment(e.creation_date).format('jYYYY-jMM-jDD '))}
             </p>
             <p
               style={{ color: "#D184FB" }}
               className=" font-normal text-base"
             >
-                {clarifyPersianDate(jalaliMoment(e.creation_date).format('HH:mm:ss'))}
+                {ClarifyPersianDate(jalaliMoment(e.creation_date).format('HH:mm:ss'))}
             </p>
           </div>
         </div>
