@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { BaseRoot } from "../../baseRoot";
 import mailIcon from "../../assets/Icons/Mail outline.svg";
 import styles from "./footer.module.css";
+import { toast } from "react-toastify";
 
 const Footer = () => {
   const [mahsollist, setMahsolList] = useState([]);
@@ -13,10 +14,23 @@ const Footer = () => {
       setMahsolList(response.data);
     });
   }, []);
+  const seccuesmail= () => {
+      toast.success("ارسال شد", {
+        style: {
+          textAlign: "start",
+          direction: "rtl",
+          fontFamily: "Markazi Text",
+          fontSize: "20px",
+        },
+      })
+    }
   const sendEmails = () => {
     axios
       .post(`${BaseRoot}store/emails/`, { email: email })
-      .then(function (response) {});
+      .then(function (response) {
+        console.log(response)
+        seccuesmail()
+      });
   };
   return (
     <div
