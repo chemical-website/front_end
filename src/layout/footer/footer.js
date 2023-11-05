@@ -148,7 +148,7 @@ const Footer = () => {
                 if (e.id <= 4) {
                   return (
                     <li style={{ fontWeight: "500" }} className="text-base">
-                      <Link>{e.title}</Link>
+                      <Link to={`/app/collections/search/${e.title}`}>{e.title}</Link>
                     </li>
                   );
                 }

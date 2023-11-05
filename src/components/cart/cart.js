@@ -108,7 +108,7 @@ export default function Cart({ x }) {
           <h3>{x.title}</h3>
           <p className="overflow-hidden h-10">{x.short_description}</p>{" "}
           <div className={styles.LinkSBox}>
-            <Link>
+            <Link to={'/app/aboutus'}>
               <IoMdCall size={25} />
               <span className="text-xl">تماس بگیرید</span>
             </Link>
