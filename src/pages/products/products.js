@@ -153,14 +153,14 @@ const Products = () => {
             {collections.map((e) => {
               return (
                 <div
-                  style={{
-                    backgroundColor: "#F7EBFE",
-                    color: "#3B0359",
+                  // style={{
+                  //   backgroundColor: "#F7EBFE",
+                  //   color: "#3B0359",
 
-                  }}
+                  // }}
                   className="px-2 rounded-md text-center"
                 >
-                  {e.title}
+                  {/* {e.title} */}
                 </div>
               );
             })}
