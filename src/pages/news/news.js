@@ -326,7 +326,7 @@ const NewsPage = () => {
           </div>
         </div>
         <div className="flex w-5/6 flex-row justify-between items-start mt-12">
-          <div className="flex flex-row justify-start w-full">
+          <div className="flex flex-col lg:flex-row justify-start w-full">
             {news.map((e) => {
               return (
                 <NewsCart info={{ ...e, preview_description: e.content }} />
