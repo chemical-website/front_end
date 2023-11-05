@@ -30,6 +30,7 @@ const Product = () => {
   const [images, setImages] = useState([]);
   const [info, setInfo] = useState({});
   const [desc, setDesc] = useState("");
+  const [prevDesc, setPrewDesc] = useState(false)
   const [tags, setTags] = useState([]);
   const [prop, setProp] = useState({});
   const [sectionState, setSectionState] = useState(1);
@@ -55,6 +56,7 @@ const Product = () => {
         setInfo(response.data);
         setTags(response.data.tags);
         setDesc(response.data.description);
+        setPrewDesc(response.data.preview_description)
         setProp(response.data.properties);
         setImages(response.data.images);
         if (response.data.properties == undefined) {
@@ -177,9 +179,9 @@ const Product = () => {
               {info.short_description}
             </p>
             <div className="font-normal text-lg w-full">
-              {desc.length > 1000
-                ? desc.substring(0, 1000) + " [ادامه در پایین صفحه]"
-                : desc}
+              {prevDesc.length > 1000
+                ? prevDesc.substring(0, 1000) + " [ادامه در پایین صفحه]"
+                : prevDesc}
             </div>
           </div>
           <div className="w-4/5 md:w-1/4 flex justify-center flex-col items-center md:items-center gap-3">

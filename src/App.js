@@ -121,10 +121,10 @@ function App() {
                           modalData.short_description}
                       </span>
                       <span className="mt-4">
-                        {modalData.description.length > 160
-                          ? modalData.description.substring(0, 160) +
+                        {modalData.preview_description.length > 160
+                          ? modalData.preview_description.substring(0, 160) +
                             " [برای ادامه کلیک کنید]"
-                          : modalData.description}
+                          : modalData.preview_description}
                       </span>
                       <div className="flex flex-row gap-2">
                         {modalData.tags &&
