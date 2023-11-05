@@ -102,49 +102,66 @@ function App() {
                   e.stopPropagation();
                 }}
               >
-                <div className="flex flex-col lg:flex-row">
-                  <div
-                    className="w-1/2 max-lg:w-full relative"
-                    style={{ height: height / 2 }}
-                  >
-                    <div className="flex flex-col h-full justify-center">
-                      <PicSlider images={modalData.images} />
+                {modalData.type !== "showRules" && (
+                  <div className="flex flex-col lg:flex-row">
+                    <div
+                      className="w-1/2 max-lg:w-full relative"
+                      style={{ height: height / 2 }}
+                    >
+                      <div className="flex flex-col h-full justify-center">
+                        <PicSlider images={modalData.images} />
+                      </div>
                     </div>
-                  </div>
-                  <div className="w-1/2 max-lg:w-full overflow-auto flex flex-col justify-center items-start text-justify">
-                    <div className="flex flex-col gap-1 p-5 h-fit">
-                      <span className="text-2xl font-bold">
-                        {modalData.title}
-                      </span>
-                      <span className="text-lg">
-                        {modalData.short_description &&
-                          modalData.short_description}
-                      </span>
-                      <span className="mt-4">
-                        {modalData.preview_description.length > 160
-                          ? modalData.preview_description.substring(0, 160) +
-                            " [برای ادامه کلیک کنید]"
-                          : modalData.preview_description}
-                      </span>
-                      <div className="flex flex-row gap-2">
-                        {modalData.tags &&
-                          modalData.tags.map((e) => {
-                            return (
-                              <div
-                                style={{
-                                  borderColor: "#7606B2",
-                                  color: "#7606B2",
-                                }}
-                                className="mt-3 py-1 px-3 rounded-lg text-base border-2 border-solid w-fit font-bold cursor-default"
-                              >
-                                {e.tag.title}
-                              </div>
-                            );
-                          })}
+                    <div className="w-1/2 max-lg:w-full overflow-auto flex flex-col justify-center items-start text-justify">
+                      <div className="flex flex-col gap-1 p-5 h-fit">
+                        <span className="text-2xl font-bold">
+                          {modalData.title}
+                        </span>
+                        <span className="text-lg">
+                          {modalData.short_description &&
+                            modalData.short_description}
+                        </span>
+                        <span className="mt-4">
+                          {modalData.preview_description.length > 160
+                            ? modalData.preview_description.substring(0, 160) +
+                              " [برای ادامه کلیک کنید]"
+                            : modalData.preview_description}
+                        </span>
+                        <div className="flex flex-row gap-2">
+                          {modalData.tags &&
+                            modalData.tags.map((e) => {
+                              return (
+                                <div
+                                  style={{
+                                    borderColor: "#7606B2",
+                                    color: "#7606B2",
+                                  }}
+                                  className="mt-3 py-1 px-3 rounded-lg text-base border-2 border-solid w-fit font-bold cursor-default"
+                                >
+                                  {e.tag.title}
+                                </div>
+                              );
+                            })}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                )}
+                {modalData.type !== "showRules" && (
+                  <div
+                    className="w-fit flex flex-row justify-center items-center p-5 absolute -left-7 -bottom-7 cursor-pointer"
+                    style={{ backgroundColor: "#3B0359", borderRadius: "50%" }}
+                  >
+                    <Link
+                      to={`/app/${modalData.type}/${modalData.id}`}
+                      onClick={() => {
+                        closeModal();
+                      }}
+                    >
+                      <img src={SeeMoreIcon} alt="seeMore" />
+                    </Link>
+                  </div>
+                )}
                 <div
                   className="absolute top-5 left-5 cursor-pointer"
                   onClick={() => {
@@ -153,19 +170,33 @@ function App() {
                 >
                   <RxCross2 size={25} />
                 </div>
-                <div
-                  className="w-fit flex flex-row justify-center items-center p-5 absolute -left-7 -bottom-7 cursor-pointer"
-                  style={{ backgroundColor: "#3B0359", borderRadius: "50%" }}
-                >
-                  <Link
-                    to={`/app/${modalData.type}/${modalData.id}`}
-                    onClick={() => {
-                      closeModal();
-                    }}
-                  >
-                    <img src={SeeMoreIcon} alt="seeMore" />
-                  </Link>
-                </div>
+                {modalData.type === "showRules" && (
+                  <div className="w-full h-full flex flex-col gap-5 p-10 justify-between">
+                    <span className="text-xl">
+                      این یک متن تستی می‌باشد و شما بعنوان کاربر باید آن را قبول
+                      کنید. این یک متن تستی می‌باشد و شما بعنوان کاربر باید آن
+                      را قبول کنید. این یک متن تستی می‌باشد و شما بعنوان کاربر
+                      باید آن را قبول کنید. این یک متن تستی می‌باشد و شما بعنوان
+                      کاربر باید آن را قبول کنید. این یک متن تستی می‌باشد و شما
+                      بعنوان کاربر باید آن را قبول کنید. این یک متن تستی می‌باشد
+                      و شما بعنوان کاربر باید آن را قبول کنید. این یک متن تستی
+                      می‌باشد و شما بعنوان کاربر باید آن را قبول کنید. این یک
+                      متن تستی می‌باشد و شما بعنوان کاربر باید آن را قبول کنید.
+                      این یک متن تستی می‌باشد و شما بعنوان کاربر باید آن را قبول
+                      کنید. این یک متن تستی می‌باشد و شما بعنوان کاربر باید آن
+                      را قبول کنید.
+                    </span>
+                    <button
+                      onClick={() => {
+                        closeModal();
+                      }}
+                      style={{ backgroundColor: "#7606B2" }}
+                      className="w-full rounded-lg py-2 text-gray-200 font-bold"
+                    >
+                      تمامی شرایط را می‌پذیرم
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </motion.div>

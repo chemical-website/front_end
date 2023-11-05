@@ -13,41 +13,23 @@ import styles from "../cart/cart.style.module.css";
 import Order from "../../pages/product/order";
 import { motion } from "framer-motion";
 import { RxCross2 } from "react-icons/rx";
+import { useModal } from "../../context/ModalContext";
 
 function MainPage() {
   // let [openimahsolat, setopenopenimahsolat] = useState(0);
   // let [opensanat, setopenopensanat] = useState(0);
   // let [openiconmahsol, setopenopeniconmahsol] = useState(0);
+  const { isModalOpen, openModal, closeModal } = useModal();
   const [open, setOpen] = useState(0);
   const [showRequestFormModal, setSHowRequestFormModal] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(true);
-  const [openModal, setOpenModal] = useState(true);
-  const [openModal2, setOpenModal2] = useState(false);
-  const [openModal3, setOpenModal3] = useState(false);
-  const handleClose = () => {
-    setOpenModal(false);
-  };
-  const handleClickOpen = () => {
-    setOpenModal(true);
-  };
-  const handleClose2 = () => {
-    setOpenModal2(false);
-  };
-  const handleClickOpen2 = () => {
-    setOpenModal2(true);
-  };
-  const handleClose3 = () => {
-    setOpenModal3(false);
-  };
-  const handleClickOpen3 = () => {
-    setOpenModal3(true);
-  };
+  // const [openModal, setOpenModal] = useState(true);
+  // const [openModal2, setOpenModal2] = useState(false);
+  // const [openModal3, setOpenModal3] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem("token") !== "") {
-      setOpenModal(false);
-    } else {
-      setOpenModal(true);
+    if (localStorage.getItem("token") === "") {
+      openModal({type: "showRules"});
     }
   }, []);
 
@@ -140,14 +122,14 @@ function MainPage() {
             </div>
           </motion.div>
         ) : null}
-        <Dialog
+        {/* <Dialog
           open={openModal}
           keepMounted
           onClose={handleClose}
           aria-describedby="alert-dialog-slide-description"
           maxWidth="md"
         >
-          {/* <DialogTitle>{"Use Google's location service?"}</DialogTitle> */}
+          // {/* <DialogTitle>{"Use Google's location service?"}</DialogTitle> *
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
               <div
@@ -166,22 +148,22 @@ function MainPage() {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <div className={styles.LinkSBox}>
+            <div className="bg-slate-500">
               <Link className="mb-10 ml-10 p-4 rounded-xl" style={{background:"rgb(136, 6, 206)" , color:"snow"}} to={"/app/s"}>
              میپذیرم
               </Link>
             </div>
           </DialogActions>
-        </Dialog>
+        </Dialog> */}
 
-        <Dialog
+        {/* <Dialog
           open={openModal2}
           keepMounted
           onClose={handleClose2}
           aria-describedby="alert-dialog-slide-description"
           maxWidth="md"
         >
-          {/* <DialogTitle>{"Use Google's location service?"}</DialogTitle> */}
+          <DialogTitle>{"Use Google's location service?"}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
               <div
@@ -203,8 +185,8 @@ function MainPage() {
           <DialogActions>
             <button onClick={handleClickOpen3}> ثبت درخواست</button>
           </DialogActions>
-        </Dialog>
-        <Dialog
+        </Dialog> */}
+        {/* <Dialog
           open={openModal3}
           keepMounted
           onClose={handleClose3}
@@ -212,7 +194,7 @@ function MainPage() {
           maxWidth="md"
         >
           <Order func={handleClose3} />
-        </Dialog>
+        </Dialog> */}
       </div>
     </>
   );
