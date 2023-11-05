@@ -19,7 +19,7 @@ function MainPage() {
   // let [openimahsolat, setopenopenimahsolat] = useState(0);
   // let [opensanat, setopenopensanat] = useState(0);
   // let [openiconmahsol, setopenopeniconmahsol] = useState(0);
-  const { isModalOpen, openModal, closeModal } = useModal();
+  const { isModalOpen, openModal, closeModal, acceptRule } = useModal();
   const [open, setOpen] = useState(0);
   const [showRequestFormModal, setSHowRequestFormModal] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(true);
@@ -29,13 +29,13 @@ function MainPage() {
 
   useEffect(() => {
     if (localStorage.getItem("token") === "") {
-      openModal({type: "showRules"});
+      openModal({ type: "showRules" });
     }
   }, []);
 
   return (
     <>
-      <div className={mainpage.BBox}>
+      {acceptRule && <div className={mainpage.BBox}>
         <div className={mainpage.TopBox}>
           <UperPart />
         </div>
@@ -195,7 +195,7 @@ function MainPage() {
         >
           <Order func={handleClose3} />
         </Dialog> */}
-      </div>
+      </div>}
     </>
   );
 }

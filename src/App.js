@@ -27,7 +27,7 @@ function Error404() {
 }
 
 function App() {
-  const { isModalOpen, modalData, closeModal } = useModal();
+  const { isModalOpen, modalData, closeModal, changeAcceptRule } = useModal();
   const { width, height } = useWindowSize();
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function App() {
   }, [isModalOpen]);
 
   const handleEscapeKeyPress = (event) => {
-    if (event.key === "Escape") {
+    if (event.key === "Escape" && modalData.type !== "showRules") {
       closeModal();
     }
   };
@@ -82,7 +82,8 @@ function App() {
             exit={{ opacity: 0 }}
             className="w-screen h-screen fixed left-0 top-0 right-0 m-auto overflow-auto z-40 shadow-md myBackdrop"
             onClick={() => {
-              closeModal();
+              if (modalData.type !== "showRules")
+                closeModal();
             }}
           >
             <div className="w-full h-full flex flex-col justify-center items-center">
@@ -165,7 +166,8 @@ function App() {
                 <div
                   className="absolute top-5 left-5 cursor-pointer"
                   onClick={() => {
-                    closeModal();
+                    if (modalData.type !== "showRules")
+                      closeModal();
                   }}
                 >
                   <RxCross2 size={25} />
@@ -188,6 +190,7 @@ function App() {
                     </span>
                     <button
                       onClick={() => {
+                        changeAcceptRule();
                         closeModal();
                       }}
                       style={{ backgroundColor: "#7606B2" }}
