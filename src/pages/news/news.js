@@ -325,22 +325,13 @@ const NewsPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-4/5 flex-row justify-between items-start mt-12">
-          <div className="mt-8 w-4/5">
-            <div className="grid grid-cols-2 w-full">
-              {news.map((e) => {
-                return <NewsCart info={{ ...e, description: e.content }} />;
-              })}
-            </div>
-              <div className='mt-8 w-4/5'>
+           <div className='mt-8 w-4/5'>
       <div className='grid grid-cols-1 lg:grid-cols-2  2xl:grid-cols-4 w-full'>
       {news.map(e=> {
         return(
           <NewsCart info={e} />
         )
       })}
-      </div>
-      </div>
       </div>
       </div>
       </div>
