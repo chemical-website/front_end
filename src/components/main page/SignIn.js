@@ -85,9 +85,9 @@ function SignIn() {
                   placeholder="رمز عبور"
                   ref={pass}
                 />
-                <Link className={signin.Faramoshi}>
+                {/* <Link className={signin.Faramoshi}>
                   رمز عبور را فراموش کرده اید ؟
-                </Link>
+                </Link> */}
               </div>
               <form className={signin.Bekhaterbespor}>
                 <input name="bekhatersepordan" type="checkbox" />

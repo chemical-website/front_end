@@ -156,12 +156,16 @@ function NavigationBar() {
                       محصولات
                     </div>
                   </Link>
-                  <div className="w-full flex flex-row justify-center text-lg font-semibold cursor-pointer">
-                    اخبار
-                  </div>
-                  <div className="w-full flex flex-row justify-center text-lg font-semibold cursor-pointer">
-                    درباره ما
-                  </div>
+                  <Link to="/app/news">
+                    <div className="w-full flex flex-row justify-center text-lg font-semibold cursor-pointer">
+                      اخبار
+                    </div>
+                  </Link>
+                  <Link to="/app/aboutus">
+                    <div className="w-full flex flex-row justify-center text-lg font-semibold cursor-pointer">
+                      درباره ما
+                    </div>
+                  </Link>
                 </motion.div>
               )}
             </AnimatePresence>

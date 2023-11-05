@@ -16,7 +16,7 @@ import ToPersianNumber from "./../../utilities/ToPersianNumber";
 import { HiOutlineArrowSmDown, HiOutlineArrowSmUp } from "react-icons/hi";
 import { motion, AnimatePresence } from "framer-motion";
 
-const NewsCart = ({ info }) => {
+export const NewsCart = ({ info }) => {
   console.log(info);
   const { openModal } = useModal();
   const [showFeatures, setShowFeatures] = useState(false);
