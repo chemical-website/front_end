@@ -17,6 +17,7 @@ import { RxCross2 } from "react-icons/rx";
 import SeeMoreIcon from "./assets/Icons/SeeMore.svg";
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import RedirectToApp from './pages/RedirectToApp';
 
 function Error404() {
   return (
@@ -40,7 +41,7 @@ function App() {
   }, [isModalOpen]);
 
   const handleEscapeKeyPress = (event) => {
-    if (event.key === "Escape" && modalData.type !== "showRules") {
+    if (event.key === "Escape") {
       closeModal();
     }
   };
@@ -55,7 +56,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="*" element={<Error404 />} />
+        <Route path="*" element={<RedirectToApp />} />
         <Route path="app/" element={<LandingPage />} />
         <Route path="app/products" element={<Products />} />
         <Route path="app/products/search/:name" element={<SearchProducts />} />
@@ -82,8 +83,7 @@ function App() {
             exit={{ opacity: 0 }}
             className="w-screen h-screen fixed left-0 top-0 right-0 m-auto overflow-auto z-40 shadow-md myBackdrop"
             onClick={() => {
-              if (modalData.type !== "showRules")
-                closeModal();
+              if (modalData.type !== "showRules") closeModal();
             }}
           >
             <div className="w-full h-full flex flex-col justify-center items-center">
@@ -166,8 +166,7 @@ function App() {
                 <div
                   className="absolute top-5 left-5 cursor-pointer"
                   onClick={() => {
-                    if (modalData.type !== "showRules")
-                      closeModal();
+                    if (modalData.type !== "showRules") closeModal();
                   }}
                 >
                   <RxCross2 size={25} />
