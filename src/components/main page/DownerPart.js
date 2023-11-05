@@ -36,19 +36,17 @@ function DownerPart() {
   function BarkhiHandler() {
     if (x == 1) {
       setx(0);
-
     } else {
       axios
-      .get(`${BaseRoot}store/customers/1/likes`, config)
-      .then(function (response) {
-        setProductData(response.data);
-      });
+        .get(`${BaseRoot}store/customers/1/likes`, config)
+        .then(function (response) {
+          setProductData(response.data);
+        });
       setx(1);
       sety(0);
       setz(0);
-      setProductList([])
+      setProductList([]);
     }
-   
   }
 
   function YekhdeHandler() {
@@ -58,11 +56,10 @@ function DownerPart() {
       setz(1);
       setx(0);
       sety(0);
-      
     }
   }
   const [prdouctData, setProductData] = useState([]);
-  const [productList  , setProductList] = useState([])
+  const [productList, setProductList] = useState([]);
   const [collections, setCollections] = useState([]);
   const config = {
     headers: {
@@ -128,45 +125,47 @@ function DownerPart() {
             </div>
           </div>
         </div>
-        <Swiper 
-         breakpoints={{
-        1000:{
-          width:1000,
-          slidesPerView:3
-        },
-        800: {
-          width:800,
-          slidesPerView: 2,
-        },
-        700:{
-          width:700,
-          slidesPerView:2
-        },
-        600:{
-          width:600,
-          slidesPerView:2
-        },
-        500: {
-          width:500,
-          slidesPerView: 1,
-        },
-        400: {
-          width:400,
-          slidesPerView:1
-        }
-      }}
-          slidesPerView={1} navigation={true} modules={[Navigation]} className='w-full'>
-      
-  
+        <Swiper
+          breakpoints={{
+            1000: {
+              width: 1000,
+              slidesPerView: 3,
+            },
+            800: {
+              width: 800,
+              slidesPerView: 2,
+            },
+            700: {
+              width: 700,
+              slidesPerView: 2,
+            },
+            600: {
+              width: 600,
+              slidesPerView: 2,
+            },
+            500: {
+              width: 500,
+              slidesPerView: 1,
+            },
+            400: {
+              width: 400,
+              slidesPerView: 1,
+            },
+          }}
+          slidesPerView={1}
+          navigation={true}
+          modules={[Navigation]}
+          className="w-full"
+        >
           {prdouctData.map((x) => {
-            return(  
+            return (
               <SwiperSlide className="flex  justify-center w-full">
-              <Cart x={x} />
-        </SwiperSlide>
-
-          )})}
-          </Swiper>
-     </div>
+                <Cart x={x} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
     </>
   );
 }

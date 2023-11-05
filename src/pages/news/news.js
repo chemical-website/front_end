@@ -278,7 +278,7 @@ const NewsPage = () => {
         </div>
         <div className="w-5/6 flex flex-row justify-end items-center">
           <div className="flex flex-row justify-center md:justify-end gap-10 items-center w-full">
-            <div className="text-lg">{ToPersianNumber(news.length)} محصول</div>
+            <div className="text-lg">{ToPersianNumber(news.length)} خبر</div>
             <div
               onClick={() => {
                 setSort((prv) => !prv);
@@ -325,17 +325,15 @@ const NewsPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-4/5 flex-row justify-between items-start mt-12">
-              <div className='mt-8 w-4/5'>
-      <div className='grid grid-cols-1 lg:grid-cols-2  3xl:grid-cols-4 w-full'>
-      {news.map(e=> {
-        return(
-          <NewsCart info={{ ...e, description: e.content }}  />
-        )
-      })}
-      </div>
-      </div>
-      </div>
+        <div className="flex w-5/6 flex-row justify-between items-start mt-12">
+          <div className="flex flex-row justify-start w-full">
+            {news.map((e) => {
+              return (
+                <NewsCart info={{ ...e, preview_description: e.content }} />
+              );
+            })}
+          </div>
+        </div>
       </div>
     </Fragment>
   );

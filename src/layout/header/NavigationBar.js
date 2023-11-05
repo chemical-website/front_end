@@ -12,7 +12,7 @@ import ArrowLeftIcon from "../../assets/Icons/ArrowLeftIcon.svg";
 import { LuLogOut } from "react-icons/lu";
 import { useWindowSize } from "@uidotdev/usehooks";
 import { TfiViewList } from "react-icons/tfi";
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion";
 
 function NavigationBar() {
   const [showMobileNavbar, setShowMobileNavbar] = useState(false);
@@ -143,24 +143,27 @@ function NavigationBar() {
               <TfiViewList size={25} />
             </div>
             <AnimatePresence>
-            {showMobileNavbar && (
-              <motion.div 
-                initial={{opacity: 0, y: -100}}
-                animate={{opacity: 1, y: 0}}
-                transition={{duration: 0.1}}
-                exit={{opacity: 0, y: -300}}
-                className="absolute top-20 bg-white flex flex-col gap-4 w-1/2 shadow-md z-50 rounded-lg py-3">
-                <div className="w-full flex flex-row justify-center text-lg font-semibold cursor-pointer">
-                  محصولات
-                </div>
-                <div className="w-full flex flex-row justify-center text-lg font-semibold cursor-pointer">
-                  اخبار
-                </div>
-                <div className="w-full flex flex-row justify-center text-lg font-semibold cursor-pointer">
-                  درباره ما
-                </div>
-              </motion.div>
-            )}
+              {showMobileNavbar && (
+                <motion.div
+                  initial={{ opacity: 0, y: -100 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.1 }}
+                  exit={{ opacity: 0, y: -300 }}
+                  className="absolute top-20 bg-white flex flex-col gap-4 w-1/2 shadow-md z-50 rounded-lg py-3"
+                >
+                  <Link to="/app/products">
+                    <div className="w-full flex flex-row justify-center text-lg font-semibold cursor-pointer">
+                      محصولات
+                    </div>
+                  </Link>
+                  <div className="w-full flex flex-row justify-center text-lg font-semibold cursor-pointer">
+                    اخبار
+                  </div>
+                  <div className="w-full flex flex-row justify-center text-lg font-semibold cursor-pointer">
+                    درباره ما
+                  </div>
+                </motion.div>
+              )}
             </AnimatePresence>
           </>
         )}
@@ -202,7 +205,10 @@ function NavigationBar() {
             {" "}
             <b> ثبت نام </b>
           </Link>
-          <hr className="w-5 h-0 rotate-90" style={{borderColor: "#27023b"}}/>
+          <hr
+            className="w-5 h-0 rotate-90"
+            style={{ borderColor: "#27023b" }}
+          />
           <Link to="/app/s">
             <b>ورود</b>{" "}
           </Link>
