@@ -122,9 +122,10 @@
 }
 
 .RightBox {
-  width: 24%;
+  width: auto;
   z-index: 100;
   margin-right: 10px;
+  flex: 1;
 }
 
 .RightBox button {
@@ -153,7 +154,7 @@
 }
 
 .LeftBox {
-  width: 75%;
+  flex: 2;
   /* background-color: #3b0359; */
   z-index: 100;
 }

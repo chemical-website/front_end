@@ -220,17 +220,23 @@ const SearchIndustry = () => {
           </div>
         </div>
         <div className="w-5/6 flex flex-row justify-between items-start mt-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 gap-4">
+          <div className="grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 lg:auto-cols-auto sm:grid-cols-2 gap-4 bg-slate-500"
+            style={{
+              gridRow: "auto"
+            }}
+          >
             {collections.map((e) => {
               return (
                 <div
-                  style={{
-                    padding: " 0.1875rem 0.375rem",
-                    background: "#F7EBFE",
-                    borderRadius: "0.25rem",
-                  }}
+                  // style={{
+                  //   padding: " 0.1875rem 0.375rem",
+                  //   background: "#F7EBFE",
+                  //   borderRadius: "0.25rem",
+                  //   wordWrap: "unset",
+                  // }}
+                  className="w-fit"
                 >
-                  {e.title}
+                  {/* {e.title} */}
                 </div>
               );
             })}

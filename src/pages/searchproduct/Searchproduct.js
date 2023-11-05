@@ -225,13 +225,13 @@ const SearchProducts = () => {
             {collections.map((e) => {
               return (
                 <div
-                  style={{
-                    padding: " 0.1875rem 0.375rem",
-                    background: "#F7EBFE",
-                    borderRadius: "0.25rem",
-                  }}
+                  // style={{
+                  //   padding: " 0.1875rem 0.375rem",
+                  //   background: "#F7EBFE",
+                  //   borderRadius: "0.25rem",
+                  // }}
                 >
-                  {e.title}
+                  {/* {e.title} */}
                 </div>
               );
             })}
