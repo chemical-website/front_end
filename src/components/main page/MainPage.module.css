@@ -84,6 +84,7 @@
   padding: 2.5%;
   width: 64%;
   height: 68%;
+  overflow: auto;
   gap: 5%;
   /* From https://css.glass */
   background: rgba(255, 255, 255, 1);
@@ -124,6 +125,7 @@
   flex-direction: column;
   direction: rtl;
   padding: 2.5%;
+  overflow: auto;
   width: 64%;
   height: 68%;
   gap: 5%;
@@ -143,6 +145,7 @@
   padding: 2.5%;
   width: 64%;
   height: 68%;
+  overflow: auto;
   gap: 5%;
   /* From https://css.glass */
   background: rgba(255, 255, 255, 1);
