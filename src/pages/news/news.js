@@ -220,7 +220,7 @@ const NewsPage = () => {
               })}
             </div>
               <div className='mt-8 w-4/5'>
-      <div className='grid grid-cols-2 w-full'>
+      <div className='grid grid-cols-1 lg:grid-cols-2  2xl:grid-cols-4 w-full'>
       {news.map(e=> {
         return(
           <NewsCart info={e} />
