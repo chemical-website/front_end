@@ -39,7 +39,7 @@ function NavigationBar() {
   }
 
   useEffect(() => {
-    if (localStorage.getItem("token") !== "") {
+    if (localStorage.getItem("token")) {
       setLogin(true);
     } else {
       setLogin(false);

@@ -28,7 +28,7 @@ function MainPage() {
   // const [openModal3, setOpenModal3] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem("token") === "") {
+    if (!localStorage.getItem("token")) {
       openModal({ type: "showRules" });
     }
   }, []);
