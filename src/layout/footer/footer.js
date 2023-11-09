@@ -14,7 +14,8 @@ const Footer = () => {
       setMahsolList(response.data);
     });
   }, []);
-  const seccuesmail= () => {
+  const seccuesmail= (state) => {
+    if (state === 1){
       toast.success("ارسال شد", {
         style: {
           textAlign: "start",
@@ -23,14 +24,30 @@ const Footer = () => {
           fontSize: "20px",
         },
       })
+
     }
+    if (state === 0){
+      toast.warning("مشکلی هست",{
+        style: {
+          textAlign: "start",
+          direction: "rtl",
+          fontFamily: "Markazi Text",
+          fontSize: "20px",
+        },
+      })
+    } 
+     }
   const sendEmails = () => {
     axios
       .post(`${BaseRoot}store/emails/`, { email: email })
       .then(function (response) {
-        console.log(response)
-        seccuesmail()
-      });
+          seccuesmail(1)
+        })
+        .catch(
+          function(err){
+            seccuesmail(0)
+          }
+        )
   };
   return (
     <div
