@@ -52,7 +52,9 @@ export default function Cart({ x }) {
       });
   }, []);
   const copyToClipboard = () => {
-    let copyText = `http://154.91.170.238/app/product/${x.id}`;
+    let copyText = `${window.location.hostname}${
+      window.location.port === 80 ? null : ":" + window.location.port
+    }${window.location.pathname}/${x.id}`;
     let isCopy = copy(copyText);
     if (isCopy) {
       toast.success("کپی شد", {
@@ -108,7 +110,7 @@ export default function Cart({ x }) {
           <h3>{x.title}</h3>
           <p className="overflow-hidden h-10">{x.short_description}</p>{" "}
           <div className={styles.LinkSBox}>
-            <Link to={'/app/aboutus'}>
+            <Link to={"/app/aboutus"}>
               <IoMdCall size={25} />
               <span className="text-xl">تماس بگیرید</span>
             </Link>

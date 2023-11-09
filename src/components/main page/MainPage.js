@@ -1,31 +1,25 @@
-import { Link } from "react-router-dom";
 import mainpage from "./MainPage.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import UperPart from "./UperPart";
 import DownerPart from "./DownerPart";
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-} from "@mui/material";
-import styles from "../cart/cart.style.module.css";
-import Order from "../../pages/product/order";
 import { motion } from "framer-motion";
 import { RxCross2 } from "react-icons/rx";
 import { useModal } from "../../context/ModalContext";
+import axios from "axios";
+import { BaseRoot } from "./../../baseRoot";
+import { useNavigate } from "react-router-dom";
 
 function MainPage() {
   // let [openimahsolat, setopenopenimahsolat] = useState(0);
   // let [opensanat, setopenopensanat] = useState(0);
   // let [openiconmahsol, setopenopeniconmahsol] = useState(0);
   const { isModalOpen, openModal, closeModal, acceptRule } = useModal();
-  const [open, setOpen] = useState(0);
   const [showRequestFormModal, setSHowRequestFormModal] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(true);
-  // const [openModal, setOpenModal] = useState(true);
-  // const [openModal2, setOpenModal2] = useState(false);
-  // const [openModal3, setOpenModal3] = useState(false);
+  const textRef = useRef();
+  const phoneRef = useRef();
+  const emailRef = useRef();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
@@ -33,96 +27,116 @@ function MainPage() {
     }
   }, []);
 
+  const sendRequest = () => {
+    axios
+      .post(`${BaseRoot}store/products/-1/orders/`, {
+        phone: phoneRef.current.value,
+        description: textRef.current.value,
+        email: emailRef.current.value,
+      })
+      .then(function (response) {
+        navigate(`/app`);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   return (
     <>
-      {acceptRule && <div className={mainpage.BBox}>
-        <div className={mainpage.TopBox}>
-          <UperPart />
-        </div>
-        <div className={mainpage.DownBox}>
-          <DownerPart />
-        </div>
-        {!showRequestFormModal ? (
-          <motion.div
-            className="fixed bottom-4 right-4 flex flex-col justify-center items-center gap-4 rounded-lg z-50 p-5 pt-2 customGlass"
-            initial={{ y: 200 }}
-            animate={{ y: 0 }}
-            transition={{
-              duration: 1,
-              delay: 1.5,
-              type: "spring",
-              stiffness: 120,
-            }}
-            style={{ fontSize: "20px" }}
-          >
-            <span
-              className="text-xl font-semibold"
-              style={{ color: "#3B0359" }}
-            >
-              سلام دوست عزیز! نیاز به کمک دارید؟
-            </span>
-            <button
-              onClick={() => {
-                setSHowRequestFormModal(true);
+      {acceptRule && (
+        <div className={mainpage.BBox}>
+          <div className={mainpage.TopBox}>
+            <UperPart />
+          </div>
+          <div className={mainpage.DownBox}>
+            <DownerPart />
+          </div>
+          {!showRequestFormModal ? (
+            <motion.div
+              className="fixed bottom-4 right-4 flex flex-col justify-center items-center gap-4 rounded-lg z-50 p-5 pt-2 customGlass"
+              initial={{ y: 200 }}
+              animate={{ y: 0 }}
+              transition={{
+                duration: 1,
+                delay: 1.5,
+                type: "spring",
+                stiffness: 120,
               }}
-              style={{ backgroundColor: "#8806CE" }}
-              className="w-3/4 rounded-lg py-2 text-gray-200 font-bold"
+              style={{ fontSize: "20px" }}
             >
-              ایجاد درخواست
-            </button>
-          </motion.div>
-        ) : showRequestModal ? (
-          <motion.div
-            className="fixed bottom-4 right-4 rounded-lg z-50 customGlass"
-            initial={{ y: 200 }}
-            animate={{ y: 0 }}
-            transition={{
-              duration: 1,
-              delay: 1.5,
-              type: "spring",
-              stiffness: 120,
-            }}
-          >
-            <div className="relative h-full w-full flex flex-col justify-center items-center gap-4 p-5 pt-2 rounded-lg">
               <span
-                className="text-2xl font-semibold"
+                className="text-xl font-semibold"
                 style={{ color: "#3B0359" }}
               >
-                ثبت درخواست
+                سلام دوست عزیز! نیاز به کمک دارید؟
               </span>
-              <input
-                style={{ border: "2px solid #8806CE" }}
-                className="py-1 px-2 rounded-md shadow-md inputPlaceColorized"
-                placeholder="تلفن همراه"
-              />
-              <input
-                style={{ border: "2px solid #8806CE" }}
-                className="py-1 px-2 rounded-md shadow-md inputPlaceColorized"
-                placeholder="ایمیل"
-              />
-              <textarea
-                style={{ resize: "none", border: "2px solid #8806CE" }}
-                className="py-1 px-2 rounded-md shadow-md h-24 inputPlaceColorized"
-                placeholder="شرح درخواست"
-              />
               <button
-                style={{ backgroundColor: "#8806CE" }}
-                className="w-full rounded-lg py-2 text-gray-200 font-bold"
-              >
-                ارسال
-              </button>
-              <div
                 onClick={() => {
-                  setShowRequestModal(false);
+                  setSHowRequestFormModal(true);
                 }}
-                className="absolute top-3 left-3 cursor-pointer"
+                style={{ backgroundColor: "#8806CE" }}
+                className="w-3/4 rounded-lg py-2 text-gray-200 font-bold"
               >
-                <RxCross2 size={25} />
+                ایجاد درخواست
+              </button>
+            </motion.div>
+          ) : showRequestModal ? (
+            <motion.div
+              className="fixed bottom-4 right-4 rounded-lg z-50 customGlass"
+              initial={{ y: 200 }}
+              animate={{ y: 0 }}
+              transition={{
+                duration: 1,
+                delay: 1.5,
+                type: "spring",
+                stiffness: 120,
+              }}
+            >
+              <div className="relative h-full w-full flex flex-col justify-center items-center gap-4 p-5 pt-2 rounded-lg">
+                <span
+                  className="text-2xl font-semibold"
+                  style={{ color: "#3B0359" }}
+                >
+                  ثبت درخواست
+                </span>
+                <input
+                  ref={phoneRef}
+                  style={{ border: "2px solid #8806CE" }}
+                  className="py-1 px-2 rounded-md shadow-md inputPlaceColorized"
+                  placeholder="تلفن همراه"
+                />
+                <input
+                  ref={emailRef}
+                  style={{ border: "2px solid #8806CE" }}
+                  className="py-1 px-2 rounded-md shadow-md inputPlaceColorized"
+                  placeholder="ایمیل"
+                />
+                <textarea
+                  ref={textRef}
+                  style={{ resize: "none", border: "2px solid #8806CE" }}
+                  className="py-1 px-2 rounded-md shadow-md h-24 inputPlaceColorized"
+                  placeholder="شرح درخواست"
+                />
+                <button
+                  onClick={sendRequest}
+                  style={{ backgroundColor: "#8806CE" }}
+                  className="w-full rounded-lg py-2 text-gray-200 font-bold"
+                >
+                  ارسال
+                </button>
+                <div
+                  onClick={() => {
+                    setShowRequestModal(false);
+                  }}
+                  className="absolute top-3 left-3 cursor-pointer"
+                >
+                  <RxCross2 size={25} />
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ) : null}
-        {/* <Dialog
+            </motion.div>
+          ) : null}
+          {/* <Dialog
           open={openModal}
           keepMounted
           onClose={handleClose}
@@ -156,7 +170,7 @@ function MainPage() {
           </DialogActions>
         </Dialog> */}
 
-        {/* <Dialog
+          {/* <Dialog
           open={openModal2}
           keepMounted
           onClose={handleClose2}
@@ -186,7 +200,7 @@ function MainPage() {
             <button onClick={handleClickOpen3}> ثبت درخواست</button>
           </DialogActions>
         </Dialog> */}
-        {/* <Dialog
+          {/* <Dialog
           open={openModal3}
           keepMounted
           onClose={handleClose3}
@@ -195,7 +209,8 @@ function MainPage() {
         >
           <Order func={handleClose3} />
         </Dialog> */}
-      </div>}
+        </div>
+      )}
     </>
   );
 }

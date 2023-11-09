@@ -23,14 +23,14 @@ import copy from "copy-to-clipboard";
 import { toast } from "react-toastify";
 import { Dialog } from "@mui/material";
 import Order from "./order";
-import { FiHeart } from "react-icons/fi"
+import { FiHeart } from "react-icons/fi";
 
 const Product = () => {
   const { id } = useParams();
   const [images, setImages] = useState([]);
   const [info, setInfo] = useState({});
   const [desc, setDesc] = useState("");
-  const [prevDesc, setPrewDesc] = useState(false)
+  const [prevDesc, setPrewDesc] = useState(false);
   const [tags, setTags] = useState([]);
   const [prop, setProp] = useState({});
   const [sectionState, setSectionState] = useState(1);
@@ -56,7 +56,7 @@ const Product = () => {
         setInfo(response.data);
         setTags(response.data.tags);
         setDesc(response.data.description);
-        setPrewDesc(response.data.preview_description)
+        setPrewDesc(response.data.preview_description);
         setProp(response.data.properties);
         setImages(response.data.images);
         if (response.data.properties == undefined) {
@@ -66,7 +66,9 @@ const Product = () => {
       });
   }, []);
   const copyToClipboard = () => {
-    let copyText = `http://154.91.170.238/app/product/${info.id}`;
+    let copyText = `${window.location.hostname}${
+      window.location.port === 80 ? null : ":" + window.location.port
+    }${window.location.pathname}/${info.id}`;
     let isCopy = copy(copyText);
     if (isCopy) {
       toast.success("کپی شد", {
@@ -198,7 +200,12 @@ const Product = () => {
                   <div onClick={copyToClipboard} className="cursor-pointer">
                     <BsFillShareFill size={25} />
                   </div>
-                  <div onClick={() => {toast("Liked.")}} className="cursor-pointer">
+                  <div
+                    onClick={() => {
+                      toast("Liked.");
+                    }}
+                    className="cursor-pointer"
+                  >
                     <FiHeart size={25} />
                   </div>
                 </div>
@@ -229,7 +236,10 @@ const Product = () => {
                 </div>
               </div>
             </div>
-            <div className="w-3/5 max-xl:w-4/5 max-lg:w-full" onClick={handleClickOpen}>
+            <div
+              className="w-3/5 max-xl:w-4/5 max-lg:w-full"
+              onClick={handleClickOpen}
+            >
               <button
                 style={{
                   background: "#8806CE",
@@ -294,7 +304,10 @@ const Product = () => {
               نظرات
             </div>
           </div>
-          <div className="h-fit mb-5 w-full" style={{ display: sectionState === 1 ? "flex" : "none" }}>
+          <div
+            className="h-fit mb-5 w-full"
+            style={{ display: sectionState === 1 ? "flex" : "none" }}
+          >
             <Additional text={info.description} />
           </div>
           <div
