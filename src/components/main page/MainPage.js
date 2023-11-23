@@ -8,6 +8,7 @@ import { useModal } from "../../context/ModalContext";
 import axios from "axios";
 import { BaseRoot } from "./../../baseRoot";
 import { useNavigate } from "react-router-dom";
+import ShowToast from './../../utilities/ShowToast';
 
 function MainPage() {
   // let [openimahsolat, setopenopenimahsolat] = useState(0);
@@ -35,7 +36,8 @@ function MainPage() {
         email: emailRef.current.value,
       })
       .then(function (response) {
-        navigate(`/app`);
+        ShowToast("با موفقیت ارسال شد.")
+        setShowRequestModal(false)
       })
       .catch(function (error) {
         console.log(error);
