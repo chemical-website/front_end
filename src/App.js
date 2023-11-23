@@ -56,7 +56,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="*" element={<RedirectToApp />} />
+        <Route path="" element={<LandingPage />} />
         <Route path="app/" element={<LandingPage />} />
         <Route path="app/products" element={<Products />} />
         <Route path="app/products/search/:name" element={<SearchProducts />} />
