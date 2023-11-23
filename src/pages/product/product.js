@@ -24,6 +24,7 @@ import { toast } from "react-toastify";
 import { Dialog } from "@mui/material";
 import Order from "./order";
 import { FiHeart } from "react-icons/fi";
+import ShowToast from "./../../utilities/ShowToast";
 
 const Product = () => {
   const { id } = useParams();
@@ -43,6 +44,13 @@ const Product = () => {
   };
   const handleClose = () => {
     setOpen(false);
+  };
+  const likeClicked = () => {
+    if (!localStorage.getItem("token")) {
+      window.location.href = "/app/s";
+      return;
+    }
+    ShowToast("لایک شد!");
   };
   const config = {
     headers: {
@@ -202,7 +210,7 @@ const Product = () => {
                   </div>
                   <div
                     onClick={() => {
-                      toast("Liked.");
+                      likeClicked();
                     }}
                     className="cursor-pointer"
                   >

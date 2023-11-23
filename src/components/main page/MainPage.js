@@ -21,11 +21,11 @@ function MainPage() {
   const emailRef = useRef();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!localStorage.getItem("token")) {
-      openModal({ type: "showRules" });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!localStorage.getItem("token")) {
+  //     openModal({ type: "showRules" });
+  //   }
+  // }, []);
 
   const sendRequest = () => {
     axios
@@ -44,7 +44,7 @@ function MainPage() {
 
   return (
     <>
-      {acceptRule && (
+      {/* {acceptRule && ( */}
         <div className={mainpage.BBox}>
           <div className={mainpage.TopBox}>
             <UperPart />
@@ -210,7 +210,7 @@ function MainPage() {
           <Order func={handleClose3} />
         </Dialog> */}
         </div>
-      )}
+      {/* )} */}
     </>
   );
 }
