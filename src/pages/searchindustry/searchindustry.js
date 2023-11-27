@@ -241,7 +241,7 @@ const SearchIndustry = () => {
               );
             })}
           </div>
-          <div className=" grid grid-cols-4 w-4/5">
+          <div className=" flex flex-row gap-5 flex-wrap bg-slate-400 w-4/5">
             {prdouctData.map((e) => {
               console.log(e);
               return <Cart x={e} />;

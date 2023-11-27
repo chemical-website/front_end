@@ -238,7 +238,7 @@ const SearchCollections = () => {
               );
             })}
           </div>
-          <div className=" grid grid-cols-4 w-4/5">
+          <div className="flex flex-row flex-wrap gap-7 w-4/5">
             {prdouctData.map((e) => {
               return <Cart x={e} />;
             })}

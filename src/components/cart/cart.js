@@ -72,7 +72,7 @@ export default function Cart({ x }) {
   };
   let link = `/app/product/${x.id}`;
   return (
-    <div div className="w-full flex flex-col items-center">
+    <div div className="w-auto flex flex-col items-center">
       <div className={styles.TopPartOfDownB}>
         <div>
           <img
