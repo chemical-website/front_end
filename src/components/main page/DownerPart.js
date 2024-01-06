@@ -23,76 +23,64 @@ function DownerPart() {
   let [x, setx] = useState(0);
   let [z, setz] = useState(0);
 
-  function HameHandler() {
-    if (y == 1) {
-      sety(0);
-    } else {
-      sety(1);
-      setx(0);
-      setz(0);
-    }
-  }
-
-  function BarkhiHandler() {
-    if (x == 1) {
-      setx(0);
-    } else {
-      axios
-        .get(`${BaseRoot}store/customers/1/likes`, config)
-        .then(function (response) {
-          setProductData(response.data);
-        });
-      setx(1);
-      sety(0);
-      setz(0);
-      setProductList([]);
-    }
-  }
-
-  function YekhdeHandler() {
-    if (z == 1) {
-      setz(0);
-    } else {
-      setz(1);
-      setx(0);
-      sety(0);
-    }
-  }
   const [prdouctData, setProductData] = useState([]);
-  const [productList, setProductList] = useState([]);
+  const [likedItems, setLikedItems] = useState([]);
+  const [productCopy, setProductCopy] = useState([]);
+  const [buttonShowStatus, setButtonShowStatus] = useState("Show-All")
   const [collections, setCollections] = useState([]);
+
   const config = {
     headers: {
       Authorization: localStorage.getItem("token"),
     },
   };
+
   useEffect(() => {
-    axios.get(`${BaseRoot}store/products/`, config).then(function (response) {
-      setProductData(response.data);
-    });
+    setProductCopy(prdouctData);
+  }, [prdouctData]);
+
+  useEffect(() => {
+    axios
+      .get(`${BaseRoot}store/products/?recommend=True/`, config)
+      .then(function (response) {
+        setProductData(response.data);
+      });
   }, []);
   useEffect(() => {
+    axios.get(`${BaseRoot}store/likes/`, config).then(({ data }) => {
+      const tmpLikedItem = [];
+      data.forEach((item) => tmpLikedItem.push(item.product));
+      setLikedItems(tmpLikedItem);
+    });
+
     axios
       .get(`${BaseRoot}store/collections/`, config)
       .then(function (response) {
         setCollections(response.data);
       });
   }, []);
-  useEffect(() => {
-    if (x === 1) {
-      console.log("gih");
-      // axios
-      //   .get(`${BaseRoot}store/products/?recommend=True`, config)
-      //   .then(function (response) {
-      //     setProductData(response.data);
-      //   });
-      //  axios
-      //   .get(`${BaseRoot}store/1/likes`, config)
-      //   .then(function (response) {
-      //     setProductData(response.data);
-      //   });
-    }
-  }, []);
+
+  function newItemLiked(id) {
+    let tmp = [...likedItems];
+    tmp.push(id);
+    setLikedItems(tmp);
+  }
+  function newItemDisLiked(id) {
+    let tmp = [...likedItems];
+    tmp = tmp.filter((item) => item !== id);
+    setLikedItems(tmp);
+  }
+  function showLikedItems() {
+    let tmpItems = [];
+    tmpItems = prdouctData.filter((item) => likedItems.includes(item.id));
+    setProductCopy(tmpItems);
+    setButtonShowStatus("Show-Some")
+  }
+  function showAllItems() {
+    setProductCopy(prdouctData);
+    setButtonShowStatus("Show-All")
+  }
+
   return (
     <>
       <div className={mainpage.DownBBox}>
@@ -105,19 +93,19 @@ function DownerPart() {
             </i>
             <div className={mainpage.textP}>
               <span
-                onClick={HameHandler}
+                onClick={showAllItems}
                 className={
-                  y == 0 ? mainpage.pishnahadat2 : mainpage.pishnahadat3
+                  buttonShowStatus !== "Show-All" ? mainpage.pishnahadat2 : mainpage.pishnahadat3
                 }
               >
                 نمایش همه
               </span>
               <span
                 className={
-                  x == 0 ? mainpage.pishnahadat4 : mainpage.pishnahadat3
+                  buttonShowStatus === "Show-All" ? mainpage.pishnahadat4 : mainpage.pishnahadat3
                 }
                 onClick={() => {
-                  BarkhiHandler();
+                  showLikedItems();
                 }}
               >
                 نمایش پسندیده{" "}
@@ -157,10 +145,15 @@ function DownerPart() {
           modules={[Navigation]}
           className="w-full"
         >
-          {prdouctData.map((x) => {
+          {productCopy.map((x) => {
             return (
               <SwiperSlide className="flex  justify-center w-full">
-                <Cart x={x} />
+                <Cart
+                  x={x}
+                  newItemLiked={newItemLiked}
+                  newItemDisLiked={newItemDisLiked}
+                  likedItems={likedItems}
+                />
               </SwiperSlide>
             );
           })}

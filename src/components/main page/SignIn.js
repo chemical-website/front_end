@@ -43,7 +43,7 @@ function SignIn() {
     })
     .then(function (response) {
       console.log(response)
-      localStorage.setItem("token", `Token ${response.data.access}`)
+      localStorage.setItem("token", `Bearer ${response.data.access}`)
       navigate("/app")
     })
     .catch(function (error) {

@@ -17,6 +17,7 @@ import { RxCross2 } from "react-icons/rx";
 import SeeMoreIcon from "./assets/Icons/SeeMore.svg";
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import NoPhoto from "./assets/img/No-Image.jpg"
 import RedirectToApp from './pages/RedirectToApp';
 
 function Error404() {
@@ -110,7 +111,7 @@ function App() {
                       style={{ height: height / 2 }}
                     >
                       <div className="flex flex-col h-full justify-center">
-                        <PicSlider images={modalData.images} />
+                        {modalData.images.length !== 0 ? <PicSlider images={modalData.images} /> : <img src={NoPhoto} alt="no_photo"/>}
                       </div>
                     </div>
                     <div className="w-1/2 max-lg:w-full overflow-auto flex flex-col justify-center items-start text-justify">

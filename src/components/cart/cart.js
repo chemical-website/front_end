@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { FiHeart } from "react-icons/fi";
+import { GoHeartFill } from "react-icons/go";
 import { useModal } from "../../context/ModalContext";
 
 import Slide from "@mui/material/Slide";
@@ -16,13 +17,10 @@ import copy from "copy-to-clipboard";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { BaseRoot } from "../../baseRoot";
-import ToPersianNumber from "./../../utilities/ToPersianNumber";
+import NoPhoto from "../../assets/img/No-Image.jpg"
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
 
-export default function Cart({ x }) {
+export default function Cart({ x, newItemLiked, newItemDisLiked, likedItems }) {
   const [num, setNum] = useState(0);
 
   const [open, setOpen] = React.useState(false);
@@ -30,9 +28,25 @@ export default function Cart({ x }) {
   const handleClickOpen = (data) => {
     openModal({ ...data, type: "product" });
   };
+
+  const sendDisLike = () => {
+    const config = {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    };
+    axios
+      .post(`${BaseRoot}store/products/${x.id}/likes/?dislike=true`, {}, config)
+      .then(function (response) {
+        if (response.status === 201) {
+          newItemDisLiked(x.id);
+        }
+      });
+  };
+
   const sendLike = () => {
     if (!localStorage.getItem("token")) {
-      window.location.href = '/app/s'
+      window.location.href = "/app/s";
     }
     const config = {
       headers: {
@@ -40,11 +54,11 @@ export default function Cart({ x }) {
       },
     };
     axios
-      .post(`${BaseRoot}store/products/${x.id}/likes/`, config, {
-        user: ` Authorization: ${localStorage.getItem("token")}`,
-      })
+      .post(`${BaseRoot}store/products/${x.id}/likes/`, {}, config)
       .then(function (response) {
-        console.log(response.data);
+        if (response.status === 201) {
+          newItemLiked(x.id);
+        }
       });
   };
   useEffect(() => {
@@ -54,10 +68,12 @@ export default function Cart({ x }) {
         setNum(response.data);
       });
   }, []);
+
+  useEffect(() => {
+    console.log(likedItems);
+  }, [likedItems]);
   const copyToClipboard = () => {
-    let copyText = `${window.location.hostname}${
-      window.location.port === 80 ? null : ":" + window.location.port
-    }${window.location.pathname}/${x.id}`;
+    let copyText = `${window.location.href}/${x.id}`;
     let isCopy = copy(copyText);
     if (isCopy) {
       toast.success("کپی شد", {
@@ -75,14 +91,28 @@ export default function Cart({ x }) {
     <div div className="w-auto flex flex-col items-center">
       <div className={styles.TopPartOfDownB}>
         <div>
-          <img
-            className="h-48 w-60 object-cover rounded-lg"
-            src={x.images[0]["image"]}
-          />
+          {x.images.length === 0 ? (
+            <img
+              className="h-48 w-60 object-cover rounded-lg"
+              src={NoPhoto}
+              alt="no_photo_found"
+            />
+          ) : (
+            <img
+              className="h-48 w-60 object-cover rounded-lg"
+              src={x.images[0]["image"]}
+            />
+          )}
           <div className={styles.LikeBox}>
-            <i onClick={sendLike} className="cursor-pointer">
-              <FiHeart size={20} color="#8806ce" />
-            </i>
+            {likedItems.includes(x.id) ? (
+              <i className="cursor-pointer">
+                <GoHeartFill onClick={sendDisLike} size={20} color="#8806ce" />
+              </i>
+            ) : (
+              <i onClick={sendLike} className="cursor-pointer">
+                <FiHeart size={20} color="#8806ce" />
+              </i>
+            )}
             {/* <i> {num}</i> */}
             <i onClick={copyToClipboard} className="cursor-pointer">
               <BsFillShareFill size={20} color="#8806ce" />

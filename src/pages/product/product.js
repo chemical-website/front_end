@@ -25,6 +25,7 @@ import { Dialog } from "@mui/material";
 import Order from "./order";
 import { FiHeart } from "react-icons/fi";
 import ShowToast from "./../../utilities/ShowToast";
+import NoPhoto from "../../assets/img/No-Image.jpg"
 
 const Product = () => {
   const { id } = useParams();
@@ -181,7 +182,7 @@ const Product = () => {
 
         <div className=" flex flex-col w-full lg:flex-row lg:items-start gap-7 lg:gap-0 items-center justify-between lg:w-4/5 mb-12">
           <div className="w-8/12 lg:w-1/3 flex justify-center flex-col items-first">
-            <PicSlider images={images} />
+            {images.length !== 0 ? <PicSlider images={images} /> : <img src={NoPhoto} alt="no_photo"/>}
           </div>
           <div className="w-4/5 lg:w-1/3 flex flex-col h-full">
             <h3 className="font-bold text-3xl">{info.title}</h3>

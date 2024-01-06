@@ -10,12 +10,14 @@ const Footer = () => {
   const [mahsollist, setMahsolList] = useState([]);
   const [email, setEmail] = useState();
   useEffect(() => {
-    axios.get(`${BaseRoot}store/collections/`).then(function (response) {
-      setMahsolList(response.data);
-    });
+    axios
+      .get(`${BaseRoot}store/collections/?footer=yes`)
+      .then(function (response) {
+        setMahsolList(response.data);
+      });
   }, []);
-  const seccuesmail= (state) => {
-    if (state === 1){
+  const seccuesmail = (state) => {
+    if (state === 1) {
       toast.success("ارسال شد", {
         style: {
           textAlign: "start",
@@ -23,31 +25,28 @@ const Footer = () => {
           fontFamily: "Markazi Text",
           fontSize: "20px",
         },
-      })
-
+      });
     }
-    if (state === 0){
-      toast.warning("مشکلی هست",{
+    if (state === 0) {
+      toast.warning("مشکلی هست", {
         style: {
           textAlign: "start",
           direction: "rtl",
           fontFamily: "Markazi Text",
           fontSize: "20px",
         },
-      })
-    } 
-     }
+      });
+    }
+  };
   const sendEmails = () => {
     axios
       .post(`${BaseRoot}store/emails/`, { email: email })
       .then(function (response) {
-          seccuesmail(1)
-        })
-        .catch(
-          function(err){
-            seccuesmail(0)
-          }
-        )
+        seccuesmail(1);
+      })
+      .catch(function (err) {
+        seccuesmail(0);
+      });
   };
   return (
     <div
@@ -171,18 +170,18 @@ const Footer = () => {
           <div className=" hidden md:block ">
             <div>
               <p style={{ fontWeight: "700" }} className="  text-xl ">
-                محصولات
+                دسته بندی ها
               </p>
             </div>
             <ul className=" pr-2 flex flex-col  justify-between items-start">
               {mahsollist.map((e) => {
-                if (e.id <= 4) {
-                  return (
-                    <li style={{ fontWeight: "500" }} className="text-base">
-                      <Link to={`/app/collections/search/${e.title}`}>{e.title}</Link>
-                    </li>
-                  );
-                }
+                return (
+                  <li style={{ fontWeight: "500" }} className="text-base">
+                    <Link to={`/app/collections/search/${e.title}`}>
+                      {e.title}
+                    </Link>
+                  </li>
+                );
               })}
             </ul>
           </div>

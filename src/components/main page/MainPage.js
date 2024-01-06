@@ -29,6 +29,22 @@ function MainPage() {
   // }, []);
 
   const sendRequest = () => {
+    const email = emailRef.current.value
+    const phone = phoneRef.current.value
+    if (!email.includes("@")) {
+      ShowToast("لطفا ایمیل معتبری وارد کنید", "e")
+      return;
+    }
+    else if (!phone.startsWith("09")) {
+      ShowToast("شماره همراه باید با ۰۹ شروع شود", "e")
+      return;
+    }
+    else if (phone.length !== 11) {
+      console.log(phone.length);
+      ShowToast("شماره همراه باید ۱۱ رقم باشد", "e")
+      return;
+    }
+
     axios
       .post(`${BaseRoot}store/products/-1/orders/`, {
         phone: phoneRef.current.value,
