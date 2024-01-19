@@ -12,6 +12,7 @@ const SearchCollections = () => {
   const { name } = useParams();
   const [prdouctData, setProductData] = useState([]);
   const [collections, setCollections] = useState([]);
+  const [likedItems, setLikedItems] = useState([]);
   const [sort, setSort] = useState(false);
   const config = {
     headers: {
@@ -28,6 +29,12 @@ const SearchCollections = () => {
           setProductData([]);
         }
       });
+
+    axios.get(`${BaseRoot}store/likes/`, config).then(({ data }) => {
+      const tmpLikedItem = [];
+      data.forEach((item) => tmpLikedItem.push(item.product));
+      setLikedItems(tmpLikedItem);
+    });
   }, [name]);
   useEffect(() => {
     axios
@@ -227,11 +234,11 @@ const SearchCollections = () => {
             {collections.map((e) => {
               return (
                 <div
-                  // style={{
-                  //   padding: " 0.1875rem 0.375rem",
-                  //   background: "#F7EBFE",
-                  //   borderRadius: "0.25rem",
-                  // }}
+                // style={{
+                //   padding: " 0.1875rem 0.375rem",
+                //   background: "#F7EBFE",
+                //   borderRadius: "0.25rem",
+                // }}
                 >
                   {/* {e.title} */}
                 </div>
@@ -240,7 +247,7 @@ const SearchCollections = () => {
           </div>
           <div className="flex flex-row flex-wrap gap-7 w-4/5">
             {prdouctData.map((e) => {
-              return <Cart x={e} />;
+              return <Cart x={e} likedItems={likedItems} />;
             })}
           </div>
         </div>

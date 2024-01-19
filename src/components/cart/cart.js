@@ -104,7 +104,7 @@ export default function Cart({ x, newItemLiked, newItemDisLiked, likedItems }) {
             />
           )}
           <div className={styles.LikeBox}>
-            {likedItems.includes(x.id) ? (
+            {likedItems && likedItems.includes(x.id) ? (
               <i className="cursor-pointer">
                 <GoHeartFill onClick={sendDisLike} size={20} color="#8806ce" />
               </i>

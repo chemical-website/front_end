@@ -13,6 +13,7 @@ const SearchIndustry = () => {
   console.log(name);
   const [prdouctData, setProductData] = useState([]);
   const [collections, setCollections] = useState([]);
+  const [likedItems, setLikedItems] = useState([]);
   const [sort, setSort] = useState(false);
   const config = {
     headers: {
@@ -25,6 +26,12 @@ const SearchIndustry = () => {
       .then(function (response) {
         setProductData(response.data[0]["industry_products"]);
         console.log(response);
+      });
+
+      axios.get(`${BaseRoot}store/likes/`, config).then(({ data }) => {
+        const tmpLikedItem = [];
+        data.forEach((item) => tmpLikedItem.push(item.product));
+        setLikedItems(tmpLikedItem);
       });
   }, [name]);
   useEffect(() => {
@@ -220,9 +227,10 @@ const SearchIndustry = () => {
           </div>
         </div>
         <div className="w-5/6 flex flex-row justify-between items-start mt-12">
-          <div className="grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 lg:auto-cols-auto sm:grid-cols-2 gap-4 bg-slate-500"
+          <div
+            className="grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 lg:auto-cols-auto sm:grid-cols-2 gap-4"
             style={{
-              gridRow: "auto"
+              gridRow: "auto",
             }}
           >
             {collections.map((e) => {
@@ -241,10 +249,10 @@ const SearchIndustry = () => {
               );
             })}
           </div>
-          <div className=" flex flex-row gap-5 flex-wrap bg-slate-400 w-4/5">
+          <div className=" flex flex-row gap-5 flex-wrap w-4/5">
             {prdouctData.map((e) => {
               console.log(e);
-              return <Cart x={e} />;
+              return <Cart x={e} likedItems={likedItems} />;
             })}
           </div>
         </div>
