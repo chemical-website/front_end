@@ -117,7 +117,7 @@ const NewPage = () => {
       <div className=" flex flex-col items-center">
         <div className=" text-4xl  pb-16">{info.title}</div>
         <div className=" w-4/6 text-lg pb-16" dangerouslySetInnerHTML={{__html: info.specific_content}}/>
-        <div className="w-4/6">
+        {/* <div className="w-4/6">
           <Swiper
             navigation={true}
             pagination={true}
@@ -134,9 +134,9 @@ const NewPage = () => {
               );
             })}
           </Swiper>
-        </div>
+        </div> */}
       </div>
-      <div className=" flex flex-col justify-center items-center pt-24">
+      {news.length > 1 && <div className=" flex flex-col justify-center items-center pt-24">
         <p className="w-1/6  text-4xl pb-8 text-center">دیگر اخبار</p>
         <div className="w-5/6">
           <Swiper
@@ -180,7 +180,7 @@ const NewPage = () => {
             </div>
           </Swiper>
         </div>
-      </div>
+      </div>}
     </div>
   );
 };
