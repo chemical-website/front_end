@@ -4,9 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { BaseRoot } from "../../baseRoot";
 import axios from "axios";
 import closeIcon from "../../assets/Icons/Close.svg"
+import ShowToast from "../../utilities/ShowToast";
 
 
-const Order = ({id , func}) => {
+const Order = ({id , func, closeDialog}) => {
     const [open, setOpen] =useState(false);
     const navigate = useNavigate();
     let [tabs, settabs] = useState(0);
@@ -28,9 +29,14 @@ const Order = ({id , func}) => {
         })
         .then(function (response) {
           navigate(`/app/product/${id}`)
+          ShowToast("سفارش شما با موفقت ثبت شد")
+          closeDialog()
         })
         .catch(function (error) {
           console.log(error);
+          ShowToast("مشکلی در ثبت سفارش شما پیش آمده", "e")
+          closeDialog()
+
         });
       }
     return ( 

@@ -340,7 +340,7 @@ const Product = () => {
         aria-describedby="alert-dialog-slide-description"
         maxWidth="sm"
       >
-        <Order id={id} />
+        <Order id={id} closeDialog={handleClose} />
       </Dialog>
     </Fragment>
   );
