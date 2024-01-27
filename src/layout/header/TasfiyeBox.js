@@ -12,13 +12,11 @@ function TasfiyeBox(props) {
   if (s == id) {
     return (
       <>
-        <div className={navigationBar.BBox}>
           <div className={navigationBar.SBox}>
             {data.map((e) => {
               return <Link to={`/app/product/${e.id}`}>{e.title}</Link>;
             })}
           </div>
-        </div>
       </>
     );
   } else {

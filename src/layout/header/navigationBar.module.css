@@ -100,8 +100,8 @@
   backdrop-filter: blur(13.1px);
   -webkit-backdrop-filter: blur(13.1px);
   position: absolute;
-  width: 600px;
-  height: 300px;
+  min-width: 650px;
+  min-height: 300px;
   top: 72px;
   display: flex;
   border-bottom-right-radius: 10px;
@@ -109,7 +109,6 @@
   padding-bottom: 7px;
   padding-right: 8px;
   z-index: 100;
-  /* gap: 10px; */
 }
 
 .ProductsMenu {
@@ -155,7 +154,6 @@
 
 .LeftBox {
   flex: 2;
-  /* background-color: #3b0359; */
   z-index: 100;
 }
 
@@ -172,12 +170,6 @@
   margin-right: 6%;
 }
 
-.BBox {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  height: 300px;
-}
 
 .SBox {
   margin-top: 10px;
@@ -185,8 +177,9 @@
   flex-direction: column;
   gap: 6px;
   font-size: 20px;
-  /* margin-right: 10px; */
-  /* height: 100%; */
+  max-height: 300px;
+  width: auto;
+  flex-wrap: wrap;
 }
 
 .SBox a {
