@@ -19,13 +19,14 @@ import {
   DialogContentText,
 } from "@mui/material";
 import axios from "axios";
-import { NewsCart } from './../news/news';
+import { NewsCart } from "./../news/news";
 
 const NewPage = () => {
   const id = useParams();
   const [info, setInfo] = useState({});
   const [imag, setImag] = useState([]);
   const [news, setNews] = useState([]);
+  const [randomNewsIDs, setRandomNewsIDs] = useState([]);
   useEffect(() => {
     axios.get(`${BaseRoot}store/posts/${id.id}/`).then(function (response) {
       setInfo(response.data);
@@ -37,6 +38,15 @@ const NewPage = () => {
       setNews(response.data);
     });
   }, []);
+
+  useEffect(() => {
+    const randomIdStore = [];
+    news.forEach((element) => {
+      randomIdStore.push(element.id);
+    });
+    randomIdStore.sort((a, b) => b - a);
+    setRandomNewsIDs(randomIdStore.slice(0, 4));
+  }, [news]);
   return (
     <div style={{ color: "#3B0359" }}>
       <NavigationBar />
@@ -106,7 +116,7 @@ const NewPage = () => {
       </div>
       <div className=" flex flex-col items-center">
         <div className=" text-4xl  pb-16">{info.title}</div>
-        <div className=" w-4/6 text-lg pb-16">{info.content}</div>
+        <div className=" w-4/6 text-lg pb-16" dangerouslySetInnerHTML={{__html: info.specific_content}}/>
         <div className="w-4/6">
           <Swiper
             navigation={true}
@@ -162,13 +172,12 @@ const NewPage = () => {
             modules={[Navigation, Pagination]}
             className="w-full h-fit"
           >
-            {news.map((x) => {
-              return (
-                <SwiperSlide className="flex  justify-center my-10 px-12">
-                  <NewsCart info={x} />
-                </SwiperSlide>
-              );
-            })}
+            <div className="flex flex-row h-fit">
+              {news.map((x) => {
+                if (x.id !== parseInt(id.id) && randomNewsIDs.includes(x.id))
+                  return <NewsCart info={x} />;
+              })}
+            </div>
           </Swiper>
         </div>
       </div>

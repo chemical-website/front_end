@@ -39,7 +39,7 @@ export const NewsCart = ({ info }) => {
     <div
       onMouseEnter={() => setShowFeatures(true)}
       onMouseLeave={() => setShowFeatures(false)}
-      className="flex flex-col justify-between items-start overflow-x-hidden  h-fit mx-9 gap-2 mb-4"
+      className="flex flex-col justify-between items-start overflow-x-hidden mx-9 gap-2 mb-4"
       style={{ width: "20rem" }}
     >
       <div style={{ width: "100%", height: "18rem", position: "relative" }}>
@@ -84,24 +84,26 @@ export const NewsCart = ({ info }) => {
           )}
         </AnimatePresence>
       </div>
-      <div>
-        <p style={{ color: "#27023B" }} className=" font-semibold text-xl mt-4">
-          {info.title}
-        </p>
+      <div className="flex flex-col flex-1">
+        <div>
+          <p style={{ color: "#27023B" }} className=" font-semibold text-xl mt-4">
+            {info.title}
+          </p>
+        </div>
+        <div className="flex flex-row gap-3">
+          <p style={{ color: "#D184FB" }} className=" font-normal text-base">
+            {ClarifyPersianDate(
+              jalaliMoment(info.creation_date).format("jYYYY-jMM-jDD ")
+            )}
+          </p>
+          <p style={{ color: "#D184FB" }} className=" font-normal text-base">
+            {ClarifyPersianDate(
+              jalaliMoment(info.creation_date).format("HH:mm:ss")
+            )}
+          </p>
+        </div>
       </div>
-      <div className="flex flex-row gap-3">
-        <p style={{ color: "#D184FB" }} className=" font-normal text-base">
-          {ClarifyPersianDate(
-            jalaliMoment(info.creation_date).format("jYYYY-jMM-jDD ")
-          )}
-        </p>
-        <p style={{ color: "#D184FB" }} className=" font-normal text-base">
-          {ClarifyPersianDate(
-            jalaliMoment(info.creation_date).format("HH:mm:ss")
-          )}
-        </p>
-      </div>
-      <div style={{ color: "#3B0359" }} className=" font-normal text-lg">
+      <div style={{ color: "#3B0359", flex: "3" }} className=" font-normal text-lg">
         {info.content.split(".")[0].length < 500
           ? info.content.split(".")[0] + "."
           : info.content.split(".")[0].slice(0, 500)}
@@ -325,7 +327,7 @@ const NewsPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-5/6 flex-row justify-between items-start mt-12">
+        <div className="flex w-5/6 flex-row flex-wrap justify-between items-start mt-12">
           <div className="flex flex-col lg:flex-row justify-start w-full">
             {news.map((e) => {
               return (
