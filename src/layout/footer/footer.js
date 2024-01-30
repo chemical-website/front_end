@@ -88,7 +88,7 @@ const Footer = () => {
                     ایمیل
                   </p>
                   <p style={{ fontWeight: "400" }} className=" text-sm">
-                    testTqw@gmail.com
+                    akneeru@yahoo.com
                   </p>
                 </div>
                 <div className="flex flex-row  justify-between items-center w-full">
