@@ -236,8 +236,8 @@ const Product = () => {
               <div className="flex flex-row items-center justify-between mt-7">
                 <div>
                   <p className="  font-bold text-xl">تماس بگیرید</p>
-                  <p className="text-xl" style={{ direction: "rtl" }}>
-                    ۹۸۹۹۰۰۷۸۴۳۲۲+
+                  <p className="text-xl" style={{ direction: "ltr" }}>
+                    +۹۸۹۱۳۲۰۲۴۷۲۲
                   </p>
                 </div>
                 <div>

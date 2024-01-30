@@ -13,6 +13,7 @@ import { LuLogOut } from "react-icons/lu";
 import { useWindowSize } from "@uidotdev/usehooks";
 import { TfiViewList } from "react-icons/tfi";
 import { motion, AnimatePresence } from "framer-motion";
+import CompanyLogo from "../../assets/img/alaadinGroup.webp"
 
 function NavigationBar() {
   const [showMobileNavbar, setShowMobileNavbar] = useState(false);
@@ -57,9 +58,9 @@ function NavigationBar() {
 
         <Link to={"/app"} className={navigationBar.topologo}>
           {/* <img /> */}
-          <h1>esme sherkat</h1>
+          {/* <h1>esme sherkat</h1> */}
           <i>
-            <BiImage size={35} />
+            <img src={CompanyLogo} alt="logo"/>
           </i>
         </Link>
 
