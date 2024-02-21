@@ -13,7 +13,7 @@ import { LuLogOut } from "react-icons/lu";
 import { useWindowSize } from "@uidotdev/usehooks";
 import { TfiViewList } from "react-icons/tfi";
 import { motion, AnimatePresence } from "framer-motion";
-import CompanyLogo from "../../assets/img/alaadinGroup.webp"
+import CompanyLogo from "../../assets/img/alaadinGroup.webp";
 
 function NavigationBar() {
   const [showMobileNavbar, setShowMobileNavbar] = useState(false);
@@ -60,7 +60,7 @@ function NavigationBar() {
           {/* <img /> */}
           {/* <h1>esme sherkat</h1> */}
           <i>
-            <img src={CompanyLogo} alt="logo"/>
+            <img src={CompanyLogo} alt="logo" />
           </i>
         </Link>
 
