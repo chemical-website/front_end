@@ -22,6 +22,8 @@ function NavigationBar() {
   const navigate = useNavigate();
   let [opennav, setopennav] = useState(0);
   const [productNav, setProductNav] = useState([]);
+  const [allParentCollection, setAllParentCollection] = useState([]);
+  const [activeCategWithSubs, setActiveCategWithSubs] = useState([]);
   let [s, sets] = useState(0);
   const [inputRef, setInputRef] = useState();
   const [avtiveCategory, setActiveCategory] = useState(-1);
@@ -31,6 +33,19 @@ function NavigationBar() {
   }
   function TasfiyeAbshow(num) {
     sets(num);
+    const result = [];
+
+    productNav.forEach((category) => {
+      if (category.collection.id === num) {
+        const subCategory = {
+          id: category.id,
+          title: category.title,
+          products: category.products,
+        };
+        result.push(subCategory);
+      }
+    });
+    setActiveCategWithSubs(result);
   }
   function closeemahsol() {
     setopennav(0);
@@ -46,8 +61,13 @@ function NavigationBar() {
       setLogin(false);
     }
   }, []);
+
   useEffect(() => {
     axios.get(`${BaseRoot}store/collections/`).then(function (response) {
+      setAllParentCollection(response.data);
+    });
+
+    axios.get(`${BaseRoot}store/subcollections/`).then(function (response) {
       setProductNav(response.data);
     });
   }, []);
@@ -88,7 +108,7 @@ function NavigationBar() {
                 }
               >
                 <div className={navigationBar.RightBox}>
-                  {productNav.map((e) => {
+                  {allParentCollection.map((e) => {
                     return (
                       <div
                         className="flex w-full flex-row justify-start gap-5 items-center cursor-pointer"
@@ -119,7 +139,11 @@ function NavigationBar() {
                         }}
                         onMouseLeave={TasfiyeAboff}
                       >
-                        <TasfiyeBox data={e} show={s} />
+                        <TasfiyeBox
+                          data={e}
+                          show={s}
+                          subsData={activeCategWithSubs}
+                        />
                       </div>
                     );
                   })}

@@ -7,16 +7,26 @@ function TasfiyeBox(props) {
   let s = props.show;
   let data = props.data;
   let id = data.id;
+  let subData = props.subsData;
   data = data.products;
 
   if (s == id) {
     return (
       <>
-          <div className={navigationBar.SBox}>
-            {data.map((e) => {
-              return <Link to={`/app/product/${e.id}`}>{e.title}</Link>;
-            })}
-          </div>
+        <div className={navigationBar.SBox}>
+          {subData.map((e) => {
+            return (
+              <div className="flex flex-col">
+                <span className="text-xl font-bold">{e.title}</span>
+                <div>
+                  {e.products.map((prodData) => {
+                    return <span className="text-base">{prodData.title}</span>;
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </>
     );
   } else {
