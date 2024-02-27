@@ -38,7 +38,7 @@ function NavigationBar() {
     productNav.forEach((category) => {
       if (category.collection.id === num) {
         const subCategory = {
-          id: category.id,
+          id: num,
           title: category.title,
           products: category.products,
         };
@@ -140,7 +140,9 @@ function NavigationBar() {
                         onMouseLeave={TasfiyeAboff}
                       >
                         <TasfiyeBox
+                          key={e.id}
                           data={e}
+                          id={e.collection.id}
                           show={s}
                           subsData={activeCategWithSubs}
                         />
