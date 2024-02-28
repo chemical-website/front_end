@@ -249,20 +249,28 @@ const Product = () => {
                 </div>
               )}
               <div className="flex flex-row items-center justify-between mt-7">
-                <div className="flex flex-col items-start">
-                  <p className="font-bold text-xl">شرکت ارائه دهنده:</p>
-                  <p className="text-xl">
-                    {info.industry && info.industry.title}
-                  </p>
-                  <p className="font-bold text-xl">وبسایت شرکت:</p>
-                  <p className="text-xl">
-                    {info.industry && info.industry.website}
-                  </p>
-                  <p className="font-bold text-xl">شماره تماس:</p>
-                  <p className="text-xl" style={{ direction: "ltr" }}>
-                    {info.industry && ToPersianNumber(info.industry.phone)}
-                  </p>
-                </div>
+                {info.industry && (
+                  <div className="flex flex-col items-start">
+                    {info.industry.title && (
+                      <div>
+                        <p className="font-bold text-xl">شرکت ارائه دهنده:</p>
+                        <p className="text-xl">{info.industry.title}</p>
+                      </div>
+                    )}
+                    {info.industry.website && (
+                      <div>
+                        <p className="font-bold text-xl">وبسایت شرکت:</p>
+                        <p className="text-xl">{info.industry.website}</p>
+                      </div>
+                    )}
+                    <p className="font-bold text-xl">شماره تماس:</p>
+                    <p className="text-xl" style={{ direction: "ltr" }}>
+                      {info.industry.phone
+                        ? ToPersianNumber(info.industry.phone)
+                        : "شماره‌ای ثبت نشده"}
+                    </p>
+                  </div>
+                )}
                 <div>
                   <IoMdCall size={25} />
                 </div>
