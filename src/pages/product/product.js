@@ -25,7 +25,8 @@ import { Dialog } from "@mui/material";
 import Order from "./order";
 import { FiHeart } from "react-icons/fi";
 import ShowToast from "./../../utilities/ShowToast";
-import NoPhoto from "../../assets/img/No-Image.jpg"
+import NoPhoto from "../../assets/img/No-Image.jpg";
+import ToPersianNumber from "./../../utilities/ToPersianNumber";
 
 const Product = () => {
   const { id } = useParams();
@@ -182,7 +183,11 @@ const Product = () => {
 
         <div className=" flex flex-col w-full lg:flex-row lg:items-start gap-7 lg:gap-0 items-center justify-between lg:w-4/5 mb-12">
           <div className="w-8/12 lg:w-1/3 flex justify-center flex-col items-first">
-            {images.length !== 0 ? <PicSlider images={images} /> : <img src={NoPhoto} alt="no_photo"/>}
+            {images.length !== 0 ? (
+              <PicSlider images={images} />
+            ) : (
+              <img src={NoPhoto} alt="no_photo" />
+            )}
           </div>
           <div className="w-4/5 lg:w-1/3 flex flex-col h-full">
             <h3 className="font-bold text-3xl">{info.title}</h3>
@@ -233,11 +238,29 @@ const Product = () => {
                   ناموجود
                 </div>
               </div>
+              {info.price_range && (
+                <div className="flex flex-col font-bold text-xl mt-2">
+                  <p>بازه قیمت محصول:</p>
+                  <p>
+                    از {ToPersianNumber(info.price_range.start_price)} تا{" "}
+                    {ToPersianNumber(info.price_range.end_price)}{" "}
+                    {info.price_range.currency_type}
+                  </p>
+                </div>
+              )}
               <div className="flex flex-row items-center justify-between mt-7">
-                <div>
-                  <p className="  font-bold text-xl">تماس بگیرید</p>
+                <div className="flex flex-col items-start">
+                  <p className="font-bold text-xl">شرکت ارائه دهنده:</p>
+                  <p className="text-xl">
+                    {info.industry && info.industry.title}
+                  </p>
+                  <p className="font-bold text-xl">وبسایت شرکت:</p>
+                  <p className="text-xl">
+                    {info.industry && info.industry.website}
+                  </p>
+                  <p className="font-bold text-xl">شماره تماس:</p>
                   <p className="text-xl" style={{ direction: "ltr" }}>
-                    +۹۸۹۱۳۲۰۲۴۷۲۲
+                    {info.industry && ToPersianNumber(info.industry.phone)}
                   </p>
                 </div>
                 <div>
