@@ -68,28 +68,20 @@ const Footer = () => {
             </div>
             <div className=" flex flex-row  justify-between">
               <div className=" flex flex-col justify-between items-start">
-                <div className=" pr-2 flex flex-col justify-between items-end">
-                  <div className="flex flex-row  justify-between items-center">
-                    <p style={{ fontWeight: "500" }} className="text-base ml-3">
-                      تلفن
-                    </p>
-                    <p
-                      style={{ fontWeight: "400", direction: "ltr" }}
-                      className=" text-base"
-                    >
-                      +۹۸۹۱۳۲۰۲۴۷۲۲
-                    </p>
+                <div className=" pr-2 flex flex-col justify-between items-start">
+                  <p className="text-lg font-bold ml-3">تلفن</p>
+                  <p>۰۹۱۳۲۰۲۴۷۲۲/ ۰۹۱۳۴۲۵۷۵۱۰</p>
+                  <p>۰۳۱۳۶۶۱۹۴۷۶</p>
+                  <div>
+                    <p className="text-lg font-bold ml-3">آدرس ما</p>
+                    <p>سعادت آباد - چهار راه فرایبورگ - خیابان ۲۳ - طبقه اول</p>
                   </div>
                 </div>
               </div>
               <div className=" flex flex-col  justify-between items-start  h-16  mr-10">
-                <div className="flex flex-row  justify-between items-center ml-3">
-                  <p style={{ fontWeight: "500" }} className="text-base">
-                    ایمیل
-                  </p>
-                  <p style={{ fontWeight: "400" }} className=" text-sm">
-                    akneeru@yahoo.com
-                  </p>
+                <div className="flex flex-row gap-1 justify-between items-center ml-3">
+                  <p className="text-lg">ایمیل</p>
+                  <p>Pakneeru@yahoo.com</p>
                 </div>
                 <div className="flex flex-row  justify-between items-center w-full">
                   <svg
@@ -229,7 +221,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex flex-col items-center md:items-start">
-          <p style={{ fontWeight: "500" }} className=" text-sm">
+          <p style={{ fontWeight: "500" }} className="text-lg font-bold ml-3">
             © کلیه حقوق مادی و معنوی متعلق به علاء الدین می‌باشد.
           </p>
         </div>
