@@ -15,11 +15,11 @@ function TasfiyeBox({ show: s, subsData, id }) {
               return (
                 <div key={e.title} className="flex flex-col">
                   <span className="text-xl font-bold">{e.title}</span>
-                  <div>
+                  <div className="flex flex-wrap flex-col w-auto h-60 gap-1 ">
                     {e.products &&
                       e.products.map((prodData) => {
                         return (
-                          <div className="flex flex-col gap-1 -translate-x-1">
+                          <div className="flex flex-col">
                             <span key={prodData.title} className="text-base">
                               {prodData.title}
                             </span>
