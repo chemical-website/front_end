@@ -124,7 +124,7 @@
   width: auto;
   z-index: 100;
   margin-right: 10px;
-    flex: 1;
+  flex: 1;
 }
 
 .RightBox button {
@@ -156,6 +156,7 @@
   flex: 2;
   z-index: 100;
   flex-wrap: wrap;
+  width: auto;
 }
 
 .leftOpen h5 i {

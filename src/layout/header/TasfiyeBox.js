@@ -14,14 +14,24 @@ function TasfiyeBox({ show: s, subsData, id }) {
             subsData.map((e) => {
               return (
                 <div key={e.title} className="flex flex-col">
-                  <span className="text-xl font-bold">{e.title}</span>
-                  <div className="flex flex-wrap flex-col w-auto h-60 gap-1 ">
+                  <span className="text-xl font-bold cursor-default">
+                    {e.title}
+                  </span>
+                  <div className="flex flex-wrap flex-col w-auto h-60 gap-1">
                     {e.products &&
                       e.products.map((prodData) => {
                         return (
                           <div className="flex flex-col">
-                            <span key={prodData.title} className="text-base">
-                              {prodData.title}
+                            <span
+                              key={prodData.title}
+                              className="text-base cursor-pointer"
+                            >
+                              <Link
+                                className=""
+                                to={`/app/product/${prodData.id}`}
+                              >
+                                {prodData.title}
+                              </Link>
                             </span>
                           </div>
                         );

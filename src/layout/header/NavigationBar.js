@@ -116,7 +116,6 @@ function NavigationBar() {
                           TasfiyeAbshow(e.id);
                           setActiveCategory(e.id);
                         }}
-                        onMouseLeave={TasfiyeAboff}
                       >
                         <h2>
                           <Link to={`/app/collections/search/${e.title}`}>
@@ -133,12 +132,7 @@ function NavigationBar() {
                 <div className={navigationBar.LeftBox}>
                   {productNav.map((e) => {
                     return (
-                      <div
-                        onMouseEnter={() => {
-                          TasfiyeAbshow(e.id);
-                        }}
-                        onMouseLeave={TasfiyeAboff}
-                      >
+                      <div>
                         <TasfiyeBox
                           key={e.id}
                           data={e}
