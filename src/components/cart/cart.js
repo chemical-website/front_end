@@ -17,8 +17,7 @@ import copy from "copy-to-clipboard";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { BaseRoot } from "../../baseRoot";
-import NoPhoto from "../../assets/img/No-Image.jpg"
-
+import NoPhoto from "../../assets/img/No-Image.jpg";
 
 export default function Cart({ x, newItemLiked, newItemDisLiked, likedItems }) {
   const [num, setNum] = useState(0);
@@ -127,7 +126,7 @@ export default function Cart({ x, newItemLiked, newItemDisLiked, likedItems }) {
           <h3>{x.title}</h3>
           <p className="overflow-hidden h-10">{x.short_description}</p>{" "}
           <div className={styles.LinkSBox}>
-            <Link to={"/app/aboutus"}>
+            <Link to={`/app/product/${x.id}?status=open`}>
               <IoMdCall size={25} />
               <span className="text-xl">تماس بگیرید</span>
             </Link>

@@ -27,9 +27,11 @@ import { FiHeart } from "react-icons/fi";
 import ShowToast from "./../../utilities/ShowToast";
 import NoPhoto from "../../assets/img/No-Image.jpg";
 import ToPersianNumber from "./../../utilities/ToPersianNumber";
+import { useSearchParams } from "react-router-dom";
 
 const Product = () => {
   const { id } = useParams();
+  const [searchParams] = useSearchParams();
   const [images, setImages] = useState([]);
   const [info, setInfo] = useState({});
   const [desc, setDesc] = useState("");
@@ -73,6 +75,7 @@ const Product = () => {
           setProp({ "": "" });
         }
         // console.log(response.data.properties)
+        if (searchParams.get("status") === "open") handleClickOpen();
       });
   }, []);
   const copyToClipboard = () => {
