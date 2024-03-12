@@ -8,7 +8,7 @@ import { useModal } from "../../context/ModalContext";
 import axios from "axios";
 import { BaseRoot } from "./../../baseRoot";
 import { useNavigate } from "react-router-dom";
-import ShowToast from './../../utilities/ShowToast';
+import ShowToast from "./../../utilities/ShowToast";
 
 function MainPage() {
   // let [openimahsolat, setopenopenimahsolat] = useState(0);
@@ -17,6 +17,7 @@ function MainPage() {
   const { isModalOpen, openModal, closeModal, acceptRule } = useModal();
   const [showRequestFormModal, setSHowRequestFormModal] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(true);
+  const [showModal, setShowModal] = useState(true);
   const textRef = useRef();
   const phoneRef = useRef();
   const emailRef = useRef();
@@ -29,19 +30,17 @@ function MainPage() {
   // }, []);
 
   const sendRequest = () => {
-    const email = emailRef.current.value
-    const phone = phoneRef.current.value
+    const email = emailRef.current.value;
+    const phone = phoneRef.current.value;
     if (!email.includes("@")) {
-      ShowToast("لطفا ایمیل معتبری وارد کنید", "e")
+      ShowToast("لطفا ایمیل معتبری وارد کنید", "e");
       return;
-    }
-    else if (!phone.startsWith("09")) {
-      ShowToast("شماره همراه باید با ۰۹ شروع شود", "e")
+    } else if (!phone.startsWith("09")) {
+      ShowToast("شماره همراه باید با ۰۹ شروع شود", "e");
       return;
-    }
-    else if (phone.length !== 11) {
+    } else if (phone.length !== 11) {
       console.log(phone.length);
-      ShowToast("شماره همراه باید ۱۱ رقم باشد", "e")
+      ShowToast("شماره همراه باید ۱۱ رقم باشد", "e");
       return;
     }
 
@@ -52,8 +51,9 @@ function MainPage() {
         email: emailRef.current.value,
       })
       .then(function (response) {
-        ShowToast("با موفقیت ارسال شد.")
-        setShowRequestModal(false)
+        ShowToast("با موفقیت ارسال شد.");
+        setSHowRequestFormModal(false);
+        setShowRequestModal(false);
       })
       .catch(function (error) {
         console.log(error);
@@ -63,98 +63,109 @@ function MainPage() {
   return (
     <>
       {/* {acceptRule && ( */}
-        <div className={mainpage.BBox}>
-          <div className={mainpage.TopBox}>
-            <UperPart />
-          </div>
-          <div className={mainpage.DownBox}>
-            <DownerPart />
-          </div>
-          {!showRequestFormModal ? (
-            <motion.div
-              className="fixed bottom-4 right-4 flex flex-col justify-center items-center gap-4 rounded-lg z-50 p-5 pt-2 customGlass"
-              initial={{ y: 200 }}
-              animate={{ y: 0 }}
-              transition={{
-                duration: 1,
-                delay: 1.5,
-                type: "spring",
-                stiffness: 120,
-              }}
-              style={{ fontSize: "20px" }}
-            >
+      <div className={mainpage.BBox}>
+        <div className={mainpage.TopBox}>
+          <UperPart />
+        </div>
+        <div className={mainpage.DownBox}>
+          <DownerPart />
+        </div>
+        {!showRequestFormModal && showRequestModal ? (
+          <motion.div
+            className="fixed bottom-4 right-4 flex flex-col justify-center items-center gap-4 rounded-lg z-50 p-5 pt-2 customGlass"
+            initial={{ y: 200 }}
+            animate={{ y: 0 }}
+            transition={{
+              duration: 1,
+              delay: 1.5,
+              type: "spring",
+              stiffness: 120,
+            }}
+            style={{ fontSize: "20px" }}
+          >
+            <div className="flex flex-row justify-between items-center gap-1">
               <span
                 className="text-xl font-semibold"
                 style={{ color: "#3B0359" }}
               >
                 سلام دوست عزیز! نیاز به کمک دارید؟
               </span>
-              <button
+              <div
                 onClick={() => {
-                  setSHowRequestFormModal(true);
+                  setShowRequestModal(false);
                 }}
-                style={{ backgroundColor: "#8806CE" }}
-                className="w-3/4 rounded-lg py-2 text-gray-200 font-bold"
+                className="cursor-pointer"
               >
-                ایجاد درخواست
-              </button>
-            </motion.div>
-          ) : showRequestModal ? (
-            <motion.div
-              className="fixed bottom-4 right-4 rounded-lg z-50 customGlass"
-              initial={{ y: 200 }}
-              animate={{ y: 0 }}
-              transition={{
-                duration: 1,
-                delay: 1.5,
-                type: "spring",
-                stiffness: 120,
-              }}
-            >
-              <div className="relative h-full w-full flex flex-col justify-center items-center gap-4 p-5 pt-2 rounded-lg">
-                <span
-                  className="text-2xl font-semibold"
-                  style={{ color: "#3B0359" }}
-                >
-                  ثبت درخواست
-                </span>
-                <input
-                  ref={phoneRef}
-                  style={{ border: "2px solid #8806CE" }}
-                  className="py-1 px-2 rounded-md shadow-md inputPlaceColorized"
-                  placeholder="تلفن همراه"
-                />
-                <input
-                  ref={emailRef}
-                  style={{ border: "2px solid #8806CE" }}
-                  className="py-1 px-2 rounded-md shadow-md inputPlaceColorized"
-                  placeholder="ایمیل"
-                />
-                <textarea
-                  ref={textRef}
-                  style={{ resize: "none", border: "2px solid #8806CE" }}
-                  className="py-1 px-2 rounded-md shadow-md h-24 inputPlaceColorized"
-                  placeholder="شرح درخواست"
-                />
-                <button
-                  onClick={sendRequest}
-                  style={{ backgroundColor: "#8806CE" }}
-                  className="w-full rounded-lg py-2 text-gray-200 font-bold"
-                >
-                  ارسال
-                </button>
-                <div
-                  onClick={() => {
-                    setShowRequestModal(false);
-                  }}
-                  className="absolute top-3 left-3 cursor-pointer"
-                >
-                  <RxCross2 size={25} />
-                </div>
+                <RxCross2 size={25} />
               </div>
-            </motion.div>
-          ) : null}
-          {/* <Dialog
+            </div>
+            <button
+              onClick={() => {
+                setSHowRequestFormModal(true);
+              }}
+              style={{ backgroundColor: "#8806CE" }}
+              className="w-3/4 rounded-lg py-2 text-gray-200 font-bold"
+            >
+              ایجاد درخواست
+            </button>
+          </motion.div>
+        ) : showRequestFormModal ? (
+          <motion.div
+            className="fixed bottom-4 right-4 rounded-lg z-50 customGlass"
+            initial={{ y: 200 }}
+            animate={{ y: 0 }}
+            transition={{
+              duration: 1,
+              delay: 1.5,
+              type: "spring",
+              stiffness: 120,
+            }}
+          >
+            <div className="relative h-full w-full flex flex-col justify-center items-center gap-4 p-5 pt-2 rounded-lg">
+              <span
+                className="text-2xl font-semibold"
+                style={{ color: "#3B0359" }}
+              >
+                ثبت درخواست
+              </span>
+              <input
+                ref={phoneRef}
+                style={{ border: "2px solid #8806CE" }}
+                className="py-1 px-2 rounded-md shadow-md inputPlaceColorized"
+                placeholder="تلفن همراه"
+              />
+              <input
+                ref={emailRef}
+                style={{ border: "2px solid #8806CE" }}
+                className="py-1 px-2 rounded-md shadow-md inputPlaceColorized"
+                placeholder="ایمیل"
+              />
+              <textarea
+                ref={textRef}
+                style={{ resize: "none", border: "2px solid #8806CE" }}
+                className="py-1 px-2 rounded-md shadow-md h-24 inputPlaceColorized"
+                placeholder="شرح درخواست"
+              />
+              <button
+                onClick={sendRequest}
+                style={{ backgroundColor: "#8806CE" }}
+                className="w-full rounded-lg py-2 text-gray-200 font-bold"
+              >
+                ارسال
+              </button>
+              <div
+                onClick={() => {
+                  setSHowRequestFormModal(false);
+                  setShowRequestModal(false);
+                }}
+                className="absolute top-3 left-3 cursor-pointer"
+              >
+                <RxCross2 size={25} />
+              </div>
+            </div>
+          </motion.div>
+        ) : null}
+        {/* <Dialog
           open={openModal}
           keepMounted
           onClose={handleClose}
@@ -188,7 +199,7 @@ function MainPage() {
           </DialogActions>
         </Dialog> */}
 
-          {/* <Dialog
+        {/* <Dialog
           open={openModal2}
           keepMounted
           onClose={handleClose2}
@@ -218,7 +229,7 @@ function MainPage() {
             <button onClick={handleClickOpen3}> ثبت درخواست</button>
           </DialogActions>
         </Dialog> */}
-          {/* <Dialog
+        {/* <Dialog
           open={openModal3}
           keepMounted
           onClose={handleClose3}
@@ -227,7 +238,7 @@ function MainPage() {
         >
           <Order func={handleClose3} />
         </Dialog> */}
-        </div>
+      </div>
       {/* )} */}
     </>
   );
