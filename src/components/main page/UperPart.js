@@ -11,7 +11,6 @@ import BuyCartIcon from "../../assets/Icons/BuyCart.svg";
 import SearchIcon from "../../assets/Icons/SearchIconWhite.svg";
 import SearchIconPurple from "../../assets/Icons/SearchIconPurple.svg";
 
-
 function MainPage() {
   let [openimahsolat, setopenopenimahsolat] = useState(0);
   let [opensanat, setopenopensanat] = useState(0);
@@ -19,7 +18,7 @@ function MainPage() {
   const [mahsolatData, setMahsolatData] = useState([]);
   const [masolat, setMahsolat] = useState([]);
   const [industry, setIndustry] = useState([]);
-  const [search , setSearch] = useState(""); 
+  const [search, setSearch] = useState("");
   const config = {
     headers: {
       Authorization: localStorage.getItem("token"),
@@ -75,7 +74,11 @@ function MainPage() {
       {/* <h1 className=" hidden md:block">شرکت تولید کننده پلیمر صنعتی تهران</h1> */}
 
       <div className={mainpage.SearchBox}>
-        <button className={mainpage.Chosdastebandi} onClick={DastebandiSearch}>
+        <button
+          className={mainpage.Chosdastebandi}
+          onClick={DastebandiSearch}
+          onBlur={DastebandiSearch}
+        >
           <i className={mainpage.leftIcon}>
             {openimahsolat == 0 ? (
               <AiFillCaretDown color="#27023b" />
@@ -84,7 +87,10 @@ function MainPage() {
             )}
           </i>
           <span className={mainpage.SearchDastebandi}>
-            <span className="text-base sm:text-lg font-bold" style={{ color: "#3B0359" }}>
+            <span
+              className="text-base sm:text-lg font-bold"
+              style={{ color: "#3B0359" }}
+            >
               {" "}
               دسته بندی محصولات
             </span>
@@ -93,7 +99,11 @@ function MainPage() {
             </i>
           </span>
         </button>
-        <button className={mainpage.Chosdastebandi} onClick={SanatSearch}>
+        <button
+          className={mainpage.Chosdastebandi}
+          onClick={SanatSearch}
+          onBlur={SanatSearch}
+        >
           <i className={mainpage.leftIcon}>
             {opensanat == 0 ? (
               <AiFillCaretDown color="#27023b" />
@@ -102,7 +112,10 @@ function MainPage() {
             )}
           </i>
           <span className={mainpage.SearchDastebandi}>
-            <span className="text-base sm:text-lg font-bold" style={{ color: "#3B0359" }}>
+            <span
+              className="text-base sm:text-lg font-bold"
+              style={{ color: "#3B0359" }}
+            >
               انتخاب صنعت
             </span>
             <i className={mainpage.rightIcon}>
@@ -110,7 +123,11 @@ function MainPage() {
             </i>
           </span>
         </button>
-        <button className={mainpage.Chosdastebandi} onClick={MahsolSearch}>
+        <button
+          className={mainpage.Chosdastebandi}
+          onClick={MahsolSearch}
+          onBlur={MahsolSearch}
+        >
           <i className={mainpage.leftIcon}>
             {openiconmahsol == 0 ? (
               <AiFillCaretDown color="#27023b" />
@@ -119,7 +136,10 @@ function MainPage() {
             )}
           </i>
           <div className={mainpage.SearchDastebandi}>
-            <span className="text-base sm:text-lg font-bold" style={{ color: "#3B0359" }}>
+            <span
+              className="text-base sm:text-lg font-bold"
+              style={{ color: "#3B0359" }}
+            >
               انتخاب محصول
             </span>
             <i className={mainpage.rightIcon}>
@@ -134,10 +154,18 @@ function MainPage() {
           }
         >
           <div className={mainpage.inputf}>
-            <input onChange={(e)=>{setSearch(e.target.value)}} placeholder="تایپ کنید" />
-            <i onClick={()=>{
-              setMahsolatData(mahsolatData.filter(e => e.title === search))  
-            }} className={mainpage.searchIcon}>
+            <input
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+              placeholder="تایپ کنید"
+            />
+            <i
+              onClick={() => {
+                setMahsolatData(mahsolatData.filter((e) => e.title === search));
+              }}
+              className={mainpage.searchIcon}
+            >
               <img src={SearchIconPurple} alt="SearchIcon" />
             </i>
           </div>
@@ -160,10 +188,16 @@ function MainPage() {
           }
         >
           <div className={mainpage.inputf}>
-            <input onChange={e=> setSearch(e.target.value)} placeholder="تایپ کنید" />
-            <i onClick={()=>{
-              setMahsolatData(mahsolatData.filter(e => e.title === search))  
-            }} className={mainpage.searchIcon}>
+            <input
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="تایپ کنید"
+            />
+            <i
+              onClick={() => {
+                setMahsolatData(mahsolatData.filter((e) => e.title === search));
+              }}
+              className={mainpage.searchIcon}
+            >
               <img src={SearchIconPurple} alt="SearchIcon" />
             </i>
           </div>
@@ -182,10 +216,16 @@ function MainPage() {
           }
         >
           <div className={mainpage.inputf}>
-            <input onChange={(e)=> setSearch(e.target.value)} placeholder="تایپ کنید" />
-            <i onClick={()=>{
-              setMahsolatData(mahsolatData.filter(e => e.title === search))  
-            }} className={mainpage.searchIcon}>
+            <input
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="تایپ کنید"
+            />
+            <i
+              onClick={() => {
+                setMahsolatData(mahsolatData.filter((e) => e.title === search));
+              }}
+              className={mainpage.searchIcon}
+            >
               <img src={SearchIconPurple} alt="SearchIcon" />
             </i>
           </div>
