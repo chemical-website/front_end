@@ -180,8 +180,6 @@
   font-size: 20px;
   max-height: 300px;
   width: auto;
-  /* flex-wrap: wrap; */
-  background-color: red;
 }
 
 .SBox a {
