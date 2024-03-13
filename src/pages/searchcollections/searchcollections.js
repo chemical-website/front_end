@@ -21,7 +21,7 @@ const SearchCollections = () => {
   };
   useEffect(() => {
     axios
-      .get(`${BaseRoot}store/collections/?search=${name}`, config)
+      .get(`${BaseRoot}store/subcollections/?search=${name}`, config)
       .then(function (response) {
         if (response.data.length != []) {
           setProductData(response.data[0]["products"]);
@@ -181,7 +181,7 @@ const SearchCollections = () => {
           </div>
           <div className="flex flex-row justify-center md:justify-end gap-10 items-center w-full">
             <div className="font-bold text-base">
-              {ToPersianNumber(prdouctData.length)} محصول
+              {prdouctData && ToPersianNumber(prdouctData.length)} محصول
             </div>
             <div
               onClick={() => {
@@ -245,11 +245,13 @@ const SearchCollections = () => {
               );
             })}
           </div>
-          <div className="flex flex-row flex-wrap gap-7 w-4/5">
-            {prdouctData.map((e) => {
-              return <Cart x={e} likedItems={likedItems} />;
-            })}
-          </div>
+          {prdouctData && (
+            <div className="flex flex-row flex-wrap gap-7 w-4/5">
+              {prdouctData.map((e) => {
+                return <Cart x={e} likedItems={likedItems} />;
+              })}
+            </div>
+          )}
         </div>
       </div>
     </Fragment>
