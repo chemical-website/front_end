@@ -19,6 +19,7 @@ function MainPage() {
   const [masolat, setMahsolat] = useState([]);
   const [industry, setIndustry] = useState([]);
   const [search, setSearch] = useState("");
+  const [stat, setStat] = useState(false);
   const config = {
     headers: {
       Authorization: localStorage.getItem("token"),
@@ -44,6 +45,7 @@ function MainPage() {
   function DastebandiSearch() {
     if (openimahsolat === 1) {
       setopenopenimahsolat(0);
+
     } else {
       setopenopenimahsolat(1);
       setopenopensanat(0);
@@ -77,7 +79,7 @@ function MainPage() {
         <button
           className={mainpage.Chosdastebandi}
           onClick={DastebandiSearch}
-          onBlur={DastebandiSearch}
+          // onBlur={DastebandiSearch}
         >
           <i className={mainpage.leftIcon}>
             {openimahsolat == 0 ? (
@@ -102,7 +104,7 @@ function MainPage() {
         <button
           className={mainpage.Chosdastebandi}
           onClick={SanatSearch}
-          onBlur={SanatSearch}
+          // onBlur={SanatSearch}
         >
           <i className={mainpage.leftIcon}>
             {opensanat == 0 ? (
@@ -126,7 +128,8 @@ function MainPage() {
         <button
           className={mainpage.Chosdastebandi}
           onClick={MahsolSearch}
-          onBlur={MahsolSearch}
+          // onBlur={MahsolSearch}
+
         >
           <i className={mainpage.leftIcon}>
             {openiconmahsol == 0 ? (
