@@ -8,7 +8,7 @@ function TasfiyeBox({ show: s, data, id }) {
       <>
         <div className={navigationBar.SBox}>
           <span className="text-xl font-bold cursor-default">{data.title}</span>
-          <div className="flex flex-wrap flex-col w-auto h-60 gap-1">
+          <div className="flex flex-wrap flex-col w-auto max-h-64 gap-1">
             {data.products &&
               data.products.map((prodData) => {
                 return (

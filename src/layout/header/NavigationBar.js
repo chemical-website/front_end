@@ -132,7 +132,6 @@ function NavigationBar() {
                 <div className={navigationBar.LeftBox}>
                   {productNav.map((e) => {
                     return (
-                      <div>
                         <TasfiyeBox
                           key={e.id}
                           data={e}
@@ -140,7 +139,6 @@ function NavigationBar() {
                           show={s}
                           subsData={activeCategWithSubs}
                         />
-                      </div>
                     );
                   })}
                 </div>
