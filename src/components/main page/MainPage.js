@@ -72,7 +72,7 @@ function MainPage() {
         </div>
         {!showRequestFormModal && showRequestModal ? (
           <motion.div
-            className="fixed bottom-4 right-4 flex flex-col justify-center items-center gap-4 rounded-lg z-50 p-5 pt-2 customGlass"
+            className="fixed bottom-4 right-4 flex flex-col justify-center items-center gap-4 rounded-lg z-50 p-5 px-2 pt-2 customGlass"
             initial={{ y: 200 }}
             animate={{ y: 0 }}
             transition={{
@@ -83,9 +83,9 @@ function MainPage() {
             }}
             style={{ fontSize: "20px" }}
           >
-            <div className="flex flex-row justify-between items-center gap-1">
+            <div className="flex flex-row justify-between items-center gap-1 w-full">
               <span
-                className="text-xl font-semibold"
+                className="text-xl font-semibold w-full"
                 style={{ color: "#3B0359" }}
               >
                 سلام دوست عزیز! نیاز به کمک دارید؟
@@ -96,7 +96,7 @@ function MainPage() {
                 }}
                 className="cursor-pointer"
               >
-                <RxCross2 size={25} />
+                <RxCross2 size={23} />
               </div>
             </div>
             <button

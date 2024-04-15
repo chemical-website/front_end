@@ -17,9 +17,9 @@ function TasfiyeBox({ show: s, data, id }) {
                       key={prodData.title}
                       className="text-base cursor-pointer"
                     >
-                      <Link className="" to={`/app/product/${prodData.id}`}>
+                      <a className="" href={`/app/product/${prodData.id}`}>
                         {prodData.title}
-                      </Link>
+                      </a>
                     </span>
                   </div>
                 );

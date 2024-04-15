@@ -14,6 +14,8 @@ import { useWindowSize } from "@uidotdev/usehooks";
 import { TfiViewList } from "react-icons/tfi";
 import { motion, AnimatePresence } from "framer-motion";
 import CompanyLogo from "../../assets/img/alaadinGroup.webp";
+import { useLocation } from 'react-router-dom';
+
 
 function NavigationBar() {
   const [showMobileNavbar, setShowMobileNavbar] = useState(false);
@@ -27,6 +29,7 @@ function NavigationBar() {
   let [s, sets] = useState(0);
   const [inputRef, setInputRef] = useState();
   const [avtiveCategory, setActiveCategory] = useState(-1);
+
 
   function openmahsol() {
     setopennav(1);

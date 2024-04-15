@@ -207,10 +207,10 @@ const Product = () => {
             <div
               style={{
                 background: "#F7EBFE",
-                borderRadius: "1.3rem",
+                borderRadius: "1.3rem ",
                 color: "#7606B2",
               }}
-              className="p-5 w-3/5 max-xl:w-4/5 max-lg:w-full"
+              className="flex flex-col gap-2 p-5 w-3/5 max-xl:w-4/5 max-lg:w-full"
             >
               <div className="flex flex-row items-center justify-between">
                 <div className="flex flex-row items-center justify-between  w-1/2">
@@ -274,9 +274,6 @@ const Product = () => {
                     </p>
                   </div>
                 )}
-                <div>
-                  <IoMdCall size={25} />
-                </div>
               </div>
             </div>
             <div

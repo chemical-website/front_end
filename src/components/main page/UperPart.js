@@ -75,7 +75,7 @@ function MainPage() {
     <>
       {/* <h1 className=" hidden md:block">شرکت تولید کننده پلیمر صنعتی تهران</h1> */}
 
-      <div className={mainpage.SearchBox}>
+      {/* <div className={mainpage.SearchBox}>
         <button
           className={mainpage.Chosdastebandi}
           onClick={DastebandiSearch}
@@ -244,7 +244,7 @@ function MainPage() {
         <i className={mainpage.searchdown}>
           <img src={SearchIcon} className="scale-50" alt="SearchIcon" />
         </i>
-      </div>
+      </div> */}
     </>
   );
 }

@@ -24,7 +24,7 @@ const SearchIndustry = () => {
     axios
       .get(`${BaseRoot}store/industries/?search=${name}`, config)
       .then(function (response) {
-        setProductData(response.data[0]["industry_products"]);
+        setProductData(response.data ? response.data[0]["industry_products"] : []);
         console.log(response);
       });
 
@@ -178,7 +178,7 @@ const SearchIndustry = () => {
           </div>
           <div className="flex flex-row justify-center md:justify-end gap-10 items-center w-full">
             <div className="font-bold text-base">
-              {ToPersianNumber(prdouctData.length)} محصول
+              {prdouctData ? ToPersianNumber(prdouctData.length) : "0"} محصول
             </div>
             <div
               onClick={() => {
@@ -250,7 +250,7 @@ const SearchIndustry = () => {
             })}
           </div>
           <div className=" flex flex-row gap-5 flex-wrap w-4/5">
-            {prdouctData.map((e) => {
+            {prdouctData && prdouctData.map((e) => {
               console.log(e);
               return <Cart x={e} likedItems={likedItems} />;
             })}
