@@ -19,6 +19,7 @@ import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import NoPhoto from "./assets/img/No-Image.jpg"
 import RedirectToApp from './pages/RedirectToApp';
+import SearchPage from "./pages/search-page/search-page";
 
 function Error404() {
   return (
@@ -63,6 +64,9 @@ function App() {
         <Route path="app/products/search/:name" element={<SearchProducts />} />
         <Route path="app/news/:id" element={<NewPage />} />
         <Route path="app/product/:id" element={<Product />} />
+        <Route path="app/search/"
+               element={<SearchPage />}
+               />
         <Route
           path="app/collections/search/:name"
           element={<SearchCollections />}

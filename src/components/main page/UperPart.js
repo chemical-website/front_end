@@ -10,6 +10,7 @@ import SettingsIcon from "../../assets/Icons/Settings.svg";
 import BuyCartIcon from "../../assets/Icons/BuyCart.svg";
 import SearchIcon from "../../assets/Icons/SearchIconWhite.svg";
 import SearchIconPurple from "../../assets/Icons/SearchIconPurple.svg";
+import { useNavigate } from "react-router-dom"
 
 function MainPage() {
   let [openimahsolat, setopenopenimahsolat] = useState(0);
@@ -20,6 +21,12 @@ function MainPage() {
   const [industry, setIndustry] = useState([]);
   const [search, setSearch] = useState("");
   const [stat, setStat] = useState(false);
+  const [subCatgs, setSubCatgs] = useState([])
+  const [filterSubCollection, setFilterSubCollection] = useState()
+  const [filterIndustry, setFilterIndustry] = useState(false)
+  const [filterProduct, setFilterProduct] = useState(false)
+  const navigate = useNavigate(false)
+
   const config = {
     headers: {
       Authorization: localStorage.getItem("token"),
@@ -31,6 +38,12 @@ function MainPage() {
       .then(function (response) {
         setMahsolatData(response.data);
       });
+
+    axios
+        .get(`${BaseRoot}store/subcollections/`, config)
+        .then(function (response) {
+          setSubCatgs(response.data);
+        });
   }, []);
   useEffect(() => {
     axios.get(`${BaseRoot}store/products/`, config).then(function (response) {
@@ -71,11 +84,20 @@ function MainPage() {
     }
   }
 
+  function goToSearchFilterPage() {
+    if (filterSubCollection && filterIndustry)
+      navigate(`/app/search/?subCollection=${filterSubCollection}&industry=${filterIndustry}`)
+    else if (filterSubCollection)
+      navigate(`/app/search/?subCollection=${filterSubCollection}`)
+    else if (filterIndustry)
+      navigate(`/app/search/?&industry=${filterIndustry}`)
+  }
+
   return (
     <>
       {/* <h1 className=" hidden md:block">شرکت تولید کننده پلیمر صنعتی تهران</h1> */}
 
-      {/* <div className={mainpage.SearchBox}>
+      { <div className={mainpage.SearchBox}>
         <button
           className={mainpage.Chosdastebandi}
           onClick={DastebandiSearch}
@@ -93,8 +115,7 @@ function MainPage() {
               className="text-base sm:text-lg font-bold"
               style={{ color: "#3B0359" }}
             >
-              {" "}
-              دسته بندی محصولات
+              { filterSubCollection ? filterSubCollection : "انتخاب دسته بندی" }
             </span>
             <i className={mainpage.rightIcon}>
               <img src={ShapesIcon} alt="ShapeIcon" />
@@ -118,7 +139,7 @@ function MainPage() {
               className="text-base sm:text-lg font-bold"
               style={{ color: "#3B0359" }}
             >
-              انتخاب صنعت
+              { filterIndustry ? filterIndustry : "انتخاب صنعت" }
             </span>
             <i className={mainpage.rightIcon}>
               <img src={SettingsIcon} alt="SettingIcon" />
@@ -143,7 +164,7 @@ function MainPage() {
               className="text-base sm:text-lg font-bold"
               style={{ color: "#3B0359" }}
             >
-              انتخاب محصول
+              { filterProduct ? filterProduct : "انتخاب محصول" }
             </span>
             <i className={mainpage.rightIcon}>
               <img src={BuyCartIcon} alt="BuyCartIcon" />
@@ -173,12 +194,12 @@ function MainPage() {
             </i>
           </div>
           <div className={mainpage.dataListBox1}>
-            {mahsolatData.map((x) => {
+            {subCatgs.map((x) => {
               return (
-                <div className={mainpage.eachDataItem}>
-                  <Link to={`/app/collections/search/${x.title}`}>
+                <div className={mainpage.eachDataItem} onClick={() => {setFilterSubCollection(x.title); setopenopenimahsolat(0)}}>
+                  <span>
                     {x.title}
-                  </Link>
+                  </span>
                 </div>
               );
             })}
@@ -206,8 +227,8 @@ function MainPage() {
           </div>
           {industry.map((x) => {
             return (
-              <div className={mainpage.eachDataItem}>
-                <Link to={`/app/industries/search/${x.title}`}> {x.title}</Link>
+              <div className={mainpage.eachDataItem} onClick={() => {setFilterIndustry(x.title); setopenopensanat(0)}}>
+                <span>{x.title}</span>
               </div>
             );
           })}
@@ -234,17 +255,17 @@ function MainPage() {
           </div>
           {masolat.map((x) => {
             return (
-              <div className={mainpage.eachDataItem}>
-                <Link to={`/app/product/${x.id}`}>{x.title}</Link>
+              <div className={mainpage.eachDataItem} onClick={() => {setFilterProduct(x.title); setopenopeniconmahsol(0)}}>
+                <span>{x.title}</span>
               </div>
             );
           })}
         </div>
 
-        <i className={mainpage.searchdown}>
+        <i className={mainpage.searchdown} onClick={goToSearchFilterPage}>
           <img src={SearchIcon} className="scale-50" alt="SearchIcon" />
         </i>
-      </div> */}
+      </div> }
     </>
   );
 }
