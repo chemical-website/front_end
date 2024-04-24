@@ -156,6 +156,16 @@
   -webkit-backdrop-filter: blur(20px);
 }
 
+.clearSearchBox {
+  padding: 5px 10px;
+  background-color: #3b0359;
+  color: white;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
 .inputf {
   border: none;
   height: 20px;
@@ -195,6 +205,7 @@
   text-align: center;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 span b {
   font-size: 116%;
