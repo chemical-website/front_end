@@ -14,10 +14,9 @@ const PropertyField = ({ ke, value }) => {
 };
 
 const Property = ({ prop }) => {
-  const dictionaryArray = Object.entries(prop);
   return (
     <div className="grid grid-cols-1 place-items-center 2xl:grid-cols-2 gap-x-80 mt-9 w-full">
-      {dictionaryArray.map(([key, value]) => {
+      {prop.map(({key, value}) => {
         return <PropertyField key={key} ke={key} value={value} />;
       })}
     </div>

@@ -37,7 +37,7 @@ const Product = () => {
   const [desc, setDesc] = useState("");
   const [prevDesc, setPrewDesc] = useState(false);
   const [tags, setTags] = useState([]);
-  const [prop, setProp] = useState({});
+  const [prop, setProp] = useState([]);
   const [sectionState, setSectionState] = useState(1);
   const changeState = (num) => {
     setSectionState(num);
@@ -71,9 +71,6 @@ const Product = () => {
         setPrewDesc(response.data.preview_description);
         setProp(response.data.properties);
         setImages(response.data.images);
-        if (response.data.properties == undefined) {
-          setProp({ "": "" });
-        }
         // console.log(response.data.properties)
         if (searchParams.get("status") === "open") handleClickOpen();
       });
