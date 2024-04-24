@@ -13,12 +13,16 @@ import SearchIconPurple from "../../assets/Icons/SearchIconPurple.svg";
 import {useNavigate} from "react-router-dom"
 
 function MainPage() {
+    let closedImmed = 0;
     let [openimahsolat, setopenopenimahsolat] = useState(0);
     let [opensanat, setopenopensanat] = useState(0);
     let [openiconmahsol, setopenopeniconmahsol] = useState(0);
     const openimahsolatRef = useRef()
     const opensanatRef = useRef()
     const openiconmahsolRef = useRef()
+    const selectCategRefButton = useRef()
+    const selectIndustRefButton = useRef()
+    const selectProdRefButton = useRef()
     const [mahsolatData, setMahsolatData] = useState([]);
     const [masolat, setMahsolat] = useState([]);
     const [industry, setIndustry] = useState([]);
@@ -29,7 +33,6 @@ function MainPage() {
     const [filterIndustry, setFilterIndustry] = useState(false)
     const [filterProduct, setFilterProduct] = useState(false)
     const navigate = useNavigate(false)
-    const [bl, setBl] = useState(false)
 
     const config = {
         headers: {
@@ -68,6 +71,9 @@ function MainPage() {
     });
 
     const openCategOutsideHandler = (e) => {
+        if (selectCategRefButton.current.contains(e.target)) {
+            return
+        }
         if (openimahsolatRef.current && !openimahsolatRef.current.contains(e.target)) {
             setopenopenimahsolat(0)
         }
@@ -82,6 +88,9 @@ function MainPage() {
     });
 
     const openIndustryOutsideHandler = (e) => {
+        if (selectIndustRefButton.current.contains(e.target)) {
+            return
+        }
         if (opensanatRef.current && !opensanatRef.current.contains(e.target)) {
             setopenopensanat(0)
         }
@@ -95,8 +104,12 @@ function MainPage() {
     });
 
     const openProductOutsideHandler = (e) => {
+        if (selectProdRefButton.current.contains(e.target)) {
+            return
+        }
         if (openiconmahsolRef.current && !openiconmahsolRef.current.contains(e.target)) {
             setopenopeniconmahsol(0)
+
         }
     };
 
@@ -106,7 +119,7 @@ function MainPage() {
             setopenopenimahsolat(0);
 
         } else {
-            setBl(true)
+            console.log("Heb2")
             setopenopenimahsolat(1);
             setopenopensanat(0);
             setopenopeniconmahsol(0);
@@ -117,7 +130,6 @@ function MainPage() {
         if (opensanat === 1) {
             setopenopensanat(0);
         } else {
-            setBl(true)
             setopenopensanat(1);
             setopenopenimahsolat(0);
             setopenopeniconmahsol(0);
@@ -128,7 +140,6 @@ function MainPage() {
         if (openiconmahsol === 1) {
             setopenopeniconmahsol(0);
         } else {
-            setBl(true)
             setopenopeniconmahsol(1);
             setopenopensanat(0);
             setopenopenimahsolat(0);
@@ -136,12 +147,14 @@ function MainPage() {
     }
 
     function goToSearchFilterPage() {
-        if (filterSubCollection && filterIndustry)
-            navigate(`/app/search/?subCollection=${filterSubCollection}&industry=${filterIndustry}`)
-        else if (filterSubCollection)
-            navigate(`/app/search/?subCollection=${filterSubCollection}`)
-        else if (filterIndustry)
-            navigate(`/app/search/?&industry=${filterIndustry}`)
+        let newUrl = "/app/search/?"
+        if (filterSubCollection)
+            newUrl += `&subCollection=${filterSubCollection}`
+        if (filterIndustry)
+            newUrl += `&industry=${filterIndustry}`
+        if (filterProduct)
+            newUrl += `&product=${filterProduct}`
+        navigate(newUrl)
     }
 
     function clearFilterFunc(type) {
@@ -166,6 +179,7 @@ function MainPage() {
 
             {<div className={mainpage.SearchBox}>
                 <button
+                    ref={selectCategRefButton}
                     className={mainpage.Chosdastebandi}
                     onClick={DastebandiSearch}
                     // onBlur={DastebandiSearch}
@@ -190,6 +204,7 @@ function MainPage() {
           </span>
                 </button>
                 <button
+                    ref={selectIndustRefButton}
                     className={mainpage.Chosdastebandi}
                     onClick={SanatSearch}
                     // onBlur={SanatSearch}
@@ -214,6 +229,7 @@ function MainPage() {
           </span>
                 </button>
                 <button
+                    ref={selectProdRefButton}
                     className={mainpage.Chosdastebandi}
                     onClick={MahsolSearch}
                     // onBlur={MahsolSearch}

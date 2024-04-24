@@ -17,6 +17,7 @@ const SearchPage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [filterSubCollection, setFilterSubCollection] = useState("")
     const [filterIndustry, setFilterIndustry] = useState("")
+    const [filterProduct, setFilterProduct] = useState("")
 
     const config = {
         headers: {
@@ -26,6 +27,7 @@ const SearchPage = () => {
     useEffect(() => {
         setFilterSubCollection(searchParams.get("subCollection"));
         setFilterIndustry(searchParams.get("industry"));
+        setFilterProduct(searchParams.get("product"));
         axios
             .get(`${BaseRoot}store/products/`, config)
             .then(function (response) {
@@ -61,26 +63,12 @@ const SearchPage = () => {
 
     useEffect(() => {
         console.log("1")
-        const tmpProductData = []
-        productData.forEach(product => {
-            if (filterSubCollection && filterIndustry) {
-                if ([filterSubCollection].includes(product.collection.title) && [filterIndustry].includes(product.industry.title)) {
-                    tmpProductData.push(product)
-                }
-            } else {
-                if (filterSubCollection) {
-                    if ([filterSubCollection].includes(product.collection.title)) {
-                        tmpProductData.push(product)
-                    }
-                } else if (filterIndustry) {
-                    if ([filterIndustry].includes(product.industry.title)) {
-                        tmpProductData.push(product)
-                    }
-                }
-            }
-
-        })
-        setCopyProductData(tmpProductData)
+        const filteredData = productData.filter(product => {
+            return (!filterIndustry || [filterIndustry].includes(product.industry.title)) &&
+                (!filterProduct || [filterProduct].includes(product.title)) &&
+                (!filterSubCollection || [filterSubCollection].includes(product.collection.title));
+        });
+        setCopyProductData(filteredData)
     }, [filterIndustry, filterSubCollection, productData])
     return (
         <Fragment>
