@@ -65,7 +65,7 @@ function MainPage() {
       {/* {acceptRule && ( */}
       <div className={mainpage.BBox}>
         <div className={mainpage.TopBox}>
-          <UperPart />
+          {/*<UperPart />*/}
         </div>
         <div className={mainpage.DownBox}>
           <DownerPart />

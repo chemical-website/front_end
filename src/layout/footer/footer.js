@@ -83,7 +83,7 @@ const Footer = () => {
                   <p className="text-lg">ایمیل</p>
                   <p>Pakneeru@yahoo.com</p>
                 </div>
-                <div className="flex flex-row  justify-between items-center w-full">
+                <div className="flex flex-row items-center w-full gap-3">
                 <a href="https://www.linkedin.com/in/aladdingroup-m-2535582ab/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -102,47 +102,58 @@ const Footer = () => {
                     />
                   </svg>
                   </a>
+                  <a href="https://youtube.com/@aladdingroupofficial?si=2sQqRV_Mzc2CVqGg">
+                    <svg width="25" height="24" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                          d="M26.7758 3.24798C26.4692 2.10131 25.5652 1.19731 24.4185 0.890647C22.3385 0.333313 13.9998 0.333313 13.9998 0.333313C13.9998 0.333313 5.66117 0.333313 3.58117 0.890647C2.4345 1.19731 1.5305 2.10131 1.22384 3.24798C0.666504 5.32798 0.666504 11 0.666504 11C0.666504 11 0.666504 16.672 1.22384 18.752C1.5305 19.8986 2.4345 20.8026 3.58117 21.1093C5.66117 21.6666 13.9998 21.6666 13.9998 21.6666C13.9998 21.6666 22.3385 21.6666 24.4185 21.1093C25.5665 20.8026 26.4692 19.8986 26.7758 18.752C27.3332 16.672 27.3332 11 27.3332 11C27.3332 11 27.3332 5.32798 26.7758 3.24798ZM11.3332 14.464V7.53598C11.3332 7.02265 11.8892 6.70265 12.3332 6.95865L18.3332 10.4226C18.7772 10.6786 18.7772 11.3213 18.3332 11.5773L12.3332 15.0413C11.8892 15.2986 11.3332 14.9773 11.3332 14.464Z"
+                          fill="#1892AD"/>
+                      <path
+                          d="M26.7758 3.24798C26.4692 2.10131 25.5652 1.19731 24.4185 0.890647C22.3385 0.333313 13.9998 0.333313 13.9998 0.333313C13.9998 0.333313 5.66117 0.333313 3.58117 0.890647C2.4345 1.19731 1.5305 2.10131 1.22384 3.24798C0.666504 5.32798 0.666504 11 0.666504 11C0.666504 11 0.666504 16.672 1.22384 18.752C1.5305 19.8986 2.4345 20.8026 3.58117 21.1093C5.66117 21.6666 13.9998 21.6666 13.9998 21.6666C13.9998 21.6666 22.3385 21.6666 24.4185 21.1093C25.5665 20.8026 26.4692 19.8986 26.7758 18.752C27.3332 16.672 27.3332 11 27.3332 11C27.3332 11 27.3332 5.32798 26.7758 3.24798ZM11.3332 14.464V7.53598C11.3332 7.02265 11.8892 6.70265 12.3332 6.95865L18.3332 10.4226C18.7772 10.6786 18.7772 11.3213 18.3332 11.5773L12.3332 15.0413C11.8892 15.2986 11.3332 14.9773 11.3332 14.464Z"
+                          fill="#7606B2"/>
+                    </svg>
+
+                  </a>
                 </div>
               </div>
             </div>
           </div>
           <div className=" hidden md:block ">
             <div>
-              <p style={{ fontWeight: "700" }} className="  text-xl ">
+              <p style={{fontWeight: "700"}} className="  text-xl ">
                 دسته بندی ها
               </p>
             </div>
             <ul className=" pr-2 flex flex-col  justify-between items-start">
               {mahsollist.map((e) => {
                 return (
-                  <li style={{ fontWeight: "500" }} className="text-base">
-                    <Link to={`/app/collections/search/${e.title}`}>
-                      {e.title}
-                    </Link>
-                  </li>
+                    <li style={{fontWeight: "500"}} className="text-base">
+                      <Link to={`/app/collections/search/${e.title}`}>
+                        {e.title}
+                      </Link>
+                    </li>
                 );
               })}
             </ul>
           </div>
           <div className=" md:pl-20 lg:pl-40 flex flex-col  items-center md:items-start">
-            <p style={{ fontWeight: "700" }} className="  text-xl ">
+            <p style={{fontWeight: "700"}} className="  text-xl ">
               خبرنامه
             </p>
-            <p style={{ fontWeight: "500" }} className="text-base">
+            <p style={{fontWeight: "500"}} className="text-base">
               با عضویت در خبرنامه از اخبار و ویژه‌برنامه‌ها خبردار شوید.
             </p>
             <div className="flex flex-row justify-between items-center gap-2">
               <div className="relative h-10 w-52 shadow-md rounded-md">
                 <img
-                  className="absolute left-3 -translate-y-1/2 scale-105"
-                  style={{ top: "50%" }}
-                  src={mailIcon}
+                    className="absolute left-3 -translate-y-1/2 scale-105"
+                    style={{top: "50%"}}
+                    src={mailIcon}
                 />
                 <input
-                  onChange={(e) => setEmail(e.target.value)}
-                  style={{ fontWeight: "bold" }}
-                  className="h-full rounded-md w-full px-2"
-                  placeholder="ایمیل خود را وارد کنید"
+                    onChange={(e) => setEmail(e.target.value)}
+                    style={{fontWeight: "bold"}}
+                    className="h-full rounded-md w-full px-2"
+                    placeholder="ایمیل خود را وارد کنید"
                 />
               </div>
               <div
