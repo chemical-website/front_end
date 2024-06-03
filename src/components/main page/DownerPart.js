@@ -58,6 +58,7 @@ function DownerPart() {
 
     useEffect(() => {
             const language = i18n.language; // Get the current language
+            setProductData([])
         axios
             .get(`${BaseRoot}/${language}/api/store/products/?recommend=True/`, config)
             .then(function (response) {
@@ -108,7 +109,7 @@ function DownerPart() {
             <div className={mainpage.DownBBox}>
                 <div className={mainpage.uptitle}>
                     {" "}
-                    {hasTejKhareji && <span className={mainpage.pishnahadT}>تجارت خارجی</span>}
+                    {hasTejKhareji && <span className={mainpage.pishnahadT}>{t("foreignBusiness")}</span>}
                     <div className={mainpage.ShowPart}>
                         <i>
                             <MdFilterListAlt/>{" "}
@@ -183,7 +184,7 @@ function DownerPart() {
                     })}
                 </Swiper>
                 {hasTejDakhelii && <div className="flex flex-col mt-14 gap-8">
-                    <span className={mainpage.pishnahadT}>تجارت داخلی</span>
+                    <span className={mainpage.pishnahadT}>{t("domesticBusiness")}</span>
                     <Swiper
                         breakpoints={{
                             1000: {
@@ -233,7 +234,7 @@ function DownerPart() {
                     </Swiper>
                 </div>}
                 {hasKhadamatTej && <div className="flex flex-col mt-14 gap-8">
-                    <span className={mainpage.pishnahadT}>خدمات تجارت</span>
+                    <span className={mainpage.pishnahadT}>{t("businesServices")}</span>
                     <Swiper
                         breakpoints={{
                             1000: {
@@ -283,7 +284,7 @@ function DownerPart() {
                     </Swiper>
                 </div>}
                 {hasAmouzeshTej && <div className="flex flex-col mt-14 gap-8">
-                    <span className={mainpage.pishnahadT}>آموزش تجارت</span>
+                    <span className={mainpage.pishnahadT}>{t("businessTraining")}</span>
                     <Swiper
                         breakpoints={{
                             1000: {
