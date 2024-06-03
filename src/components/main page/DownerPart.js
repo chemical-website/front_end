@@ -17,6 +17,7 @@ import "swiper/css/navigation";
 // import required modules
 import {Navigation} from "swiper/modules";
 import Product from "../../pages/product/product";
+import { useTranslation } from "react-i18next";
 
 function DownerPart() {
     let [y, sety] = useState(1);
@@ -32,6 +33,8 @@ function DownerPart() {
     const [hasTejDakhelii, setHasTejDakheli] = useState(false)
     const [hasAmouzeshTej, setHasAmouzeshTej] = useState(false)
     const [hasKhadamatTej, setHasKhadamatTej] = useState(false)
+    const { t } = useTranslation();
+
 
     const config = {
         headers: {
@@ -115,7 +118,7 @@ function DownerPart() {
                       buttonShowStatus !== "Show-All" ? mainpage.pishnahadat2 : mainpage.pishnahadat3
                   }
               >
-                نمایش همه
+                {t("showAll")}
               </span>
                             <span
                                 className={
@@ -125,7 +128,7 @@ function DownerPart() {
                                     showLikedItems();
                                 }}
                             >
-                نمایش پسندیده{" "}
+                {t("showLikedOne")}{" "}
               </span>
                         </div>
                     </div>

@@ -15,7 +15,8 @@ import { TfiViewList } from "react-icons/tfi";
 import { motion, AnimatePresence } from "framer-motion";
 import CompanyLogo from "../../assets/img/alaadinGroup.webp";
 import { useLocation } from 'react-router-dom';
-
+import { useTranslation } from "react-i18next";
+import LanguageSelector from "../../components/languageSelector/lang";
 
 function NavigationBar() {
   const [showMobileNavbar, setShowMobileNavbar] = useState(false);
@@ -29,7 +30,7 @@ function NavigationBar() {
   let [s, sets] = useState(0);
   const [inputRef, setInputRef] = useState();
   const [avtiveCategory, setActiveCategory] = useState(-1);
-
+  const { t } = useTranslation();
 
   function openmahsol() {
     setopennav(1);
@@ -99,7 +100,7 @@ function NavigationBar() {
                 onMouseLeave={closeemahsol}
                 to="/app/products"
               >
-                <b> محصولات </b>
+                <b> {t("products")} </b>
               </Link>
               <div
                 onMouseEnter={openmahsol}
@@ -148,10 +149,10 @@ function NavigationBar() {
               </div>
             </div>
             <Link className={navigationBar.ItemsMenubox} to="/app/aboutus">
-              <b> درباره ما </b>
+              <b>{t("aboutUs")} </b>
             </Link>
             <Link className={navigationBar.ItemsMenubox} to="/app/news">
-              <b> اخبار </b>
+              <b>{t("news")} </b>
             </Link>
           </div>
         ) : (
@@ -175,17 +176,17 @@ function NavigationBar() {
                 >
                   <Link to="/app/products">
                     <div className="w-full flex flex-row justify-center text-lg font-semibold cursor-pointer">
-                      محصولات
+                      {t("products")}
                     </div>
                   </Link>
                   <Link to="/app/news">
                     <div className="w-full flex flex-row justify-center text-lg font-semibold cursor-pointer">
-                      اخبار
+                      {t("news")}
                     </div>
                   </Link>
                   <Link to="/app/aboutus">
                     <div className="w-full flex flex-row justify-center text-lg font-semibold cursor-pointer">
-                      درباره ما
+                      {t("aboutUs")}
                     </div>
                   </Link>
                 </motion.div>
@@ -203,7 +204,7 @@ function NavigationBar() {
           </div>
           <input
             className={navigationBar.input}
-            placeholder="دنبال چه چیزی می‌گردید؟"
+            placeholder={t("searchFilter")}
             onChange={(e) => {
               setInputRef(e.target.value);
             }}
@@ -225,18 +226,19 @@ function NavigationBar() {
           className={navigationBar.Sabtnam}
         >
           <Link className={navigationBar.vorodicon}>
+          <LanguageSelector/>
             <BiSolidUserCircle />
           </Link>
           <Link to="/app/s" className={navigationBar.te}>
             {" "}
-            <b> ثبت نام </b>
+            <b> {t("register")} </b>
           </Link>
           <hr
             className="w-5 h-0 rotate-90"
             style={{ borderColor: "#27023b" }}
           />
           <Link to="/app/s">
-            <b>ورود</b>{" "}
+            <b>{t("login")}</b>{" "}
           </Link>
         </div>
         <div

@@ -1,0 +1,14 @@
+{
+    "register": "register",
+    "login": "login",
+    "searchFilter": "What are you looking for?",
+    "products": "Products",
+    "product": "Product",
+    "aboutUs": "About us",
+    "news": "News",
+    "showAll": "Show All",
+    "showLikedOne": "Show Liked",
+    "show": "See More",
+    "callUs": "Call",
+    "popUpWelcomeMsg": "Hey, How Can I Help you?"
+  }

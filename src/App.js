@@ -20,6 +20,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import NoPhoto from "./assets/img/No-Image.jpg"
 import RedirectToApp from './pages/RedirectToApp';
 import SearchPage from "./pages/search-page/search-page";
+import "./i18n";
 
 function Error404() {
   return (

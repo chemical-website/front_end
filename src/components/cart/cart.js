@@ -18,12 +18,16 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { BaseRoot } from "../../baseRoot";
 import NoPhoto from "../../assets/img/No-Image.jpg";
+import { useTranslation } from "react-i18next";
+
 
 export default function Cart({ x, newItemLiked, newItemDisLiked, likedItems }) {
   const [num, setNum] = useState(0);
 
   const [open, setOpen] = React.useState(false);
   const { isModalOpen, openModal, closeModal } = useModal();
+  const { t } = useTranslation();
+
   const handleClickOpen = (data) => {
     openModal({ ...data, type: "product" });
   };
@@ -128,7 +132,7 @@ export default function Cart({ x, newItemLiked, newItemDisLiked, likedItems }) {
           <div className={styles.LinkSBox}>
             <Link to={`/app/product/${x.id}?status=open`}>
               <IoMdCall size={25} />
-              <span className="text-xl">تماس بگیرید</span>
+              <span className="text-xl">{t("callUs")}</span>
             </Link>
             <Link
               onClick={() => {
@@ -136,7 +140,7 @@ export default function Cart({ x, newItemLiked, newItemDisLiked, likedItems }) {
               }}
             >
               <MdOutlineOpenInNew size={25} />
-              <span className="text-lg">مشاهده</span>
+              <span className="text-lg">{t("show")}</span>
             </Link>
           </div>
         </div>

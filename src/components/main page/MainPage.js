@@ -9,6 +9,8 @@ import axios from "axios";
 import { BaseRoot } from "./../../baseRoot";
 import { useNavigate } from "react-router-dom";
 import ShowToast from "./../../utilities/ShowToast";
+import { useTranslation } from "react-i18next";
+
 
 function MainPage() {
   // let [openimahsolat, setopenopenimahsolat] = useState(0);
@@ -22,12 +24,23 @@ function MainPage() {
   const phoneRef = useRef();
   const emailRef = useRef();
   const navigate = useNavigate();
+  const { t, i18n  } = useTranslation();
+
+
 
   // useEffect(() => {
   //   if (!localStorage.getItem("token")) {
   //     openModal({ type: "showRules" });
   //   }
   // }, []);
+
+  useEffect(() => {
+    const subscription = i18n.on('languageChanged', (lang) => {
+      console.log(lang)
+      // Perform any necessary updates or side effects when the language changes
+    });
+    return () => subscription.off();
+  }, [i18n]);
 
   const sendRequest = () => {
     const email = emailRef.current.value;
@@ -88,7 +101,7 @@ function MainPage() {
                 className="text-xl font-semibold w-full"
                 style={{ color: "#3B0359" }}
               >
-                سلام دوست عزیز! نیاز به کمک دارید؟
+                {t("popUpWelcomeMsg")}
               </span>
               <div
                 onClick={() => {
