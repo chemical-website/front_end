@@ -26,20 +26,21 @@ export default function Cart({ x, newItemLiked, newItemDisLiked, likedItems }) {
 
   const [open, setOpen] = React.useState(false);
   const { isModalOpen, openModal, closeModal } = useModal();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const handleClickOpen = (data) => {
     openModal({ ...data, type: "product" });
   };
 
   const sendDisLike = () => {
+    const language = i18n.language; // Get the current language
     const config = {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
     };
     axios
-      .post(`${BaseRoot}store/products/${x.id}/likes/?dislike=true`, {}, config)
+      .post(`${BaseRoot}/${language}/api/store/products/${x.id}/likes/?dislike=true`, {}, config)
       .then(function (response) {
         if (response.status === 201) {
           newItemDisLiked(x.id);
@@ -56,8 +57,9 @@ export default function Cart({ x, newItemLiked, newItemDisLiked, likedItems }) {
         Authorization: localStorage.getItem("token"),
       },
     };
+    const language = i18n.language; // Get the current language
     axios
-      .post(`${BaseRoot}store/products/${x.id}/likes/`, {}, config)
+      .post(`${BaseRoot}/${language}/api/store/products/${x.id}/likes/`, {}, config)
       .then(function (response) {
         if (response.status === 201) {
           newItemLiked(x.id);
@@ -65,12 +67,13 @@ export default function Cart({ x, newItemLiked, newItemDisLiked, likedItems }) {
       });
   };
   useEffect(() => {
+    const language = i18n.language; // Get the current language
     axios
-      .get(`${BaseRoot}store/products/${x.id}/likes/`)
+      .get(`${BaseRoot}/${language}/api/store/products/${x.id}/likes/`)
       .then(function (response) {
         setNum(response.data);
       });
-  }, []);
+  }, [i18n.language]);
 
   useEffect(() => {
     console.log(likedItems);

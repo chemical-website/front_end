@@ -4,10 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate} from "react-router-dom";
 import { BaseRoot } from "../../baseRoot";
+import { useTranslation } from "react-i18next";
 
 function SignIn() {
   const navigate = useNavigate();
   let [tabs, settabs] = useState(0);
+  const { t, i18n  } = useTranslation();
+
 
   function vorod() {
     settabs(0);
@@ -19,8 +22,9 @@ function SignIn() {
   const  email = useRef()
   const  pass = useRef()
   const sabtBtn = async function(){ 
-    console.log(email.current.value, phone.current.value , pass.current.value)
-    axios.post(`${BaseRoot}auth/users/`, {
+    const language = i18n.language; // Get the current language
+    
+    axios.post(`${BaseRoot}/${language}/api/auth/users/`, {
       "username": phone.current.value,
       "password": pass.current.value , 
       "Email address": email.current.value
@@ -34,9 +38,9 @@ function SignIn() {
     });
   }
   const vorodBtnn = async function(){ 
-    
-    console.log(phone.current.value , pass.current.value)
-    axios.post(`${BaseRoot}auth/jwt/create/`, {
+    const language = i18n.language; // Get the current language
+
+    axios.post(`${BaseRoot}/${language}/api/auth/jwt/create/`, {
       "username": phone.current.value,
       "password": pass.current.value , 
 
@@ -59,14 +63,14 @@ function SignIn() {
               className={tabs == 0 ? signin.entekhab : signin.off}
               onClick={vorod}
             >
-              ورود
+              {t("registrationLogin")}
             </button>
             <p>/</p>
             <button
               className={tabs == 0 ? signin.off : signin.entekhab}
               onClick={sabtenam}
             >
-              ثبت نام
+              {t("registrationRegister")}
             </button>
           </div>
 
@@ -76,13 +80,13 @@ function SignIn() {
                 <input
                   className={signin.EmailVorod}
                   type="text"
-                  placeholder="شماره تلفن"
+                  placeholder={t("registrationPhone")}
                   ref={phone}
                 />
                 <input
                   className={signin.PassVorod}
                   type="password"
-                  placeholder="رمز عبور"
+                  placeholder={t("registrationPassword")}
                   ref={pass}
                 />
                 {/* <Link className={signin.Faramoshi}>
@@ -91,9 +95,9 @@ function SignIn() {
               </div>
               <form className={signin.Bekhaterbespor}>
                 <input name="bekhatersepordan" type="checkbox" />
-                <label for="bekhatersepordan">مرا به خاطر بسپار</label>
+                <label for="bekhatersepordan">{t("registrationRemeberMe")}</label>
               </form>
-              <button className={signin.VorodButt} onClick={vorodBtnn}>ورود</button>
+              <button className={signin.VorodButt} onClick={vorodBtnn}>{t("Login")}</button>
             </div>
           ) : (
             <div className={signin.intabs2}>
@@ -101,32 +105,32 @@ function SignIn() {
                 <input
                   className={signin.EmailVorod}
                   type="tel"
-                  placeholder="تلفن همراه"
+                  placeholder={t("registrationPhone")}
                   ref={phone}
                 />
                 <input
                   className={signin.PassVorod}
                   type="email"
-                  placeholder="ایمیل "
+                  placeholder={t("registrationEmail")}
                   ref={email}
                 />
                 <div  className={signin.passboxsabtnam}>
                 <input
                   className={signin.passsabtnam}
                   type="password"
-                  placeholder="رمز عبور "
+                  placeholder={t("registrationPassword")}
                   ref={pass}
                 />
                 <input
                   className={signin.passsabtnam}
                   type="password"
-                  placeholder="تکرار رمز عبور "
+                  placeholder={t("registrationRepeatpass")}
                 />
                 </div>
 
               </div>
               
-              <button style={{display: settabs !=0  ? "block" : "none"}} onClick={sabtBtn} className={signin.VorodButt}>ثبت‌نام</button>
+              <button style={{display: settabs !=0  ? "block" : "none"}} onClick={sabtBtn} className={signin.VorodButt}>{t("registrationRegisterSubmit")}</button>
               {/* <button style={{display: settabs == 0 ? "block" : "none"}} onClick={vorodBtnn} className={signin.VorodButt}>ورود</button> */}
             </div>
           )}

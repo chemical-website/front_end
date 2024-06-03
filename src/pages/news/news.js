@@ -15,11 +15,14 @@ import { useModal } from "../../context/ModalContext";
 import ToPersianNumber from "./../../utilities/ToPersianNumber";
 import { HiOutlineArrowSmDown, HiOutlineArrowSmUp } from "react-icons/hi";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
+
 
 export const NewsCart = ({ info }) => {
   console.log(info);
   const { openModal } = useModal();
   const [showFeatures, setShowFeatures] = useState(false);
+  const { t, i18n  } = useTranslation();
 
   const copyToClipboard = () => {
     let copyText = `${window.location.hostname}${
@@ -118,7 +121,7 @@ export const NewsCart = ({ info }) => {
           style={{ color: "#8806CE" }}
         >
           <MdOutlineOpenInNew size={25} />
-          مشاهده بیشتر
+          {t("newsSeemore")}
         </Link>
       </div>
 
@@ -192,23 +195,29 @@ const NewsPage = () => {
   const [news, setNews] = useState([]);
   const [sort, setSort] = useState(false);
   const [collection, setCollections] = useState([]);
+  const { t, i18n  } = useTranslation();
+
   const config = {
     headers: {
       Authorization: localStorage.getItem("token"),
     },
   };
   useEffect(() => {
+    const language = i18n.language; // Get the current language
+
     axios
-      .get(`${BaseRoot}store/collections/`, config)
+      .get(`${BaseRoot}/${language}/api/store/collections/`, config)
       .then(function (response) {
         setCollections(response.data);
       });
-  }, []);
+  }, [i18n.language]);
   useEffect(() => {
-    axios.get(`${BaseRoot}store/posts/`, config).then(function (response) {
+    const language = i18n.language; // Get the current language
+
+    axios.get(`${BaseRoot}/${language}/api/store/posts/`, config).then(function (response) {
       setNews(response.data);
     });
-  }, []);
+  }, [i18n.language]);
   useEffect(() => {
     if (sort == false) {
       setNews(news.sort((a, b) => a.id - b.id));
@@ -274,13 +283,13 @@ const NewsPage = () => {
                 </defs>
               </svg>
             </div>
-            <div>اخبار</div>
+            <div>{t("newsTitle")}</div>
             <div></div>
           </div>
         </div>
         <div className="w-5/6 flex flex-row justify-end items-center">
           <div className="flex flex-row justify-center md:justify-end gap-10 items-center w-full">
-            <div className="text-lg">{ToPersianNumber(news.length)} خبر</div>
+            <div className="text-lg">{ToPersianNumber(news.length)} {t("newTitle")}</div>
             <div
               onClick={() => {
                 setSort((prv) => !prv);
@@ -316,7 +325,7 @@ const NewsPage = () => {
                   </defs>
                 </svg>
               </div>
-              <p className=" text-xs md:text-base">تاریخ انتشار</p>
+              <p className=" text-xs md:text-base">{t("newsReleaseDate")}</p>
               <div>
                 {sort === true ? (
                   <HiOutlineArrowSmDown size={25} color="#7606B2" />

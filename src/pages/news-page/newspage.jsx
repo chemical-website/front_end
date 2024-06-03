@@ -20,6 +20,8 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { NewsCart } from "./../news/news";
+import { useTranslation } from "react-i18next";
+
 
 const NewPage = () => {
   const id = useParams();
@@ -27,17 +29,23 @@ const NewPage = () => {
   const [imag, setImag] = useState([]);
   const [news, setNews] = useState([]);
   const [randomNewsIDs, setRandomNewsIDs] = useState([]);
+  const { t, i18n  } = useTranslation();
+
   useEffect(() => {
-    axios.get(`${BaseRoot}store/posts/${id.id}/`).then(function (response) {
+    const language = i18n.language; // Get the current language
+
+    axios.get(`${BaseRoot}/${language}/api/store/posts/${id.id}/`).then(function (response) {
       setInfo(response.data);
       setImag(response.data["images"]);
     });
-  }, []);
+  }, [i18n.language]);
   useEffect(() => {
-    axios.get(`${BaseRoot}store/posts/`).then(function (response) {
+    const language = i18n.language; // Get the current language
+
+    axios.get(`${BaseRoot}/${language}/api/store/posts/`).then(function (response) {
       setNews(response.data);
     });
-  }, []);
+  }, [i18n.language]);
 
   useEffect(() => {
     const randomIdStore = [];
@@ -137,7 +145,7 @@ const NewPage = () => {
         </div> */}
       </div>
       {news.length > 1 && <div className=" flex flex-col justify-center items-center pt-24">
-        <p className="w-1/6  text-4xl pb-8 text-center">دیگر اخبار</p>
+        <p className="w-1/6  text-4xl pb-8 text-center">{t("newsOther")}</p>
         <div className="w-5/6">
           <Swiper
             breakpoints={{

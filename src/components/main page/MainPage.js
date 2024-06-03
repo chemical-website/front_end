@@ -34,13 +34,6 @@ function MainPage() {
   //   }
   // }, []);
 
-  useEffect(() => {
-    const subscription = i18n.on('languageChanged', (lang) => {
-      console.log(lang)
-      // Perform any necessary updates or side effects when the language changes
-    });
-    return () => subscription.off();
-  }, [i18n]);
 
   const sendRequest = () => {
     const email = emailRef.current.value;
@@ -57,8 +50,9 @@ function MainPage() {
       return;
     }
 
+    const language = i18n.language; // Get the current language
     axios
-      .post(`${BaseRoot}store/products/-1/orders/`, {
+      .post(`${BaseRoot}/${language}/api/store/products/-1/orders/`, {
         phone: phoneRef.current.value,
         description: textRef.current.value,
         email: emailRef.current.value,
@@ -119,7 +113,7 @@ function MainPage() {
               style={{ backgroundColor: "#8806CE" }}
               className="w-3/4 rounded-lg py-2 text-gray-200 font-bold"
             >
-              ایجاد درخواست
+              {t("popUpNewReq")}
             </button>
           </motion.div>
         ) : showRequestFormModal ? (
@@ -139,32 +133,32 @@ function MainPage() {
                 className="text-2xl font-semibold"
                 style={{ color: "#3B0359" }}
               >
-                ثبت درخواست
+                {t("popUpNewReq")}
               </span>
               <input
                 ref={phoneRef}
                 style={{ border: "2px solid #8806CE" }}
                 className="py-1 px-2 rounded-md shadow-md inputPlaceColorized"
-                placeholder="تلفن همراه"
+                placeholder={t("popUpPhone")}
               />
               <input
                 ref={emailRef}
                 style={{ border: "2px solid #8806CE" }}
                 className="py-1 px-2 rounded-md shadow-md inputPlaceColorized"
-                placeholder="ایمیل"
+                placeholder={t("popUpEmail")}
               />
               <textarea
                 ref={textRef}
                 style={{ resize: "none", border: "2px solid #8806CE" }}
                 className="py-1 px-2 rounded-md shadow-md h-24 inputPlaceColorized"
-                placeholder="شرح درخواست"
+                placeholder={t("popUpRequestText")}
               />
               <button
                 onClick={sendRequest}
                 style={{ backgroundColor: "#8806CE" }}
                 className="w-full rounded-lg py-2 text-gray-200 font-bold"
               >
-                ارسال
+                {t("popUpSend")}
               </button>
               <div
                 onClick={() => {

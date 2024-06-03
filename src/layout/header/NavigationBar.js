@@ -30,7 +30,7 @@ function NavigationBar() {
   let [s, sets] = useState(0);
   const [inputRef, setInputRef] = useState();
   const [avtiveCategory, setActiveCategory] = useState(-1);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   function openmahsol() {
     setopennav(1);
@@ -67,14 +67,15 @@ function NavigationBar() {
   }, []);
 
   useEffect(() => {
-    axios.get(`${BaseRoot}store/collections/`).then(function (response) {
+    const language = i18n.language; // Get the current language
+    axios.get(`${BaseRoot}/${language}/api/store/collections/`).then(function (response) {
       setAllParentCollection(response.data);
     });
 
-    axios.get(`${BaseRoot}store/subcollections/`).then(function (response) {
+    axios.get(`${BaseRoot}/${language}/api/store/subcollections/`).then(function (response) {
       setProductNav(response.data);
     });
-  }, []);
+  }, [i18n.language]);
   return (
     <>
       <header className={navigationBar.Header}>

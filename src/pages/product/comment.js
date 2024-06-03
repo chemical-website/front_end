@@ -4,8 +4,11 @@ import { BaseRoot } from "../../baseRoot";
 import { toast } from "react-toastify";
 import jalaliMoment from 'jalali-moment';
 import ClarifyPersianDate from './../../utilities/ClatifyPersianDate';
+import { useTranslation } from "react-i18next";
+
 
 const CommentCard = ({ e }) => {  
+
   return (
     <div style={{ width: "28rem" }} className="h-28 mb-3 flex flex-col gap-2">
       <div className="flex flex-col">
@@ -44,6 +47,7 @@ const CommentCard = ({ e }) => {
 const Comment = ({ id }) => {
   const [newComment, setNewComment] = useState();
   const [comment, setComment] = useState([]);
+  const { t, i18n  } = useTranslation();
   const config = {
     headers: {
       Authorization: localStorage.getItem("token"),
@@ -53,8 +57,10 @@ const Comment = ({ id }) => {
   const [info, setInfo] = useState();
   const [email, setEmail] = useState();
   const senComment = () => {
+    const language = i18n.language; // Get the current language
+
     axios
-      .post(`${BaseRoot}store/products/${id}/reviews/`, {
+      .post(`${BaseRoot}/${language}/api/store/products/${id}/reviews/`, {
         name: info,
         content: newComment,
         email: email,
@@ -76,20 +82,22 @@ const Comment = ({ id }) => {
         toast.warning("ایمیل غلط و یا داده‌ای را ارسال نکرده‌اید");
       });
     axios
-      .get(`${BaseRoot}store/products/${id}/reviews/`, config)
+      .get(`${BaseRoot}/${language}/api/store/products/${id}/reviews/`, config)
       .then(function (response) {
         setComment(response.data);
         // console.log(response.data.properties)
       });
   };
   useEffect(() => {
+    const language = i18n.language; // Get the current language
+
     axios
-      .get(`${BaseRoot}store/products/${id}/reviews/`, config)
+      .get(`${BaseRoot}/${language}/api/store/products/${id}/reviews/`, config)
       .then(function (response) {
         setComment(response.data);
         // console.log(response.data.properties)
       });
-  }, []);
+  }, [i18n.language]);
   return (
     <div className="mt-9 w-full">
       <div
@@ -107,7 +115,7 @@ const Comment = ({ id }) => {
               padding: "0.625rem",
               width: "100%",
             }}
-            placeholder="نام و نام‌خانوادگی"
+            placeholder={t("prod_commentsFirstName")}
             className="inputPlaceColorized py-3"
           />
           <input
@@ -120,7 +128,7 @@ const Comment = ({ id }) => {
               padding: "0.625rem",
               width: "100%",
             }}
-            placeholder="ایمیل"
+            placeholder={t("prod_commentsEmail")}
             className="inputPlaceColorized py-3"
           />
         </div>
@@ -137,7 +145,7 @@ const Comment = ({ id }) => {
                 padding: "0.625rem 0.625rem",
                 resize: "none",
               }}
-              placeholder="ثبت نظر"
+              placeholder={t("prod_commentsText")}
             />
           </div>
         </div>
@@ -158,7 +166,7 @@ const Comment = ({ id }) => {
               paddingBlock: "0.6rem",
             }}
           >
-            ثبت نظر
+            {t("prod_commentsSubmit")}
           </button>
         </div>
       </div>

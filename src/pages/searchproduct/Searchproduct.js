@@ -7,6 +7,8 @@ import { BaseRoot } from "../../baseRoot";
 import { Link, useParams } from "react-router-dom";
 import ToPersianNumber from "./../../utilities/ToPersianNumber";
 import { HiOutlineArrowSmDown, HiOutlineArrowSmUp } from "react-icons/hi";
+import { useTranslation } from "react-i18next";
+
 
 const SearchProducts = () => {
   const { name } = useParams();
@@ -14,6 +16,8 @@ const SearchProducts = () => {
   const [prdouctData, setProductData] = useState([]);
   const [collections, setCollections] = useState([]);
   const [sort, Setsort] = useState(false);
+  const { t, i18n  } = useTranslation();
+
 
   const config = {
     headers: {
@@ -21,20 +25,23 @@ const SearchProducts = () => {
     },
   };
   useEffect(() => {
+    const language = i18n.language; // Get the current language
     axios
-      .get(`${BaseRoot}store/products/?search=${name}`, config)
+      .get(`${BaseRoot}/${language}/api/store/products/?search=${name}`, config)
       .then(function (response) {
         setProductData(response.data);
         console.log(response);
       });
-  }, [name]);
+  }, [name, i18n.language]);
   useEffect(() => {
+    const language = i18n.language; // Get the current language
+
     axios
-      .get(`${BaseRoot}store/collections/`, config)
+      .get(`${BaseRoot}/${language}/api/store/collections/`, config)
       .then(function (response) {
         setCollections(response.data);
       });
-  }, []);
+  }, [i18n.language]);
   useEffect(() => {
     if (sort === false) {
       setProductData(prdouctData.sort((a, b) => a.id - b.id));
@@ -103,7 +110,7 @@ const SearchProducts = () => {
                 </defs>
               </svg>
             </div>
-            <div>محصولات</div>
+            <div>{t("products")}</div>
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -142,7 +149,7 @@ const SearchProducts = () => {
               }}
               className="flex flex-row  justify-start px-3 items-center"
             >
-              <div className="text-lg font-bold px-3 py-1">جستجو: {name}</div>
+              <div className="text-lg font-bold px-3 py-1">{t("searchTitle")}: {name}</div>
               <Link to={"/app"}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -172,7 +179,7 @@ const SearchProducts = () => {
           </div>
           <div className="flex flex-row justify-center md:justify-end gap-10 items-center w-full">
             <div className="font-bold text-base">
-              {ToPersianNumber(prdouctData.length)} محصول
+              {ToPersianNumber(prdouctData.length)} {t("product")}
             </div>
             <div
               onClick={() => {
@@ -209,7 +216,7 @@ const SearchProducts = () => {
                   </defs>
                 </svg>
               </div>
-              <p className=" text-xs md:text-base">تاریخ انتشار</p>
+              <p className=" text-xs md:text-base">{t("searchReleaseDate")}</p>
               <div>
                 {sort === true ? (
                   <HiOutlineArrowSmDown size={25} color="#7606B2" />

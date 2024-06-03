@@ -3,19 +3,22 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BaseRoot } from "../../baseRoot";
 import mailIcon from "../../assets/Icons/Mail outline.svg";
-import styles from "./footer.module.css";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
+
 
 const Footer = () => {
   const [mahsollist, setMahsolList] = useState([]);
   const [email, setEmail] = useState();
+  const { t, i18n  } = useTranslation();
   useEffect(() => {
+    const language = i18n.language; // Get the current language
     axios
-      .get(`${BaseRoot}store/collections/?footer=yes`)
+      .get(`${BaseRoot}/${language}/api/store/collections/?footer=yes`)
       .then(function (response) {
         setMahsolList(response.data);
       });
-  }, []);
+  }, [i18n.language]);
   const seccuesmail = (state) => {
     if (state === 1) {
       toast.success("ارسال شد", {
@@ -39,8 +42,9 @@ const Footer = () => {
     }
   };
   const sendEmails = () => {
+    const language = i18n.language; // Get the current language
     axios
-      .post(`${BaseRoot}store/emails/`, { email: email })
+      .post(`${BaseRoot}/${language}/api/store/emails/`, { email: email })
       .then(function (response) {
         seccuesmail(1);
       })
@@ -63,24 +67,24 @@ const Footer = () => {
           <div className=" flex flex-col  justify-between items-start">
             <div>
               <p style={{ fontWeight: "700" }} className="  text-xl ">
-                تماس باما
+                {t("footer_callUs")}
               </p>
             </div>
             <div className=" flex flex-row  justify-between">
               <div className=" flex flex-col justify-between items-start">
                 <div className=" pr-2 flex flex-col justify-between items-start">
-                  <p className="text-lg font-bold ml-3">تلفن</p>
+                  <p className="text-lg font-bold ml-3">{t("footer_phone")}</p>
                   <p>۰۹۱۳۲۰۲۴۷۲۲/ ۰۹۱۳۴۲۵۷۵۱۰</p>
                   <p>۰۳۱۳۶۶۱۹۴۷۶</p>
                   <div>
-                    <p className="text-lg font-bold ml-3">آدرس ما</p>
-                    <p>سعادت آباد - چهار راه فرایبورگ - خیابان ۲۳ - طبقه اول</p>
+                    <p className="text-lg font-bold ml-3">{t("footer_ourAddress")}</p>
+                    <p>{t("footer_address")}</p>
                   </div>
                 </div>
               </div>
               <div className=" flex flex-col  justify-between items-start  h-16  mr-10">
                 <div className="flex flex-row gap-1 justify-between items-center ml-3">
-                  <p className="text-lg">ایمیل</p>
+                  <p className="text-lg">{t("footer_email")}</p>
                   <p>Pakneeru@yahoo.com</p>
                 </div>
                 <div className="flex flex-row items-center w-full gap-3">
@@ -120,7 +124,7 @@ const Footer = () => {
           <div className=" hidden md:block ">
             <div>
               <p style={{fontWeight: "700"}} className="  text-xl ">
-                دسته بندی ها
+                {t("footer_categories")}
               </p>
             </div>
             <ul className=" pr-2 flex flex-col  justify-between items-start">
@@ -137,10 +141,10 @@ const Footer = () => {
           </div>
           <div className=" md:pl-20 lg:pl-40 flex flex-col  items-center md:items-start">
             <p style={{fontWeight: "700"}} className="  text-xl ">
-              خبرنامه
+              {t("footer_newsLetter")}
             </p>
             <p style={{fontWeight: "500"}} className="text-base">
-              با عضویت در خبرنامه از اخبار و ویژه‌برنامه‌ها خبردار شوید.
+              {t("footer_newsLetterTitle")}
             </p>
             <div className="flex flex-row justify-between items-center gap-2">
               <div className="relative h-10 w-52 shadow-md rounded-md">
@@ -153,7 +157,7 @@ const Footer = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     style={{fontWeight: "bold"}}
                     className="h-full rounded-md w-full px-2"
-                    placeholder="ایمیل خود را وارد کنید"
+                    placeholder={t("footer_enterYourEmail")}
                 />
               </div>
               <div

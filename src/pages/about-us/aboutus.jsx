@@ -8,6 +8,7 @@ import { SwiperSlide, Swiper } from "swiper/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { BaseRoot } from "../../baseRoot";
+import { useTranslation } from "react-i18next";
 
 const listofUser = [
   { pic: img1, title: "سرتیتر اسم محصول", text: "زیرتیتر توضیح" },
@@ -32,11 +33,16 @@ const UserCart = ({ x }) => {
 
 const AboutUsPage = () => {
   const [info, setInfo] = useState("")
+  const { t, i18n  } = useTranslation();
+
   useEffect(() => {
-    axios.get(`${BaseRoot}store/about-us/`).then(function (response) {
-      setInfo(response.data[0].content);
+    const language = i18n.language; // Get the current language
+
+    axios.get(`${BaseRoot}/${language}/api/store/about-us/`).then(function (response) {
+      if (response.data[0])
+        setInfo(response.data[0].content);
     });
-  }, [])
+  }, [i18n.language])
   return (
     <div  style={{ color: "#3B0359" }}>
       <NavigationBar />
@@ -98,16 +104,16 @@ const AboutUsPage = () => {
                 </defs>
               </svg>
             </div>
-            <div className="text-xl font-bold">درباره ما</div>
+            <div className="text-xl font-bold">{t("aboutUsTitle")}</div>
             <div></div>
           </div>
         </div>
       </div>
       <div className="w-full flex justify-center items-center" style={{fontFamily: "Markazi Text"}}>
-        {info !== "" ? <div className="w-4/5" dangerouslySetInnerHTML={{__html: info}}/> : <div className="w-4/5">اطلاعاتی برای نمایش وجود ندارد</div>}
+        {info !== "" ? <div className="w-4/5" dangerouslySetInnerHTML={{__html: info}}/> : <div className="w-4/5">{t("aboutsUsNoInfo")}</div>}
       </div>
       <div className=" flex flex-col justify-center items-center pt-24">
-        <p className="w-full text-center md:w-1/6 text-3xl pb-8 ">با تیم‌ما آشنا شوید</p>
+        <p className="w-full text-center md:w-1/6 text-3xl pb-8 ">{t("ourTeam")}</p>
         <div className="w-3/6 sm:w-5/6">
           <Swiper
             style={{

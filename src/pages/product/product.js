@@ -28,6 +28,8 @@ import ShowToast from "./../../utilities/ShowToast";
 import NoPhoto from "../../assets/img/No-Image.jpg";
 import ToPersianNumber from "./../../utilities/ToPersianNumber";
 import { useSearchParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 
 const Product = () => {
   const { id } = useParams();
@@ -39,6 +41,7 @@ const Product = () => {
   const [tags, setTags] = useState([]);
   const [prop, setProp] = useState([]);
   const [sectionState, setSectionState] = useState(1);
+  const { t, i18n  } = useTranslation();
   const changeState = (num) => {
     setSectionState(num);
   };
@@ -62,8 +65,10 @@ const Product = () => {
     },
   };
   useEffect(() => {
+    const language = i18n.language; // Get the current language
+
     axios
-      .get(`${BaseRoot}store/products/${id}/`, config)
+      .get(`${BaseRoot}/${language}/api/store/products/${id}/`, config)
       .then(function (response) {
         setInfo(response.data);
         setTags(response.data.tags);
@@ -74,7 +79,7 @@ const Product = () => {
         // console.log(response.data.properties)
         if (searchParams.get("status") === "open") handleClickOpen();
       });
-  }, []);
+  }, [i18n.language]);
   const copyToClipboard = () => {
     let copyText = `${window.location.hostname}${
       window.location.port === 80 ? null : ":" + window.location.port
@@ -150,7 +155,7 @@ const Product = () => {
                 </defs>
               </svg>
             </div>
-            <div>محصولات</div>
+            <div>{t("products")}</div>
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -228,21 +233,21 @@ const Product = () => {
                   className=" text-2xl flex flex-row items-center"
                 >
                   <img src={ExisteIcon} className="w-9" />
-                  موجود
+                  {t("prod_available")}
                 </div>
                 <div
                   style={{ display: info.inventory <= 0 ? "flex" : "none" }}
                   className=" text-sm flex flex-row items-center"
                 >
                   <img src={notExisteIcon} className="w-9" />
-                  ناموجود
+                  {t("prod_unAvailable")}
                 </div>
               </div>
               {info.price_range && (
                 <div className="flex flex-col font-bold text-xl mt-2">
-                  <p>بازه قیمت محصول:</p>
+                  <p>{t("prod_priceRange")}:</p>
                   <p>
-                    از {ToPersianNumber(info.price_range.start_price)} تا{" "}
+                    {t("prod_from")} {ToPersianNumber(info.price_range.start_price)} {t("prod_to")}{" "}
                     {ToPersianNumber(info.price_range.end_price)}{" "}
                     {info.price_range.currency_type}
                   </p>
@@ -253,17 +258,17 @@ const Product = () => {
                   <div className="flex flex-col items-start">
                     {info.industry.title && (
                       <div>
-                        <p className="font-bold text-xl">شرکت ارائه دهنده:</p>
+                        <p className="font-bold text-xl">{t("prod_industryTitle")}:</p>
                         <p className="text-xl">{info.industry.title}</p>
                       </div>
                     )}
                     {info.industry.website && (
                       <div>
-                        <p className="font-bold text-xl">وبسایت شرکت:</p>
+                        <p className="font-bold text-xl">{t("prod_industryWebsite")}:</p>
                         <p className="text-xl">{info.industry.website}</p>
                       </div>
                     )}
-                    <p className="font-bold text-xl">شماره تماس:</p>
+                    <p className="font-bold text-xl">{t("prod_industryPhone")}:</p>
                     <p className="text-xl" style={{ direction: "ltr" }}>
                       {info.industry.phone
                         ? ToPersianNumber(info.industry.phone)
@@ -289,7 +294,7 @@ const Product = () => {
                   fontSize: "20px",
                 }}
               >
-                ثبت درخواست
+                {t("prod_submitReq")}
               </button>
             </div>
             <div className=" grid grid-cols-3 w-3/5 max-xl:w-4/5 max-lg:w-full gap-3 mt-5">
@@ -318,7 +323,7 @@ const Product = () => {
                 changeState(1);
               }}
             >
-              توضیحات
+              {t("prod_description")}
             </div>
             <div>/</div>
             <div
@@ -328,7 +333,7 @@ const Product = () => {
                 changeState(2);
               }}
             >
-              مشخصات
+              {t("prod_properties")}
             </div>
             <div>/</div>
             <div
@@ -338,7 +343,7 @@ const Product = () => {
                 changeState(3);
               }}
             >
-              نظرات
+              {t("prod_comments")}
             </div>
           </div>
           <div

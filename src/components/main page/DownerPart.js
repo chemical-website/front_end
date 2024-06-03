@@ -33,7 +33,7 @@ function DownerPart() {
     const [hasTejDakhelii, setHasTejDakheli] = useState(false)
     const [hasAmouzeshTej, setHasAmouzeshTej] = useState(false)
     const [hasKhadamatTej, setHasKhadamatTej] = useState(false)
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
 
     const config = {
@@ -57,25 +57,27 @@ function DownerPart() {
     }, [prdouctData]);
 
     useEffect(() => {
+            const language = i18n.language; // Get the current language
         axios
-            .get(`${BaseRoot}store/products/?recommend=True/`, config)
+            .get(`${BaseRoot}/${language}/api/store/products/?recommend=True/`, config)
             .then(function (response) {
                 setProductData(response.data);
             });
-    }, []);
+    }, [i18n.language]);
     useEffect(() => {
-        axios.get(`${BaseRoot}store/likes/`, config).then(({data}) => {
+            const language = i18n.language; // Get the current language
+        axios.get(`${BaseRoot}/${language}/api/store/likes/`, config).then(({data}) => {
             const tmpLikedItem = [];
             data.forEach((item) => tmpLikedItem.push(item.product));
             setLikedItems(tmpLikedItem);
         });
 
         axios
-            .get(`${BaseRoot}store/collections/`, config)
+            .get(`${BaseRoot}/${language}/api/store/collections/`, config)
             .then(function (response) {
                 setCollections(response.data);
             });
-    }, []);
+    }, [i18n.language]);
 
     function newItemLiked(id) {
         let tmp = [...likedItems];

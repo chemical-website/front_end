@@ -10,7 +10,7 @@ function classNames(...classes) {
 let countries = [
   {
     code: "fa",
-    name: "Persian",
+    name: "فارسی",
     country_code: "fa",
   },
   {
