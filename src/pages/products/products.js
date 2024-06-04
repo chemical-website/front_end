@@ -7,24 +7,30 @@ import { BaseRoot } from "../../baseRoot";
 import { Link } from "react-router-dom";
 import ToPersianNumber from "../../utilities/ToPersianNumber";
 import { HiOutlineArrowSmDown, HiOutlineArrowSmUp } from "react-icons/hi"
+import { useTranslation } from "react-i18next";
+
 
 const Products = () => {
   const [prdouctData, setProductData] = useState([]);
   const [collections, setCollections] = useState([]);
   const [sort, Setsort] = useState(false);
+  const { t, i18n  } = useTranslation();
+
   const config = {
     headers: {
       Authorization: localStorage.getItem("token"),
     },
   };
   useEffect(() => {
-    axios.get(`${BaseRoot}store/products/`, config).then(function (response) {
+    const language = i18n.language; // Get the current language
+    axios.get(`${BaseRoot}/${language}/api/store/products/`, config).then(function (response) {
       setProductData(response.data);
     });
   }, []);
   useEffect(() => {
+    const language = i18n.language; // Get the current language
     axios
-      .get(`${BaseRoot}store/collections/`, config)
+      .get(`${BaseRoot}/${language}/api/store/collections/`, config)
       .then(function (response) {
         setCollections(response.data);
       });
@@ -96,14 +102,14 @@ const Products = () => {
                 </defs>
               </svg>
             </div>
-            <div>محصولات</div>
+            <div>{t("products")}</div>
 
             <div></div>
           </div>
         </div>
         <div className="w-5/6 flex flex-row justify-end items-center">
           <div className="flex flex-row justify-center md:justify-end gap-10 items-center w-full">
-            <div className="font-bold text-base">{ToPersianNumber(prdouctData.length)} محصول</div>
+            <div className="font-bold text-base">{ToPersianNumber(prdouctData.length)} {t("product")}</div>
             <div
               onClick={() => {
                 Setsort(true ? sort === false : false);
@@ -139,7 +145,7 @@ const Products = () => {
                   </defs>
                 </svg>
               </div>
-              <p className=" text-xs md:text-base">تاریخ انتشار</p>
+              <p className=" text-xs md:text-base">{t("productsReleaseDate")}</p>
               <div>
                 {sort === true ? <HiOutlineArrowSmDown size={25} color="#7606B2"/> :
                 <HiOutlineArrowSmUp size={25} color="#7606B2"/>
