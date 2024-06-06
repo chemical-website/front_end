@@ -74,8 +74,8 @@ const Footer = () => {
               <div className=" flex flex-col justify-between items-start">
                 <div className=" pr-2 flex flex-col justify-between items-start">
                   <p className="text-lg font-bold ml-3">{t("footer_phone")}</p>
-                  <p>۰۹۱۳۲۰۲۴۷۲۲/ ۰۹۱۳۴۲۵۷۵۱۰</p>
-                  <p>۰۳۱۳۶۶۱۹۴۷۶</p>
+                  <p>{t("footerFirstNumber")}/ {t("footerSecondNumber")}</p>
+                  <p>{t("footerThirdNumber")}</p>
                   <div>
                     <p className="text-lg font-bold ml-3">{t("footer_ourAddress")}</p>
                     <p>{t("footer_address")}</p>

@@ -93,7 +93,7 @@ function MainPage() {
             <div className="flex flex-row justify-between items-center gap-1 w-full">
               <span
                 className="text-xl font-semibold w-full"
-                style={{ color: "#3B0359" }}
+                style={i18n.language === "en" ? {direction: "ltr", color: "#3B0359"} : {color: "#3B0359"}}
               >
                 {t("popUpWelcomeMsg")}
               </span>

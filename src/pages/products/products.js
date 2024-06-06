@@ -26,7 +26,7 @@ const Products = () => {
     axios.get(`${BaseRoot}/${language}/api/store/products/`, config).then(function (response) {
       setProductData(response.data);
     });
-  }, []);
+  }, [i18n.language]);
   useEffect(() => {
     const language = i18n.language; // Get the current language
     axios
@@ -34,7 +34,7 @@ const Products = () => {
       .then(function (response) {
         setCollections(response.data);
       });
-  }, []);
+  }, [i18n.language]);
   useEffect(() => {
     if (sort === false) {
       setProductData(prdouctData.sort((a, b) => a.id - b.id));

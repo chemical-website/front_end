@@ -204,6 +204,7 @@ function NavigationBar() {
             <img src={ConfigSettingIcon} alt="ConfigSearch" />
           </div>
           <input
+            style={i18n.language === "en" ? {direction: "ltr"} : {}}
             className={navigationBar.input}
             placeholder={t("searchFilter")}
             onChange={(e) => {
