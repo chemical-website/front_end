@@ -82,7 +82,7 @@ export default function Cart({ x, newItemLiked, newItemDisLiked, likedItems }) {
     let copyText = `${window.location.href}/${x.id}`;
     let isCopy = copy(copyText);
     if (isCopy) {
-      toast.success("کپی شد", {
+      toast.success(t("copied"), {
         style: {
           textAlign: "start",
           direction: "rtl",

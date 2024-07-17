@@ -29,12 +29,12 @@ const Order = ({ id, func, closeDialog }) => {
       })
       .then(function (response) {
         navigate(`/app/product/${id}`);
-        ShowToast("سفارش شما با موفقت ثبت شد");
+        ShowToast(t("orderSubmittedSuccessfully"));
         closeDialog();
       })
       .catch(function (error) {
         console.log(error);
-        ShowToast("مشکلی در ثبت سفارش شما پیش آمده", "e");
+        ShowToast(t("errorInSubmittingOrder"), "e");
         closeDialog();
       });
   };

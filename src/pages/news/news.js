@@ -25,12 +25,14 @@ export const NewsCart = ({ info }) => {
   const { t, i18n  } = useTranslation();
 
   const copyToClipboard = () => {
+    const direction = i18n.dir();
+    const isRtl = direction === "rtl";
     let copyText = `${window.location.hostname}${
       window.location.port === 80 ? null : ":" + window.location.port
     }${window.location.pathname}/${info.id}`;
     let isCopy = copy(copyText);
     if (isCopy) {
-      ShowToast("کپی شد!");
+      ShowToast(t("copied"));
     }
   };
 
@@ -289,7 +291,7 @@ const NewsPage = () => {
         </div>
         <div className="w-5/6 flex flex-row justify-end items-center">
           <div className="flex flex-row justify-center md:justify-end gap-10 items-center w-full">
-            <div className="text-lg">{ToPersianNumber(news.length)} {t("newTitle")}</div>
+            <div className="text-lg">{ToPersianNumber(news.length, i18n.language)} {t("newTitle")}</div>
             <div
               onClick={() => {
                 setSort((prv) => !prv);

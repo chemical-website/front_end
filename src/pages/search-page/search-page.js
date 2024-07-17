@@ -6,6 +6,8 @@ import {BaseRoot} from "../../baseRoot";
 import {Link, useParams, useSearchParams} from "react-router-dom";
 import ToPersianNumber from "./../../utilities/ToPersianNumber";
 import {HiOutlineArrowSmDown, HiOutlineArrowSmUp} from "react-icons/hi";
+import i18n from "i18next";
+import {useTranslation} from "react-i18next";
 
 const SearchPage = () => {
     const {name} = useParams();
@@ -18,6 +20,7 @@ const SearchPage = () => {
     const [filterSubCollection, setFilterSubCollection] = useState("")
     const [filterIndustry, setFilterIndustry] = useState("")
     const [filterProduct, setFilterProduct] = useState("")
+    const { t, i18n  } = useTranslation();
 
     const config = {
         headers: {
@@ -209,7 +212,7 @@ const SearchPage = () => {
                     </div>
                     <div className="flex flex-row justify-center md:justify-end gap-10 items-center w-full">
                         <div className="font-bold text-base">
-                            {copyProductData && ToPersianNumber(copyProductData.length)} محصول
+                            {copyProductData && ToPersianNumber(copyProductData.length, i18n.language)} {t("product")}
                         </div>
                         <div
                             onClick={() => {

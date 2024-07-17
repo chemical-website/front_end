@@ -18,9 +18,9 @@ import SeeMoreIcon from "./assets/Icons/SeeMore.svg";
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import NoPhoto from "./assets/img/No-Image.jpg"
-import RedirectToApp from './pages/RedirectToApp';
 import SearchPage from "./pages/search-page/search-page";
 import "./i18n";
+import {useTranslation} from "react-i18next";
 
 function Error404() {
   return (
@@ -33,6 +33,7 @@ function Error404() {
 function App() {
   const { isModalOpen, modalData, closeModal, changeAcceptRule } = useModal();
   const { width, height } = useWindowSize();
+  const { t, i18n  } = useTranslation();
 
   useEffect(() => {
     if (isModalOpen) {
@@ -42,6 +43,15 @@ function App() {
       document.body.style.overflow = "unset";
     };
   }, [isModalOpen]);
+
+  useEffect(() => {
+    const language = i18n.language; // Get the current language
+    if (language === "en")
+      document.body.style.direction = "ltr"
+    else
+      document.body.style.direction = "rtl"
+
+  }, [i18n.language]);
 
   const handleEscapeKeyPress = (event) => {
     if (event.key === "Escape") {
@@ -131,7 +141,7 @@ function App() {
                         <span className="mt-4">
                           {modalData.preview_description.length > 160
                             ? modalData.preview_description.substring(0, 160) +
-                              " [برای ادامه کلیک کنید]"
+                              " [" + t("clickForMore") + "] "
                             : modalData.preview_description}
                         </span>
                         <div className="flex flex-row gap-2">

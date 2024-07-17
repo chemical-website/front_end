@@ -248,7 +248,7 @@ const Product = () => {
                   <p>{t("prod_priceRange")}:</p>
                   <p>
                     {t("prod_from")} {ToPersianNumber(info.price_range.start_price)} {t("prod_to")}{" "}
-                    {ToPersianNumber(info.price_range.end_price)}{" "}
+                    {ToPersianNumber(info.price_range.end_price, i18n.language)}{" "}
                     {info.price_range.currency_type}
                   </p>
                 </div>
@@ -271,8 +271,8 @@ const Product = () => {
                     <p className="font-bold text-xl">{t("prod_industryPhone")}:</p>
                     <p className="text-xl" style={{ direction: "ltr" }}>
                       {info.industry.phone
-                        ? ToPersianNumber(info.industry.phone)
-                        : "شماره‌ای ثبت نشده"}
+                        ? ToPersianNumber(info.industry.phone, i18n.language)
+                        : t("noPhoneSubmitted")}
                     </p>
                   </div>
                 )}

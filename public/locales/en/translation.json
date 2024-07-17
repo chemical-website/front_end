@@ -72,5 +72,16 @@
     "foreignBusiness": "Foreign Business",
     "businesServices": "Business Services",
     "businessTraining": "Business Training",
-    "productsReleaseDate": "Release Date"
+    "productsReleaseDate": "Release Date",
+    "footer_copyright": "Copyright © 2024 aladdingroup. All rights reserved.",
+    "copied": "Copied To Clipboard",
+    "sentSuccessfully": "Sent Successfully",
+    "submitAValidEmail": "Submit A Valid Email",
+    "phoneNumberMustELevenChar": "Phone number must be 11 character",
+    "orderSubmittedSuccessfully": "Your Order Submitted Successfully",
+    "errorInSubmittingOrder": "Submitting Order occures some errors",
+    "nameOfPic": "Name",
+    "descriptionOfPic": "Description",
+    "noPhoneSubmitted": "No Phone Submitted",
+    "clickForMore": "Click For More"
   }

@@ -247,6 +247,7 @@ function NavigationBar() {
           style={{ display: !login ? "none" : "flex" }}
           className={navigationBar.Sabtnam}
         >
+          <LanguageSelector/>
           <Link
             onClick={() => {
               localStorage.setItem("token", "");

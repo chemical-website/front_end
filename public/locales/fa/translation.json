@@ -71,6 +71,18 @@
     "foreignBusiness": "تجارت خارجی",
     "businesServices": "خدمات تجارت",
     "businessTraining": "آموزش تجارت",
-    "productsReleaseDate": "تاریخ انتشار"
+    "productsReleaseDate": "تاریخ انتشار",
+    "footer_copyright": "© کلیه حقوق مادی و معنوی متعلق به علاء الدین می\u200Cباشد.",
+    "copied": "کپی شد",
+    "sentSuccessfully": "با موفقیت ارسال شد",
+    "submitAValidEmail": "ایمیل معتبری وارد کنید",
+    "phoneNumberMustELevenChar": "شماره موبایل باید ۱۱ رقم باشد",
+    "orderSubmittedSuccessfully": "سفارش شما ثبت شد",
+    "errorInSubmittingOrder": "مشکلی در ثبت سفارش شما رخ داده است",
+    "nameOfPic": "نام",
+    "descriptionOfPic": "توضیح عکس",
+    "noPhoneSubmitted": "شماره‌ای ثبت نشده",
+    "clickForMore": "برای ادامه کلیک کنید"
+
 
   }

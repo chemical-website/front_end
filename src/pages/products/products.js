@@ -109,7 +109,7 @@ const Products = () => {
         </div>
         <div className="w-5/6 flex flex-row justify-end items-center">
           <div className="flex flex-row justify-center md:justify-end gap-10 items-center w-full">
-            <div className="font-bold text-base">{ToPersianNumber(prdouctData.length)} {t("product")}</div>
+            <div className="font-bold text-base">{ToPersianNumber(prdouctData.length, i18n.language)} {t("product")}</div>
             <div
               onClick={() => {
                 Setsort(true ? sort === false : false);

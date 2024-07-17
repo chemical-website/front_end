@@ -179,7 +179,7 @@ const SearchProducts = () => {
           </div>
           <div className="flex flex-row justify-center md:justify-end gap-10 items-center w-full">
             <div className="font-bold text-base">
-              {ToPersianNumber(prdouctData.length)} {t("product")}
+              {ToPersianNumber(prdouctData.length, i18n.language)} {t("product")}
             </div>
             <div
               onClick={() => {

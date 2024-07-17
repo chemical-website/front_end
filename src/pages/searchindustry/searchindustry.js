@@ -7,6 +7,7 @@ import { BaseRoot } from "../../baseRoot";
 import { Link, useParams } from "react-router-dom";
 import ToPersianNumber from "./../../utilities/ToPersianNumber";
 import { HiOutlineArrowSmDown, HiOutlineArrowSmUp } from "react-icons/hi";
+import i18n from "i18next";
 
 const SearchIndustry = () => {
   const { name } = useParams();
@@ -178,7 +179,7 @@ const SearchIndustry = () => {
           </div>
           <div className="flex flex-row justify-center md:justify-end gap-10 items-center w-full">
             <div className="font-bold text-base">
-              {prdouctData ? ToPersianNumber(prdouctData.length) : "0"} محصول
+              {prdouctData ? ToPersianNumber(prdouctData.length, i18n.language) : "0"} محصول
             </div>
             <div
               onClick={() => {

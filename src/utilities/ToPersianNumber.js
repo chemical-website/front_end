@@ -1,4 +1,4 @@
-const ToPersianNumber = (str) => {
+const ToPersianNumber = (str, lang) => {
   str = str.toString();
   let persianized = "";
   for (let i = 0; i < str.length; i++) {
@@ -38,6 +38,9 @@ const ToPersianNumber = (str) => {
         break;
     }
   }
-  return persianized;
+  if (lang === "fa")
+    return persianized;
+  else if (lang === "en")
+    return str
 };
 export default ToPersianNumber;
