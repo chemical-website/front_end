@@ -211,7 +211,7 @@ function NavigationBar() {
               setInputRef(e.target.value);
             }}
             onFocus={(e) => (e.target.placeholder = "")}
-            onBlur={(e) => (e.target.placeholder = "دنبال چه چیزی می‌گردید؟")}
+            onBlur={(e) => (e.target.placeholder = t("searchFilter"))}
           />
           <div className="flex justify-center flex-1">
             <Link to={`/app/products/search/${inputRef}`}>
