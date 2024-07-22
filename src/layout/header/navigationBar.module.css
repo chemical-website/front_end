@@ -81,7 +81,7 @@
   justify-content: space-around;
   width: auto;
   height: auto;
-  gap: 5px;
+  gap: 10px;
   align-items: center;
   /* background-color: aquamarine; */
 }
@@ -91,6 +91,7 @@
   display: flex;
   align-items: center;
   margin-left: 3px;
+  gap: 5px;
 }
 
 .openmahsolat {

@@ -42,6 +42,7 @@ const Product = () => {
   const [prop, setProp] = useState([]);
   const [sectionState, setSectionState] = useState(1);
   const { t, i18n  } = useTranslation();
+  const direction = i18n.dir();
   const changeState = (num) => {
     setSectionState(num);
   };
@@ -247,7 +248,7 @@ const Product = () => {
                 <div className="flex flex-col font-bold text-xl mt-2">
                   <p>{t("prod_priceRange")}:</p>
                   <p>
-                    {t("prod_from")} {ToPersianNumber(info.price_range.start_price)} {t("prod_to")}{" "}
+                    {t("prod_from")} {ToPersianNumber(info.price_range.start_price, i18n.language)} {t("prod_to")}{" "}
                     {ToPersianNumber(info.price_range.end_price, i18n.language)}{" "}
                     {info.price_range.currency_type}
                   </p>

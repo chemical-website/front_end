@@ -46,10 +46,15 @@ function App() {
 
   useEffect(() => {
     const language = i18n.language; // Get the current language
-    if (language === "en")
+    if (language === "en") {
       document.body.style.direction = "ltr"
-    else
+      document.title = "Aladdin Group";
+    }
+
+    else {
       document.body.style.direction = "rtl"
+      document.title = "گروه علاء‌الدین";
+    }
 
   }, [i18n.language]);
 
