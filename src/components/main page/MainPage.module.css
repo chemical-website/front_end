@@ -19,6 +19,12 @@
   direction: ltr;
 }
 
+@media screen and (max-width: 1000px) {
+  .TopBox {
+    background-image: url(../../assets/img/Backdrop\ Art.png);
+  }
+}
+
 .TopBox h1 {
   width: 19%;
   direction: rtl;
