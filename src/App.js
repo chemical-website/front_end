@@ -103,6 +103,10 @@ function App() {
             transition={{ duration: 0.2 }}
             exit={{ opacity: 0 }}
             className="w-screen h-screen fixed left-0 top-0 right-0 m-auto overflow-auto z-40 shadow-md myBackdrop"
+            style={(width < 500) ? {
+              fontSize: "12px"
+            }: {}
+            }
             onClick={() => {
               if (modalData.type !== "showRules") closeModal();
             }}
@@ -118,7 +122,7 @@ function App() {
                         height: height - 100,
                         width: width - width / 3,
                       }
-                    : { height: height - 100, width: width - 50 }
+                    : { height: height, width: width }
                 }
                 onClick={(e) => {
                   e.stopPropagation();
@@ -149,7 +153,7 @@ function App() {
                               " [" + t("clickForMore") + "] "
                             : modalData.preview_description}
                         </span>
-                        <div className="flex flex-row gap-2">
+                        <div className="flex flex-row gap-2 flex-wrap">
                           {modalData.tags &&
                             modalData.tags.map((e) => {
                               return (
@@ -172,7 +176,16 @@ function App() {
                 {modalData.type !== "showRules" && (
                   <div
                     className="w-fit flex flex-row justify-center items-center p-5 absolute -left-7 -bottom-7 cursor-pointer"
-                    style={{ backgroundColor: "#3B0359", borderRadius: "50%" }}
+                    style={
+                      {
+                        backgroundColor: "#3B0359",
+                        borderRadius: "50%",
+                        ...(width < 500 ? {
+                          left: "10px",
+                          bottom: "10px"
+                        } : {})
+                      }
+                    }
                   >
                     <Link
                       to={`/app/${modalData.type}/${modalData.id}`}
