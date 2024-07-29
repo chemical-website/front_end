@@ -44,6 +44,10 @@ function DownerPart() {
 
     useEffect(() => {
         setProductCopy(prdouctData);
+        setHasAmouzeshTej(false);
+        setHasKhadamatTej(false);
+        setHasTejDakheli(false);
+        setHasTejKhareji(false);
         for (let i = 0; i < prdouctData.length; i++) {
             if (prdouctData[i].amouzesh_tejarat)
                 setHasAmouzeshTej(true)
