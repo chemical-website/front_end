@@ -8,10 +8,12 @@ import axios from "axios";
 import { BaseRoot } from "../../baseRoot";
 import ShowToast from "./../../utilities/ShowToast";
 import { useTranslation } from "react-i18next";
+import PicSlider from "../../pages/product/picSlider";
 
 function MainPage() {
   const [showRequestFormModal, setSHowRequestFormModal] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(true);
+  const [bannerImages, setBannerImages] = useState([])
   const textRef = useRef();
   const phoneRef = useRef();
   const emailRef = useRef();
@@ -51,13 +53,24 @@ function MainPage() {
         });
   };
 
+  useEffect(() => {
+    const language = i18n.language; // Get the current language
+    const imageTempArr = []
+    axios.get(`${BaseRoot}/${language}/api/store/image-banners/`).then(
+        res => {
+          setBannerImages(res.data)
+        }
+    )
+  }, []);
+
   return (
       <>
         <div className={mainpage.BBox}>
-          <div className={mainpage.TopBox}
-          >
-            {/*<UperPart />*/}
-          </div>
+          <PicSlider images={bannerImages} isForBanner={true}></PicSlider>
+          {/*<div className={mainpage.TopBox}*/}
+          {/*>*/}
+          {/*  /!*<UperPart />*!/*/}
+          {/*</div>*/}
           <div className={mainpage.DownBox}>
             <DownerPart />
           </div>
