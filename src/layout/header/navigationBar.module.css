@@ -45,7 +45,8 @@
 
 .input {
   background-color: #f7ebfe;
-  width: 350px;
+  width: max-content;
+  min-width: 350px;
   position: relative;
   height: 42px;
   padding: 14px 25px;
@@ -147,8 +148,8 @@
   position: absolute;
   margin-top: 0%;
   align-items: center;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   font-size: 86%;
   padding-top: 10%;
 }
@@ -196,11 +197,9 @@
 
 @media screen and (max-width: 970px) {
   .input {
-    width: 200px;
+    min-width: max-content;
   }
-  /* .Menubox {
-    display: none;
-  } */
+
   .Header {
     justify-content: space-between;
   }
@@ -210,11 +209,12 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   .searchBox {
     display: none;
   }
   .Header {
     justify-content: space-between;
+    padding: 1.5rem;
   }
 }

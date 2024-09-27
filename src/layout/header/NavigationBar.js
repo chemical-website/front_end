@@ -17,6 +17,8 @@ import CompanyLogo from "../../assets/img/alaadinGroup.webp";
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "../../components/languageSelector/lang";
+import {Backdrop, Dialog} from "@mui/material";
+import SignIn from "../../components/main page/SignIn";
 
 function NavigationBar() {
   const [showMobileNavbar, setShowMobileNavbar] = useState(false);
@@ -31,6 +33,7 @@ function NavigationBar() {
   const [inputRef, setInputRef] = useState();
   const [avtiveCategory, setActiveCategory] = useState(-1);
   const { t, i18n } = useTranslation();
+  const [showBackdrop, setShowBackdrop] = useState(false)
 
   function openmahsol() {
     setopennav(1);
@@ -76,6 +79,11 @@ function NavigationBar() {
       setProductNav(response.data);
     });
   }, [i18n.language]);
+
+  function openRegistrationBackDrop() {
+    setShowBackdrop(true)
+  }
+
   return (
     <>
       <header className={navigationBar.Header}>
@@ -200,9 +208,6 @@ function NavigationBar() {
         {/* SEARCH START */}
 
         <div className={navigationBar.searchBox}>
-          <div className="flex justify-center flex-1">
-            <img src={ConfigSettingIcon} alt="ConfigSearch" />
-          </div>
           <input
             style={i18n.language === "en" ? {direction: "ltr"} : {}}
             className={navigationBar.input}
@@ -213,7 +218,7 @@ function NavigationBar() {
             onFocus={(e) => (e.target.placeholder = "")}
             onBlur={(e) => (e.target.placeholder = t("searchFilter"))}
           />
-          <div className="flex justify-center flex-1">
+          <div className="flex justify-center absolute left-3">
             <Link to={`/app/products/search/${inputRef}`}>
               <img src={SearchIcon} alt="SearchIcon" />
             </Link>
@@ -231,7 +236,7 @@ function NavigationBar() {
           <LanguageSelector/>
             <BiSolidUserCircle />
           </Link>
-          <Link to="/app/s" className={navigationBar.te}>
+          <Link onClick={openRegistrationBackDrop} className={navigationBar.te}>
             {" "}
             <b> {t("register")} </b>
           </Link>
@@ -239,7 +244,7 @@ function NavigationBar() {
             className="w-5 h-0 rotate-90"
             style={{ borderColor: "#27023b" }}
           />
-          <Link to="/app/s">
+          <Link onClick={openRegistrationBackDrop}>
             <b>{t("login")}</b>{" "}
           </Link>
         </div>
@@ -267,6 +272,10 @@ function NavigationBar() {
 
         {/* HOVER MUEU END */}
       </header>
+
+      <Dialog onClose={() => {setShowBackdrop(false)}} open={showBackdrop}>
+        <SignIn  onSuccessLogin={() => {setShowBackdrop(false); window.location.reload()}}/>
+      </Dialog>
     </>
   );
 }

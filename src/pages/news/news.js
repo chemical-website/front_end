@@ -338,18 +338,19 @@ const NewsPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-5/6 flex-row flex-wrap justify-between items-start mt-12">
-          <div className="flex flex-col lg:flex-row justify-start w-full">
-            {news.map((e) => {
-              return (
-                <NewsCart info={{ ...e, preview_description: e.content }} />
-              );
-            })}
+        <div className="flex w-5/6 flex-row flex-wrap items-start mt-12">
+          <div className="flex w-full flex-row flex-wrap justify-center lg:justify-start">
+          {news.map((e) => {
+            return (
+                <NewsCart info={{...e, preview_description: e.content}}/>
+            );
+          })}
           </div>
-        </div>
       </div>
-    </Fragment>
-  );
+    </div>
+</Fragment>
+)
+  ;
 };
 
 export default NewsPage;

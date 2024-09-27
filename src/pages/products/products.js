@@ -1,5 +1,4 @@
 import Cart from "../../components/cart/cart";
-import ax from "../../assets/img/Photo.png";
 import { Fragment, useEffect, useState } from "react";
 import NavigationBar from "../../layout/header/NavigationBar";
 import axios from "axios";
@@ -11,9 +10,9 @@ import { useTranslation } from "react-i18next";
 
 
 const Products = () => {
-  const [prdouctData, setProductData] = useState([]);
+  const [productData, setProductData] = useState([]);
   const [collections, setCollections] = useState([]);
-  const [sort, Setsort] = useState(false);
+  const [sort, setSort] = useState(false);
   const { t, i18n  } = useTranslation();
 
   const config = {
@@ -27,6 +26,7 @@ const Products = () => {
       setProductData(response.data);
     });
   }, [i18n.language]);
+
   useEffect(() => {
     const language = i18n.language; // Get the current language
     axios
@@ -35,13 +35,15 @@ const Products = () => {
         setCollections(response.data);
       });
   }, [i18n.language]);
+
   useEffect(() => {
     if (sort === false) {
-      setProductData(prdouctData.sort((a, b) => a.id - b.id));
+      setProductData(productData.sort((a, b) => a.id - b.id));
     } else {
-      setProductData(prdouctData.sort((a, b) => b.id - a.id));
+      setProductData(productData.sort((a, b) => b.id - a.id));
     }
   }, [sort]);
+
   return (
     <Fragment>
       <NavigationBar />
@@ -109,10 +111,10 @@ const Products = () => {
         </div>
         <div className="w-5/6 flex flex-row justify-end items-center">
           <div className="flex flex-row justify-center md:justify-end gap-10 items-center w-full">
-            <div className="font-bold text-base">{ToPersianNumber(prdouctData.length, i18n.language)} {t("product")}</div>
+            <div className="font-bold text-base">{ToPersianNumber(productData.length, i18n.language)} {t("product")}</div>
             <div
               onClick={() => {
-                Setsort(true ? sort === false : false);
+                setSort(true ? sort === false : false);
               }}
               style={{
                 border: "1.5px solid #7606B2",
@@ -154,25 +156,19 @@ const Products = () => {
             </div>
           </div>
         </div>
-        <div className="w-5/6 flex flex-row justify-between items-start mt-12 ">
+        <div className="w-5/6 flex flex-row justify-center md:justify-between items-start mt-12 ">
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
             {collections.map((e) => {
               return (
                 <div
-                  // style={{
-                  //   backgroundColor: "#F7EBFE",
-                  //   color: "#3B0359",
-
-                  // }}
                   className="px-2 rounded-md text-center"
                 >
-                  {/* {e.title} */}
                 </div>
               );
             })}
           </div>
           <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 sm:grid-cols-2 w-5/6 gap-y-5 mb-5">
-            {prdouctData.map((e) => {
+            {productData.map((e) => {
               return <Cart x={e} />;
             })}
           </div>

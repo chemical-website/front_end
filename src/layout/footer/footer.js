@@ -71,12 +71,12 @@ const Footer = () => {
         <div className="flex flex-col justify-between items-center md:items-start">
           <div className="flex md:flex-row flex-col justify-between items-center md:items-start w-full">
             <div className="flex flex-col justify-between items-start">
-              <div>
-                <p style={{ fontWeight: "700" }} className="text-xl">
+              <div className="text-center md:text-start w-full ">
+                <p style={{ fontWeight: "700" }} className="text-2xl">
                   {t("footer_callUs")}
                 </p>
               </div>
-              <div className="flex flex-row justify-between">
+              <div className="flex flex-row justify-between mt-10 md:mt-0">
                 <div className="flex flex-col justify-between items-start">
                   <div className={`pr-2 flex flex-col justify-between items-start ${isRtl ? 'ml-0 mr-3' : 'mr-0 ml-3'}`}>
                     <p className="text-lg font-bold">{t("footer_phone")}</p>
@@ -156,7 +156,7 @@ const Footer = () => {
                 })}
               </ul>
             </div>
-            <div className={`md:pl-20 lg:pl-40 flex flex-col items-center md:items-start ${isRtl ? 'md:pr-20 lg:pr-40' : ''}`}>
+            <div className={`mt-10 md:mt-0 md:pl-20 lg:pl-40 flex flex-col items-center md:items-start ${isRtl ? 'md:pr-20 lg:pr-40' : ''}`}>
               <p style={{ fontWeight: "700" }} className="text-xl">
                 {t("footer_newsLetter")}
               </p>
@@ -204,9 +204,9 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col items-center md:items-start">
+          <div className="flex flex-col my-10 md:my-0 items-center md:items-start">
             <p style={{ fontWeight: "500" }} className="text-lg font-bold ml-3">
-              © {t("footer_copyright")}
+              {t("footer_copyright")}
             </p>
           </div>
         </div>

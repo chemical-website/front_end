@@ -4,22 +4,17 @@ import UperPart from "./UperPart";
 import DownerPart from "./DownerPart";
 import { motion } from "framer-motion";
 import { RxCross2 } from "react-icons/rx";
-import { useModal } from "../../context/ModalContext";
 import axios from "axios";
-import { BaseRoot } from "./../../baseRoot";
-import { useNavigate } from "react-router-dom";
+import { BaseRoot } from "../../baseRoot";
 import ShowToast from "./../../utilities/ShowToast";
 import { useTranslation } from "react-i18next";
 
 function MainPage() {
-  const { isModalOpen, openModal, closeModal, acceptRule } = useModal();
   const [showRequestFormModal, setSHowRequestFormModal] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(true);
-  const [showModal, setShowModal] = useState(true);
   const textRef = useRef();
   const phoneRef = useRef();
   const emailRef = useRef();
-  const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const direction = i18n.dir();
   const isRtl = direction === "rtl";
@@ -59,7 +54,8 @@ function MainPage() {
   return (
       <>
         <div className={mainpage.BBox}>
-          <div className={mainpage.TopBox}>
+          <div className={mainpage.TopBox}
+          >
             {/*<UperPart />*/}
           </div>
           <div className={mainpage.DownBox}>
