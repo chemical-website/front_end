@@ -83,5 +83,7 @@
     "nameOfPic": "Name",
     "descriptionOfPic": "Description",
     "noPhoneSubmitted": "No Phone Submitted",
-    "clickForMore": "Click For More"
+    "clickForMore": "Click For More",
+    "NoActiveAccountFound": "No Active Account Found With This Credentials, It Might Because Of Wrong Username and Password",
+    "LoginSuccess": "You Are logging in..."
   }

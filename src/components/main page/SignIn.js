@@ -4,6 +4,7 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import {BaseRoot} from "../../baseRoot";
 import {useTranslation} from "react-i18next";
+import ShowToast from "../../utilities/ShowToast";
 
 function SignIn({
     onSuccessLogin
@@ -51,9 +52,17 @@ function SignIn({
             })
             .then(function (response) {
                 localStorage.setItem("token", `Bearer ${response.data.access}`);
-                onSuccessLogin()
+                ShowToast(t("LoginSuccess"), "s")
+                setTimeout(() => {
+                    onSuccessLogin()
+                }, 1000)
             })
-            .catch(function (error) {});
+            .catch(function (error) {
+                if (error.response.data.detail === "No active account found with the given credentials") {
+                    ShowToast(t("NoActiveAccountFound"), "e")
+                    return;
+                }
+            });
     };
 
     return (
